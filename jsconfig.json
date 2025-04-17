@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "esnext"],
+    "allowJs": true,
+    "checkJs": false,
+    "jsx": "react",
     "paths": {
       "@/*": ["./src/*"]
     }

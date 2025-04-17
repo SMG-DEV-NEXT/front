@@ -1,0 +1,47 @@
+.blockSlideLeft {
+  opacity: 0;
+  transform: translateX(
+    -100%
+  ); /* Начальная позиция элемента слева за экраном */
+  transition: transform 0.8s ease, opacity 1s ease;
+}
+
+.blockSlideLeft.slideLeft {
+  opacity: 1;
+  transform: translateX(0); /* Элемент сдвигается в исходное положение */
+}
+
+.blockSlideRight {
+  opacity: 0;
+  transform: translateX(100%); /* Начальная позиция элемента слева за экраном */
+  transition: transform 0.4s ease, opacity 1s ease;
+}
+
+.blockSlideRight.slideRight {
+  opacity: 1;
+  transform: translateX(0); /* Элемент сдвигается в исходное положение */
+}
+
+.blockSlideBottom {
+  opacity: 0;
+  transform: translateY(
+    -100%
+  ); /* Начальная позиция элемента слева за экраном */
+  transition: transform 0.4s ease, opacity 1s ease;
+}
+
+.blockSlideBottom.slideBottom {
+  opacity: 1;
+  transform: translateY(0); /* Элемент сдвигается в исходное положение */
+}
+
+.blockSlideTop {
+  opacity: 0;
+  transform: translateY(100%); /* Начальная позиция элемента слева за экраном */
+  transition: transform 0.4s ease, opacity 1s ease;
+}
+
+.blockSlideTop.slideTop {
+  opacity: 1;
+  transform: translateY(0); /* Элемент сдвигается в исходное положение */
+}
