@@ -27,12 +27,12 @@ const CheatsMobile = ({
 }) => {
   const [isOpenFilterMobile, setIsOpenFilterMobile] = useState(false);
   const itemList = useMemo(() => {
-    return items.length === 0 ? (
+    return items?.length === 0 ? (
       <Text weight="semi" size="md" className="text-linkColor mt-5">
         empty
       </Text>
     ) : (
-      items.map((e) => {
+      items?.map((e) => {
         return (
           <ListCheatItem key={crypto.randomUUID()} {...e} catalogId={id} />
         );
@@ -171,8 +171,8 @@ const CheatsMobile = ({
                 sortByTegs
               </Text>
               <div className="flex flex-wrap gap-2">
-                {!!tags.length ? (
-                  tags.map((e) => {
+                {!!tags?.length ? (
+                  tags?.map((e) => {
                     return (
                       <div
                         key={crypto.randomUUID()}
