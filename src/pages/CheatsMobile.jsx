@@ -17,7 +17,7 @@ const CheatsMobile = ({
   handleInputChange,
   setToViewItems,
   filters,
-  typesFilter,
+  typesFilter = [],
   api,
   locale,
   tags,
@@ -155,7 +155,7 @@ const CheatsMobile = ({
               </Text>
               <PriceSortInput
                 currency={"₽"}
-                range={filters.range}
+                range={filters?.range}
                 setRange={(e) => handleInputChange("range", e)}
                 min={api?.lowPrice}
                 max={api?.maxPrice}

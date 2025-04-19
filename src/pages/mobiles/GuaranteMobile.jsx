@@ -4,7 +4,7 @@ import Image from "next/image";
 import Icon from "../../components/Icons";
 import Effect from "../../components/Animations/Effect";
 
-const GuaranteView = ({ guarante, locale }) => {
+const GuaranteView = ({ guarante = {}, locale }) => {
   return (
     <div
       className="view relative h-full w-full bg-mainBlack flex items-center justify-center
@@ -37,7 +37,7 @@ const GuaranteView = ({ guarante, locale }) => {
                   <div className="flex flex-col  gap-6 z-[4] relative">
                     {guarante?.logo1 ? (
                       <Image
-                        src={guarante.logo1}
+                        src={guarante?.logo1}
                         className="h-[96px]"
                         width={96}
                         height={96}
