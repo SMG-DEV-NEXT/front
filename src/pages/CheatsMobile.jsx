@@ -92,7 +92,7 @@ const CheatsMobile = ({
                   onClick={() => handleInputChange("type", typesFilter[2])}
                   className="flex items-center gap-2 cursor-pointer"
                 >
-                  {filters.type !== typesFilter[2] ? (
+                  {filters?.type !== typesFilter[2] ? (
                     <div className="border rounded-full border-linkColor w-4 h-4"></div>
                   ) : (
                     <div className="border rounded-full border-linkColor w-4 h-4 bg-primary80"></div>
@@ -110,7 +110,7 @@ const CheatsMobile = ({
                   onClick={() => handleInputChange("type", typesFilter[1])}
                   className="flex items-center gap-2 cursor-pointer"
                 >
-                  {filters.type !== typesFilter[1] ? (
+                  {filters?.type !== typesFilter[1] ? (
                     <div className="border rounded-full border-linkColor w-4 h-4"></div>
                   ) : (
                     <div className="border rounded-full border-linkColor w-4 h-4 bg-primary80"></div>
@@ -128,7 +128,7 @@ const CheatsMobile = ({
                   onClick={() => handleInputChange("type", typesFilter[0])}
                   className="flex items-center gap-2 cursor-pointer"
                 >
-                  {filters.type !== typesFilter[0] ? (
+                  {filters?.type !== typesFilter[0] ? (
                     <div className="border rounded-full border-linkColor w-4 h-4"></div>
                   ) : (
                     <div className="border rounded-full border-linkColor w-4 h-4 bg-primary80"></div>
