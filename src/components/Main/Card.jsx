@@ -1,9 +1,11 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Text from "../Text";
 import Icon from "../Icons";
 import "./index.scss";
 import CustomLink from "../CustomLink";
+import Freecurrencyapi from "@everapi/freecurrencyapi-js";
+import { useLocale } from "next-intl";
 function Card({
   imageUrl,
   title,
@@ -13,6 +15,24 @@ function Card({
   cheats,
   id,
 }) {
+  const [usd, setUSD] = useState(null);
+  const locale = useLocale();
+  const freecurrencyapi = new Freecurrencyapi(
+    "fca_live_tfZjgKTbQ86JVJJm1yKs75nITIE3sDnyYLQCaFyc"
+  );
+
+  useEffect(() => {
+    if (freecurrencyapi && usd === null) {
+      freecurrencyapi
+        .latest({
+          base_currency: "USD",
+          currencies: "RUB",
+        })
+        .then((response) => {
+          setUSD(response.data.RUB);
+        });
+    }
+  }, [freecurrencyapi]);
   const getMinimumPrice = () => {
     if (!cheats) return;
     const prices = cheats
@@ -20,6 +40,9 @@ function Card({
         return e.minimumPrice;
       })
       .sort();
+    if (locale === "en") {
+      return `${((prices[0] || 0) / usd).toFixed(2)} $`;
+    }
     return `${prices[0] || 0} ₽`;
   };
   return (

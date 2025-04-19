@@ -2,7 +2,14 @@ import { axiosLoggedIn, axiosWithoutAuth } from "../api";
 
 const CheatsService = {
   getCheats: (options) => {
-    const { page, limit, search = "", type, range, catalogId } = options;
+    const {
+      page = 1,
+      limit = 4,
+      search = "",
+      type,
+      range,
+      catalogId,
+    } = options;
     if (range) {
       return axiosWithoutAuth.get(
         `/cheats/api/all?catalogId=${catalogId}&limit=${limit}&page=${page}&search=${search}&type=${type}&price_start=${range[0]}&price_end=${range[1]}`

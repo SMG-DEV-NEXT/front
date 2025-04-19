@@ -19,7 +19,6 @@ import Loading from "@/app/loading";
 
 const View = () => {
   const isMobile = useMobile();
-  console.log(isMobile);
   const { cheat } = useParams();
   const { data, isPending } = useQuery({
     refetchOnWindowFocus: false,

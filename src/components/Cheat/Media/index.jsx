@@ -5,7 +5,6 @@ import Image from "next/image";
 import "../index.scss";
 
 const Medias = ({ mobile, cheat }) => {
-  console.log(cheat);
   if (mobile) {
     return (
       <div className="flex flex-col gap-4 ">

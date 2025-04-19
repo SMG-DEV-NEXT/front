@@ -73,3 +73,7 @@ export const MyAccountDefaultIcon = ({ color }) => {
     </svg>
   );
 };
+
+export default function defaultExporter() {
+  return <div></div>;
+}
