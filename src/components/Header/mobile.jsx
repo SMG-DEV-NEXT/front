@@ -17,9 +17,9 @@ import CustomLink from "../CustomLink";
 import HeaderMyAccount from "./Account";
 import { useSelector } from "react-redux";
 import Modal from "./../Modal/index";
-import View from "../../pages/Login";
-import ViewRegistration from "../../pages/Registration";
-import Forget from "../../pages/Forget";
+import View from "../pages/Login";
+import ViewRegistration from "../pages/Registration";
+import Forget from "../pages/Forget";
 import { useSettings } from "@/context/Middle";
 import { MainSettings } from "@/script/main";
 

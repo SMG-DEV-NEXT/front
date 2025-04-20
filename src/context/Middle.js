@@ -33,7 +33,7 @@ const SettingsContext = createContext({
   updateSetting: () => {},
   isLoadingSaveQuery: false,
 });
-
+export const fetchCache = "force-no-store";
 const MiddleComponent = ({ children }) => {
   const dispatch = useDispatch();
   const token = getAccessToken();

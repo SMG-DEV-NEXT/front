@@ -1,6 +1,7 @@
-import UpdateCheat from "@/admin/Cheat/edit";
+import UpdateCheat from "@/components/admin/Cheat/edit";
 import React from "react";
-
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 const CheatGames = () => {
   return <UpdateCheat />;
 };

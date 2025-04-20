@@ -7,7 +7,7 @@ import {
   Spoofer,
   SystemOptions,
   TypeWindow,
-} from "@/admin/Cheat/create/requirments/options";
+} from "@/components/admin/Cheat/create/requirments/options";
 
 const items = [
   {

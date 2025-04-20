@@ -8,16 +8,9 @@ export default async function RootLayout({ children, params: paramsPromise }) {
   // ✅ Await params (required in Next.js 15)
   const params = await paramsPromise;
 
-  // 🛠 Debugging: Log params
-  console.log("🚀 Server Render - params:", params);
-
   // ✅ Ensure locale has a default value
   const locale = params?.locale || "en";
 
-  // 🛠 Debugging: Log the final locale being used
-  console.log("✅ Using locale:", locale);
-
-  // Fetch translations
   const messages = await getMessages({ locale });
   return (
     <NextIntlClientProvider messages={messages}>

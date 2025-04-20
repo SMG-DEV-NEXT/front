@@ -2,9 +2,9 @@
 import { redirect } from "next/navigation";
 import { useSelector } from "react-redux";
 import { useLocale } from "next-intl";
-import AdminTab from "@/admin/Tab";
-import AdminHeader from "@/admin/Header";
-
+import AdminTab from "@/components/admin/Tab";
+import AdminHeader from "@/components/admin/Header";
+export const dynamic = "force-dynamic";
 export default function AdminLayout({ children }) {
   const user = useSelector((state) => state.auth.user);
   const locale = useLocale();

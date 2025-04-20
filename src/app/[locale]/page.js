@@ -1,7 +1,10 @@
 "use client";
-import Main from "@/pages/Main";
+import Main from "@/components/pages/Main";
 import "@/styles/global.scss";
 import { useEffect, useState } from "react";
+
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
