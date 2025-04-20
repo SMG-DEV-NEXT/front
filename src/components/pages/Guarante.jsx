@@ -7,21 +7,17 @@ import Effect from "../Animations/Effect";
 import { useMobile } from "@/hooks/useMobile";
 import { useSettings } from "@/context/Middle";
 import { useLocale } from "next-intl";
-export const dynamic = "force-dynamic";
-export const fetchCache = "force-no-store";
+import dynamic from "next/dynamic";
+
 const GuaranteView = () => {
   const { settings } = useSettings();
   const guarante = settings.data.find((e) => e.title === "guarante")?.settings;
   const locale = useLocale();
-  // const MobileComponent = dynamic(
-  //   () => import("./mobiles/GuaranteMobile.jsx"),
-  //   {
-  //     ssr: false, // Disable SSR for this component (optional)
-  //   }
-  // );
+  const MobileComponent = dynamic(() => import("../GuaranteMobile.jsx"), {
+    ssr: false, // Disable SSR for this component (optional)
+  });
   const isMobile = useMobile();
-
-  // if (isMobile) return <MobileComponent locale={locale} guarante={guarante} />;
+  if (isMobile) return <MobileComponent locale={locale} guarante={guarante} />;
 
   return (
     <div className="view relative h-full w-full bg-mainBlack flex items-center justify-center pt-[60px] ">

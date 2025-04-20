@@ -12,6 +12,7 @@ import CheatsService from "@/services/Cheats";
 import Loading from "@/app/loading";
 import { useLocale } from "next-intl";
 import { useParams } from "next/navigation";
+import CheatsMobile from "../Cheat/CheatsMobile";
 
 const typesFilter = ["high_price", "low_price", "raiting"];
 export const dynamic = "force-dynamic";
@@ -106,25 +107,25 @@ const Cheats = () => {
     return api.data;
   };
 
-  // if (isMobile && api?.data) {
-  //   return (
-  //     <CheatsMobile
-  //       items={getViewItems()}
-  //       toViewItems={toViewItems}
-  //       filters={filters}
-  //       api={api}
-  //       typesFilter={typesFilter}
-  //       selectedFilterTag={selectedFilterTag}
-  //       setSelectedFilterTag={setSelectedFilterTag}
-  //       tags={tags}
-  //       locale={locale}
-  //       id={id}
-  //       handleInputChange={handleInputChange}
-  //       search={search}
-  //       setToViewItems={setToViewItems}
-  //     />
-  //   );
-  // }
+  if (isMobile && api?.data) {
+    return (
+      <CheatsMobile
+        items={getViewItems()}
+        toViewItems={toViewItems}
+        filters={filters}
+        api={api}
+        typesFilter={typesFilter}
+        selectedFilterTag={selectedFilterTag}
+        setSelectedFilterTag={setSelectedFilterTag}
+        tags={tags}
+        locale={locale}
+        id={id}
+        handleInputChange={handleInputChange}
+        search={search}
+        setToViewItems={setToViewItems}
+      />
+    );
+  }
 
   return (
     <div className="view relative h-full w-full bg-mainBlack flex items-center justify-center pt-[64px] pb-[112px]">
