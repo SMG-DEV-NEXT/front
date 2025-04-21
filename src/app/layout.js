@@ -7,6 +7,10 @@ export default function RootLayout({ children }) {
   return (
     <html>
       <head>
+        <meta
+          http-equiv="Content-Security-Policy"
+          content="upgrade-insecure-requests"
+        />
         <title>SMG</title>
       </head>
       <body>
