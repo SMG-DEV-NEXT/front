@@ -7,6 +7,29 @@ const withNextIntl = createNextIntlPlugin();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const nextConfig = {
+  async headers() {
+    return [
+      {
+        source: "/api/:path*",
+        headers: [
+          { key: "Access-Control-Allow-Credentials", value: "true" },
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "https://9b5c-46-36-112-210.ngrok-free.app",
+          }, // NOT *
+          {
+            key: "Access-Control-Allow-Methods",
+            value: "GET,OPTIONS,PATCH,DELETE,POST,PUT",
+          },
+          {
+            key: "Access-Control-Allow-Headers",
+            value:
+              "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization",
+          },
+        ],
+      },
+    ];
+  },
   reactStrictMode: true,
   productionBrowserSourceMaps: true,
   images: {
