@@ -3,6 +3,7 @@ import { fileURLToPath } from "url";
 import path from "path";
 import createNextIntlPlugin from "next-intl/plugin";
 const withNextIntl = createNextIntlPlugin();
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL; // Change it to your actual backend URL
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,7 +16,7 @@ const nextConfig = {
           { key: "Access-Control-Allow-Credentials", value: "true" },
           {
             key: "Access-Control-Allow-Origin",
-            value: "https://9b5c-46-36-112-210.ngrok-free.app",
+            value: "*",
           }, // NOT *
           {
             key: "Access-Control-Allow-Methods",
