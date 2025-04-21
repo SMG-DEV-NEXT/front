@@ -16,7 +16,7 @@ const nextConfig = {
           { key: "Access-Control-Allow-Credentials", value: "true" },
           {
             key: "Access-Control-Allow-Origin",
-            value: BASE_URL,
+            value: BASE_URL.replace("/api", ""),
           }, // NOT *
           {
             key: "Access-Control-Allow-Methods",
