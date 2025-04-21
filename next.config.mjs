@@ -16,7 +16,7 @@ const nextConfig = {
           { key: "Access-Control-Allow-Credentials", value: "true" },
           {
             key: "Access-Control-Allow-Origin",
-            value: "https://92ad-46-36-116-211.ngrok-free.app",
+            value: "https://4c84-46-36-116-211.ngrok-free.app",
           }, // NOT *
           {
             key: "Access-Control-Allow-Methods",
