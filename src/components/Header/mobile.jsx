@@ -192,7 +192,7 @@ export default function HeaderMobile() {
           </Dropdown>
 
           {/* Search Input */}
-          {/* <Input iconLeft="Search" /> */}
+          {/* <Input iconLeft="searchNew" /> */}
 
           {/* Auth Buttons */}
           {user?.id ? (
