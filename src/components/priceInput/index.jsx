@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import Slider from "rc-slider";
-import "rc-slider/assets/index.css"; // Import the default styles
+import "rc-slider/assets/index.css";
 import Text from "../Text";
 
 const PriceRangeSelector = ({
@@ -12,23 +12,29 @@ const PriceRangeSelector = ({
   setRange,
 }) => {
   const [priceRange, setPriceRange] = useState([min, max]);
-  const firstRender = useRef(true); // Track first render
+  const hasInitialized = useRef(false); // ✅ Block first handleChange
 
+  // Set initial range from props
   useEffect(() => {
+    setPriceRange([min, max]);
+  }, [min, max]);
+
+  // Debounced effect to send range to parent
+  useEffect(() => {
+    if (!hasInitialized.current) return;
+
     const handler = setTimeout(() => {
       setRange(priceRange);
+      hasInitialized.current = true; // ✅ Allow handleChange after first setup
     }, 500);
 
     return () => clearTimeout(handler);
   }, [priceRange]);
 
   const handleChange = (value) => {
+    if (!hasInitialized.current) return; // ✅ Ignore if not initialized yet
     setPriceRange(value);
   };
-
-  useEffect(() => {
-    setPriceRange([min, max]);
-  }, [min, max]);
 
   return (
     <div className="flex flex-col gap-3">
@@ -51,6 +57,7 @@ const PriceRangeSelector = ({
         max={max}
         range
         value={priceRange}
+        onChange={handleChange}
         trackStyle={{ backgroundColor: "#8B6DCA", height: 3 }}
         railStyle={{ backgroundColor: "#7B8293", height: 3 }}
         handleStyle={[
@@ -58,7 +65,6 @@ const PriceRangeSelector = ({
             backgroundColor: "#fff",
             height: 16,
             width: 16,
-            outline: "none",
             border: "none",
             marginTop: -8,
             boxShadow: "none",
@@ -67,13 +73,11 @@ const PriceRangeSelector = ({
             backgroundColor: "#fff",
             height: 16,
             width: 16,
-            outline: "none",
             border: "none",
             marginTop: -8,
             boxShadow: "none",
           },
         ]}
-        onChange={handleChange}
       />
     </div>
   );

@@ -28,12 +28,12 @@ const ContactsView = () => {
 
   return (
     <div
-      className={`view relative h-full w-full bg-mainBlack flex items-center justify-center pb-[${
+      className={`view relative h-full w-full flex items-center justify-center pb-[${
         isMobile ? "60px" : "256px"
       }] pt-[${isMobile ? "60px" : "64px"}] `}
       style={{ paddingBottom: isMobile ? "60px" : "256px" }}
     >
-      <Image
+      {/* <Image
         src="/images/loginBg.png"
         style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
         quality={100}
@@ -41,7 +41,7 @@ const ContactsView = () => {
         fill
         alt="Image"
         className="z-[0]"
-      />
+      /> */}
       <div className="container flex flex-col gap-[48px] items-center z-[1]">
         <div className="flex flex-col gap-6  items-center">
           <Text
@@ -114,12 +114,12 @@ const ContactsView = () => {
   );
   return (
     <div
-      className={`view relative h-full w-full bg-mainBlack flex items-center justify-center pb-[${
+      className={`view relative h-full w-full flex items-center justify-center pb-[${
         isMobile ? "60px" : "256px"
       }] pt-[${isMobile ? "60px" : "64px"}] `}
       style={{ paddingBottom: isMobile ? "60px" : "256px" }}
     >
-      <Image
+      {/* <Image
         src="/images/loginBg.png"
         style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
         quality={100}
@@ -127,7 +127,7 @@ const ContactsView = () => {
         fill
         alt="Image"
         className="z-[0]"
-      />
+      /> */}
       <div className="container flex flex-col gap-[48px] items-center z-[1]">
         <div className="flex flex-col gap-6  items-center">
           <Text

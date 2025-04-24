@@ -37,8 +37,8 @@ function Forget3({ isMobile, openLogin }) {
     );
   }
   return (
-    <div className="view relative h-full w-full bg-mainBlack flex items-center justify-center pt-[64px] pb-[234px]">
-      <Image
+    <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[234px]">
+      {/* <Image
         src="/images/loginBg.png"
         style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
         quality={100}
@@ -46,7 +46,7 @@ function Forget3({ isMobile, openLogin }) {
         fill
         alt="Image"
         className="z-[0]"
-      />
+      /> */}
       <div className="flex flex-col gap-6 z-[1] w-[39%] max-w-[552px] items-center">
         <Text
           T="login"

@@ -11,7 +11,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import CheatsService from "@/services/Cheats";
 import Loading from "@/app/loading";
 import { useLocale } from "next-intl";
-import { useParams } from "next/navigation";
+import { notFound, useParams } from "next/navigation";
 import CheatsMobile from "../Cheat/CheatsMobile";
 
 const typesFilter = ["high_price", "low_price", "raiting"];
@@ -36,13 +36,15 @@ const Cheats = () => {
   });
   const isMobile = useMobile();
   const [previous, setPrevious] = useState(null);
-  const { data, isLoading, isError, refetch, isRefetching } = useQuery({
-    queryKey: ["cheats", filters], // React Query refetches when filters change
-    queryFn: () => CheatsService.getCheats(filters),
-    keepPreviousData: true,
-    placeholderData: previous,
-    refetchOnWindowFocus: false, // Get last known data
-  });
+  const { data, isLoading, isPending, isError, refetch, isRefetching } =
+    useQuery({
+      queryKey: ["cheats", filters], // React Query refetches when filters change
+      queryFn: () => CheatsService.getCheats(filters),
+      // keepPreviousData: true,
+      // placeholderData: previous,
+      retry: false,
+      refetchOnWindowFocus: false, // Get last known data
+    });
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -53,6 +55,7 @@ const Cheats = () => {
   }, [search]);
 
   const handleInputChange = (name, value) => {
+    console.log(11, name, value);
     if (name === "search") {
       setSearch(value);
       return;
@@ -65,7 +68,6 @@ const Cheats = () => {
 
   useEffect(() => {
     if (data) {
-      setPrevious(data);
       const uniqueTags = [
         ...new Map(
           api.data
@@ -77,10 +79,6 @@ const Cheats = () => {
       setSelectedFilterTag(null);
     }
   }, [data]);
-
-  if (!data) {
-    return <Loading />;
-  }
 
   const api = data?.data;
 
@@ -106,7 +104,10 @@ const Cheats = () => {
     }
     return api.data;
   };
-
+  if (!api?.data && !isPending) return notFound();
+  if (!data) {
+    return <Loading />;
+  }
   if (isMobile && api?.data) {
     return (
       <CheatsMobile
@@ -128,8 +129,8 @@ const Cheats = () => {
   }
 
   return (
-    <div className="view relative h-full w-full bg-mainBlack flex items-center justify-center pt-[64px] pb-[112px]">
-      <Image
+    <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[112px]">
+      {/* <Image
         src="/images/loginBg.png"
         style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
         quality={100}
@@ -137,7 +138,7 @@ const Cheats = () => {
         fill
         alt="Image"
         className="z-[0]"
-      />
+      /> */}
       <div className="flex flex-col gap-6 z-[1] container items-center">
         <Text T="cheats" className="text-primary10" weight="bold" size="t48">
           title

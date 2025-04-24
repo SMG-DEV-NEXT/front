@@ -6,7 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import Icon from "../../Icons";
 import Text from "../../Text";
 import { useMobile } from "@/hooks/useMobile";
-import { useParams } from "next/navigation";
+import { notFound, useParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import StatsService from "@/services/Stats";
 import Loading from "@/app/loading";
@@ -61,16 +61,17 @@ function StatView() {
   if (isPending) {
     return <Loading />;
   }
+  if (!data?.data && !isPending) return notFound();
   const stat = data?.data;
   return (
     <div
-      className="view relative h-full w-full bg-mainBlack flex items-center justify-center "
+      className="view relative h-full w-full flex items-center justify-center "
       style={{
         paddingBottom: isMobile ? "60px" : "64px",
         paddingTop: isMobile ? "60px" : "112px",
       }}
     >
-      <Image
+      {/* <Image
         src="/images/loginBg.png"
         style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
         quality={100}
@@ -78,7 +79,7 @@ function StatView() {
         fill
         alt="Image"
         className="z-[0]"
-      />
+      /> */}
       <div className="container flex flex-col gap-8 z-[1] ">
         {!isMobile && (
           <RouteStat

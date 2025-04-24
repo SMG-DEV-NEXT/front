@@ -10,7 +10,7 @@ import TwoFactorInput from "../TwoFactorInput";
 import CustomLink from "../CustomLink";
 import { useMutation } from "@tanstack/react-query";
 import UserService from "../../services/User";
-import { redirect, useRouter } from "next/navigation";
+import { notFound, redirect, useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setAuth } from "../../redux/authSlice";
 import { setAccessToken } from "../../utils/token";
@@ -66,7 +66,6 @@ function View({ isMobile, goToRegistration, goToForgetPassword, onClose }) {
       code,
     });
   };
-
   if (isMobile) {
     if (step === 2) {
       return (
@@ -156,8 +155,8 @@ function View({ isMobile, goToRegistration, goToForgetPassword, onClose }) {
 
   if (step === 2) {
     return (
-      <div className="view relative h-full w-full bg-mainBlack flex items-center justify-center pt-[64px] pb-[344px]">
-        <Image
+      <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[344px]">
+        {/* <Image
           src="/images/loginBg.png"
           style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
           quality={100}
@@ -165,7 +164,7 @@ function View({ isMobile, goToRegistration, goToForgetPassword, onClose }) {
           fill
           alt="Image"
           className="z-[0]"
-        />
+        /> */}
         <div className="flex flex-col gap-6 z-[1]">
           <Text T="login" className="text-primary10" size="t48" weight="bold">
             ourCabinet
@@ -189,8 +188,8 @@ function View({ isMobile, goToRegistration, goToForgetPassword, onClose }) {
     );
   }
   return (
-    <div className="relative h-full w-full bg-mainBlack flex items-center justify-center pt-[64px] pb-[234px]">
-      <Image
+    <div className="relative h-full w-full flex items-center justify-center pt-[64px] pb-[234px]">
+      {/* <Image
         src="/images/loginBg.png"
         style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
         quality={100}
@@ -198,7 +197,7 @@ function View({ isMobile, goToRegistration, goToForgetPassword, onClose }) {
         fill
         alt="Image"
         className="z-[0]"
-      />
+      /> */}
       <div className="flex flex-col gap-6 z-[1] w-[45%] max-w-[570px] items-center">
         <Text
           T="login"

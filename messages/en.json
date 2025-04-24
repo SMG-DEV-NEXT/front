@@ -62,7 +62,10 @@
     "priceWithPrcent": "Discounted Price ₽/$",
     "cheat": "Product",
     "empty": "Nothing found.",
-    "check": "Check"
+    "check": "Check",
+    "notFoundTitle": "Something went wrong...",
+    "notFoundText": "The page you are looking for does not exist or has been moved",
+    "notFoundBtn": "Go to Home"
   },
   "Main": {
     "topT": "Private cheats from the developer",

@@ -91,7 +91,7 @@ export default function AdminUploadImage({
               height: `${height}px`,
             }}
             alt="Uploaded preview"
-            className={`rounded-md mt-1`}
+            className={`rounded-2xl mt-1`}
           />
         </div>
       )}

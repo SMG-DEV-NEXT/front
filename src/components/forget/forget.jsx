@@ -35,8 +35,8 @@ function Forget2FA({ code, setCode, onApply, isMobile }) {
     );
   }
   return (
-    <div className="view relative h-full w-full bg-mainBlack flex items-center justify-center pt-[64px] pb-[344px]">
-      <Image
+    <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[344px]">
+      {/* <Image
         src="/images/loginBg.png"
         style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
         quality={100}
@@ -44,7 +44,7 @@ function Forget2FA({ code, setCode, onApply, isMobile }) {
         alt="Background"
         fill
         className="z-[0]"
-      />
+      /> */}
       <div className="flex flex-col gap-6 z-[1]">
         <Text T="login" className="text-primary10" size="t48" weight="bold">
           reset

@@ -22,7 +22,7 @@ const Medias = ({ mobile, cheat }) => {
                 height: `${170}px`,
               }}
               alt="Uploaded preview"
-              className={`rounded-md mt-1 z-[1]`}
+              className={`rounded-2xl mt-1 z-[1]`}
             >
               <source src={cheat.videos[0]} type="video/mp4" />
             </video>
@@ -60,7 +60,7 @@ const Medias = ({ mobile, cheat }) => {
               height: `${170}px`,
             }}
             alt="Uploaded preview"
-            className={`rounded-md mt-1 z-[1]`}
+            className={`rounded-2xl mt-1 z-[1]`}
           >
             <source src={cheat.videos[0]} type="video/mp4" />
           </video>

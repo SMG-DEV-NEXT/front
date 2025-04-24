@@ -7,8 +7,8 @@ import Effect from "../Animations/Effect";
 
 const EasyUseBlock = () => {
   return (
-    <div className="flex h-full relative p-6 bg-input rounded-2xl">
-      <Image fill src="/images/easyBG.png" alt="background" />
+    <div className="flex h-full relative p-6 bg-input rounded-2xl bg-[url('/images/easyBG.png')] bg-no-repeat bg-center bg-cover">
+      {/* <Image fill src="/images/easyBG.png" alt="background" /> */}
       <div className="flex z-[2] flex-col justify-between">
         <div
           className="flex items-center gap-2 p-3 rounded-xl"
@@ -37,13 +37,13 @@ const EasyUseBlock = () => {
 
 const Choose = () => {
   return (
-    <div className="flex relative">
-      <Image
+    <div className="flex relative  bg-[url('/images/chooseBG.png')] bg-no-repeat bg-center bg-cover min-h-[295px]">
+      {/* <Image
         src="/images/chooseBG.png"
         alt="background"
         width={552}
         height={295}
-      />
+      /> */}
       <div className="absolute bottom-[24px]">
         <div className="flex flex-col px-6 gap-2">
           <Text T="Main" weight="bold" size="lg" className="text-primary10">

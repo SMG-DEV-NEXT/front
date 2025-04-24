@@ -9,10 +9,10 @@ export const dynamic = "force-dynamic";
 const GuaranteView = ({ guarante = {}, locale }) => {
   return (
     <div
-      className="view relative h-full w-full bg-mainBlack flex items-center justify-center
+      className="view relative h-full w-full flex items-center justify-center
      "
     >
-      <Image
+      {/* <Image
         src="/images/loginBg.png"
         style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
         quality={100}
@@ -20,7 +20,7 @@ const GuaranteView = ({ guarante = {}, locale }) => {
         fill
         alt="Image"
         className="z-[0]"
-      />
+      /> */}
       <div className="flex flex-col z-[1] gap-[40px] pt-[60px] w-full">
         <div className="container">
           <div className="flex flex-col gap-[40px] items-center">
@@ -29,18 +29,12 @@ const GuaranteView = ({ guarante = {}, locale }) => {
             </Text>
             <div className="flex flex-col gap-6 w-full">
               <Effect type="to-left" className="w-full flex flex-col gap-5">
-                <div className="w-full h-[344px] relative p-6">
-                  <Image
-                    src={"/images/document1.png"}
-                    alt="Document"
-                    fill
-                    className="z-[1]"
-                  />
+                <div className="w-full h-[344px] relative p-6 rounded-2xl bg-[url('/images/document1.png')] bg-no-repeat bg-center bg-cover">
                   <div className="flex flex-col  gap-6 z-[4] relative">
                     {guarante?.logo1 ? (
                       <Image
                         src={guarante?.logo1}
-                        className="h-[96px]"
+                        className="h-[96px] rounded-full cover"
                         width={96}
                         height={96}
                         alt="Logo1"
@@ -72,18 +66,12 @@ const GuaranteView = ({ guarante = {}, locale }) => {
                     </div>
                   </div>
                 </div>
-                <div className="w-full h-[344px] relative p-6">
-                  <Image
-                    src={"/images/document1.png"}
-                    alt="Document"
-                    fill
-                    className="z-[1]"
-                  />
+                <div className="w-full h-[344px] relative p-6 rounded-2xl bg-[url('/images/document1.png')] bg-no-repeat bg-center bg-cover">
                   <div className="flex flex-col  gap-6 z-[4] relative">
                     {guarante?.logo2 ? (
                       <Image
                         src={guarante.logo2}
-                        className="h-[96px]"
+                        className="h-[96px] rounded-full cover"
                         width={96}
                         alt="Logo2"
                         height={96}
@@ -115,18 +103,12 @@ const GuaranteView = ({ guarante = {}, locale }) => {
                     </div>
                   </div>
                 </div>
-                <div className="w-full h-[344px] relative p-6">
-                  <Image
-                    src={"/images/document1.png"}
-                    alt="Document"
-                    fill
-                    className="z-[1]"
-                  />
+                <div className="w-full h-[344px] relative p-6 rounded-2xl bg-[url('/images/document1.png')] bg-no-repeat bg-center bg-cover">
                   <div className="flex flex-col  gap-6 z-[4] relative">
                     {guarante?.logo3 ? (
                       <Image
                         src={guarante.logo3}
-                        className="h-[96px]"
+                        className="h-[96px] rounded-full cover"
                         width={96}
                         alt="Logo3"
                         height={96}
@@ -163,14 +145,7 @@ const GuaranteView = ({ guarante = {}, locale }) => {
           </div>
         </div>
         <div className="flex bg-input relative flex-col">
-          <div className="relative w-full h-[348px]">
-            <Image
-              src={"/images/guaranteBlock.png"}
-              alt="Block"
-              fill
-              className="z-[1]"
-            />
-          </div>
+          <div className="relative w-full min-h-[80vh]  bg-[url('/images/guaranteM.png')] bg-no-repeat bg-center bg-cover"></div>
           <div className="container relative z-[2] ">
             <div className="flex flex-col py-[64px] mt-[-200px] gap-[24px]">
               <Effect type="to-right">

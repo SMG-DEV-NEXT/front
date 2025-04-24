@@ -42,8 +42,8 @@ const CheatsMobile = ({
   }, [items]); // won't re-render unless data changes
 
   return (
-    <div className="view relative h-full w-full bg-mainBlack flex items-center justify-center pt-[64px] pb-[112px]">
-      <Image
+    <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[112px]">
+      {/* <Image
         src="/images/loginBg.png"
         style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
         quality={100}
@@ -51,7 +51,7 @@ const CheatsMobile = ({
         fill
         alt="Image"
         className="z-[0]"
-      />
+      /> */}
       <div className="flex flex-col gap-6 z-[1] container items-center">
         <Text T="cheats" className="text-primary10" weight="bold" size="t48">
           title

@@ -5,13 +5,7 @@ import Effect from "../../Animations/Effect";
 
 function AboutMobile() {
   return (
-    <div className="flex relative items-end w-full min-h-[571px] py-[64px] bg-input">
-      <Image
-        src="/images/AboutBgMobile.png"
-        alt="About"
-        fill
-        className="position-absolute top-0 z-[1]"
-      />
+    <div className="flex relative items-end w-full min-h-[571px] py-[64px] bg-input bg-[url('/images/AboutBgMobile.png')] bg-no-repeat bg-center bg-cover">
       <div className="container relative z-[2] h-full flex items-bottom">
         <Effect type="to-right">
           <div className="flex flex-col gap-6 w-full">

@@ -20,6 +20,7 @@ export default function Text({
     t48: "text-[48px] leading-120",
     t38: "text-[38px] leading-120",
     t40: "text-[40px] leading-120",
+    t32: "text-[32px] leading-140",
   };
 
   const weights = {

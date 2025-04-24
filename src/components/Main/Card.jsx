@@ -46,13 +46,13 @@ function Card({
     return `${prices[0] || 0} ₽`;
   };
   return (
-    <div className="flex relative rounded-md  overflow-hidden flex-col bg-[#272C33] h-[252px]">
+    <div className="flex relative rounded-2xl z-[11]  overflow-hidden flex-col bg-[#272C33] h-[252px]">
       <Image
         src={imageUrl}
         width={imageWidth}
         height="252"
         alt="card"
-        className="z-[1px]"
+        className="z-[11]"
       />
       <div className="box"></div>
       <div

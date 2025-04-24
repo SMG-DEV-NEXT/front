@@ -26,6 +26,7 @@ import dynamic from "next/dynamic";
 import Loading from "@/app/loading";
 import SettingsService from "@/services/Settings";
 import { ContactsService } from "@/services/Contacts";
+import Image from "next/image";
 
 const SettingsContext = createContext({
   isLoading: false,
@@ -131,7 +132,18 @@ const MiddleComponent = ({ children }) => {
         <Top />
         <Header />
         <Suspense fallback={<Loading />}>
-          <section className="content">{children}</section>
+          <section className="content relative bg-mainBlack">
+            <Image
+              src="/images/loginBg.png"
+              style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
+              quality={100}
+              priority
+              fill
+              alt="Image"
+              className="z-[0] w-full h-full"
+            />{" "}
+            {children}
+          </section>
         </Suspense>
         <Footer />
         <ToastContainer

@@ -140,7 +140,7 @@ const AdminUpload = ({
                     height: `${height}px`,
                   }}
                   alt="Uploaded preview"
-                  className={`rounded-md mt-1 z-[1]`}
+                  className={`rounded-2xl mt-1 z-[1]`}
                 >
                   <source src={e} type="video/mp4" />
                 </video>
@@ -168,7 +168,7 @@ const AdminUpload = ({
                   height: `${height}px`,
                 }}
                 alt="Uploaded preview"
-                className={`rounded-md mt-1`}
+                className={`rounded-2xl mt-1`}
               />
             </div>
           );

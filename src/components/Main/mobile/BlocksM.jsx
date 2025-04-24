@@ -7,8 +7,7 @@ import Effect from "../../Animations/Effect";
 
 const EasyUseBlock = () => {
   return (
-    <div className="flex h-full relative p-6 bg-input rounded-2xl h-[443px]">
-      <Image fill src="/images/easyBG.png" alt="background" style={{objectFit:'cover'}} />
+    <div className="flex h-full relative p-6 bg-input rounded-2xl min-h-[443px] bg-[url('/images/easyBG.png')] bg-no-repeat bg-center bg-cover">
       <div className="flex z-[2] flex-col justify-between">
         <div
           className="flex items-center gap-2 p-3 rounded-xl"
@@ -37,12 +36,7 @@ const EasyUseBlock = () => {
 
 const Choose = () => {
   return (
-    <div className="flex relative w-full h-[295px]">
-      <Image
-        src="/images/chooseBG.png"
-        alt="background"
-        fill
-      />
+    <div className="flex relative w-full h-[295px] bg-[url('/images/chooseBG.png')] bg-no-repeat bg-center bg-cover">
       <div className="absolute bottom-[24px]">
         <div className="flex flex-col px-6 gap-2">
           <Text T="Main" weight="bold" size="xl" className="text-primary10">
@@ -84,9 +78,9 @@ const Starts = () => {
 
 function BlocksMobile() {
   return (
-    <div className="relative flex pb-[164px] bg-mainBlack">
+    <div className="relative flex pb-[164px] bg-mainBlack mt-[-40%] z-[1]">
       <div className="absolute bottom-[-14%] left-[0]">
-        <Icon name="frame301" size={1500} />
+        {/* <Icon name="frame301" size={1500} /> */}
       </div>
       <div className="container">
         <div className="flex gap-6 flex-col">

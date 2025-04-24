@@ -5,13 +5,7 @@ import Effect from "../Animations/Effect";
 
 function About() {
   return (
-    <div className="flex relative w-full  py-[64px] bg-input">
-      <Image
-        src="/images/aboutBG.png"
-        alt="About"
-        fill
-        className="position-absolute z-[1]"
-      />
+    <div className="flex relative w-full  py-[64px] bg-input bg-[url('/images/aboutBG.png')] bg-no-repeat bg-center bg-cover">
       <div className="container relative z-[2]">
         <Effect type="to-right">
           <div className="flex flex-col gap-6 w-[40%]">

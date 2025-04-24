@@ -20,8 +20,8 @@ const GuaranteView = () => {
   if (isMobile) return <MobileComponent locale={locale} guarante={guarante} />;
 
   return (
-    <div className="view relative h-full w-full bg-mainBlack flex items-center justify-center pt-[60px] ">
-      <Image
+    <div className="view relative h-full w-full flex items-center justify-center pt-[60px] ">
+      {/* <Image
         src="/images/loginBg.png"
         style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
         quality={100}
@@ -29,7 +29,7 @@ const GuaranteView = () => {
         fill
         alt="Image"
         className="z-[0]"
-      />
+      /> */}
       <div className="flex flex-col z-[1] gap-[164px] pt-[64px] w-full">
         <div className="container">
           <div className="flex flex-col gap-[48px] items-center">
@@ -38,18 +38,12 @@ const GuaranteView = () => {
             </Text>
             <Effect type="to-top" onceEffect={true} className="w-full">
               <div className="flex gap-6">
-                <div className="w-full min-h-[344px] relative p-6">
-                  <Image
-                    src={"/images/document1.png"}
-                    alt="Document"
-                    fill
-                    className="z-[1]"
-                  />
+                <div className="w-full min-h-[344px]  relative p-6 rounded-2xl bg-[url('/images/document1.png')] bg-no-repeat bg-center bg-cover">
                   <div className="flex flex-col  gap-6 z-[4] relative">
                     {guarante?.logo1 ? (
                       <Image
                         src={guarante.logo1}
-                        className="h-[96px]"
+                        className="h-[96px] rounded-full cover"
                         width={96}
                         alt="Logo1"
                         height={96}
@@ -81,18 +75,12 @@ const GuaranteView = () => {
                     </div>
                   </div>
                 </div>
-                <div className="w-full min-h-[344px] relative p-6">
-                  <Image
-                    src={"/images/document1.png"}
-                    alt="Document"
-                    fill
-                    className="z-[1]"
-                  />
+                <div className="w-full min-h-[344px] relative p-6 rounded-2xl bg-[url('/images/document1.png')] bg-no-repeat bg-center bg-cover">
                   <div className="flex flex-col  gap-6 z-[4] relative">
                     {guarante?.logo2 ? (
                       <Image
                         src={guarante.logo2}
-                        className="h-[96px]"
+                        className="h-[96px] rounded-full cover"
                         width={96}
                         alt="Logo2"
                         height={96}
@@ -113,7 +101,7 @@ const GuaranteView = () => {
                       </Text>
                       <Text
                         T={guarante.block2 ? "none" : "guarant"}
-                        className="text-linkColor"
+                        className="text-linkColor rounded-full cover"
                         weight="medium"
                         size="sm"
                       >
@@ -124,14 +112,7 @@ const GuaranteView = () => {
                     </div>
                   </div>
                 </div>
-                <div className="w-full min-h-[344px] relative p-6">
-                  <Image
-                    src={"/images/document1.png"}
-                    alt="Document"
-                    alt="Logo3"
-                    fill
-                    className="z-[1]"
-                  />
+                <div className="w-full min-h-[344px] relative p-6 rounded-2xl bg-[url('/images/document1.png')] bg-no-repeat bg-center bg-cover">
                   <div className="flex flex-col  gap-6 z-[4] relative">
                     {guarante?.logo3 ? (
                       <Image
@@ -171,13 +152,7 @@ const GuaranteView = () => {
             </Effect>
           </div>
         </div>
-        <div className="flex bg-input relative">
-          <Image
-            src={"/images/documentBg.png"}
-            alt="Document"
-            fill
-            className="z-[1]"
-          />
+        <div className="flex bg-input relative bg-[url('/images/documentBg.png')] bg-no-repeat bg-center bg-cover">
           <div className="container relative z-[2]">
             <div className="flex flex-col py-[64px] gap-[64px]">
               <Effect type="to-right">

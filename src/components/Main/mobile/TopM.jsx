@@ -20,18 +20,18 @@ function MainTopMobile() {
   const router = useRouter();
   const locale = useLocale();
   return (
-    <div className="flex w-full relative flex-col  pb-[164px] bg-mainBlack overflow-hidden">
-      <div className="absolute top-[0] z-[0] left-[0] h-full">
-        <Icon name="light" size={200} className="z-[0]" />
+    <div className="flex w-full relative flex-col  pb-[250px] bg-mainBlack overflow-hidden">
+      <div className="absolute top-[0] z-[2] left-[0] h-full">
+        <Icon name="light" size={200} className="z-[2]" />
       </div>
-      <div className="absolute top-[-15%] z-[1] right-[0] h-full opacity-[0.2]">
-        <Icon name="frame145" size={2000} className="z-[1]" />
+      <div className="absolute top-[-15%] z-[1] right-[0] h-full opacity-[0.5]">
+        <Icon name="setka" size={1000} className="z-[1]" />
       </div>
-      <div className="absolute top-[-5%] left-[30%] z-[0]  h-full opacity-[1]">
-        <Icon name="light2" size={500} className="z-[0]" />
+      <div className="absolute top-[-5%] left-[30%] z-[2]  h-full opacity-[1]">
+        <Icon name="light2" size={800} className="z-[2]" />
       </div>
-      <div className="absolute top-[0] z-[0] right-[0] h-full">
-        <Icon name="light1" size={200} className="z-[0]" />
+      <div className="absolute top-[0] z-[2] right-[0] h-full">
+        <Icon name="light1" size={200} className="z-[2]" />
       </div>
       <div className="container z-[2] pt-[64px]">
         <div className="flex flex-col items-center justify-between">

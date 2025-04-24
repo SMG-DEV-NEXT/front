@@ -72,8 +72,8 @@ function View() {
   };
 
   return (
-    <div className="view relative h-full w-full bg-mainBlack flex items-center justify-center pt-[64px] pb-[112px]">
-      <Image
+    <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[112px]">
+      {/* <Image
         src="/images/loginBg.png"
         fill
         style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
@@ -81,7 +81,7 @@ function View() {
         priority
         alt="Background Image"
         className="z-[0]"
-      />
+      /> */}
 
       <div className="container flex flex-col items-center gap-6 z-[1]">
         <Text T="catalog" className="text-primary10" weight="bold" size="t48">

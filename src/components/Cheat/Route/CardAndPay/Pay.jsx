@@ -194,7 +194,7 @@ const PayCard = ({ mobile, cheat }) => {
             <div className="flex items-center gap-3">
               <div
                 className="w-[20px] h-[20px] rounded-[4px] bg-input cursor-pointer"
-                onClick={() => setCount(count + 1)}
+                onClick={() => setCount(count > 1 ? count - 1 : 1)}
               >
                 <Icon name="arrowLeftP" />
               </div>

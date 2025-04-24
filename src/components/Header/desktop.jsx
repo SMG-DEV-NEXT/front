@@ -107,7 +107,7 @@ export default function Header() {
           </Dropdown>
 
           {/* Search Input */}
-          <Input iconLeft="Search" />
+          <Input iconLeft="search" />
 
           {/* Auth Buttons */}
           {user?.id ? (
