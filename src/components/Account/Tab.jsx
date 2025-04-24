@@ -6,12 +6,12 @@ import Icon from "../Icons";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
-import UserService from "@/services/User";
-import { setAuth } from "@/redux/authSlice";
-import { removeAccessToken } from "@/utils/token";
-import Modal from "@/components/Modal";
-import LogoutModal from "@/components/admin/components/Modals/logout";
+import UserService from "../../services/User";
+import { setAuth } from "../../redux/authSlice";
+import Modal from "../Modal";
+import LogoutModal from "../admin/components/Modals/logout";
 import { AccountTabs } from "@/components/pages/Account";
+import { removeAccessToken } from "../../utils/token";
 
 const AccountTab = ({ selectedTab, setSelectedTab, mobile }) => {
   const user = useSelector((state) => state.auth.user);
