@@ -66,6 +66,7 @@ function View({ isMobile, goToRegistration, goToForgetPassword, onClose }) {
       code,
     });
   };
+
   if (isMobile) {
     if (step === 2) {
       return (

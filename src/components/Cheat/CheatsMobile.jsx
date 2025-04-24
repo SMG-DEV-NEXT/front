@@ -57,7 +57,7 @@ const CheatsMobile = ({
           title
         </Text>
         <Input
-          iconLeft="search"
+          iconLeft="Search"
           value={search}
           setValue={(e) => handleInputChange("search", e)}
           placeholder="Введите название товара"

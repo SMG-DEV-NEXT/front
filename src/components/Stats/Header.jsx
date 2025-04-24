@@ -45,7 +45,7 @@ function StatsHeader({ search, setSearch, selectedFilter, setSelectedFilter }) {
           <Input
             value={debouncedSearch}
             onChange={(e) => setDebouncedSearch(e.target.value)}
-            iconLeft="search"
+            iconLeft="Search"
             placeholder={t("search")}
             styleDiv={{ padding: "20px", width: "100%" }}
           />
@@ -80,7 +80,7 @@ function StatsHeader({ search, setSearch, selectedFilter, setSelectedFilter }) {
         <Input
           value={debouncedSearch}
           onChange={(e) => setDebouncedSearch(e.target.value)}
-          iconLeft="search"
+          iconLeft="Search"
           placeholder={t("search")}
           styleDiv={{ padding: "20px", width: "300px" }}
         />

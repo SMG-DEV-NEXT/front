@@ -99,7 +99,7 @@ function View() {
         <Input
           value={search}
           onChange={handleSearchChange}
-          iconLeft="search"
+          iconLeft="Search"
           styleDiv={{ padding: "20px" }}
         />
 

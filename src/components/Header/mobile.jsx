@@ -113,6 +113,7 @@ export default function HeaderMobile() {
         </div>
         <Modal
           isOpen={isOpenLoginModal}
+          customTop={140}
           onClose={() => setIsOpenLoginModal(false)}
         >
           <View
@@ -130,6 +131,7 @@ export default function HeaderMobile() {
         </Modal>
         <Modal
           isOpen={isOpenRegistrationModal}
+          customTop={140}
           onClose={() => setIsOpenRegistrationModal(false)}
         >
           <ViewRegistration
@@ -143,6 +145,7 @@ export default function HeaderMobile() {
         </Modal>
         <Modal
           isOpen={isOpenForgetPasswordModal}
+          customTop={140}
           onClose={() => setIsOpenForgetPasswordModal(false)}
         >
           <Forget
@@ -189,7 +192,7 @@ export default function HeaderMobile() {
           </Dropdown>
 
           {/* Search Input */}
-          {/* <Input iconLeft="search" /> */}
+          {/* <Input iconLeft="Search" /> */}
 
           {/* Auth Buttons */}
           {user?.id ? (
