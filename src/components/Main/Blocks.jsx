@@ -87,7 +87,7 @@ function Blocks() {
   return (
     <div className="relative flex pb-[164px] bg-mainBlack">
       <div className="absolute bottom-[-14%] left-[0]">
-        <Icon name="frame301" size={1500} />
+        <Icon name="frame301" className="w-full h-full" />
       </div>
       <div className="container">
         <div className="flex gap-6">

@@ -52,7 +52,7 @@ function Card({
         width={imageWidth}
         height="252"
         alt="card"
-        className="z-[11]"
+        className="z-[1]"
       />
       <div className="box"></div>
       <div

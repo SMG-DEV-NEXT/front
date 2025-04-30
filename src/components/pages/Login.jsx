@@ -48,7 +48,9 @@ function View({ isMobile, goToRegistration, goToForgetPassword, onClose }) {
       setCode(secret);
       dispatch(setAuth(user));
       if (!isMobile) {
-        window.location = `/${locale}`;
+        return inputs.rememberMe
+          ? (window.location = `/${locale}`)
+          : router.push(`/${locale}`);
       }
     },
     onError: (err) => {

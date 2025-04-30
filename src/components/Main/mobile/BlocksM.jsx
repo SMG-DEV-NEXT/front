@@ -4,6 +4,7 @@ import Icon from "../../Icons";
 import Text from "../../Text";
 import Image from "next/image";
 import Effect from "../../Animations/Effect";
+import { RightIcon } from "../i";
 
 const EasyUseBlock = () => {
   return (
@@ -36,7 +37,7 @@ const EasyUseBlock = () => {
 
 const Choose = () => {
   return (
-    <div className="flex relative w-full h-[295px] bg-[url('/images/chooseBG.png')] bg-no-repeat bg-center bg-cover">
+    <div className="flex relative w-full h-[295px] bg-[url('/images/chooseBG.png')] bg-no-repeat bg-center bg-cover  rounded-2xl">
       <div className="absolute bottom-[24px]">
         <div className="flex flex-col px-6 gap-2">
           <Text T="Main" weight="bold" size="xl" className="text-primary10">
@@ -78,7 +79,10 @@ const Starts = () => {
 
 function BlocksMobile() {
   return (
-    <div className="relative flex pb-[164px] bg-mainBlack mt-[-40%] z-[1]">
+    <div className="relative flex pb-[164px] pt-[20%] bg-mainBlack mt-[-40%] z-[1]">
+      <div className="absolute top-[-20%] z-[2] right-[0%] h-full">
+        <RightIcon />
+      </div>
       <div className="absolute bottom-[-14%] left-[0]">
         {/* <Icon name="frame301" size={1500} /> */}
       </div>

@@ -52,7 +52,10 @@ export default function Header() {
   };
 
   return (
-    <div className="header-container " style={{ backgroundColor: "#0E0F12" }}>
+    <div
+      className="header-container z-[12]"
+      style={{ backgroundColor: "#0E0F12" }}
+    >
       <div className="container flex items-center justify-between py-3 header">
         <div className="flex items-center gap-6">
           <CustomLink url="">

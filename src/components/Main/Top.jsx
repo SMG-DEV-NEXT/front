@@ -9,7 +9,9 @@ import Carousel from "../Carousel";
 import Effect from "../Animations/Effect";
 import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
+import { Axyus, HugeGlow, LeftIcon, RightIcon } from "./i";
 import getLanguage from "@/utils/get-language";
+
 function MainTop({ data }) {
   const router = useRouter();
   const locale = useLocale();
@@ -22,87 +24,24 @@ function MainTop({ data }) {
     };
   });
   return (
-    <div className="flex w-full relative  pb-[200px] bg-mainBlack overflow-hidden">
-      <div className="absolute top-[2] z-[2] left-[0] h-full">
-        <Icon name="light" size={200} className="z-[0]" />
+    <div className="flex w-full relative  pb-[200px] bg-mainBlack overflow-hidden ">
+      <div className="absolute flex justify-end items-top top-[-10%] z-[2] right-[-10%] h-full opacity-[1] w-full">
+        <Axyus />
       </div>
-      <div className="absolute top-[-15%] z-[2] right-[0] h-full opacity-[0.2]">
-        <Icon name="frame145" size={1500} className="z-[1]" />
+      <div className="absolute top-[2] z-[0] left-[0] h-full">
+        <LeftIcon />
       </div>
-      <div className="absolute top-[-30%] left-[20%] z-[2]  h-full opacity-[1]">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="900"
-          height="439"
-          viewBox="0 0 900 439"
-          fill="none"
-        >
-          <g filter="url(#filter0_f_1_1156)">
-            <circle cx="449.899" cy="-11.4122" r="165.588" fill="#8B6DCA" />
-          </g>
-          <g
-            style={{ mixBlendMode: "overlay" }}
-            filter="url(#filter1_f_1_1156)"
-          >
-            <circle cx="449.899" cy="-11.4122" r="165.588" fill="#D5C2FC" />
-          </g>
-          <defs>
-            <filter
-              id="filter0_f_1_1156"
-              x="0.163025"
-              y="-461.148"
-              width="899.473"
-              height="899.472"
-              filterUnits="userSpaceOnUse"
-              colorInterpolationFilters="sRGB"
-            >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="BackgroundImageFix"
-                result="shape"
-              />
-              <feGaussianBlur
-                stdDeviation="142.074"
-                result="effect1_foregroundBlur_1_1156"
-              />
-            </filter>
-            <filter
-              id="filter1_f_1_1156"
-              x="0.163025"
-              y="-461.148"
-              width="899.473"
-              height="899.472"
-              filterUnits="userSpaceOnUse"
-              colorInterpolationFilters="sRGB"
-            >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="BackgroundImageFix"
-                result="shape"
-              />
-              <feGaussianBlur
-                stdDeviation="142.074"
-                result="effect1_foregroundBlur_1_1156"
-              />
-            </filter>
-          </defs>
-        </svg>
+      <div className="absolute top-[-10%] z-[2] right-[0%] h-full">
+        <RightIcon />
       </div>
-      <div className="absolute top-[0] z-[2] right-[0] h-full">
-        <Icon name="light1" size={200} className="z-[0]" />
-      </div>
-      <div className="container z-[2] pt-[64px]">
-        <div className="flex items-center justify-between">
-          <Effect type="to-right" className="w-[38%]">
-            <div className="flex  flex-col w-full gap-6">
+      <div className="container z-[2] pt-[64px] z-[12]">
+        <div className="flex items-center justify-between z-[12]">
+          <Effect type="to-right" className="w-[38%] z-[12]">
+            <div className="flex  flex-col w-full gap-6 z-[12]">
               <Text
                 T="Main"
                 size="t48"
-                className="text-primary10 text-[48px] leading-[120%]"
+                className="text-primary10 text-[48px] leading-[120%] z-[12]"
                 weight="bold"
               >
                 topT
@@ -131,7 +70,10 @@ function MainTop({ data }) {
               </div>
             </div>
           </Effect>
-          <div className="flex flex-col bg-input p-6 rounded-2xl z-[2px] gap-6 ">
+          <div className="flex flex-col bg-input p-6 rounded-2xl z-[2px] gap-6 relative">
+            <div className="absolute  overflow-hidden top-[-63%] left-[-95%] ">
+              <HugeGlow />
+            </div>
             <Text
               T="Main"
               weight="bold"

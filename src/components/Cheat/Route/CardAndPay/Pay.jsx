@@ -23,9 +23,24 @@ const PayCard = ({ mobile, cheat }) => {
   const { user } = useSelector((state) => state.auth);
   const [active, setActive] = useState();
   const { current: payments } = useRef([
-    { days: 1, pay: plan.day.price, prcent: plan.day.prcent },
-    { days: 7, pay: plan.week.price, prcent: plan.week.prcent },
-    { days: 30, pay: plan.month.price, prcent: plan.month.prcent },
+    {
+      days: 1,
+      pay: plan.day.price,
+      prcent: plan.day.prcent,
+      count: cheat.dayCount,
+    },
+    {
+      days: 7,
+      pay: plan.week.price,
+      prcent: plan.week.prcent,
+      count: cheat.weekCount,
+    },
+    {
+      days: 30,
+      pay: plan.month.price,
+      prcent: plan.month.prcent,
+      count: cheat.monthCount,
+    },
   ]);
   const freecurrencyapi = new Freecurrencyapi(
     "fca_live_tfZjgKTbQ86JVJJm1yKs75nITIE3sDnyYLQCaFyc"
@@ -78,6 +93,7 @@ const PayCard = ({ mobile, cheat }) => {
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-2">
             {payments.map((e) => {
+              if (e.count === 0) return;
               const isActive = e.days === active?.days;
               return (
                 <div
@@ -86,7 +102,10 @@ const PayCard = ({ mobile, cheat }) => {
                     " bg-[linear-gradient(to_right,#8B6DCA_0%,transparent_41%,#8B6DCA_100%)]"
                   }`}
                   key={e.days}
-                  onClick={() => setActive(e)}
+                  onClick={() => {
+                    setActive(e);
+                    setCount(1);
+                  }}
                 >
                   <div
                     className={`relative z-[1] overflow-hidden flex py-3 px-4 items-center rounded-xl justify-between cursor-pointer bg-${
@@ -218,7 +237,11 @@ const PayCard = ({ mobile, cheat }) => {
               </div>
               <div
                 className="w-[20px] h-[20px] rounded-[4px] bg-input cursor-pointer"
-                onClick={() => setCount(count + 1)}
+                onClick={() => {
+                  if (active && count < active.count) {
+                    setCount(count + 1);
+                  }
+                }}
               >
                 <Icon name="arrowRightP" />
               </div>
@@ -246,8 +269,11 @@ const PayCard = ({ mobile, cheat }) => {
                     T="none"
                   >
                     {locale === "ru"
-                      ? `${active?.pay * count} ₽`
-                      : `${((active?.pay * count) / usd).toFixed(2)} $`}
+                      ? `${getPricePrcent(active.pay, active.prcent) * count} ₽`
+                      : `${(
+                          (getPricePrcent(active.pay, active.prcent) * count) /
+                          usd
+                        ).toFixed(2)} $`}
                   </Text>
                 </div>
                 <Button T="cheat" onClick={() => handleOpenModal()}>
@@ -267,16 +293,14 @@ const PayCard = ({ mobile, cheat }) => {
                 >
                   rules
                 </Text>
-                <CustomLink url="/">
-                  <Text
-                    className="text-primary80 "
-                    weight="medium"
-                    size="sm"
-                    T="cheat"
-                  >
-                    rules2
-                  </Text>
-                </CustomLink>
+                <Text
+                  className="text-primary80 "
+                  weight="medium"
+                  size="sm"
+                  T="cheat"
+                >
+                  rules2
+                </Text>
               </div>
             </Checkbox>
           </div>
@@ -313,6 +337,9 @@ const PayCard = ({ mobile, cheat }) => {
         <div className="flex flex-col gap-6">
           <PayModal
             mobile={mobile}
+            plnaId={cheat.id}
+            active={active}
+            count={count}
             pay={active}
             getPrcent={getPricePrcent}
             user={user}

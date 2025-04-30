@@ -41,6 +41,7 @@ const ListCheatItem = (props) => {
     id,
     catalogId,
     comments,
+    usd,
   } = props;
   if (isMobile) {
     return (
@@ -109,7 +110,10 @@ const ListCheatItem = (props) => {
             <div className="flex gap-2">
               {tags.map((e) => {
                 return (
-                  <div className="flex py-2 px-3 rounded-lg bg-black">
+                  <div
+                    key={crypto.randomUUID()}
+                    className="flex py-2 px-3 rounded-lg bg-black"
+                  >
                     <Text
                       T="none"
                       className="text-linkColor"
@@ -140,7 +144,7 @@ const ListCheatItem = (props) => {
                   size="lg"
                   weight="medium"
                 >
-                  {price} ₽
+                  {usd ? (price / usd).toFixed(2) : price} {!usd ? "₽" : "$"}
                 </Text>
               </div>
               <CustomLink url={`/catalog/${catalogId}/${id}`}>
@@ -196,7 +200,10 @@ const ListCheatItem = (props) => {
           <div className="flex gap-2">
             {tags.map((e) => {
               return (
-                <div className="flex py-2 px-3 rounded-lg bg-black">
+                <div
+                  key={crypto.randomUUID()}
+                  className="flex py-2 px-3 rounded-lg bg-black"
+                >
                   <Text
                     T="none"
                     className="text-linkColor"
@@ -221,7 +228,7 @@ const ListCheatItem = (props) => {
               from
             </Text>
             <Text T="none" className="text-primary10" size="lg" weight="medium">
-              {price} ₽
+              {usd ? (price / usd).toFixed(2) : price} {!usd ? "₽" : "$"}
             </Text>
           </div>
           <div className="flex gap-2">

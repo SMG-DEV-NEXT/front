@@ -10,6 +10,7 @@ const PriceRangeSelector = ({
   currency,
   range,
   setRange,
+  usd,
 }) => {
   const [priceRange, setPriceRange] = useState([min, max]);
   const hasInitialized = useRef(false); // ✅ Block first handleChange
@@ -32,7 +33,9 @@ const PriceRangeSelector = ({
   }, [priceRange]);
 
   const handleChange = (value) => {
-    if (!hasInitialized.current) return; // ✅ Ignore if not initialized yet
+    if (!hasInitialized.current) {
+      hasInitialized.current = true;
+    } // ✅ Ignore if not initialized yet
     setPriceRange(value);
   };
 
@@ -41,13 +44,13 @@ const PriceRangeSelector = ({
       <div className="flex justify-between">
         <div className="py-2 px-[20.5px] bg-black rounded-lg">
           <Text T="none" className="text-linkColor" weight="medium" size="sm">
-            {priceRange[0]}
+            {usd ? (priceRange[0] / usd).toFixed(2) : priceRange[0]}
             {currency}
           </Text>
         </div>
         <div className="py-2 px-[20.5px] bg-black rounded-lg">
           <Text T="none" className="text-linkColor" weight="medium" size="sm">
-            {priceRange[1]}
+            {usd ? (priceRange[1] / usd).toFixed(2) : priceRange[1]}
             {currency}
           </Text>
         </div>

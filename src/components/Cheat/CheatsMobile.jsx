@@ -23,6 +23,7 @@ const CheatsMobile = ({
   locale,
   tags,
   selectedFilterTag,
+  usd,
   setSelectedFilterTag,
   id,
 }) => {
@@ -35,7 +36,12 @@ const CheatsMobile = ({
     ) : (
       items?.map((e) => {
         return (
-          <ListCheatItem key={crypto.randomUUID()} {...e} catalogId={id} />
+          <ListCheatItem
+            usd={usd}
+            key={crypto.randomUUID()}
+            {...e}
+            catalogId={id}
+          />
         );
       })
     );
@@ -160,6 +166,7 @@ const CheatsMobile = ({
                 setRange={(e) => handleInputChange("range", e)}
                 min={api?.lowPrice}
                 max={api?.maxPrice}
+                usd={usd}
               />{" "}
             </div>
             <div className="py-6 flex flex-col gap-4">

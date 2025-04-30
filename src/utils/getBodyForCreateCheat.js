@@ -1,5 +1,4 @@
 const getBody = (inputs) => {
-  console.log(inputs);
   return {
     titleEn: inputs.titleEn,
     titleRu: inputs.titleRu,

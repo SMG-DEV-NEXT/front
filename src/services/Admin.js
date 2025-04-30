@@ -48,6 +48,9 @@ export const CheatService = {
   getPlan: (id) => {
     return axiosLoggedIn.get(`/plans/${id}`);
   },
+  getPlansTransactions: (id) => {
+    return axiosLoggedIn.get(`/plans`);
+  },
   updatePlan: (options) => {
     const { id, data } = options;
     return axiosLoggedIn.put(`/plans/${id}`, data);

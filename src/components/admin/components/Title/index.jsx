@@ -10,6 +10,7 @@ import {
   SettingsIcon,
   SMTPIcon,
   StatsIcon,
+  TransactionIcon,
 } from "@/components/admin/Tab/icons";
 import Icon from "@/components/Icons";
 import Text from "@/components/Text";
@@ -38,6 +39,7 @@ const routes = {
   "promo/edit": { title: "promo", icon: PromoIcon },
   settings: { title: "settings", icon: SettingsIcon },
   smtp: { title: "SMTP", icon: SMTPIcon },
+  transaction: { title: "transactions", icon: TransactionIcon },
 };
 
 const AdminTitle = ({ settingsRoute, route }) => {

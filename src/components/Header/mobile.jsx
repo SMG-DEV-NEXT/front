@@ -60,7 +60,10 @@ export default function HeaderMobile() {
   };
 
   return (
-    <div className="header-container " style={{ backgroundColor: "#0E0F12" }}>
+    <div
+      className="header-container  z-[12]"
+      style={{ backgroundColor: "#0E0F12" }}
+    >
       <div
         className={`bg-input header-bar p-6 flex flex-col${
           isOpenBar && " header-open"

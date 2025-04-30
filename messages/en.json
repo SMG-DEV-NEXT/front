@@ -325,6 +325,26 @@
     "host": "Host",
     "port": "Port",
     "username": "Username",
-    "password": "Password"
+    "password": "Password",
+    "get": "Received",
+    "ip": "IP Address"
+  },
+  "preview": {
+    "title": "Thank you for your purchase!",
+    "subtitle": "Your order has been successfully placed.",
+    "order": "Order number:",
+    "codes": "Your purchased cheats and codes:",
+    "code": " Cheat code №",
+    "date": "Purchase date:",
+    "price": "Base price:",
+    "promokod": "Promo code",
+    "prcent": "Discount",
+    "pricePrcent": "Price after discount:",
+    "mail": "Buyer's email:",
+    "status": "Buyer status:",
+    "text": "All purchased codes have also been sent to your email address. To view the codes again in the future, please open your Gmail (or other mailbox) and find the email with the subject.",
+    "main": "Go to main page",
+    "login": "Log into account",
+    "gmailText": "Your order at"
   }
 }

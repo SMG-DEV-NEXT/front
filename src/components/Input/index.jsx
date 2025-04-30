@@ -51,7 +51,13 @@ const Input = ({
           </div>
         )}
         <input
-          type={type === "password" && !isPasswordVisible ? "password" : type}
+          type={
+            type === "password"
+              ? isPasswordVisible
+                ? "text"
+                : "password"
+              : type
+          }
           style={{
             backgroundColor: "transparent !important",
           }}

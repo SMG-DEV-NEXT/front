@@ -25,6 +25,7 @@ const FilterComments = ({
               backgroundColor: "inherit",
               height: "34px",
               border: "1px solid #7B8293",
+              width: "100%",
             }}
             name="cheatTitle"
             setValue={(e) => setInputs(v, e)}

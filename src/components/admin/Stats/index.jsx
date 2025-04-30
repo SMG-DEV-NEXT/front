@@ -65,30 +65,34 @@ const StatsPage = () => {
         buttonOnClick={() => router.push(`/${locale}/admin/stats/create`)}
       />
       <div className="flex flex-col">
-        <div className="flex items-center gap-[50px]">
-          <FilterComments
-            isHaveMailFilter={false}
-            v="search"
-            inputs={filterInputs}
-            setInputs={handleChangeFilter}
-          />
-          <CustomSelect
-            options={catalogs?.data.map((e) => ({
-              label: e.title,
-              value: e.id,
-            }))}
-            value={filterInputs.catalog}
-            placeholder="Select Category"
-            inputStyles={{
-              paddingTop: "0px",
-              marginTop: "20px",
-              height: "20px",
-              background: "tertiary",
-              width: "200px",
-              whiteSpace: "no-wrap",
-            }}
-            setValue={(e) => handleChangeFilter("catalog", e)}
-          />
+        <div className="flex items-center w-full gap-[50px]">
+          <div className="w-full">
+            <FilterComments
+              isHaveMailFilter={false}
+              v="search"
+              inputs={filterInputs}
+              setInputs={handleChangeFilter}
+            />
+          </div>
+          <div>
+            <CustomSelect
+              options={catalogs?.data.map((e) => ({
+                label: e.title,
+                value: e.id,
+              }))}
+              value={filterInputs.catalog}
+              placeholder="Select Category"
+              inputStyles={{
+                paddingTop: "0px",
+                marginTop: "20px",
+                height: "20px",
+                background: "tertiary",
+                width: "200px",
+                whiteSpace: "no-wrap",
+              }}
+              setValue={(e) => handleChangeFilter("catalog", e)}
+            />
+          </div>
         </div>
       </div>
       {data ? <StatTable items={data.data.data} /> : <Loading noPage={true} />}

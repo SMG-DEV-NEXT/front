@@ -10,29 +10,23 @@ import Effect from "../../Animations/Effect";
 import CustomLink from "@/components/CustomLink";
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
-const items = Array.from({ length: 30 }, (_, index) => ({
-  imageUrl: "/images/game.png",
-  title: `Game ${index + 1}`,
-  price: `${10000 + index}$`,
-  products: "1000+",
-}));
+import { HugeGlow, LeftIcon, RightIcon } from "../i";
+
 function MainTopMobile() {
   const router = useRouter();
   const locale = useLocale();
   return (
     <div className="flex w-full relative flex-col  pb-[250px] bg-mainBlack overflow-hidden">
-      <div className="absolute top-[0] z-[2] left-[0] h-full">
-        <Icon name="light" size={200} className="z-[2]" />
+      <div className="absolute top-[2] z-[2] left-[0] h-full">
+        <LeftIcon />
       </div>
       <div className="absolute top-[-15%] z-[1] right-[0] h-full opacity-[0.5]">
         <Icon name="setka" size={1000} className="z-[1]" />
       </div>
-      <div className="absolute top-[-5%] left-[30%] z-[2]  h-full opacity-[1]">
-        <Icon name="light2" size={800} className="z-[2]" />
+      <div className="absolute top-[-40%] left-[-10%] ">
+        <HugeGlow />
       </div>
-      <div className="absolute top-[0] z-[2] right-[0] h-full">
-        <Icon name="light1" size={200} className="z-[2]" />
-      </div>
+
       <div className="container z-[2] pt-[64px]">
         <div className="flex flex-col items-center justify-between">
           <Effect type="to-right" className="w-full">

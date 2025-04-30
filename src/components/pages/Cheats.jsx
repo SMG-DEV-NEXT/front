@@ -13,6 +13,7 @@ import Loading from "@/app/loading";
 import { useLocale } from "next-intl";
 import { notFound, useParams } from "next/navigation";
 import CheatsMobile from "../Cheat/CheatsMobile";
+import Freecurrencyapi from "@everapi/freecurrencyapi-js";
 
 const typesFilter = ["high_price", "low_price", "raiting"];
 export const dynamic = "force-dynamic";
@@ -23,6 +24,8 @@ const Cheats = () => {
   const locale = useLocale();
   const [selectedFilterTag, setSelectedFilterTag] = useState(null);
   const [tags, setTags] = useState([]);
+  const [usd, setUSD] = useState(null);
+  const [previous, setPrevious] = useState(null);
   const { id } = useParams();
   const [filters, setFilters] = useState({
     search: "",
@@ -35,13 +38,17 @@ const Cheats = () => {
     limit: 4,
   });
   const isMobile = useMobile();
-  const [previous, setPrevious] = useState(null);
+
+  const freecurrencyapi = new Freecurrencyapi(
+    "fca_live_tfZjgKTbQ86JVJJm1yKs75nITIE3sDnyYLQCaFyc"
+  );
+
   const { data, isLoading, isPending, isError, refetch, isRefetching } =
     useQuery({
       queryKey: ["cheats", filters], // React Query refetches when filters change
       queryFn: () => CheatsService.getCheats(filters),
-      // keepPreviousData: true,
-      // placeholderData: previous,
+      keepPreviousData: true,
+      placeholderData: previous,
       retry: false,
       refetchOnWindowFocus: false, // Get last known data
     });
@@ -53,9 +60,20 @@ const Cheats = () => {
 
     return () => clearTimeout(handler);
   }, [search]);
+  useEffect(() => {
+    if (freecurrencyapi && usd === null) {
+      freecurrencyapi
+        .latest({
+          base_currency: "USD",
+          currencies: "RUB",
+        })
+        .then((response) => {
+          setUSD(response.data.RUB);
+        });
+    }
+  }, [freecurrencyapi]);
 
   const handleInputChange = (name, value) => {
-    console.log(11, name, value);
     if (name === "search") {
       setSearch(value);
       return;
@@ -68,6 +86,7 @@ const Cheats = () => {
 
   useEffect(() => {
     if (data) {
+      setPrevious(data);
       const uniqueTags = [
         ...new Map(
           api.data
@@ -104,7 +123,7 @@ const Cheats = () => {
     }
     return api.data;
   };
-  if (!api?.data && !isPending) return notFound();
+  // if (!api?.data && !isPending) return notFound();
   if (!data) {
     return <Loading />;
   }
@@ -120,6 +139,7 @@ const Cheats = () => {
         setSelectedFilterTag={setSelectedFilterTag}
         tags={tags}
         locale={locale}
+        usd={usd}
         id={id}
         handleInputChange={handleInputChange}
         search={search}
@@ -127,7 +147,6 @@ const Cheats = () => {
       />
     );
   }
-
   return (
     <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[112px]">
       {/* <Image
@@ -228,10 +247,11 @@ const Cheats = () => {
                 sortingBycost
               </Text>
               <PriceSortInput
-                currency={"₽"}
+                currency={usd ? "$" : "₽"}
                 range={filters.range}
                 setRange={(e) => handleInputChange("range", e)}
                 min={api?.lowPrice}
+                usd={usd}
                 max={api?.maxPrice}
               />
             </div>
@@ -299,6 +319,7 @@ const Cheats = () => {
                 getViewItems().map((e) => {
                   return (
                     <ListCheatItem
+                      usd={usd}
                       key={crypto.randomUUID()}
                       {...e}
                       catalogId={id}

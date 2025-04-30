@@ -16,7 +16,7 @@ import CheatsService from "@/services/Cheats";
 import Loading from "@/app/loading";
 
 const View = () => {
-  const isMobile = useMobile();
+  const isMobile = useMobile(1030);
   const { cheat } = useParams();
   const { data, isPending } = useQuery({
     refetchOnWindowFocus: false,
