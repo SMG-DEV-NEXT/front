@@ -80,7 +80,6 @@ const CheatCreate = () => {
     mutation.mutate(getBody(inputs));
   };
 
-  console.log(data);
   const options = data?.data
     ? data.data.map((e) => ({ label: e.title, value: e.id }))
     : null;

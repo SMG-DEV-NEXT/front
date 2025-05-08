@@ -75,6 +75,7 @@ const PlansView = () => {
               <CustomSelect
                 options={items.map((e) => ({ label: e.title, value: e.id }))}
                 value={selectedCatalog}
+                menuStyles={{ width: "200px" }}
                 inputStyles={{ paddingTop: "0px", height: "20px" }}
                 setValue={setSelectedCatalog}
               />

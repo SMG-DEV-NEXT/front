@@ -147,16 +147,18 @@ const ListCheatItem = (props) => {
                   {usd ? (price / usd).toFixed(2) : price} {!usd ? "₽" : "$"}
                 </Text>
               </div>
-              <CustomLink url={`/catalog/${catalogId}/${id}`}>
-                <Button
-                  T="cheats"
-                  className="text-sm"
-                  leftIcon="buy"
-                  iconSize={20}
-                >
-                  buy
-                </Button>
-              </CustomLink>
+              {type !== "detected" && (
+                <CustomLink url={`/catalog/${catalogId}/${id}`}>
+                  <Button
+                    T="cheats"
+                    className="text-sm"
+                    leftIcon="buy"
+                    iconSize={20}
+                  >
+                    buy
+                  </Button>
+                </CustomLink>
+              )}
             </div>
           </div>
         </div>
@@ -246,16 +248,18 @@ const ListCheatItem = (props) => {
                 {type}
               </Text>
             </div>
-            <CustomLink url={`/catalog/${catalogId}/${id}`}>
-              <Button
-                T="cheats"
-                className="text-sm"
-                leftIcon="buy"
-                iconSize={20}
-              >
-                buy
-              </Button>
-            </CustomLink>
+            {type !== "detected" && (
+              <CustomLink url={`/catalog/${catalogId}/${id}`}>
+                <Button
+                  T="cheats"
+                  className="text-sm"
+                  leftIcon="buy"
+                  iconSize={20}
+                >
+                  buy
+                </Button>
+              </CustomLink>
+            )}
           </div>
         </div>
       </div>

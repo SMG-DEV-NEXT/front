@@ -105,9 +105,13 @@ const CardAndPay = ({ mobile, cheat }) => {
       </div>
     );
   }
+  const isHidedPayment = type === "detected";
   return (
     <div className="flex gap-6 items-start">
-      <div className="flex flex-col w-[70%] gap-8">
+      <div
+        className="flex flex-col w-[70%] gap-8"
+        style={{ width: !isHidedPayment ? "100%" : "70%" }}
+      >
         <RouteCheat
           catalogName={cheat.catalog[`head${getLanguage(locale)}`]}
           cheatName={cheat[`title${getLanguage(locale)}`]}
@@ -181,7 +185,7 @@ const CardAndPay = ({ mobile, cheat }) => {
         </div>
         <Programs cheat={cheat} />
       </div>
-      <PayCard cheat={cheat} />
+      {!isHidedPayment && <PayCard cheat={cheat} />}
     </div>
   );
 };

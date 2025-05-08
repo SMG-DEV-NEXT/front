@@ -11,10 +11,15 @@ const AdminPageHeader = ({
   isDisabledButton,
   isHaveMultipleDeleteButton,
   onDelete,
+  faqStatRoute,
 }) => {
   return (
     <div className="flex justify-between w-full">
-      <AdminTitle route={route} settingsRoute={settingsRoute} />
+      <AdminTitle
+        faqStatRoute={faqStatRoute}
+        route={route}
+        settingsRoute={settingsRoute}
+      />
       <div className="flex gap-2">
         {isHaveMultipleDeleteButton && (
           <AdminButton

@@ -33,7 +33,6 @@ const PromoEditAdminView = () => {
     enabled: id !== "create",
     refetchOnWindowFocus: false,
   });
-  console.log(id);
 
   const createMutation = useMutation({
     mutationFn: promoApi.createPromocode,
@@ -71,7 +70,6 @@ const PromoEditAdminView = () => {
   };
 
   const handleClickButton = () => {
-    console.log(inputs);
     if (id === "create") {
       const { id: d, ...data } = inputs;
       createMutation.mutate(data);

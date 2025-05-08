@@ -1,0 +1,39 @@
+.code-scrollbar {
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scrollbar-width: thin; // Firefox
+  scrollbar-color: #3c4253 #2e3340;
+
+  // WebKit browsers
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #2e3340;
+    border-radius: 9999px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #3c4253;
+    border-radius: 9999px;
+  }
+
+  // ✅ Completely hide scrollbar buttons (left/right arrows)
+  &::-webkit-scrollbar-button {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  // Also remove start/end button pairs
+  &::-webkit-scrollbar-button:horizontal:start:increment,
+  &::-webkit-scrollbar-button:horizontal:end:decrement,
+  &::-webkit-scrollbar-button:horizontal:end:increment,
+  &::-webkit-scrollbar-button:horizontal:start:decrement {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+}

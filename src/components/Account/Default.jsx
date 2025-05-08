@@ -10,7 +10,7 @@ import { toastError } from "../../utils/error";
 import { useDispatch } from "react-redux";
 import { setAuth } from "../../redux/authSlice";
 
-const DefaultSettings = ({ user,mobile }) => {
+const DefaultSettings = ({ user, mobile, usd }) => {
   const [inputs, setInputs] = useState({
     name: user?.name,
     image: user?.logo,
@@ -42,6 +42,15 @@ const DefaultSettings = ({ user,mobile }) => {
     mutate.mutate(inputs);
   };
 
+  const getPriceTransactions = () => {
+    const transactionsPrice = user?.transactions.reduce((prev, next) => {
+      return prev + next.checkoutedPrice;
+    }, 0);
+    return usd
+      ? `${(transactionsPrice / usd).toFixed(2)} $`
+      : `${transactionsPrice} ₽`;
+  };
+
   return (
     <div className="flex flex-col gap-6 ">
       <div className="flex w-full justify-between bg-input rounded-[16px] p-6">
@@ -57,7 +66,7 @@ const DefaultSettings = ({ user,mobile }) => {
               count
             </Text>
             <Text T="none" size="xl" weight="bold" className="text-primary10">
-              20
+              {user?.transactions.length}
             </Text>
           </div>
         </div>
@@ -73,7 +82,7 @@ const DefaultSettings = ({ user,mobile }) => {
               price
             </Text>
             <Text T="none" size="xl" weight="bold" className="text-primary10">
-              25 000$
+              {getPriceTransactions()}
             </Text>
           </div>
         </div>
@@ -89,32 +98,32 @@ const DefaultSettings = ({ user,mobile }) => {
               comments
             </Text>
             <Text T="none" size="xl" weight="bold" className="text-primary10">
-              11
+              {user?.comments.length}
             </Text>
           </div>
         </div>
         {!mobile && (
-           <div className="flex flex-col w-full gap-3 justify-center items-center">
-          <Icon name="bronze" size={64} folder="account" />
-          <div className="flex flex-col gap1 justify-center items-center">
-            <Text
-              T="account"
-              size="sm"
-              weight="medium"
-              className="text-linkColor"
-            >
-              raiting
-            </Text>
-            <Text
-              T="account"
-              size="xl"
-              weight="bold"
-              className="text-primary10"
-            >
-              bronze
-            </Text>
+          <div className="flex flex-col w-full gap-3 justify-center items-center">
+            <Icon name="bronze" size={64} folder="account" />
+            <div className="flex flex-col gap1 justify-center items-center">
+              <Text
+                T="account"
+                size="sm"
+                weight="medium"
+                className="text-linkColor"
+              >
+                raiting
+              </Text>
+              <Text
+                T="account"
+                size="xl"
+                weight="bold"
+                className="text-primary10"
+              >
+                bronze
+              </Text>
+            </div>
           </div>
-        </div>
         )}
       </div>
       <div className="flex flex-col bg-input gap-4 rounded-[16px] p-6">

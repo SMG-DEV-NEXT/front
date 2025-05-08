@@ -2,6 +2,7 @@ import {
   CatalogIcon,
   CheatIcon,
   ContactsIcon,
+  FAQIcon,
   GuaranteIcon,
   PlanIcon,
   PromoIcon,
@@ -40,9 +41,10 @@ const routes = {
   settings: { title: "settings", icon: SettingsIcon },
   smtp: { title: "SMTP", icon: SMTPIcon },
   transaction: { title: "transactions", icon: TransactionIcon },
+  faq: { title: "faq", icon: FAQIcon },
 };
 
-const AdminTitle = ({ settingsRoute, route }) => {
+const AdminTitle = ({ settingsRoute, route, faqStatRoute }) => {
   const r = routes[route];
   const t = useTranslations("admin");
   const ComponentIcon = r.icon;
@@ -54,6 +56,11 @@ const AdminTitle = ({ settingsRoute, route }) => {
       const defaultRoute = route.split("/")[0];
       router.push(`/${locale}/admin/${defaultRoute}`);
     }
+  };
+
+  const handleClickSettingsRoute = () => {
+    if (!faqStatRoute) return;
+    router.back();
   };
 
   return (
@@ -74,8 +81,24 @@ const AdminTitle = ({ settingsRoute, route }) => {
         {settingsRoute !== undefined && (
           <>
             <Icon name="arrowR" folder="admin" size={16} className="w-4 h-4" />
-            <Text T="none" weight="semi" size="2xl" className="text-primary10">
+            <Text
+              onClick={handleClickSettingsRoute}
+              T="none"
+              weight="semi"
+              size="2xl"
+              className={`text-${
+                faqStatRoute !== undefined ? "[#637381]" : "primary10"
+              } cursor-${faqStatRoute !== undefined ? "pointer" : "default"}`}
+            >
               {t("settings")} {settingsRoute}
+            </Text>
+          </>
+        )}
+        {faqStatRoute !== undefined && (
+          <>
+            <Icon name="arrowR" folder="admin" size={16} className="w-4 h-4" />
+            <Text T="none" weight="semi" size="2xl" className="text-primary10">
+              {t("settings")} {faqStatRoute}
             </Text>
           </>
         )}

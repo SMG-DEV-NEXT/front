@@ -29,8 +29,6 @@ const CommentEdit = () => {
     },
   });
 
-  console.log(data);
-
   useEffect(() => {
     if (data?.data) {
       setInputs(data.data);

@@ -14,6 +14,8 @@ import FA from "../../Account/FA";
 import HistoryAccount from "../../Account/History";
 import { useSelector } from "react-redux";
 import { useMobile } from "@/hooks/useMobile";
+import Freecurrencyapi from "@everapi/freecurrencyapi-js";
+import { useLocale } from "next-intl";
 
 export const AccountTabs = [
   { value: "default", label: "default", icon: MyAccountDefaultIcon },
@@ -23,17 +25,35 @@ export const AccountTabs = [
 ];
 
 const View = () => {
+  const locale = useLocale();
   const [tab, setTab] = useState({
     value: "default",
     label: "default",
     icon: MyAccountDefaultIcon,
   });
+  const [usd, setUSD] = useState(null);
   const onChangeTab = (e) => {
     setTab(e);
+    window.location.hash = `#${e.value}`;
   };
   const user = useSelector((state) => state.auth.user);
-  const isMobile = useMobile();
+  const isMobile = useMobile(1023);
+  const freecurrencyapi = new Freecurrencyapi(
+    "fca_live_tfZjgKTbQ86JVJJm1yKs75nITIE3sDnyYLQCaFyc"
+  );
 
+  useEffect(() => {
+    if (freecurrencyapi && usd === null && locale === "en") {
+      freecurrencyapi
+        .latest({
+          base_currency: "USD",
+          currencies: "RUB",
+        })
+        .then((response) => {
+          setUSD(response.data.RUB);
+        });
+    }
+  }, [freecurrencyapi]);
   const getComponent = () => {
     if (tab.value === "default") return DefaultSettings;
     if (tab.value === "2fa") return FA;
@@ -76,7 +96,7 @@ const View = () => {
                 setSelectedTab={onChangeTab}
               />
               <div className="w-full">
-                <Component mobile={isMobile} user={user} />
+                <Component usd={usd} mobile={isMobile} user={user} />
               </div>
             </div>
           </div>
@@ -103,7 +123,7 @@ const View = () => {
           <div className="flex  gap-6 items-start w-full">
             <AccountTab selectedTab={tab} setSelectedTab={onChangeTab} />
             <div className="w-[66%]">
-              <Component user={user} />
+              <Component user={user} usd={usd} />
             </div>
           </div>
         </div>

@@ -46,7 +46,9 @@ const View = () => {
         <div className="container flex flex-col gap-10 z-[1]">
           <CardAndPay mobile={isMobile} cheat={data.data} />
           <FunctionalCheat mobile={isMobile} cheat={data.data} />
-          <PayCard mobile={isMobile} cheat={data.data} />
+          {data.data.type !== "detected" && (
+            <PayCard mobile={isMobile} cheat={data.data} />
+          )}
           <Medias mobile={isMobile} cheat={data.data} />
           <Programs mobile={isMobile} cheat={data.data} />
           <FunctionalItemsMobile cheat={data.data} />

@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Image from "next/image";
 import { useState } from "react";
 import Text from "../Text";
@@ -19,9 +19,9 @@ import { useRouter } from "next/navigation";
 
 const HeaderMyAccount = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const user = useSelector(state=>state.auth.user)
+  const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
-  const router = useRouter()
+  const router = useRouter();
   const mutate = useMutation({
     mutationFn: UserService.logout,
     mutationKey: "logout",
@@ -33,7 +33,7 @@ const HeaderMyAccount = () => {
 
   const logout = () => {
     mutate.mutate();
-    router.push('/')
+    router.push("/");
   };
   return (
     <div className="relative ">
@@ -46,7 +46,10 @@ const HeaderMyAccount = () => {
               className="w-[48px] h-[48px] rounded-[12px] overflow-hidden outline-none"
             >
               <Image
-                src={user.logo || "https://res.cloudinary.com/dqdiocjpu/image/upload/v1741361925/nextjs_uploads/fiixoackkehzjubvt5og.png"}
+                src={
+                  user.logo ||
+                  "https://res.cloudinary.com/dqdiocjpu/image/upload/v1741361925/nextjs_uploads/fiixoackkehzjubvt5og.png"
+                }
                 className="w-[48px] h-[48px] object-cover"
                 height={48}
                 width={48}
@@ -61,7 +64,10 @@ const HeaderMyAccount = () => {
                   <div className="relative flex flex-col items-center">
                     <div className="w-[64px] h-[64px] rounded-full overflow-hidden z-[0]">
                       <Image
-                        src={user.logo || "https://res.cloudinary.com/dqdiocjpu/image/upload/v1741361925/nextjs_uploads/fiixoackkehzjubvt5og.png"}
+                        src={
+                          user.logo ||
+                          "https://res.cloudinary.com/dqdiocjpu/image/upload/v1741361925/nextjs_uploads/fiixoackkehzjubvt5og.png"
+                        }
                         className="w-[64px] h-[64px] object-cover z-[0]"
                         height={48}
                         width={48}
@@ -85,7 +91,7 @@ const HeaderMyAccount = () => {
                       weight="bold"
                       size="sm"
                     >
-                     {user.name}
+                      {user.name}
                     </Text>
                     <div className="flex flex-col gap-1">
                       <div className="flex justify-between gap-4">
@@ -101,7 +107,7 @@ const HeaderMyAccount = () => {
                           className="text-linkColor text-[12px] leading-[140%]"
                           weight="bold"
                         >
-                          12
+                          {user.transactions.length}
                         </Text>
                       </div>
 
@@ -118,7 +124,7 @@ const HeaderMyAccount = () => {
                           className="text-linkColor text-[12px] leading-[140%]"
                           weight="bold"
                         >
-                          12
+                          {user.comments.length}
                         </Text>
                       </div>
                     </div>

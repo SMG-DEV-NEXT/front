@@ -61,7 +61,7 @@ const Cheats = () => {
     return () => clearTimeout(handler);
   }, [search]);
   useEffect(() => {
-    if (freecurrencyapi && usd === null) {
+    if (freecurrencyapi && usd === null && locale === "en") {
       freecurrencyapi
         .latest({
           base_currency: "USD",

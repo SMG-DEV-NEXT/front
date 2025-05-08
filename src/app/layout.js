@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
         />
         <title>SMG</title>
       </head>
-      <body className="min-h-screen flex flex-col justify-between ">
+      <body className="min-h-screen flex flex-col justify-between bg-mainBlack">
         <Suspense fallback={<Loading />}>{children}</Suspense>
       </body>
     </html>

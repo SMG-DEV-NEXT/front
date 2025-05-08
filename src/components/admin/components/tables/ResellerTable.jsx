@@ -13,7 +13,6 @@ import { Star } from "@/components/Cheat/Comment";
 import moment from "moment";
 
 const ResellerTable = ({ items = { data: [] }, isPending, deleteItem }) => {
-  console.log(items);
   const [isReversed, setIsReversed] = useState(false);
   const router = useRouter();
   const locale = useLocale();

@@ -10,6 +10,9 @@ const CheckoutService = {
   getList: (params) => {
     return axiosLoggedIn.get(`/checkout?${params}`);
   },
+  getListClient: (params) => {
+    return axiosLoggedIn.get(`/checkout/client?page=${params.page}?limit=7`);
+  },
 };
 
 export default CheckoutService;

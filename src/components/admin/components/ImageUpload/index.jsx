@@ -58,9 +58,11 @@ export default function AdminUploadImage({
         <Text T="admin" className="text-[#E9E3F7]" weight="semi">
           {label}
         </Text>
-        <Text T="none" className="text-linkColor" weight="normal">
-          {t("size")} {Number.isNaN(size) ? `${size} x ${size}` : size}
-        </Text>
+        {size && (
+          <Text T="none" className="text-linkColor" weight="normal">
+            {t("size")} {Number.isNaN(size) ? `${size} x ${size}` : size}
+          </Text>
+        )}
       </div>
       <div
         onClick={handleClick}

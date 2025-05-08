@@ -19,7 +19,6 @@ const PriceRangeSelector = ({
   useEffect(() => {
     setPriceRange([min, max]);
   }, [min, max]);
-
   // Debounced effect to send range to parent
   useEffect(() => {
     if (!hasInitialized.current) return;

@@ -107,7 +107,6 @@ const PlanUpdate = () => {
   };
 
   const handleSave = () => {
-    console.log(plan);
     mutate.mutate({ id, data: plan });
   };
 

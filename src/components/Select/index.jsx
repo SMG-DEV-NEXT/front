@@ -6,7 +6,7 @@ import Icon from "../Icons";
 
 const DropdownIndicator = (props) => {
   return (
-    <components.DropdownIndicator {...props}>
+    <components.DropdownIndicator {...props} className="!p-0">
       {!props.selectProps.menuIsOpen ? (
         <Icon
           name="arrow"

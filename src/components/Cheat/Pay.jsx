@@ -93,7 +93,6 @@ const PayModal = ({
   };
 
   const handleCheckout = () => {
-    console.log(plnaId);
     checkoutFunction.mutate({
       email: mail,
       itemId: plnaId,
@@ -103,7 +102,7 @@ const PayModal = ({
     });
   };
 
-  const isShowingPrcentPrice = promo === true || pay.prcent > 0;
+  const isShowingPrcentPrice = promoQuery?.data?.data || pay.prcent > 0;
   if (mobile) {
     return (
       <div className="flex flex-col gap-4">

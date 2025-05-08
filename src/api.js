@@ -10,7 +10,6 @@ import {
 } from "./utils/token";
 // Base URL for your API (adjust the URL for your NestJS app)
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL; // Change it to your actual backend URL
-console.log(BASE_URL);
 // Axios instance for logged-in routes (with JWT Authorization Header)
 export const axiosLoggedIn = axios.create({
   baseURL: BASE_URL,

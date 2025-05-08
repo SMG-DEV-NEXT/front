@@ -17,6 +17,7 @@ const AdminBox = ({
   minTextAreaHeight = "46px",
   isUpperCode = true,
   name,
+  style = {},
   type = "text",
   isInput,
 }) => {
@@ -52,7 +53,10 @@ const AdminBox = ({
 
   if (isMultipleLanguage) {
     return (
-      <div className="flex p-4 flex-col gap-4 bg-input rounded-[16px] w-full">
+      <div
+        style={style}
+        className="flex p-4 flex-col gap-4 bg-input rounded-[16px] w-full"
+      >
         {label && (
           <Text T="admin" weight="semi" size="md" className="text-primary10">
             {label}
