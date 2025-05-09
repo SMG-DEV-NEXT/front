@@ -79,7 +79,7 @@ const Starts = () => {
 
 function BlocksMobile() {
   return (
-    <div className="relative flex pb-[164px] pt-[20%] bg-mainBlack mt-[-40%] z-[1]">
+    <div className="relative flex pb-[164px] pt-[10%]  mt-[-40%] z-[3]">
       <div className="absolute top-[-20%] z-[2] right-[0%] h-full">
         <RightIcon />
       </div>

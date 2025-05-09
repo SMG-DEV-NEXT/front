@@ -14,12 +14,13 @@ function ArticlesBottom({ data }) {
   const locale = useLocale();
   return (
     <div className="w-full bg-mainBlack py-[164px] relative">
-      <Image
+      {/* <Image
         src="/images/ArticlesBG.png"
         fill
         alt="article"
+        objectFit="cover"
         style={{ inset: "inital", top: "10%", zIndex: 1 }}
-      />
+      /> */}
       <div className="container relative" style={{ zIndex: 2 }}>
         <div className="flex flex-col gap-[32px]">
           <div className="flex items-center justify-between">

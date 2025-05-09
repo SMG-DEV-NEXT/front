@@ -17,16 +17,15 @@ function MainTopMobile() {
   const locale = useLocale();
   return (
     <div className="flex w-full relative flex-col  pb-[250px] bg-mainBlack overflow-hidden">
-      <div className="absolute top-[2] z-[2] left-[0] h-full">
+      <div className="absolute top-[2] z-[3] left-[0] h-full">
         <LeftIcon />
       </div>
-      <div className="absolute top-[-15%] z-[1] right-[0] h-full opacity-[0.5]">
+      <div className="absolute top-[-15%] z-[2] right-[0] h-full opacity-[1]">
         <Axyus />
       </div>
-      <div className="absolute top-[-40%] left-[-10%] ">
+      <div className="absolute top-[-40%] z-[3] left-[-60%] ">
         <HugeGlow />
       </div>
-
       <div className="container z-[2] pt-[64px]">
         <div className="flex flex-col items-center justify-between">
           <Effect type="to-right" className="w-full">
