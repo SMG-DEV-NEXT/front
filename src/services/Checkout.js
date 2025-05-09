@@ -13,6 +13,11 @@ const CheckoutService = {
   getListClient: (params) => {
     return axiosLoggedIn.get(`/checkout/client?page=${params.page}?limit=7`);
   },
+  getFreeKassaUrl: (params) => {
+    return axiosWithoutAuth.get(
+      `/checkout/freekassa?orderId=${params.order}&amount=${params.amount}`
+    );
+  },
 };
 
 export default CheckoutService;

@@ -55,7 +55,7 @@ const CatalogView = () => {
   }, [data]);
 
   const getSelectedCatalogNames = () => {
-    const titles = selectedIds.map((e) => items.find((i) => i.id === e).title);
+    const titles = selectedIds.map((e) => items.find((i) => i.id === e)?.title);
     return titles.join(",");
   };
 
