@@ -10,7 +10,7 @@ import Effect from "../../Animations/Effect";
 import CustomLink from "@/components/CustomLink";
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
-import { HugeGlow, LeftIcon, RightIcon } from "../i";
+import { Axyus, HugeGlow, LeftIcon, RightIcon } from "../i";
 
 function MainTopMobile() {
   const router = useRouter();
@@ -21,7 +21,7 @@ function MainTopMobile() {
         <LeftIcon />
       </div>
       <div className="absolute top-[-15%] z-[1] right-[0] h-full opacity-[0.5]">
-        <Icon name="setka" size={1000} className="z-[1]" />
+        <Axyus />
       </div>
       <div className="absolute top-[-40%] left-[-10%] ">
         <HugeGlow />
