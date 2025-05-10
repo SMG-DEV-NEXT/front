@@ -29,7 +29,13 @@ const CheatsService = {
   },
 
   getAllCommentsAdmin: (options) => {
-    return axiosLoggedIn.get(`/comments?cheatTitle=${options.cheatTitle}&userEmail=${options.mail}&createdTo=${options.endDate}&createdFrom=${options.startDate}&sortBy=stars&order=desc&page=${options.page}&limit=${options.limit}
+    return axiosLoggedIn.get(`/comments?cheatTitle=${
+      options.cheatTitle
+    }&userEmail=${options.mail}&createdTo=${
+      options.endDate || "undefined"
+    }&createdFrom=${
+      options.startDate || "undefined"
+    }&sortBy=stars&order=desc&page=${options.page}&limit=${options.limit}
       `);
   },
 

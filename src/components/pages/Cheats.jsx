@@ -147,6 +147,54 @@ const Cheats = () => {
       />
     );
   }
+  if (api?.hideFilterBar) {
+    return (
+      <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[112px]">
+        <div className="flex flex-col gap-6 z-[1] container items-center">
+          <Text T="cheats" className="text-primary10" weight="bold" size="t48">
+            title
+          </Text>
+          {api?.data ? (
+            <div className="flex gap-6 flex-col w-full">
+              {getViewItems().length === 0 ? (
+                <Text
+                  weight="semi"
+                  size="md"
+                  className="text-linkColor mt-5 text-center"
+                >
+                  empty
+                </Text>
+              ) : (
+                getViewItems().map((e) => {
+                  return (
+                    <ListCheatItem
+                      usd={usd}
+                      key={crypto.randomUUID()}
+                      {...e}
+                      catalogId={id}
+                    />
+                  );
+                })
+              )}
+              {api?.total > 1 && (
+                <Pagination
+                  itemsPerPage={api?.total * 1}
+                  current={api?.page * 1}
+                  onPageChange={(e) =>
+                    handleInputChange("page", e.selected + 1)
+                  }
+                />
+              )}
+            </div>
+          ) : (
+            <div className="w-[67.5%] flex items-center">
+              <Loading noPage={true} />
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[112px]">
       {/* <Image

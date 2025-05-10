@@ -61,36 +61,46 @@ const display = [
 ];
 const GetText = ({ value, req }) => {
   if (value === "oc") {
-    const { label } = SystemOptions.find((e) => e.value === req[value]) || {};
+    const label = (
+      SystemOptions.filter((e) => req[value].includes(e.value)) || []
+    ).map((e) => e.label);
     if (!label) return;
     return (
       <Text T="none" className="text-primary10" weight="semi" size="base">
-        {label}
+        Windows {label.join(" / ")}
       </Text>
     );
   }
   if (value === "window") {
-    const { label } = TypeWindow.find((e) => e.value === req[value]) || {};
+    const label = (
+      TypeWindow.filter((e) => req[value].includes(e.value)) || []
+    ).map((e) => e.label);
+    if (!label) return;
     return (
       <Text T="none" className="text-primary10" weight="semi" size="base">
-        {label}
+        {label.join(" / ")}
       </Text>
     );
   }
   if (value === "processor") {
-    const { label } =
-      ProcessorOptions.find((e) => e.value === req[value]) || {};
+    const label = (
+      ProcessorOptions.filter((e) => req[value].includes(e.value)) || []
+    ).map((e) => e.label);
+    if (!label) return;
     return (
       <Text T="none" className="text-primary10" weight="semi" size="base">
-        {label}
+        {label.join(" / ")}
       </Text>
     );
   }
   if (value === "spoofer") {
-    const { label } = Spoofer.find((e) => e.value === req[value]) || {};
+    const label = (
+      Spoofer.filter((e) => req[value].includes(e.value)) || []
+    ).map((e) => e.label);
+    if (!label) return;
     return (
       <Text T="none" className="text-primary10" weight="semi" size="base">
-        {label}
+        {label.join(" / ")}
       </Text>
     );
   }

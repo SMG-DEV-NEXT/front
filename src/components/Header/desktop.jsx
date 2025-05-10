@@ -110,13 +110,18 @@ export default function Header() {
           </Dropdown>
 
           {/* Search Input */}
-          <Input iconLeft="searchNew" />
+          {/* <Input iconLeft="searchNew" /> */}
 
           {/* Auth Buttons */}
           {user?.id ? (
             <HeaderMyAccount />
           ) : (
-            <div className="buttons">
+            <div
+              className="buttons"
+              style={{
+                boxShadow: "inset 0 8px 18.5px rgba(207, 184, 255, 0.75)",
+              }}
+            >
               <CustomLink url="/login">
                 <Text className="text-primary10" weight="semi" size="sm">
                   login

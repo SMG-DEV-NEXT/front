@@ -47,6 +47,49 @@ const CheatsMobile = ({
     );
   }, [items]); // won't re-render unless data changes
 
+  if (api.hideFilterBar) {
+    return (
+      <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[112px]">
+        {/* <Image
+        src="/images/loginBg.png"
+        style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
+        quality={100}
+        priority
+        fill
+        alt="Image"
+        className="z-[0]"
+      /> */}
+        <div className="flex flex-col gap-6 z-[1] container items-center">
+          <Text T="cheats" className="text-primary10" weight="bold" size="t48">
+            title
+          </Text>
+
+          <div className="flex gap-6 w-full items-start">
+            <div className="flex gap-6 flex-col  w-full flex-wrap justify-center items-center">
+              {api?.data ? (
+                <div className="flex gap-6 justify-center items-center flex-col w-full">
+                  {itemList}
+                  {api?.total > 1 && (
+                    <Pagination
+                      itemsPerPage={api?.total * 1}
+                      current={api?.page * 1}
+                      onPageChange={(e) =>
+                        handleInputChange("page", e.selected + 1)
+                      }
+                    />
+                  )}
+                </div>
+              ) : (
+                <div className="w-[67.5%] flex items-center">
+                  <Loading noPage={true} />
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[112px]">
       {/* <Image

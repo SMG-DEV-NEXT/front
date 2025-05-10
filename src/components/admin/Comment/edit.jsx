@@ -1,5 +1,5 @@
 "use client";
-import { useParams } from "next/navigation";
+import { notFound, useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import AdminContainer from "../components/container";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -34,6 +34,8 @@ const CommentEdit = () => {
       setInputs(data.data);
     }
   }, [data]);
+
+  if (!data?.data && !isPending) return notFound();
 
   const onClickSaveButton = () => {
     mutate.mutate({

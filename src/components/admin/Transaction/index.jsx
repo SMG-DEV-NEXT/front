@@ -28,7 +28,7 @@ const TransactionView = () => {
   });
   const { data: cheats, isPending: loading } = useQuery({
     queryFn: CheatService.getPlansTransactions,
-    queryKey: ["get-all"],
+    queryKey: ["get-all-dataa"],
     staleTime: 0,
     refetchOnWindowFocus: false,
   });
@@ -64,15 +64,15 @@ const TransactionView = () => {
   };
 
   const locale = useLocale();
-  const selectedCheat = cheats?.data?.find(
-    (e) => e?.cheat.id === filters?.cheatId
-  );
+  const selectedCheat = cheats
+    ? cheats?.data?.find((e) => e?.cheat?.id === filters?.cheatId)
+    : null;
   return (
     <AdminContainer>
       <div className="flex flex-col w-full">
         <AdminPageHeader route={"transaction"} />
         <div className="flex mt-4 w-full justify-between">
-          {!loading && (
+          {!loading && cheats?.data && (
             <div className="">
               <CustomSelect
                 options={cheats.data.map((e) => ({

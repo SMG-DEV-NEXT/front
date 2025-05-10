@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ImageWithPreview from "@/components/PreviewImage";
 
 export default function ScreensGrid({ screens, mobile }) {
   const getWidthClass = (count) => {
@@ -26,7 +26,7 @@ export default function ScreensGrid({ screens, mobile }) {
     >
       {screens.map((src, i) => (
         <div key={i} className={`${widthClass} relative aspect-video`}>
-          <Image
+          <ImageWithPreview
             src={src}
             alt={`screenshot-${i}`}
             fill

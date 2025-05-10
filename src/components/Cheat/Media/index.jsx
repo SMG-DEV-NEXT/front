@@ -1,7 +1,7 @@
 import React from "react";
 import Text from "../../Text";
 import Icon from "../../Icons";
-import Image from "next/image";
+import ImageWithPreview from "@/components/PreviewImage";
 import "../index.scss";
 
 const Medias = ({ mobile, cheat }) => {
@@ -14,12 +14,12 @@ const Medias = ({ mobile, cheat }) => {
         <div className="flex gap-6 items-center">
           <div className="flex overflow-x-auto gap-3 scrollbar-hide">
             <video
-              width={170}
-              height={170}
+              width={250}
+              height={250}
               controls
               style={{
-                width: `${170}px`,
-                height: `${170}px`,
+                width: `${250}px`,
+                height: `${250}px`,
               }}
               alt="Uploaded preview"
               className={`rounded-2xl mt-1 z-[1]`}
@@ -28,13 +28,13 @@ const Medias = ({ mobile, cheat }) => {
             </video>
             {cheat.images.map((e) => {
               return (
-                <Image
+                <ImageWithPreview
                   src={e}
                   key={crypto.randomUUID()}
                   alt="MediaImage"
-                  width={170}
-                  height={170}
-                  className="rounded-[16px] h-[170px] object-cover"
+                  width={250}
+                  height={250}
+                  className="rounded-[16px] h-[250px] min-w-[250px] object-cover"
                 />
               );
             })}
@@ -52,12 +52,12 @@ const Medias = ({ mobile, cheat }) => {
       <div className="flex gap-6 items-center">
         <div className="flex overflow-x-auto gap-3 scrollbar-hide">
           <video
-            width={170}
-            height={170}
+            width={250}
+            height={250}
             controls
             style={{
-              width: `${170}px`,
-              height: `${170}px`,
+              width: `${250}px`,
+              height: `${250}px`,
             }}
             alt="Uploaded preview"
             className={`rounded-2xl mt-1 z-[1]`}
@@ -66,13 +66,13 @@ const Medias = ({ mobile, cheat }) => {
           </video>
           {cheat.images.map((e) => {
             return (
-              <Image
+              <ImageWithPreview
                 src={e}
                 key={crypto.randomUUID()}
                 alt="MediaImage"
-                width={170}
-                height={170}
-                className="rounded-[16px] h-[170px] object-cover"
+                width={250}
+                height={250}
+                className="rounded-[16px] h-[250px] object-cover min-w-[250px]"
               />
             );
           })}

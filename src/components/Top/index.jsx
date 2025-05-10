@@ -6,15 +6,15 @@ import Button from "../Button";
 import { useState } from "react";
 
 const Top = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
-  useEffect(() => {
-    const closeFromLocalStorage =
-      typeof window !== "undefined" ? localStorage.getItem("close") : "false";
-    setIsVisible(closeFromLocalStorage === "false" ? false : true);
-  }, []);
+  // useEffect(() => {
+  //   const closeFromLocalStorage =
+  //     typeof window !== "undefined" ? localStorage.getItem("close") : "false";
+  //   setIsVisible(closeFromLocalStorage === "false" ? false : true);
+  // }, []);
   const onClickClose = () => {
-    localStorage.setItem("close", false);
+    // localStorage.setItem("close", false);
     setIsVisible(false);
   };
   if (!isVisible) {

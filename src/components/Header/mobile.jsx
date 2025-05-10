@@ -201,7 +201,12 @@ export default function HeaderMobile() {
           {user?.id ? (
             <HeaderMyAccount />
           ) : (
-            <div className="buttons">
+            <div
+              className="buttons"
+              style={{
+                boxShadow: "inset 0 8px 18.5px rgba(207, 184, 255, 0.75)",
+              }}
+            >
               <Text
                 className="text-primary10 cursor-pointer"
                 onClick={() => setIsOpenLoginModal(true)}

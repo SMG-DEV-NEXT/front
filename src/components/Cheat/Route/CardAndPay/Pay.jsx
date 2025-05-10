@@ -25,23 +25,34 @@ const PayCard = ({ mobile, cheat }) => {
   const { current: payments } = useRef([
     {
       days: 1,
-      pay: plan.day.price,
-      prcent: plan.day.prcent,
-      count: cheat.dayCount,
+      pay: plan.day?.price,
+      prcent: plan.day?.prcent,
+      count: cheat.dayCount || 0,
     },
     {
       days: 7,
-      pay: plan.week.price,
-      prcent: plan.week.prcent,
-      count: cheat.weekCount,
+      pay: plan.week?.price,
+      prcent: plan.week?.prcent,
+      count: cheat.weekCount || 0,
     },
     {
       days: 30,
-      pay: plan.month.price,
-      prcent: plan.month.prcent,
-      count: cheat.monthCount,
+      pay: plan.month?.price,
+      prcent: plan.month?.prcent,
+      count: cheat.monthCount || 0,
     },
   ]);
+
+  useEffect(() => {
+    if (active) return;
+    if (payments[0].count > 0) {
+      setActive(payments[0]);
+    } else if (payments[1].count > 0) {
+      setActive(payments[1]);
+    } else if (payments[2].count > 0) {
+      setActive(payments[2]);
+    }
+  }, [plan]);
   const freecurrencyapi = new Freecurrencyapi(
     "fca_live_tfZjgKTbQ86JVJJm1yKs75nITIE3sDnyYLQCaFyc"
   );
@@ -190,7 +201,7 @@ const PayCard = ({ mobile, cheat }) => {
                 </div>
               );
             })}
-            <div className="bg-primary80 py-3 px-4 rounded-[12px]">
+            {/* <div className="bg-primary80 py-3 px-4 rounded-[12px]">
               <Text
                 T="cheat"
                 className="text-primary10 cursor-pointer"
@@ -199,7 +210,7 @@ const PayCard = ({ mobile, cheat }) => {
               >
                 otherVariants
               </Text>
-            </div>
+            </div> */}
           </div>
           <div className="flex items-center justify-between py-3 px-4 bg-black rounded-[12px]">
             <Text

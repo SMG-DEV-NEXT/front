@@ -34,7 +34,7 @@ const ListCheatItem = (props) => {
     image,
     stars,
     tags = [],
-    minimumPrice: price,
+    minimumPrice,
     type,
     onBuy,
     image1,
@@ -43,6 +43,24 @@ const ListCheatItem = (props) => {
     comments,
     usd,
   } = props;
+  const getMinimumPrice = () => {
+    let price = 0;
+    if (props.plan?.day) {
+      price = props.plan?.day.price;
+      return price;
+    }
+    if (props.plan?.week) {
+      price = props.plan?.week.price;
+      return price;
+    }
+    if (props.plan?.month) {
+      price = props.plan?.month.price;
+      return price;
+    }
+    price = minimumPrice;
+    return price;
+  };
+  const price = getMinimumPrice();
   if (isMobile) {
     return (
       <div className="flex flex-col rounded-2xl w-[350px] bg-input overflow-hidden  ">

@@ -86,8 +86,8 @@ const CheatView = () => {
         <AdminPageHeader
           route={"cheat"}
           buttonText="add"
-          isHaveMultipleDeleteButton={selectedIds.length > 1}
-          onDelete={() => setIsOpenMultipleDelete(true)}
+          isHaveMultipleDeleteButton={true}
+          onDelete={() => setIsOpenMultipleDelete(!!selectedIds.length > 0)}
           buttonOnClick={() => router.push(`/${locale}/admin/cheats/create`)}
         />
         {isPending ? (

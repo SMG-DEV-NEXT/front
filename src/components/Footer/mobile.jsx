@@ -8,7 +8,7 @@ import Image from "next/image";
 
 const navigateTabs = [
   { label: "catalog", value: "/catalog" },
-  { label: "FAQ", value: "/" },
+  { label: "FAQ", value: "/FAQ" },
   { label: "garant", value: "/guarante" },
   { label: "contacts", value: "/contacts" },
 ];

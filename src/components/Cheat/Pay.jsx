@@ -57,14 +57,6 @@ const PayModal = ({
     },
   });
 
-  const getFreeKassaUrl = useMutation({
-    mutationFn: CheckoutService.getFreeKassaUrl,
-    mutationKey: ["get-key"],
-    onSuccess: ({ data }) => {
-      window.location = data.url;
-    },
-  });
-
   const options = [
     {
       value: "card",
@@ -101,19 +93,13 @@ const PayModal = ({
   };
 
   const handleCheckout = () => {
-    const order = "ORDER_" + Date.now();
-    console.log(handleCheckPrice(pay.pay, pay.prcent));
-    getFreeKassaUrl.mutate({
-      order,
-      amount: handleCheckPrice(pay.pay, pay.prcent),
+    checkoutFunction.mutate({
+      email: mail,
+      itemId: plnaId,
+      promo: promo,
+      type: typeCheckout,
+      count,
     });
-    // checkoutFunction.mutate({
-    //   email: mail,
-    //   itemId: plnaId,
-    //   promo: promo,
-    //   type: typeCheckout,
-    //   count,
-    // });
   };
 
   const isShowingPrcentPrice = promoQuery?.data?.data || pay.prcent > 0;

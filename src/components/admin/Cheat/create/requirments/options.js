@@ -1,6 +1,6 @@
 export const SystemOptions = [
-  { value: "windows10", label: "Windows 10" },
-  { value: "windows11", label: "Windows 11" },
+  { value: "windows10", label: "10" },
+  { value: "windows11", label: "11" },
 ];
 
 export const ProcessorOptions = [
