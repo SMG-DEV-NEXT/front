@@ -17,7 +17,7 @@ export default function Modal({ isOpen, onClose, children, width, customTop }) {
   if (isMobile) {
     return createPortal(
       <div
-        className="fixed inset-0 flex items-start justify-center bg-[#0D0E11] bg-opacity-75 z-[9999]"
+        className="fixed inset-0 flex items-start justify-center bg-[#0D0E11] bg-opacity-75 z-[500]"
         onClick={onClose}
       >
         <div
