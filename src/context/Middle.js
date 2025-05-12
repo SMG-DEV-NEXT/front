@@ -84,9 +84,9 @@ const MiddleComponent = ({ children }) => {
     mutation.mutate({ title, settings });
   };
 
-  if (data && data.data && data.data.isAdmin && !path.includes("admin")) {
-    redirect(`/${locale}/admin/dashboard`);
-  }
+  // if (data && data.data && data.data.isAdmin && !path.includes("admin")) {
+  //   redirect(`/${locale}/admin/dashboard`);
+  // }
   if ((isPending && !!token) || isLoading || isLoadingContacts) {
     return (
       <div className="flex w-full h-[100vh] bg-input items-center justify-center">

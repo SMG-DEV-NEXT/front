@@ -188,6 +188,20 @@ const HeaderMyAccount = () => {
                     </CustomLink>
                   </div>
                 </div>
+                {user.isAdmin && (
+                  <CustomLink url="/admin/dashboard">
+                    <div className="flex w-full items-center justify-center gap-1 text-center">
+                      <Text
+                        T="none"
+                        weigth="bold"
+                        size="sm"
+                        className="text-linkColor"
+                      >
+                        Admin Dashboard
+                      </Text>
+                    </div>
+                  </CustomLink>
+                )}
               </div>
             </DropdownItem>
           </DropdownMenu>
