@@ -14,11 +14,11 @@ import {
 
 const Options = ({ options, selectedOption, onSelect }) => {
   const handleClickOptions = (e) => {
-    if (selectedOption.includes(e.value)) {
+    if (selectedOption?.includes(e.value)) {
       onSelect(selectedOption.filter((a) => a !== e.value));
       return;
     }
-    onSelect([...selectedOption, e.value]);
+    onSelect([...(selectedOption || []), e.value]);
   };
   return (
     <div className="flex gap-5">
@@ -29,7 +29,10 @@ const Options = ({ options, selectedOption, onSelect }) => {
             className="flex gap-2 cursor-pointer"
             onClick={() => handleClickOptions(e)}
           >
-            <Checkbox isChecked={selectedOption?.includes(e.value)} />
+            <Checkbox
+              setIsChecked={() => {}}
+              isChecked={selectedOption?.includes(e.value)}
+            />
             <Text T="none" weight="semi" size="md" className="text-primary10">
               {e.label}
             </Text>
