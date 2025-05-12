@@ -29,7 +29,7 @@ const Options = ({ options, selectedOption, onSelect }) => {
             className="flex gap-2 cursor-pointer"
             onClick={() => handleClickOptions(e)}
           >
-            <Checkbox isChecked={selectedOption.includes(e.value)} />
+            <Checkbox isChecked={selectedOption?.includes(e.value)} />
             <Text T="none" weight="semi" size="md" className="text-primary10">
               {e.label}
             </Text>
