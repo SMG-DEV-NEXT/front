@@ -12,6 +12,7 @@ import Modal from "../Modal";
 import LogoutModal from "../admin/components/Modals/logout";
 import { AccountTabs } from "@/components/pages/Account";
 import { removeAccessToken } from "../../utils/token";
+import { ActiveLightIcon } from "@/components/Cheat/Route/CardAndPay/Pay";
 
 const AccountTab = ({ selectedTab, setSelectedTab, mobile }) => {
   const user = useSelector((state) => state.auth.user);
@@ -104,11 +105,9 @@ const AccountTab = ({ selectedTab, setSelectedTab, mobile }) => {
                     <div className="absolute right-[0] top-[0] z-[0]">
                       <Icon name="elipse" size={200} folder="cheat" />
                     </div>
-                    {isActive && (
-                      <div className="absolute left-[0]  z-[0]">
-                        <ActiveLightIcon />
-                      </div>
-                    )}
+                    <div className="absolute left-[0]  z-[0]">
+                      <ActiveLightIcon />
+                    </div>
                     <div
                       className="flex  items-center gap-2  cursor-pointer"
                       key={e.value}
@@ -212,8 +211,8 @@ const AccountTab = ({ selectedTab, setSelectedTab, mobile }) => {
                   <div className="absolute right-[0] top-[0] z-[0]">
                     <Icon name="elipse" size={200} folder="cheat" />
                   </div>
-                  <div className="absolute left-[0] bottom-[0%] z-[0]">
-                    <Icon name="elipse2" size={200} folder="cheat" />
+                  <div className="absolute left-[0]  z-[0]">
+                    <ActiveLightIcon />
                   </div>
                   <div
                     className="flex  items-center gap-2  cursor-pointer"

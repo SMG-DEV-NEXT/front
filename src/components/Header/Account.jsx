@@ -28,12 +28,12 @@ const HeaderMyAccount = () => {
     onSuccess: () => {
       dispatch(setAuth({}));
       removeAccessToken();
+      router.push("/");
     },
   });
 
   const logout = () => {
     mutate.mutate();
-    router.push("/");
   };
   return (
     <div className="relative ">

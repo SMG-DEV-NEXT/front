@@ -12,7 +12,7 @@ import Freecurrencyapi from "@everapi/freecurrencyapi-js";
 import { toastError } from "@/utils/error";
 import { useSelector } from "react-redux";
 
-const ActiveLightIcon = () => {
+export const ActiveLightIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
