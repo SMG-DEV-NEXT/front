@@ -22,11 +22,16 @@ function Articles({ data }) {
       <div className="container relative" style={{ zIndex: 2 }}>
         <div className="flex flex-col gap-[32px]">
           <div className="flex items-center justify-between">
-            <Text T="Main" weight="bold" size="t48" className="text-primary10">
+            <Text
+              T="Main"
+              weight="bold"
+              size="t48"
+              className="text-primary10 leading-[120%]"
+            >
               Blogs
             </Text>
             <CustomLink url="/stats" className="pt-2 cursor-pointer">
-              <Icon name="arrowRightCricle" />
+              <Icon name="arrowRightCricle" size={25} />
             </CustomLink>
           </div>
           <div className="flex justify-between gap-6">

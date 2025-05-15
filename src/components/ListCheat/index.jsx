@@ -8,6 +8,7 @@ import { useMobile } from "@/hooks/useMobile";
 import { useLocale } from "use-intl";
 import getLanguage from "@/utils/get-language";
 import { getStars } from "@/utils/getStarsCheat";
+import { useRouter } from "next/navigation";
 
 export const bgStylesByType = {
   undetected: "#6DCAC526",
@@ -30,6 +31,7 @@ export const iconsStylesByType = {
 const ListCheatItem = (props) => {
   const isMobile = useMobile();
   const locale = useLocale();
+  const router = useRouter();
   const {
     image,
     stars,
@@ -70,8 +72,9 @@ const ListCheatItem = (props) => {
             alt="Background"
             height="210"
             width="350"
-            objectFit="cover"
-            className="object-cover"
+            objectFit="contain"
+            onClick={() => router.push(`${catalogId}/${id}`)}
+            className="object-cover cursor-pointer"
           />
         )}
         <div
@@ -93,7 +96,7 @@ const ListCheatItem = (props) => {
                     weight="semi"
                     size="sm"
                     T="none"
-                    className={textStylesByType[type]}
+                    className={`${textStylesByType[type]} first-letter:uppercase`}
                   >
                     {type}
                   </Text>
@@ -190,15 +193,21 @@ const ListCheatItem = (props) => {
           src={image1}
           alt="Background"
           height="210"
+          onClick={() => router.push(`${catalogId}/${id}`)}
           width="220"
-          objectFit="cover"
-          className="object-cover"
+          objectFit="contain"
+          className="object-cover cursor-pointer"
         />
       )}
       <div className="flex flex-col p-6 h-full w-full justify-between">
         <div className="flex flex-col gap-1">
           <div className="flex items-center justify-between">
-            <Text T="none" className="text-primary10" weight="bold" size="lg">
+            <Text
+              T="none"
+              className="text-primary10 leading-[140%]"
+              weight="bold"
+              size="lg"
+            >
               {props[`title${getLanguage()}`]}
             </Text>
             <div className="flex gap-2 gap-3 bg-[#79CA6D26] py-2 px-3 rounded-lg">
@@ -261,7 +270,7 @@ const ListCheatItem = (props) => {
                 weight="semi"
                 size="sm"
                 T="none"
-                className={textStylesByType[type]}
+                className={`${textStylesByType[type]} first-letter:uppercase`}
               >
                 {type}
               </Text>

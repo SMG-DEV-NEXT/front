@@ -9,11 +9,13 @@ import PriceSortInput from "../priceInput";
 import Modal from "@/components/Modal";
 import Button from "@/components/Button";
 import Loading from "@/app/loading";
+import getLanguage from "@/utils/get-language";
 export const dynamic = "force-dynamic";
 
 const CheatsMobile = ({
   items,
   toViewItems,
+  T,
   search,
   handleInputChange,
   setToViewItems,
@@ -47,49 +49,6 @@ const CheatsMobile = ({
     );
   }, [items]); // won't re-render unless data changes
 
-  if (api.hideFilterBar) {
-    return (
-      <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[112px]">
-        {/* <Image
-        src="/images/loginBg.png"
-        style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
-        quality={100}
-        priority
-        fill
-        alt="Image"
-        className="z-[0]"
-      /> */}
-        <div className="flex flex-col gap-6 z-[1] container items-center">
-          <Text T="cheats" className="text-primary10" weight="bold" size="t48">
-            title
-          </Text>
-
-          <div className="flex gap-6 w-full items-start">
-            <div className="flex gap-6 flex-col  w-full flex-wrap justify-center items-center">
-              {api?.data ? (
-                <div className="flex gap-6 justify-center items-center flex-col w-full">
-                  {itemList}
-                  {api?.total > 1 && (
-                    <Pagination
-                      itemsPerPage={api?.total * 1}
-                      current={api?.page * 1}
-                      onPageChange={(e) =>
-                        handleInputChange("page", e.selected + 1)
-                      }
-                    />
-                  )}
-                </div>
-              ) : (
-                <div className="w-[67.5%] flex items-center">
-                  <Loading noPage={true} />
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
   return (
     <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[112px]">
       {/* <Image
@@ -102,8 +61,13 @@ const CheatsMobile = ({
         className="z-[0]"
       /> */}
       <div className="flex flex-col gap-6 z-[1] container items-center">
-        <Text T="cheats" className="text-primary10" weight="bold" size="t48">
-          title
+        <Text
+          T="none"
+          className="text-primary10 leading-[120%]"
+          weight="bold"
+          size="t48"
+        >
+          {T("title")} {api?.catalog[`head${getLanguage(locale)}`]}
         </Text>
         <Input
           iconLeft="searchNew"
@@ -124,10 +88,11 @@ const CheatsMobile = ({
         </div>
         <Modal
           isOpen={isOpenFilterMobile}
+          width={400}
           customTop={"50px"}
           onClose={() => setIsOpenFilterMobile(false)}
         >
-          <div className="flex flex-col bg-input rounded-2xl w-full">
+          <div className="flex flex-col w-[302px] bg-input rounded-2xl w-full">
             <div className="pb-6 flex flex-col gap-4">
               <Text
                 T="cheats"
@@ -194,24 +159,28 @@ const CheatsMobile = ({
                 </div>
               </div>
             </div>
-            <div className="py-6 flex flex-col gap-4 border-y border-y-[#404658]">
-              <Text
-                T="cheats"
-                className="text-primary10"
-                size="xl"
-                weight="bold"
-              >
-                sortingBycost
-              </Text>
-              <PriceSortInput
-                currency={"₽"}
-                range={filters?.range}
-                setRange={(e) => handleInputChange("range", e)}
-                min={api?.lowPrice}
-                max={api?.maxPrice}
-                usd={usd}
-              />{" "}
-            </div>
+            {!api.hideFilterBar ? (
+              <div className="p-6 flex flex-col gap-4 border-y border-y-[#404658]">
+                <Text
+                  T="cheats"
+                  className="text-primary10"
+                  size="xl"
+                  weight="bold"
+                >
+                  sortingBycost
+                </Text>
+                <PriceSortInput
+                  currency={usd ? "$" : "₽"}
+                  range={filters.range}
+                  setRange={(e) => handleInputChange("range", e)}
+                  min={api?.lowPrice}
+                  usd={usd}
+                  max={api?.maxPrice}
+                />
+              </div>
+            ) : (
+              <div className="h-[1px] flex flex-col gap-4 border-y border-y-[#404658]"></div>
+            )}
             <div className="py-6 flex flex-col gap-4">
               <Text
                 T="cheats"

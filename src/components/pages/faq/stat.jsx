@@ -54,7 +54,12 @@ const FaqStat = ({
               src={data.iconActive || data.icon}
             />
           )}
-          <Text T="none" weight="bold" className="text-primary10" size="t32">
+          <Text
+            T="none"
+            weight="bold"
+            className="text-primary10 leading-[140%]"
+            size="t32"
+          >
             {data[`title${locale}`]}
           </Text>
         </div>

@@ -13,7 +13,7 @@ import { MomentFunctions } from "@/services/Moment";
 function ArticlesBottom({ data }) {
   const locale = useLocale();
   return (
-    <div className="w-full bg-mainBlack py-[164px] relative">
+    <div className="w-full bg-mainBlack pt-[50px] pb-[61px] relative">
       {/* <Image
         src="/images/ArticlesBG.png"
         fill
@@ -22,13 +22,18 @@ function ArticlesBottom({ data }) {
         style={{ inset: "inital", top: "10%", zIndex: 1 }}
       /> */}
       <div className="container relative" style={{ zIndex: 2 }}>
-        <div className="flex flex-col gap-[32px]">
-          <div className="flex items-center justify-between">
-            <Text T="Main" weight="bold" size="t38" className="text-primary10">
+        <div className="flex flex-col gap-[20px]">
+          <div className="flex items-center h-[36px] justify-between">
+            <Text
+              T="Main"
+              weight="bold"
+              size="t38"
+              className="text-primary10 leading-[120%]"
+            >
               Blogs
             </Text>
-            <CustomLink url="/stats" className="pt-2 cursor-pointer">
-              <Icon name="arrowRightCricle" />
+            <CustomLink url="/stats" className=" cursor-pointer">
+              <Icon name="arrowRightCricle" size={28} />
             </CustomLink>
           </div>
           <div className="articlesMobile justify-between gap-6">

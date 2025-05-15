@@ -8,6 +8,12 @@ import { useMobile } from "@/hooks/useMobile";
 import { useSettings } from "@/context/Middle";
 import { useLocale } from "next-intl";
 import dynamic from "next/dynamic";
+import {
+  BlokIcon,
+  Blok2Icon,
+  Blok3Icon,
+  LightIcon,
+} from "@/components/Icons/guarante";
 
 const GuaranteView = () => {
   const { settings } = useSettings();
@@ -33,12 +39,19 @@ const GuaranteView = () => {
       <div className="flex flex-col z-[1] gap-[164px] pt-[64px] w-full">
         <div className="container">
           <div className="flex flex-col gap-[48px] items-center">
-            <Text weight="bold" size="t40" className="text-primary10">
+            <Text
+              weight="bold"
+              size="t48"
+              className="text-primary10 leading-[140%]"
+            >
               garant
             </Text>
             <Effect type="to-top" onceEffect={true} className="w-full">
               <div className="flex gap-6">
-                <div className="w-full min-h-[344px]  relative p-6 rounded-2xl bg-[url('/images/document1.png')] bg-no-repeat bg-center bg-cover">
+                <div className="w-full relative overflow-hidden min-h-[344px]   relative p-6 rounded-2xl  bg-input">
+                  <div className="absolute right-[-1px] top-[-1px]">
+                    <BlokIcon />
+                  </div>
                   <div className="flex flex-col  gap-6 z-[4] relative">
                     {guarante?.logo1 ? (
                       <Image
@@ -54,7 +67,7 @@ const GuaranteView = () => {
                     <div className="flex flex-col  gap-2">
                       <Text
                         T={guarante.block1 ? "none" : "guarant"}
-                        className="text-primary10"
+                        className="text-primary10 leading-[140%]"
                         weight="bold"
                         size="xl"
                       >
@@ -75,7 +88,10 @@ const GuaranteView = () => {
                     </div>
                   </div>
                 </div>
-                <div className="w-full min-h-[344px] relative p-6 rounded-2xl bg-[url('/images/document1.png')] bg-no-repeat bg-center bg-cover">
+                <div className="w-full min-h-[344px] relative p-6 rounded-2xl overflow-hidden bg-input bg-no-repeat bg-center bg-cover">
+                  <div className="absolute right-[-1px] top-[-1px]">
+                    <Blok2Icon />
+                  </div>
                   <div className="flex flex-col  gap-6 z-[4] relative">
                     {guarante?.logo2 ? (
                       <Image
@@ -91,7 +107,7 @@ const GuaranteView = () => {
                     <div className="flex flex-col  gap-2">
                       <Text
                         T={guarante.block2 ? "none" : "guarant"}
-                        className="text-primary10"
+                        className="text-primary10 leading-[140%]"
                         weight="bold"
                         size="xl"
                       >
@@ -112,7 +128,10 @@ const GuaranteView = () => {
                     </div>
                   </div>
                 </div>
-                <div className="w-full min-h-[344px] relative p-6 rounded-2xl bg-[url('/images/document1.png')] bg-no-repeat bg-center bg-cover">
+                <div className="w-full min-h-[344px] relative p-6 rounded-2xl bg-input bg-no-repeat overflow-hidden bg-center bg-cover">
+                  <div className="absolute right-[-1px] top-[-1px]">
+                    <Blok3Icon />
+                  </div>
                   <div className="flex flex-col  gap-6 z-[4] relative">
                     {guarante?.logo3 ? (
                       <Image
@@ -127,7 +146,7 @@ const GuaranteView = () => {
                     <div className="flex flex-col  gap-2">
                       <Text
                         T={guarante.block3 ? "none" : "guarant"}
-                        className="text-primary10"
+                        className="text-primary10 leading-[140%]"
                         weight="bold"
                         size="xl"
                       >
@@ -152,13 +171,17 @@ const GuaranteView = () => {
             </Effect>
           </div>
         </div>
-        <div className="flex bg-input relative bg-[url('/images/documentBg.png')] bg-no-repeat bg-center bg-cover">
+        <div className="flex bg-input relative min-h-[496px] bg-no-repeat bg-center bg-cover">
+          <div className="absolute left-[30%]">
+            <LightIcon />
+          </div>
+          <Image src={"/images/documentBg1.png"} objectFit="contain" fill />
           <div className="container relative z-[2]">
             <div className="flex flex-col py-[64px] gap-[64px]">
               <Effect type="to-right">
                 <div className="flex flex-col gap-6 w-[40%]">
                   <Text
-                    className="text-primary10"
+                    className="text-primary10 leading-[120%]"
                     size="t48"
                     weight="bold"
                     T={guarante.block ? "none" : "guarant"}
@@ -185,7 +208,7 @@ const GuaranteView = () => {
                     <Icon name="like" folder="document" size={64} />
                     <div className="flex flex-col gap-1">
                       <Text
-                        className="text-primary10"
+                        className="text-primary10 leading-[140%]"
                         weight="bold"
                         size="xl"
                         T="none"
@@ -208,7 +231,7 @@ const GuaranteView = () => {
                     <Icon name="korzina" folder="document" size={64} />
                     <div className="flex flex-col gap-1">
                       <Text
-                        className="text-primary10"
+                        className="text-primary10 leading-[140%]"
                         weight="bold"
                         size="xl"
                         T="none"
@@ -231,7 +254,7 @@ const GuaranteView = () => {
                     <Icon name="safe" folder="document" size={64} />
                     <div className="flex flex-col gap-1">
                       <Text
-                        className="text-primary10"
+                        className="text-primary10 leading-[140%]"
                         weight="bold"
                         size="xl"
                         T="none"

@@ -38,7 +38,7 @@
 .articlesMobile {
   display: grid;
   grid-template-columns: repeat(2, 48%);
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 700px) {
     grid-template-columns: repeat(1, 100%);
   }
 }

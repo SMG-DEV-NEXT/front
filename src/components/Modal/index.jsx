@@ -21,8 +21,8 @@ export default function Modal({ isOpen, onClose, children, width, customTop }) {
         onClick={onClose}
       >
         <div
-          style={{ marginTop: customTop ? customTop : "50%", width }}
-          className="bg-input p-6 mt-[130px] rounded-2xl mx-5 relative"
+          style={{ top: "50%", left: "50%", transform: "translate(-50%,-50%)" }}
+          className="bg-input absolute p-6  rounded-2xl "
           onClick={(e) => e.stopPropagation()} // Prevent modal from closing when clicking inside
         >
           {children}
@@ -37,8 +37,8 @@ export default function Modal({ isOpen, onClose, children, width, customTop }) {
       onClick={onClose}
     >
       <div
-        style={{ marginTop: customTop ? customTop : "100%", width }}
-        className="bg-input p-6 mt-[130px] rounded-2xl  relative"
+        style={{ top: "50%", left: "50%", transform: "translate(-50%,-50%)" }}
+        className="bg-input absolute p-6  rounded-2xl "
         onClick={(e) => e.stopPropagation()} // Prevent modal from closing when clicking inside
       >
         {children}

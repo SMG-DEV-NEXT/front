@@ -45,7 +45,12 @@ const Comment = ({ starTab, mobile, comment }) => {
       <div className="flex bg-black justify-between rounded-[12px] py-[18px] px-[14px] items-center">
         <div className="flex flex-col gap-2 w-full">
           <div className="flex gap-2 items-center justify-between">
-            <Text T="none" className="text-primary10" weight="bold" size="md">
+            <Text
+              T="none"
+              className="text-primary10 leading-[140%]"
+              weight="bold"
+              size="md"
+            >
               {comment.user.email}
             </Text>
             <div
@@ -75,7 +80,12 @@ const Comment = ({ starTab, mobile, comment }) => {
     <div className="flex bg-black justify-between rounded-[12px] py-[18px] px-6 items-center">
       <div className="flex flex-col gap-2">
         <div className="flex gap-2 items-center">
-          <Text T="none" className="text-primary10" weight="bold" size="md">
+          <Text
+            T="none"
+            className="text-primary10 leading-[120%]"
+            weight="bold"
+            size="md"
+          >
             {comment.user.email}
           </Text>
           <Text className="text-linkColor" T="none" weight="medium" size="sm">
@@ -230,22 +240,29 @@ const Comments = ({ mobile, cheat }) => {
   if (mobile) {
     return (
       <div className="flex flex-col w-full gap-4">
-        <Text T="comments" className="text-primary10" weight="bold" size="xl">
+        <Text
+          T="comments"
+          className="text-primary10 leading-[140%]"
+          weight="bold"
+          size="xl"
+        >
           title
         </Text>
         <div className="flex flex-col gap-6 bg-input rounded-[16px] p-6">
-          <div className="flex flex-col gap-2 overflow-y-auto max-h-[360px] comment-scroll pr-2">
-            {comments.map((e) => {
-              return (
-                <Comment
-                  starTab={e.stars}
-                  key={e.id}
-                  comment={e}
-                  mobile={mobile}
-                />
-              );
-            })}
-          </div>
+          {comments.length > 0 && (
+            <div className="flex flex-col gap-2 overflow-y-auto max-h-[360px] comment-scroll pr-2">
+              {comments.map((e) => {
+                return (
+                  <Comment
+                    starTab={e.stars}
+                    key={e.id}
+                    comment={e}
+                    mobile={mobile}
+                  />
+                );
+              })}
+            </div>
+          )}
           {user ? (
             <CommentInput
               stars={stars}
@@ -274,22 +291,29 @@ const Comments = ({ mobile, cheat }) => {
   }
   return (
     <div className="flex flex-col w-full gap-4 mt-[48px]">
-      <Text T="comments" className="text-primary10" weight="bold" size="xl">
+      <Text
+        T="comments"
+        className="text-primary10 leading-[140%]"
+        weight="bold"
+        size="xl"
+      >
         title
       </Text>
       <div className="flex flex-col gap-6 bg-input rounded-[16px] p-6">
-        <div className="flex flex-col gap-2 overflow-y-auto max-h-[360px] comment-scroll pr-6">
-          {comments.map((e) => {
-            return (
-              <Comment
-                starTab={e.stars}
-                key={e.id}
-                comment={e}
-                mobile={mobile}
-              />
-            );
-          })}
-        </div>
+         {comments.length > 0 && (
+            <div className="flex flex-col gap-2 overflow-y-auto max-h-[360px] comment-scroll pr-2">
+              {comments.map((e) => {
+                return (
+                  <Comment
+                    starTab={e.stars}
+                    key={e.id}
+                    comment={e}
+                    mobile={mobile}
+                  />
+                );
+              })}
+            </div>
+          )}
         {user ? (
           <CommentInput
             stars={stars}

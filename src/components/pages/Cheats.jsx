@@ -10,10 +10,11 @@ import { useMobile } from "@/hooks/useMobile";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import CheatsService from "@/services/Cheats";
 import Loading from "@/app/loading";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { notFound, useParams } from "next/navigation";
 import CheatsMobile from "../Cheat/CheatsMobile";
 import Freecurrencyapi from "@everapi/freecurrencyapi-js";
+import getLanguage from "@/utils/get-language";
 
 const typesFilter = ["high_price", "low_price", "raiting"];
 export const dynamic = "force-dynamic";
@@ -22,6 +23,7 @@ const Cheats = () => {
   const [toViewItems, setToViewItems] = useState([]);
   const [search, setSearch] = useState("");
   const locale = useLocale();
+  const cheatsT = useTranslations("cheats");
   const [selectedFilterTag, setSelectedFilterTag] = useState(null);
   const [tags, setTags] = useState([]);
   const [usd, setUSD] = useState(null);
@@ -37,7 +39,7 @@ const Cheats = () => {
     page: 1,
     limit: 4,
   });
-  const isMobile = useMobile();
+  const isMobile = useMobile(930);
 
   const freecurrencyapi = new Freecurrencyapi(
     "fca_live_tfZjgKTbQ86JVJJm1yKs75nITIE3sDnyYLQCaFyc"
@@ -135,6 +137,7 @@ const Cheats = () => {
         filters={filters}
         api={api}
         typesFilter={typesFilter}
+        T={cheatsT}
         selectedFilterTag={selectedFilterTag}
         setSelectedFilterTag={setSelectedFilterTag}
         tags={tags}
@@ -147,54 +150,7 @@ const Cheats = () => {
       />
     );
   }
-  if (api?.hideFilterBar) {
-    return (
-      <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[112px]">
-        <div className="flex flex-col gap-6 z-[1] container items-center">
-          <Text T="cheats" className="text-primary10" weight="bold" size="t48">
-            title
-          </Text>
-          {api?.data ? (
-            <div className="flex gap-6 flex-col w-full">
-              {getViewItems().length === 0 ? (
-                <Text
-                  weight="semi"
-                  size="md"
-                  className="text-linkColor mt-5 text-center"
-                >
-                  empty
-                </Text>
-              ) : (
-                getViewItems().map((e) => {
-                  return (
-                    <ListCheatItem
-                      usd={usd}
-                      key={crypto.randomUUID()}
-                      {...e}
-                      catalogId={id}
-                    />
-                  );
-                })
-              )}
-              {api?.total > 1 && (
-                <Pagination
-                  itemsPerPage={api?.total * 1}
-                  current={api?.page * 1}
-                  onPageChange={(e) =>
-                    handleInputChange("page", e.selected + 1)
-                  }
-                />
-              )}
-            </div>
-          ) : (
-            <div className="w-[67.5%] flex items-center">
-              <Loading noPage={true} />
-            </div>
-          )}
-        </div>
-      </div>
-    );
-  }
+
   return (
     <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[112px]">
       {/* <Image
@@ -207,8 +163,13 @@ const Cheats = () => {
         className="z-[0]"
       /> */}
       <div className="flex flex-col gap-6 z-[1] container items-center">
-        <Text T="cheats" className="text-primary10" weight="bold" size="t48">
-          title
+        <Text
+          T="none"
+          className="text-primary10 leading-[120%]"
+          weight="bold"
+          size="t48"
+        >
+          {cheatsT("title")} {api?.catalog[`head${getLanguage(locale)}`]}
         </Text>
         <Input
           iconLeft="searchNew"
@@ -222,7 +183,7 @@ const Cheats = () => {
             <div className="p-6 flex flex-col gap-4">
               <Text
                 T="cheats"
-                className="text-primary10"
+                className="text-primary10 leading-[140%]"
                 size="xl"
                 weight="bold"
               >
@@ -234,12 +195,12 @@ const Cheats = () => {
                   onClick={() => handleInputChange("type", typesFilter[2])}
                 >
                   {filters.type !== typesFilter[2] ? (
-                    <div className="border rounded-full border-linkColor w-4 h-4"></div>
+                    <div className="border-[2px] rounded-full border-linkColor w-4 h-4"></div>
                   ) : (
-                    <div className="border rounded-full border-linkColor w-4 h-4 bg-primary80"></div>
+                    <div className="border-[2px] rounded-full border-linkColor w-4 h-4 bg-primary80"></div>
                   )}
                   <Text
-                    className="text-linkColor"
+                    className="text-linkColor leading-[140%]"
                     size="sm"
                     weight="medium"
                     T="cheats"
@@ -252,12 +213,12 @@ const Cheats = () => {
                   onClick={() => handleInputChange("type", typesFilter[1])}
                 >
                   {filters.type !== typesFilter[1] ? (
-                    <div className="border rounded-full border-linkColor w-4 h-4"></div>
+                    <div className="border-[2px] rounded-full border-linkColor w-4 h-4"></div>
                   ) : (
-                    <div className="border rounded-full border-linkColor w-4 h-4 bg-primary80"></div>
+                    <div className="border-[2px] rounded-full border-linkColor w-4 h-4 bg-primary80"></div>
                   )}{" "}
                   <Text
-                    className="text-linkColor"
+                    className="text-linkColor leading-[140%]"
                     size="sm"
                     weight="medium"
                     T="cheats"
@@ -266,16 +227,16 @@ const Cheats = () => {
                   </Text>
                 </div>
                 <div
-                  className="flex items-center gap-2 cursor-pointer"
+                  className="flex items-center gap-2 cursor-pointer "
                   onClick={() => handleInputChange("type", typesFilter[0])}
                 >
                   {filters.type !== typesFilter[0] ? (
-                    <div className="border rounded-full border-linkColor w-4 h-4"></div>
+                    <div className="border-[2px] rounded-full border-linkColor w-4 h-4"></div>
                   ) : (
-                    <div className="border rounded-full border-linkColor w-4 h-4 bg-primary80"></div>
+                    <div className="border-[2px] rounded-full border-linkColor w-4 h-4 bg-primary80"></div>
                   )}{" "}
                   <Text
-                    className="text-linkColor"
+                    className="text-linkColor leading-[140%]"
                     size="sm"
                     weight="medium"
                     T="cheats"
@@ -285,28 +246,32 @@ const Cheats = () => {
                 </div>
               </div>
             </div>
-            <div className="p-6 flex flex-col gap-4 border-y border-y-[#404658]">
-              <Text
-                T="cheats"
-                className="text-primary10"
-                size="xl"
-                weight="bold"
-              >
-                sortingBycost
-              </Text>
-              <PriceSortInput
-                currency={usd ? "$" : "₽"}
-                range={filters.range}
-                setRange={(e) => handleInputChange("range", e)}
-                min={api?.lowPrice}
-                usd={usd}
-                max={api?.maxPrice}
-              />
-            </div>
+            {!api.hideFilterBar ? (
+              <div className="p-6 flex flex-col gap-4 border-y border-y-[#404658]">
+                <Text
+                  T="cheats"
+                  className="text-primary10 leading-[140%]"
+                  size="xl"
+                  weight="bold"
+                >
+                  sortingBycost
+                </Text>
+                <PriceSortInput
+                  currency={usd ? "$" : "₽"}
+                  range={filters.range}
+                  setRange={(e) => handleInputChange("range", e)}
+                  min={api?.lowPrice}
+                  usd={usd}
+                  max={api?.maxPrice}
+                />
+              </div>
+            ) : (
+              <div className="h-[1px] flex flex-col gap-4 border-y border-y-[#404658]"></div>
+            )}
             <div className="p-6 flex flex-col gap-4">
               <Text
                 T="cheats"
-                className="text-primary10"
+                className="text-primary10 leading-[140%]"
                 size="xl"
                 weight="bold"
               >

@@ -25,10 +25,10 @@ function Forget1({ email, setEmail, setStep, isMobile }) {
   };
   if (isMobile) {
     return (
-      <div className="flex flex-col gap-6 z-[1] w-full min-w-[350px] max-w-[552px] items-center">
+      <div className="flex flex-col gap-6 z-[1] w-full min-w-[302px] max-w-[302px] items-center">
         <Text
           T="login"
-          className="text-primary10 whitespace-nowrap"
+          className="text-primary10 whitespace-nowrap leading-[120%]"
           size="2xl"
           weight="bold"
         >
@@ -41,7 +41,7 @@ function Forget1({ email, setEmail, setStep, isMobile }) {
               type="mail"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              styleDiv={{ backgroundColor: "#272c33" }}
+              styleDiv={{ backgroundColor: "#272c33", height: "46px" }}
               iconLeft="mail"
               placeholder="example@gmail.com"
             />
@@ -49,7 +49,7 @@ function Forget1({ email, setEmail, setStep, isMobile }) {
           <Button
             disabled={mutate.isPending}
             T="login"
-            className="w-full"
+            className="w-full h-[46px]"
             onClick={onChangeStep}
           >
             reset
@@ -72,7 +72,7 @@ function Forget1({ email, setEmail, setStep, isMobile }) {
       <div className="flex flex-col gap-6 z-[1] w-[39%] max-w-[552px] items-center">
         <Text
           T="login"
-          className="text-primary10 whitespace-nowrap"
+          className="text-primary10 whitespace-nowrap leading-[120%]"
           size="t48"
           weight="bold"
         >
@@ -85,7 +85,7 @@ function Forget1({ email, setEmail, setStep, isMobile }) {
               type="mail"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              styleDiv={{ backgroundColor: "#272c33" }}
+              styleDiv={{ backgroundColor: "#272c33", height: "46px" }}
               iconLeft="mail"
               placeholder="example@gmail.com"
             />
@@ -93,7 +93,7 @@ function Forget1({ email, setEmail, setStep, isMobile }) {
           <Button
             disabled={mutate.isPending}
             T="login"
-            className="w-full"
+            className="w-full h-[46px]"
             onClick={onChangeStep}
           >
             reset

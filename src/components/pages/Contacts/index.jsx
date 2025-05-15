@@ -9,6 +9,63 @@ import { useQuery } from "@tanstack/react-query";
 import { ContactsService } from "@/services/Contacts";
 import { useLocale } from "next-intl";
 
+const Light = ({ w = "100%" }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={264}
+      height={264}
+      viewBox="0 0 264 264"
+      fill="none"
+      style={{ width: w, overflow: "visible" }}
+    >
+      <g filter="url(#a)">
+        <ellipse
+          cx="50%"
+          cy="50%"
+          rx="91.5"
+          ry="98.362"
+          fill="#8B6DCA"
+          fillOpacity="0.6"
+        />
+      </g>
+      <g filter="url(#b)" style={{ mixBlendMode: "overlay" }}>
+        <ellipse
+          cx="50%"
+          cy="50%"
+          rx="91.5"
+          ry="98.362"
+          fill="#D5C2FC"
+          fillOpacity="0.4"
+        />
+      </g>
+
+      <defs>
+        <filter
+          id="a"
+          x="-100%"
+          y="-100%"
+          width="300%"
+          height="300%"
+          filterUnits="userSpaceOnUse"
+        >
+          <feGaussianBlur stdDeviation="60" />
+        </filter>
+        <filter
+          id="b"
+          x="-100%"
+          y="-100%"
+          width="300%"
+          height="300%"
+          filterUnits="userSpaceOnUse"
+        >
+          <feGaussianBlur stdDeviation="60" />
+        </filter>
+      </defs>
+    </svg>
+  );
+};
+
 const ContactsView = () => {
   const isMobile = useMobile(1133);
   const locale = useLocale();
@@ -16,6 +73,8 @@ const ContactsView = () => {
     queryFn: ContactsService.getAllContacts,
     queryKey: ["get"],
     refetchOnWindowFocus: false,
+    staleTime: 1000 * 60 * 5, // data stays fresh for 5 mins
+    cacheTime: 1000 * 60 * 30, // unused data lives for 30 mins
   });
 
   const handleClickUrl = (e) => {
@@ -48,7 +107,7 @@ const ContactsView = () => {
             T="contacts"
             weight="bold"
             size="t48"
-            className="text-primary10"
+            className="text-primary10 leading-[120%]"
           >
             contactsT
           </Text>
@@ -73,12 +132,15 @@ const ContactsView = () => {
                   onClick={() => handleClickUrl(e.url)}
                   className="flex cursor-pointer relative flex-col items-center overflow-hidden w-full py-6 bg-input rounded-[16px] gap-3"
                 >
-                  <Icon
-                    name="light3"
-                    className={`absolute w-full z-[1] ${
-                      isMobile ? "top-[-70px]" : "top-0"
-                    }`}
-                  />
+                  {isMobile ? (
+                    <div className="absolute top-[-100%] ">
+                      <Light w={396} />
+                    </div>
+                  ) : (
+                    <div className="absolute top-[-100%] left-0 right-0">
+                      <Light />
+                    </div>
+                  )}
                   <Image
                     src={e.icon}
                     width={64}

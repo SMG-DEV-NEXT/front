@@ -97,8 +97,8 @@ const PayCard = ({ mobile, cheat }) => {
 
   return (
     <div
-      className="flex flex-col w-[30%]"
-      style={{ width: mobile ? "100%" : "30%" }}
+      className="flex flex-col min-w-[32%]"
+      style={{ width: mobile ? "100%" : "32%" }}
     >
       <div className="rounded-t-2xl bg-input p-6">
         <div className="flex flex-col gap-6">
@@ -173,7 +173,7 @@ const PayCard = ({ mobile, cheat }) => {
                           {locale === "ru" ? "₽" : "$"}
                         </Text>
                         <Text
-                          className="text-primary10"
+                          className="text-primary10 leading-[120%]"
                           T="none"
                           weight="semi"
                           size="lg"
@@ -188,7 +188,7 @@ const PayCard = ({ mobile, cheat }) => {
                       </div>
                     ) : (
                       <Text
-                        className="text-primary10"
+                        className="text-primary10 leading-[120%]"
                         T="none"
                         weight="semi"
                         size="lg"
@@ -323,7 +323,10 @@ const PayCard = ({ mobile, cheat }) => {
         customTop={120}
         onClose={() => setIsOpenInfoModal(false)}
       >
-        <div className="flex flex-col gap-6">
+        <div
+          className="flex flex-col  gap-6"
+          style={{ width: mobile ? "302px" : "504px" }}
+        >
           <div className="flex items-center iconInfo gap-2">
             <Icon name="infoI" folder="cheat" />
             <Text className="text-primary80" weight="semi" size="sm" T="cheat">
@@ -345,7 +348,10 @@ const PayCard = ({ mobile, cheat }) => {
         customTop={120}
         onClose={() => setIsOpenCheckout(false)}
       >
-        <div className="flex flex-col gap-6">
+        <div
+          className="flex  flex-col gap-6"
+          style={{ width: mobile ? "302px" : "504px" }}
+        >
           <PayModal
             mobile={mobile}
             plnaId={cheat.id}

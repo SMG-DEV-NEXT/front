@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 export const fetchCache = "force-no-store";
 const Payment = () => {
   return (
-    <Suspense fallback={<Loading />}>
+    <Suspense fallback={null}>
       <GuaranteView />
     </Suspense>
   );

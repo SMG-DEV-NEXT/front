@@ -6,6 +6,7 @@ import "./index.scss";
 import CustomLink from "../CustomLink";
 import Freecurrencyapi from "@everapi/freecurrencyapi-js";
 import { useLocale } from "next-intl";
+import { useMobile } from "@/hooks/useMobile";
 function Card({
   imageUrl,
   title,
@@ -52,6 +53,7 @@ function Card({
         width={imageWidth}
         height="252"
         alt="card"
+        objectFit="contain"
         className="z-[1]"
       />
       <div className="box"></div>
@@ -61,7 +63,12 @@ function Card({
       >
         {" "}
         <div className="flex flex-col gap-2 px-6 pb-3">
-          <Text T="none" className="text-primary10" size="xl" weight="bold">
+          <Text
+            T="none"
+            className="text-primary10 leading-[20px]"
+            size="xl"
+            weight="bold"
+          >
             {title}
           </Text>
           <div className="flex">
@@ -89,12 +96,21 @@ function Card({
             >
               from
             </Text>
-            <Text T="none" className="text-primary10" size="lg" weight="medium">
+            <Text
+              T="none"
+              className="text-primary10 "
+              size="lg"
+              weight="medium"
+            >
               {getMinimumPrice()}
             </Text>
           </div>
           <CustomLink url={`/catalog/${id}`}>
-            <Icon name="arrowRightCricle" className="cursor-pointer" />
+            <Icon
+              name="arrowRightCricle"
+              size={20}
+              className="cursor-pointer"
+            />
           </CustomLink>
         </div>
       </div>

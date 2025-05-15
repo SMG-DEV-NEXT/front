@@ -68,7 +68,12 @@ const FAQView = () => {
     return (
       <div className="container z-[2] pt-[64px] pb-[164px]">
         <div className="flex w-full items-center flex-col gap-6">
-          <Text T="none" weight="bold" size="t48" className="text-primary10">
+          <Text
+            T="none"
+            weight="bold"
+            size="t48"
+            className="text-primary10 leading-[120%]"
+          >
             FAQ
           </Text>
           <div className="w-full  flex-col flex gap-6 ">

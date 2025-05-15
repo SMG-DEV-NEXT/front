@@ -38,7 +38,12 @@ function StatsHeader({ search, setSearch, selectedFilter, setSelectedFilter }) {
   if (isMobile) {
     return (
       <div className="flex w-full justify-between items-center gap-6 flex-col">
-        <Text T="stats" weight="bold" size="t48" className="text-primary10">
+        <Text
+          T="stats"
+          weight="bold"
+          size="t48"
+          className="text-primary10 leading-[120%]"
+        >
           title
         </Text>
         <div className="flex gap-2 flex-col w-full">
@@ -56,6 +61,7 @@ function StatsHeader({ search, setSearch, selectedFilter, setSelectedFilter }) {
               minWidth: "min-content",
               whiteSpace: "nowrap",
               width: "100%",
+              height: "60px",
             }}
             placeholderColor="#7B8293"
             menuStyles={{
@@ -73,7 +79,12 @@ function StatsHeader({ search, setSearch, selectedFilter, setSelectedFilter }) {
   }
   return (
     <div className="flex w-full justify-between items-center">
-      <Text T="stats" weight="bold" size="t48" className="text-primary10">
+      <Text
+        T="stats"
+        weight="bold"
+        size="t48"
+        className="text-primary10 leading-[120%]"
+      >
         title
       </Text>
       <div className="flex gap-2">
@@ -91,6 +102,7 @@ function StatsHeader({ search, setSearch, selectedFilter, setSelectedFilter }) {
             minWidth: "min-content",
             whiteSpace: "nowrap",
             width: "196px",
+            height: "60px",
           }}
           placeholderColor="#7B8293"
           menuStyles={{

@@ -63,8 +63,12 @@ function ViewRegistration({ isMobile, goToLogin, onClose }) {
 
   if (isMobile) {
     return (
-      <div className="flex flex-col gap-6 z-[1]  w-full max-w-[552px] items-center">
-        <Text className="text-primary10" size="2xl" weight="bold">
+      <div className="flex flex-col gap-6 z-[1] w-[302px]  w-full max-w-[552px] items-center">
+        <Text
+          className="text-primary10 leading-[120%]"
+          size="2xl"
+          weight="bold"
+        >
           register
         </Text>
         <div className="flex flex-col bg-input  gap-6 rounded-2xl w-full">
@@ -74,7 +78,7 @@ function ViewRegistration({ isMobile, goToLogin, onClose }) {
               onChange={(e) => handleChangeInput("email", e.target.value)}
               label="email"
               type="mail"
-              styleDiv={{ backgroundColor: "#272c33" }}
+              styleDiv={{ backgroundColor: "#272c33", height: "46px" }}
               iconLeft="mail"
               placeholder="example@gmail.com"
             />
@@ -83,7 +87,7 @@ function ViewRegistration({ isMobile, goToLogin, onClose }) {
               value={inputs.name}
               onChange={(e) => handleChangeInput("name", e.target.value)}
               type="text"
-              styleDiv={{ backgroundColor: "#272c33" }}
+              styleDiv={{ backgroundColor: "#272c33", height: "46px" }}
               iconLeft="profile"
               placeholder="DuckStep3"
             />
@@ -92,7 +96,7 @@ function ViewRegistration({ isMobile, goToLogin, onClose }) {
               iconLeft="lock"
               value={inputs.password}
               onChange={(e) => handleChangeInput("password", e.target.value)}
-              styleDiv={{ backgroundColor: "#272c33" }}
+              styleDiv={{ backgroundColor: "#272c33", height: "46px" }}
               type="password"
               iconRight={true}
               placeholder="qwery123"
@@ -104,7 +108,7 @@ function ViewRegistration({ isMobile, goToLogin, onClose }) {
                 handleChangeInput("confirmPassword", e.target.value)
               }
               iconLeft="lock"
-              styleDiv={{ backgroundColor: "#272c33" }}
+              styleDiv={{ backgroundColor: "#272c33", height: "46px" }}
               type="password"
               iconRight={true}
               placeholder="qwery123"
@@ -116,11 +120,12 @@ function ViewRegistration({ isMobile, goToLogin, onClose }) {
               checked={isCheckedForget}
               onCheck={setIsCheckedForget}
             >
-              <div className="flex gap-1 w-full whitespace-nowrap">
-                <Text className="text-linkColor" weight="medium" size="sm">
-                  C
-                </Text>
-                <CustomLink url="/">
+              <div className=" gap-1 w-full whitespace-nowrap">
+                <div className="flex gap-1">
+                  <Text className="text-linkColor" weight="medium" size="sm">
+                    C
+                  </Text>
+                  {/* <CustomLink url="/"> */}
                   <Text
                     className="text-linkColor underline"
                     weight="medium"
@@ -128,7 +133,8 @@ function ViewRegistration({ isMobile, goToLogin, onClose }) {
                   >
                     rules
                   </Text>
-                </CustomLink>
+                </div>
+                {/* </CustomLink> */}
                 <Text className="text-linkColor" weight="medium" size="sm">
                   review
                 </Text>
@@ -137,7 +143,7 @@ function ViewRegistration({ isMobile, goToLogin, onClose }) {
           </div>
           <div className="flex gap-2">
             <Button
-              className="w-full"
+              className="w-full h-[46px]"
               disabled={mutation.isPending}
               onClick={handleSumbit}
             >
@@ -146,7 +152,7 @@ function ViewRegistration({ isMobile, goToLogin, onClose }) {
             <Button
               T="login"
               onClick={goToLogin}
-              className="w-full"
+              className="w-full h-[46px]"
               variant="secondary"
             >
               login
@@ -169,7 +175,11 @@ function ViewRegistration({ isMobile, goToLogin, onClose }) {
         className="z-[0]"
       /> */}
       <div className="flex flex-col gap-6 z-[1]  w-[39%] max-w-[552px] items-center">
-        <Text className="text-primary10" size="t48" weight="bold">
+        <Text
+          className="text-primary10 leading-[120%]"
+          size="t48"
+          weight="bold"
+        >
           register
         </Text>
         <div className="flex flex-col bg-input p-6 gap-6 rounded-2xl w-full">
@@ -179,7 +189,7 @@ function ViewRegistration({ isMobile, goToLogin, onClose }) {
               onChange={(e) => handleChangeInput("email", e.target.value)}
               label="email"
               type="mail"
-              styleDiv={{ backgroundColor: "#272c33" }}
+              styleDiv={{ backgroundColor: "#272c33", height: "46px" }}
               iconLeft="mail"
               placeholder="example@gmail.com"
             />
@@ -188,7 +198,7 @@ function ViewRegistration({ isMobile, goToLogin, onClose }) {
               value={inputs.name}
               onChange={(e) => handleChangeInput("name", e.target.value)}
               type="text"
-              styleDiv={{ backgroundColor: "#272c33" }}
+              styleDiv={{ backgroundColor: "#272c33", height: "46px" }}
               iconLeft="profile"
               placeholder="DuckStep3"
             />
@@ -197,10 +207,10 @@ function ViewRegistration({ isMobile, goToLogin, onClose }) {
               iconLeft="lock"
               value={inputs.password}
               onChange={(e) => handleChangeInput("password", e.target.value)}
-              styleDiv={{ backgroundColor: "#272c33" }}
+              styleDiv={{ backgroundColor: "#272c33", height: "46px" }}
               type="password"
               iconRight={true}
-              placeholder="qwery123"
+              placeholder="password"
             />
             <Input
               label="RewritePassword"
@@ -209,10 +219,10 @@ function ViewRegistration({ isMobile, goToLogin, onClose }) {
                 handleChangeInput("confirmPassword", e.target.value)
               }
               iconLeft="lock"
-              styleDiv={{ backgroundColor: "#272c33" }}
+              styleDiv={{ backgroundColor: "#272c33", height: "46px" }}
               type="password"
               iconRight={true}
-              placeholder="qwery123"
+              placeholder="password"
             />
           </div>
           <div className="flex items-center justify-between">
@@ -225,15 +235,15 @@ function ViewRegistration({ isMobile, goToLogin, onClose }) {
                 <Text className="text-linkColor" weight="medium" size="sm">
                   C
                 </Text>
-                <CustomLink url="/">
-                  <Text
-                    className="text-linkColor underline"
-                    weight="medium"
-                    size="sm"
-                  >
-                    rules
-                  </Text>
-                </CustomLink>
+                {/* <CustomLink url="/"> */}
+                <Text
+                  className="text-linkColor underline"
+                  weight="medium"
+                  size="sm"
+                >
+                  rules
+                </Text>
+                {/* </CustomLink> */}
                 <Text className="text-linkColor" weight="medium" size="sm">
                   review
                 </Text>
@@ -242,14 +252,18 @@ function ViewRegistration({ isMobile, goToLogin, onClose }) {
           </div>
           <div className="flex gap-2">
             <Button
-              className="w-full"
+              className="w-full  h-[46px]"
               disabled={mutation.isPending}
               onClick={handleSumbit}
             >
               register
             </Button>
             <CustomLink url="/login" className="w-full">
-              <Button T="login" className="w-full" variant="secondary">
+              <Button
+                T="login"
+                className="w-full  h-[46px]"
+                variant="secondary"
+              >
                 login
               </Button>
             </CustomLink>

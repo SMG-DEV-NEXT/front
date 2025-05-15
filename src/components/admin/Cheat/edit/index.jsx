@@ -139,13 +139,13 @@ const UpdateCheat = () => {
             onChange={handleChangeInput}
             label={"cheatAbout"}
           />
-          <AdminBox
+          {/* <AdminBox
             value={inputs.minimumPrice}
             name="minimumPrice"
             type="number"
             onChange={handleChangeInput}
             label={"minimumPrice"}
-          />
+          /> */}
           <div className="flex gap-6">
             <AdminUploadImage
               label={"cheatOblojka"}

@@ -65,7 +65,12 @@ const DefaultSettings = ({ user, mobile, usd }) => {
             >
               count
             </Text>
-            <Text T="none" size="xl" weight="bold" className="text-primary10">
+            <Text
+              T="none"
+              size="xl"
+              weight="bold"
+              className="text-primary10 leading-[140%]"
+            >
               {user?.transactions.length}
             </Text>
           </div>
@@ -81,7 +86,12 @@ const DefaultSettings = ({ user, mobile, usd }) => {
             >
               price
             </Text>
-            <Text T="none" size="xl" weight="bold" className="text-primary10">
+            <Text
+              T="none"
+              size="xl"
+              weight="bold"
+              className="text-primary10 leading-[140%]"
+            >
               {getPriceTransactions()}
             </Text>
           </div>
@@ -97,7 +107,12 @@ const DefaultSettings = ({ user, mobile, usd }) => {
             >
               comments
             </Text>
-            <Text T="none" size="xl" weight="bold" className="text-primary10">
+            <Text
+              T="none"
+              size="xl"
+              weight="bold"
+              className="text-primary10 leading-[140%]"
+            >
               {user?.comments.length}
             </Text>
           </div>
@@ -118,7 +133,7 @@ const DefaultSettings = ({ user, mobile, usd }) => {
                 T="account"
                 size="xl"
                 weight="bold"
-                className="text-primary10"
+                className="text-primary10 leading-[140%]"
               >
                 bronze
               </Text>
@@ -163,6 +178,7 @@ const DefaultSettings = ({ user, mobile, usd }) => {
         />
         <Button
           T="account"
+          className="h-[46px]"
           disabled={mutate.isPending}
           onClick={() => handleSave()}
         >

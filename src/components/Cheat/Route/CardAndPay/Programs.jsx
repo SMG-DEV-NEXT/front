@@ -110,9 +110,22 @@ const GetText = ({ value, req }) => {
     </Text>
   );
 };
+const getWindowOptions = (req, value) => {
+  const label = (
+    TypeWindow.filter((e) => req[value].includes(e.value)) || []
+  ).map((e) => e.label);
+  return label.map((e) => {
+    return {
+      title: "gameTime",
+      value: e,
+      icon: "display",
+    };
+  });
+};
 const Programs = ({ mobile, cheat }) => {
   const [isOpen, setIsOpen] = useState(false);
   const req = cheat.requirments[0];
+  console.log(getWindowOptions(req, "window"));
   if (mobile) {
     return (
       <div className="flex flex-col gap-4">
@@ -123,7 +136,10 @@ const Programs = ({ mobile, cheat }) => {
           <div className="flex flex-col gap-6 gap-y-6 p-6 ">
             {items.map((e) => {
               return (
-                <div className="flex  gap-3" key={crypto.randomUUID()}>
+                <div
+                  className="flex  gap-3  items-center"
+                  key={crypto.randomUUID()}
+                >
                   <div className="p-3 bg-black rounded-[8px]">
                     <Icon name={e.icon} folder="products" />
                   </div>
@@ -136,7 +152,20 @@ const Programs = ({ mobile, cheat }) => {
                     >
                       {e.title}
                     </Text>
-                    <GetText value={e.value} req={req} />
+                    {e.title === "gameTime" ? (
+                      <div onClick={() => setIsOpen(!isOpen)}>
+                        <Text
+                          T="product"
+                          className="cursor-pointer text-primary10 underline"
+                          weight="semi"
+                          size="base"
+                        >
+                          {isOpen ? "hide" : "show"}
+                        </Text>
+                      </div>
+                    ) : (
+                      <GetText value={e.value} req={req} />
+                    )}
                   </div>
                 </div>
               );
@@ -146,7 +175,7 @@ const Programs = ({ mobile, cheat }) => {
             <>
               <div className="w-fill h-[1px] bg-[#404658]"></div>
               <div className="grid  grid-cols-3 gap-6 gap-y-6 p-6 ">
-                {display.map((e, i) => {
+                {getWindowOptions(req, "window").map((e, i) => {
                   return (
                     <div className="flex  gap-3">
                       <div className="p-3 bg-black rounded-[8px]">
@@ -192,16 +221,26 @@ const Programs = ({ mobile, cheat }) => {
       </div>
     );
   }
+  console.log(items);
   return (
     <div className="flex flex-col mt-[54px] gap-4">
-      <Text T="product" weight="bold" size="xl" className="text-primary10">
+      <Text
+        T="product"
+        weight="bold"
+        size="xl"
+        className="text-primary10 leading-[120%]"
+      >
         for
       </Text>
       <div className="flex flex-col bg-input rounded-[16px]">
         <div className="grid  grid-cols-3 gap-6 gap-y-6 p-6 ">
           {items.map((e) => {
+            console.log(e.value);
             return (
-              <div className="flex  gap-3" key={crypto.randomUUID()}>
+              <div
+                className="flex  gap-3 items-center"
+                key={crypto.randomUUID()}
+              >
                 <div className="p-3 bg-black rounded-[8px]">
                   <Icon name={e.icon} folder="products" />
                 </div>
@@ -214,7 +253,7 @@ const Programs = ({ mobile, cheat }) => {
                   >
                     {e.title}
                   </Text>
-                  {/* {e.title === "gameTime" ? (
+                  {e.title === "gameTime" ? (
                     <div onClick={() => setIsOpen(!isOpen)}>
                       <Text
                         T="product"
@@ -227,8 +266,7 @@ const Programs = ({ mobile, cheat }) => {
                     </div>
                   ) : (
                     <GetText value={e.value} req={req} />
-                  )} */}
-                  <GetText value={e.value} req={req} />
+                  )}
                 </div>
               </div>
             );
@@ -238,7 +276,7 @@ const Programs = ({ mobile, cheat }) => {
           <>
             <div className="w-fill h-[1px] bg-[#404658]"></div>
             <div className="grid  grid-cols-3 gap-6 gap-y-6 p-6 ">
-              {display.map((e, i) => {
+              {getWindowOptions(req, "window").map((e, i) => {
                 return (
                   <div className="flex  gap-3">
                     <div className="p-3 bg-black rounded-[8px]">
@@ -271,7 +309,7 @@ const Programs = ({ mobile, cheat }) => {
                         weight="semi"
                         size="base"
                       >
-                        {cheat.requirments[0][e.value]}
+                        {e.value}
                       </Text>
                     </div>
                   </div>

@@ -50,7 +50,12 @@ const Functionalitem = ({ logo = "cel", title, functions }) => {
           <div className="bg-[#8B6DCA26] flex items-center rounded-[8px] justify-center w-[48px] h-[48px]">
             <Icon name={logo} folder="products" />
           </div>
-          <Text T="none" weight="semi" size="xl" className="text-primary10">
+          <Text
+            T="none"
+            weight="semi"
+            size="lg"
+            className="text-primary10 leading-[120%]"
+          >
             {title}
           </Text>
         </div>
@@ -64,6 +69,16 @@ const Functionalitem = ({ logo = "cel", title, functions }) => {
       </div>
       {isOpen && (
         <div className="flex flex-wrap gap-2">
+          {functions.length === 0 && (
+            <Text
+              T="cheats"
+              className="text-linkColor"
+              weight="medium"
+              size="sm"
+            >
+              emptyTags
+            </Text>
+          )}
           {functions.map((e, i) => {
             return (
               <Tooltip
@@ -165,10 +180,15 @@ const FunctionalCheat = ({ mobile, cheat }) => {
       <div
         className={`flex gap-6  w-[${
           isOpen ? 100 : 50
-        }%] max-h-[356px] overflow-auto scrollbar-hide`}
+        }%]  overflow-auto scrollbar-hide`}
       >
         <div className="flex flex-col gap-4 w-full">
-          <Text className="text-primary10" T="product" weight="bold" size="xl">
+          <Text
+            className="text-primary10 leading-[140%]"
+            T="product"
+            weight="bold"
+            size="xl"
+          >
             functional
           </Text>
           {false ? (
@@ -217,9 +237,17 @@ const FunctionalCheat = ({ mobile, cheat }) => {
           )}
         </div>
       </div>
-      <div className="flex flex-col justify-between gap-4 w-[50%]">
+      <div
+        className="flex flex-col justify-between gap-4"
+        style={{ width: isOpen ? "100%" : "50%" }}
+      >
         <div className="flex flex-col gap-4">
-          <Text className="text-primary10" T="product" weight="bold" size="xl">
+          <Text
+            className="text-primary10 leading-[140%]"
+            T="product"
+            weight="bold"
+            size="xl"
+          >
             about
           </Text>
           <Text T="none" className="text-primary10" size="sm" weight="medium">

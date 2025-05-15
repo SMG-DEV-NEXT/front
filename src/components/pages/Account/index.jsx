@@ -85,7 +85,7 @@ const View = () => {
               T="account"
               weight="bold"
               size="t40"
-              className="text-primary10"
+              className="text-primary10 leading-[120%]"
             >
               title
             </Text>

@@ -25,7 +25,7 @@ const PolicyView = () => {
       <div className="container z-[1]">
         <div className="flex flex-col gap-6  bg-input rounded-[16px] p-6">
           <Text
-            className="text-primary10"
+            className="text-primary10 leading-[120%]"
             weight="bold"
             size="t48"
             style={{

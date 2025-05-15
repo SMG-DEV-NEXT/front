@@ -21,7 +21,7 @@ const otherTabs = [
 ];
 function FooterMobile({ socialLinks, helpLinks, logos, logo, handleClickUrl }) {
   return (
-    <div className="flex flex-col bg-input pt-[48px] pb-[64px] mt-auto">
+    <div className="flex flex-col bg-input pt-[40px] pb-[40px] z-[1] mt-auto">
       <div className="container flex flex-col justify-between">
         <div className="flex h-full justify-between flex-col">
           <div className="flex items-center gap-6">
@@ -35,14 +35,18 @@ function FooterMobile({ socialLinks, helpLinks, logos, logo, handleClickUrl }) {
                 className="color-black"
               />
             )}
-            <Text size="sm" className="text-linkColor w-full">
+            <Text weight="medium" size="sm" className="text-linkColor w-full">
               secure
             </Text>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-[30px] mt-[44px]">
           <div className="flex flex-col gap-4">
-            <Text className="text-linkColor" weight="bold" size="lg">
+            <Text
+              className="text-linkColor leading-[140%]"
+              weight="bold"
+              size="lg"
+            >
               navigation
             </Text>
             {navigateTabs.map((e) => {
@@ -56,7 +60,11 @@ function FooterMobile({ socialLinks, helpLinks, logos, logo, handleClickUrl }) {
             })}
           </div>
           <div className="flex flex-col gap-4">
-            <Text className="text-linkColor" weight="bold" size="lg">
+            <Text
+              className="text-linkColor leading-[140%]"
+              weight="bold"
+              size="lg"
+            >
               other
             </Text>
             {otherTabs.map((e) => {
@@ -71,7 +79,11 @@ function FooterMobile({ socialLinks, helpLinks, logos, logo, handleClickUrl }) {
           </div>
           <div className="flex justify-between w-full cols-2 ">
             <div className="flex flex-col gap-4">
-              <Text className="text-linkColor" weight="bold" size="lg">
+              <Text
+                className="text-linkColor leading-[140%]"
+                weight="bold"
+                size="lg"
+              >
                 social
               </Text>
               <div className="flex gap-4">
@@ -91,7 +103,11 @@ function FooterMobile({ socialLinks, helpLinks, logos, logo, handleClickUrl }) {
           </div>
           <div className="flex justify-between w-full cols-2 ">
             <div className="flex flex-col gap-4">
-              <Text className="text-linkColor" weight="bold" size="lg">
+              <Text
+                className="text-linkColor leading-[140%]"
+                weight="bold"
+                size="lg"
+              >
                 help
               </Text>
               <div className="flex gap-4">
@@ -111,20 +127,22 @@ function FooterMobile({ socialLinks, helpLinks, logos, logo, handleClickUrl }) {
           </div>
         </div>
 
-        <div className="flex items-center gap-3 mt-[60px]">
-          {logos.map((e) => {
-            if (e === "") return;
-            return (
-              <Image
-                src={e}
-                width={60}
-                alt="FooterPayLogos"
-                height={60}
-                key={crypto.randomUUID()}
-              />
-            );
-          })}
-        </div>
+        {logos[0] !== "" && (
+          <div className="flex items-center gap-3 mt-[60px]">
+            {logos.map((e) => {
+              if (e === "") return;
+              return (
+                <Image
+                  src={e}
+                  width={60}
+                  alt="FooterPayLogos"
+                  height={60}
+                  key={crypto.randomUUID()}
+                />
+              );
+            })}
+          </div>
+        )}
       </div>
     </div>
   );

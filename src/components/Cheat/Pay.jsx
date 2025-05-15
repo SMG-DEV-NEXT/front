@@ -15,6 +15,7 @@ import CheckoutService from "@/services/Checkout";
 //4FGMP!_LK33rugx
 // https://4fa3-46-36-113-139.ngrok-free.app/success
 // DFVTB362HSBG7RFTHDGACURSA4IG72Y2 ngrok
+const emailRegex = /^[a-zA-Zа-яА-ЯёЁ0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const PayModal = ({
   mobile,
   pay,
@@ -106,19 +107,31 @@ const PayModal = ({
   if (mobile) {
     return (
       <div className="flex flex-col gap-4">
-        <Input
-          iconLeft="mail"
-          value={mail}
-          setValue={setMail}
-          label={"email"}
-          styleDiv={{
-            backgroundColor: "#272C33",
-          }}
-          placeholder="example@gmail.com"
-        />
+        <div className="flex flex-col gap-1">
+          <Input
+            iconLeft="mail"
+            label={"email"}
+            value={mail}
+            setValue={setMail}
+            styleDiv={{
+              backgroundColor: "#272C33",
+              height: "46px",
+            }}
+            style={{
+              color: emailRegex.test(mail) && mail ? "#7B8293" : "#CA3A3A",
+            }}
+            placeholder="example@gmail.com"
+          />
+          {!emailRegex.test(mail) && mail && (
+            <Text weight="semi" size="sm" className="text-[#CA3A3A]">
+              mailError
+            </Text>
+          )}
+        </div>
         <CustomSelect
           options={options}
           label={"methodPay"}
+          inputStyles={{ height: "46px" }}
           value={selectedOption}
           setValue={setSelectedOption}
         />
@@ -176,6 +189,7 @@ const PayModal = ({
                   className="text-linkColor line-through whitespace-nowrap "
                 >
                   {pay.pay * count}
+                  {locale === "ru" ? " ₽" : " $"}
                 </Text>
               </div>
             ) : (
@@ -186,12 +200,13 @@ const PayModal = ({
                 className="text-primary10 whitespace-nowrap"
               >
                 {pay.pay * count}
+                {locale === "ru" ? " ₽" : " $"}
               </Text>
             )}
           </div>
           <Button
             T="cheat"
-            className="w-full"
+            className="w-full h-[46px]"
             onClick={handleCheckout}
             disabled={checkoutFunction.isPending}
           >
@@ -203,19 +218,31 @@ const PayModal = ({
   }
   return (
     <div className="flex flex-col gap-4">
-      <Input
-        iconLeft="mail"
-        label={"email"}
-        value={mail}
-        setValue={setMail}
-        styleDiv={{
-          backgroundColor: "#272C33",
-        }}
-        placeholder="example@gmail.com"
-      />
+      <div className="flex flex-col gap-1">
+        <Input
+          iconLeft="mail"
+          label={"email"}
+          value={mail}
+          setValue={setMail}
+          styleDiv={{
+            backgroundColor: "#272C33",
+            height: "46px",
+          }}
+          style={{
+            color: emailRegex.test(mail) && mail ? "#7B8293" : "#CA3A3A",
+          }}
+          placeholder="example@gmail.com"
+        />
+        {!emailRegex.test(mail) && mail && (
+          <Text weight="semi" size="sm" className="text-[#CA3A3A]">
+            mailError
+          </Text>
+        )}
+      </div>
       <CustomSelect
         options={options}
         label={"methodPay"}
+        inputStyles={{ height: "46px" }}
         value={selectedOption}
         setValue={setSelectedOption}
       />
@@ -273,6 +300,7 @@ const PayModal = ({
                 className="text-linkColor line-through whitespace-nowrap"
               >
                 {pay.pay * count}
+                {locale === "ru" ? "₽" : "$"}
               </Text>
             </div>
           ) : (
@@ -283,12 +311,13 @@ const PayModal = ({
               className="text-primary10 whitespace-nowrap"
             >
               {pay.pay * count}
+              {locale === "ru" ? "₽" : "$"}
             </Text>
           )}
         </div>
         <Button
           T="cheat"
-          className="w-full"
+          className="w-full "
           onClick={handleCheckout}
           disabled={checkoutFunction.isPending}
         >

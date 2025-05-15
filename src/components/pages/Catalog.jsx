@@ -8,9 +8,11 @@ import Pagination from "../pagination";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import CatalogService from "@/services/Catalog";
 import Loading from "@/app/loading";
+import { useMobile } from "@/hooks/useMobile";
 
 function View() {
   const [search, setSearch] = useState("");
+  const isMobile = useMobile();
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const [catalogData, setCatalogData] = useState({
     data: [],
@@ -84,13 +86,19 @@ function View() {
       /> */}
 
       <div className="container flex flex-col items-center gap-6 z-[1]">
-        <Text T="catalog" className="text-primary10" weight="bold" size="t48">
+        <Text
+          T="catalog"
+          className="text-primary10 leading-[120%]"
+          weight="bold"
+          size="t48"
+        >
           gameCatalog
         </Text>
         <Text
           T="catalog"
-          className="text-linkColor w-[35%] text-center"
+          className="text-linkColor  text-center"
           weight="medium"
+          style={{ width: isMobile ? "70%" : "35%" }}
           size="sm"
         >
           catalogText
@@ -100,6 +108,7 @@ function View() {
           value={search}
           onChange={handleSearchChange}
           iconLeft="searchNew"
+          placeholder="Введите название товара"
           styleDiv={{ padding: "20px" }}
         />
 
@@ -111,7 +120,13 @@ function View() {
                   empty
                 </Text>
               ) : (
-                catalogData.data.map((item) => <Card key={item.id} {...item} />)
+                catalogData.data.map((item) => (
+                  <Card
+                    key={item.id}
+                    {...item}
+                    imageWidth={isMobile ? "350" : "264"}
+                  />
+                ))
               )}
             </div>
             {catalogData.total > 1 && (

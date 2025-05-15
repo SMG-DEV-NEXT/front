@@ -27,7 +27,12 @@ function Article({
           <Text T="none" weight="medium" className="text-linkColor" size="sm">
             {data}
           </Text>
-          <Text T="none" weight="bold" className="text-primary10" size="lg">
+          <Text
+            T="none"
+            weight="bold"
+            className="text-primary10 leading-[140%]"
+            size="xl"
+          >
             {title}
           </Text>
         </div>

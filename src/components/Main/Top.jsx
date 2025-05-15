@@ -24,16 +24,7 @@ function MainTop({ data }) {
     };
   });
   return (
-    <div className="flex w-full relative  pb-[200px] bg-mainBlack overflow-hidden ">
-      <div className="absolute flex justify-end items-top top-[-10%] z-[2] right-[-10%] h-full opacity-[1] w-full">
-        <Axyus />
-      </div>
-      <div className="absolute top-[2] z-[0] left-[0] h-full">
-        <LeftIcon />
-      </div>
-      <div className="absolute top-[-10%] z-[2] right-[0%] h-full">
-        <RightIcon />
-      </div>
+    <div className="flex w-full relative  pb-[164px]  overflow-hidden ">
       <div className="container z-[2] pt-[64px] z-[12]">
         <div className="flex items-center justify-between z-[12]">
           <Effect type="to-right" className="w-[38%] z-[12]">
@@ -60,7 +51,7 @@ function MainTop({ data }) {
                   leftIcon="ps"
                   iconSize={20}
                   onClick={() => router.push(`/${locale}/catalog`)}
-                  className="py-[10px] px-[32px]"
+                  className="py-[10px] px-[32px] mt-2"
                   style={{
                     boxShadow: "0px 19px 59.1px rgba(139, 109, 202, 0.25)",
                   }}
@@ -78,7 +69,7 @@ function MainTop({ data }) {
               T="Main"
               weight="bold"
               size="xl"
-              className="text-primary10 z-[11]"
+              className="text-primary10 leading-[140%] z-[11]"
             >
               popular
             </Text>

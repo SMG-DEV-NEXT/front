@@ -143,11 +143,11 @@ export const RightIcon = (props) => (
   </svg>
 );
 
-export const Axyus = () => {
+export const Axyus = ({ wid = 1440 }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={1440}
+      width={wid}
       height={748}
       fill="none"
     >

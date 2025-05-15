@@ -80,7 +80,7 @@ const Stat = ({ createdAt, view, mobile, Image1, ...params }) => {
         objectFit="cover"
         className="h-[184px] object-cover"
       />
-      <div className="flex p-6 flex-col w-full gap-6 bg-black">
+      <div className="flex p-6 flex-col justify-between w-full gap-6 bg-black">
         <div className="flex flex-col gap-2">
           <Text
             T="none"
@@ -161,7 +161,7 @@ const RightStats = ({ mobile, game, handleChangePage, selectedFilterDate }) => {
         weight="bold"
         T="none"
         size="xl"
-        className="text-primary10 text-start w-full"
+        className="text-primary10 text-start w-full leading-[140%]"
       >
         {game.game.title}
       </Text>

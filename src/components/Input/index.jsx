@@ -34,6 +34,7 @@ const Input = ({
       console.error("Ошибка при копировании:", err);
     }
   };
+
   return (
     <div className="flex flex-col w-full gap-3">
       {label && (

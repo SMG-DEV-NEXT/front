@@ -8,10 +8,10 @@ import TwoFactorInput from "../TwoFactorInput";
 function Forget2FA({ code, setCode, onApply, isMobile }) {
   if (isMobile) {
     return (
-      <div className="flex flex-col gap-6 z-[1] min-w-[350px]">
+      <div className="flex flex-col gap-6 z-[1] min-w-[302px] w-[302px]">
         <Text
           T="login"
-          className="text-primary10 text-center"
+          className="text-primary10 text-center leading-[120%]"
           size="2xl"
           weight="bold"
         >
@@ -27,7 +27,7 @@ function Forget2FA({ code, setCode, onApply, isMobile }) {
             />
           </div>
 
-          <Button T="login" className="w-full">
+          <Button T="login" className="w-full h-[46px]">
             reset
           </Button>
         </div>
@@ -46,7 +46,12 @@ function Forget2FA({ code, setCode, onApply, isMobile }) {
         className="z-[0]"
       /> */}
       <div className="flex flex-col gap-6 z-[1]">
-        <Text T="login" className="text-primary10" size="t48" weight="bold">
+        <Text
+          T="login"
+          className="text-primary10 leading-[120%]"
+          size="t48"
+          weight="bold"
+        >
           reset
         </Text>
         <div className="flex flex-col bg-input p-6 gap-6 rounded-2xl">
@@ -59,7 +64,7 @@ function Forget2FA({ code, setCode, onApply, isMobile }) {
             />
           </div>
 
-          <Button T="login" className="w-full">
+          <Button T="login" className="w-full h-[46px]">
             reset
           </Button>
         </div>

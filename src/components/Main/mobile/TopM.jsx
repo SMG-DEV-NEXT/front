@@ -16,17 +16,8 @@ function MainTopMobile() {
   const router = useRouter();
   const locale = useLocale();
   return (
-    <div className="flex w-full relative flex-col  pb-[250px] bg-mainBlack overflow-hidden">
-      <div className="absolute top-[2] z-[3] left-[0] h-full">
-        <LeftIcon />
-      </div>
-      <div className="absolute top-[-15%] z-[2] right-[0] h-full opacity-[1]">
-        <Axyus />
-      </div>
-      <div className="absolute top-[-40%] z-[3] left-[-60%] ">
-        <HugeGlow />
-      </div>
-      <div className="container z-[2] pt-[64px]">
+    <div className="flex w-full relative flex-col  z-[5]    overflow-hidden">
+      <div className="container z-[2] pt-[80px]">
         <div className="flex flex-col items-center justify-between">
           <Effect type="to-right" className="w-full">
             <div className="flex  flex-col w-full gap-6">
@@ -48,7 +39,7 @@ function MainTopMobile() {
                     leftIcon="ps"
                     iconSize={20}
                     onClick={() => router.push(`/${locale}/catalog`)}
-                    className="py-[10px] px-[32px] w-full"
+                    className="py-[10px] px-[32px] w-full mt-2"
                     style={{
                       boxShadow: "0px 19px 59.1px rgba(139, 109, 202, 0.25)",
                     }}

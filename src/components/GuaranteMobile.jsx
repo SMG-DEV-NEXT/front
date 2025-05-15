@@ -5,6 +5,13 @@ import Image from "next/image";
 import Icon from "../components/Icons";
 import Effect from "../components/Animations/Effect";
 export const dynamic = "force-dynamic";
+import {
+  BlokIcon,
+  Blok2Icon,
+  Blok3Icon,
+  LightIcon,
+  LightMobileIcon,
+} from "@/components/Icons/guarante";
 
 const GuaranteView = ({ guarante = {}, locale }) => {
   return (
@@ -24,12 +31,19 @@ const GuaranteView = ({ guarante = {}, locale }) => {
       <div className="flex flex-col z-[1] gap-[40px] pt-[60px] w-full">
         <div className="container">
           <div className="flex flex-col gap-[40px] items-center">
-            <Text weight="bold" size="t40" className="text-primary10">
+            <Text
+              weight="bold"
+              size="t40"
+              className="text-primary10 leading-[120%]"
+            >
               garant
             </Text>
             <div className="flex flex-col gap-6 w-full">
               <Effect type="to-left" className="w-full flex flex-col gap-5">
-                <div className="w-full h-[344px] relative p-6 rounded-2xl bg-[url('/images/document1.png')] bg-no-repeat bg-center bg-cover">
+                <div className="w-full h-[344px] relative p-6 rounded-2xl bg-input overflow-hidden bg-no-repeat bg-center bg-cover">
+                  <div className="absolute right-[-1px] top-[-1px]">
+                    <BlokIcon />
+                  </div>
                   <div className="flex flex-col  gap-6 z-[4] relative">
                     {guarante?.logo1 ? (
                       <Image
@@ -45,7 +59,7 @@ const GuaranteView = ({ guarante = {}, locale }) => {
                     <div className="flex flex-col  gap-2">
                       <Text
                         T={guarante.block1 ? "none" : "guarant"}
-                        className="text-primary10"
+                        className="text-primary10 leading-[140%]"
                         weight="bold"
                         size="xl"
                       >
@@ -66,7 +80,10 @@ const GuaranteView = ({ guarante = {}, locale }) => {
                     </div>
                   </div>
                 </div>
-                <div className="w-full h-[344px] relative p-6 rounded-2xl bg-[url('/images/document1.png')] bg-no-repeat bg-center bg-cover">
+                <div className="w-full h-[344px] relative p-6 rounded-2xl bg-input overflow-hidden bg-no-repeat bg-center bg-cover">
+                  <div className="absolute right-[-1px] top-[-1px]">
+                    <Blok2Icon />
+                  </div>
                   <div className="flex flex-col  gap-6 z-[4] relative">
                     {guarante?.logo2 ? (
                       <Image
@@ -82,7 +99,7 @@ const GuaranteView = ({ guarante = {}, locale }) => {
                     <div className="flex flex-col  gap-2">
                       <Text
                         T={guarante.block2 ? "none" : "guarant"}
-                        className="text-primary10"
+                        className="text-primary10 leading-[140%]"
                         weight="bold"
                         size="xl"
                       >
@@ -103,7 +120,10 @@ const GuaranteView = ({ guarante = {}, locale }) => {
                     </div>
                   </div>
                 </div>
-                <div className="w-full h-[344px] relative p-6 rounded-2xl bg-[url('/images/document1.png')] bg-no-repeat bg-center bg-cover">
+                <div className="w-full h-[344px] relative p-6 rounded-2xl bg-input overflow-hidden bg-no-repeat bg-center bg-cover">
+                  <div className="absolute right-[-1px] top-[-1px]">
+                    <Blok3Icon />
+                  </div>
                   <div className="flex flex-col  gap-6 z-[4] relative">
                     {guarante?.logo3 ? (
                       <Image
@@ -119,7 +139,7 @@ const GuaranteView = ({ guarante = {}, locale }) => {
                     <div className="flex flex-col  gap-2">
                       <Text
                         T={guarante.block3 ? "none" : "guarant"}
-                        className="text-primary10"
+                        className="text-primary10 leading-[140%]"
                         weight="bold"
                         size="xl"
                       >
@@ -145,7 +165,12 @@ const GuaranteView = ({ guarante = {}, locale }) => {
           </div>
         </div>
         <div className="flex bg-input relative flex-col">
-          <div className="relative w-full min-h-[80vh]  bg-[url('/images/guaranteM.png')] bg-no-repeat bg-center bg-cover"></div>
+          <div className="absolute left-0 right-0">
+            <LightMobileIcon />
+          </div>
+          <div className="relative w-full min-h-[30vh]  bg-no-repeat bg-center bg-cover">
+            <Image src={"/images/guaranteBg2.png"} objectFit="contain" fill />
+          </div>
           <div className="container relative z-[2] ">
             <div className="flex flex-col py-[64px] mt-[-200px] gap-[24px]">
               <Effect type="to-right">

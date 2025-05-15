@@ -2,8 +2,50 @@
 import React from "react";
 import Icon from "../Icons";
 import Text from "../Text";
-import Image from "next/image";
 import Effect from "../Animations/Effect";
+
+export const StartsIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={510}
+      height={510}
+      viewBox="0 0 510 510"
+      fill="none"
+      className="z-1"
+      style={{ overflow: "visible" }}
+    >
+      <g filter="url(#a32)">
+        <circle cx="50%" cy="50%" r="118" fill="#8B6DCA" fillOpacity="0.6" />
+      </g>
+      <g filter="url(#b32)" style={{ mixBlendMode: "overlay" }}>
+        <circle cx="50%" cy="50%" r="118" fill="#D5C2FC" fillOpacity="0.4" />
+      </g>
+      <defs>
+        <filter
+          id="a32"
+          x="-150%"
+          y="-150%"
+          width="400%"
+          height="400%"
+          filterUnits="userSpaceOnUse"
+        >
+          <feGaussianBlur stdDeviation="80" />
+        </filter>
+        <filter
+          id="b32"
+          x="-150%"
+          y="-150%"
+          width="400%"
+          height="400%"
+          filterUnits="userSpaceOnUse"
+        >
+          <feGaussianBlur stdDeviation="80" />
+        </filter>
+      </defs>
+    </svg>
+  );
+};
 
 const EasyUseBlock = () => {
   return (
@@ -23,7 +65,12 @@ const EasyUseBlock = () => {
           </Text>
         </div>
         <div className="flex flex-col gap-2 w-[80%]">
-          <Text T="Main" weight="bold" size="lg" className="text-primary10">
+          <Text
+            T="Main"
+            weight="bold"
+            size="lg"
+            className="text-primary10 leading-[20px]"
+          >
             same
           </Text>
           <Text T="Main" className="text-linkColor" weight="medium" size="sm">
@@ -46,7 +93,12 @@ const Choose = () => {
       /> */}
       <div className="absolute bottom-[24px]">
         <div className="flex flex-col px-6 gap-2">
-          <Text T="Main" weight="bold" size="lg" className="text-primary10">
+          <Text
+            T="Main"
+            weight="bold"
+            size="lg"
+            className="text-primary10 leading-[20px]"
+          >
             choose
           </Text>
           <Text T="Main" className="text-linkColor" weight="medium" size="sm">
@@ -60,18 +112,17 @@ const Choose = () => {
 
 const Starts = () => {
   return (
-    <div className="p-6 flex flex-col gap-2 rounded-2xl bg-input relative overflow-hidden">
-      <Image
-        src="/images/lights/light1.png"
-        fill
-        alt="light"
-        className="z-[1]"
-        style={{
-          opacity: 0.7,
-        }}
-      />
-      <div className="flex items-center gap-[6px] z-[2]">
-        <Text T="Main" className="text-primary10" size="xl" weight="bold">
+    <div className="p-6 flex flex-col  gap-2 rounded-2xl bg-input relative overflow-hidden">
+      <div className="absolute top-[-250%] left-0 right-0">
+        <StartsIcon />
+      </div>
+      <div className="flex items-center gap-[6px] z-[3]">
+        <Text
+          T="Main"
+          className="text-primary10 leading-[20px] z-[3]"
+          size="lg"
+          weight="bold"
+        >
           starts
         </Text>
         <Icon name="stars" size={124} />
@@ -85,7 +136,7 @@ const Starts = () => {
 
 function Blocks() {
   return (
-    <div className="relative flex pb-[164px] bg-mainBlack">
+    <div className="relative flex pb-[164px] z-[10]">
       <div className="absolute bottom-[-14%] left-[0]">
         <Icon name="frame301" className="w-full h-full" />
       </div>

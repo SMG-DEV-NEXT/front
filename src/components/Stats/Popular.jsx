@@ -42,7 +42,12 @@ const PopularStats = ({ popular }) => {
   };
   return (
     <div className="flex bg-input rounded-[16px] gap-[22px] flex-col p-6">
-      <Text T="stats" weight="bold" size="xl" className="text-primary10">
+      <Text
+        T="stats"
+        weight="bold"
+        size="xl"
+        className="text-primary10 leading-[140%]"
+      >
         popular
       </Text>
       {popular.map((e) => {
@@ -52,7 +57,12 @@ const PopularStats = ({ popular }) => {
             key={e.id}
             onClick={() => openStat(e.id)}
           >
-            <Text T="none" weight="semi" size="lg" className="text-primary10">
+            <Text
+              T="none"
+              weight="semi"
+              size="lg"
+              className="text-primary10 leading-[120%]"
+            >
               {e[`title${locale}`]}
             </Text>
             <div className="flex gap-4 items-center">

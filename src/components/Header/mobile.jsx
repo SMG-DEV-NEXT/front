@@ -26,8 +26,21 @@ import { MainSettings } from "@/script/main";
 const LANGUAGE_ITEMS = [
   { key: "ru", label: "russian" },
   { key: "en", label: "english" },
-  { key: "zh", label: "Chine" },
 ];
+
+const MenuIcon = () => {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={19} height={19} fill="none">
+      <path
+        stroke="#7B8293"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+        d="M3.167 2.375h12.666M3.167 7.125h12.666m-12.666 4.75h12.666m-12.666 4.75h12.666"
+      />
+    </svg>
+  );
+};
 
 export default function HeaderMobile() {
   const t = useTranslations("Index");
@@ -94,23 +107,20 @@ export default function HeaderMobile() {
           ))}
         </div>
       </div>
-      <div className="container flex items-center justify-between py-3 header">
+      <div className="container flex items-center justify-between py-4 header">
         <div className="flex items-center gap-6">
           <div
             className="flex flex-col gap-1 cursor-pointer ml-2"
             onClick={() => setIsOpenBar(true)}
           >
-            <div className="w-[19px] rounded-full h-[1.5px] bg-linkColor"></div>
-            <div className="w-[19px] rounded-full h-[1.5px] bg-linkColor "></div>
-            <div className="w-[19px] rounded-full h-[1.5px] bg-linkColor "></div>
-            <div className="w-[19px] rounded-full h-[1.5px] bg-linkColor "></div>
+            <MenuIcon />
           </div>
           <CustomLink url="">
             <Image
               src={HeaderSettings.header.logo || "/images/logo.png"}
               alt="logo"
-              width={46}
-              height={41}
+              width={43}
+              height={48}
             />
           </CustomLink>
         </div>
@@ -148,7 +158,7 @@ export default function HeaderMobile() {
         </Modal>
         <Modal
           isOpen={isOpenForgetPasswordModal}
-          customTop={140}
+          customTop={"50%"}
           onClose={() => setIsOpenForgetPasswordModal(false)}
         >
           <Forget

@@ -51,11 +51,17 @@ const MiddleComponent = ({ children }) => {
     queryKey: ["settings"],
     queryFn: SettingsService.getAllSettings,
     refetchOnWindowFocus: false,
+    suspense: true,
+    staleTime: 1000 * 60 * 5, // data stays fresh for 5 mins
+    cacheTime: 1000 * 60 * 30, // unused data lives for 30 mins
   });
   const { data: contacts, isPending: isLoadingContacts } = useQuery({
     queryKey: ["contacts"],
     queryFn: ContactsService.getAllContacts,
     refetchOnWindowFocus: false,
+    suspense: true,
+    staleTime: 1000 * 60 * 5, // data stays fresh for 5 mins
+    cacheTime: 1000 * 60 * 30, // unused data lives for 30 mins
   });
   // if (!token && path.includes("admin")) {
   //   console.log(2);
@@ -87,13 +93,13 @@ const MiddleComponent = ({ children }) => {
   // if (data && data.data && data.data.isAdmin && !path.includes("admin")) {
   //   redirect(`/${locale}/admin/dashboard`);
   // }
-  if ((isPending && !!token) || isLoading || isLoadingContacts) {
-    return (
-      <div className="flex w-full h-[100vh] bg-input items-center justify-center">
-        <Icon name="logo" size={50} />
-      </div>
-    );
-  }
+  // if ((isPending && !!token) || isLoading || isLoadingContacts) {
+  //   return (
+  //     <div className="flex w-full h-[100vh] bg-input items-center justify-center">
+  //       <Icon name="logo" size={50} />
+  //     </div>
+  //   );
+  // }
   if (path.includes("admin")) {
     return (
       <>
@@ -131,9 +137,8 @@ const MiddleComponent = ({ children }) => {
       >
         <Top />
         <Header />
-        <Suspense fallback={<Loading />}>
-          <section className="content relative bg-mainBlack">
-            <Image
+        <section className="content relative bg-mainBlack">
+          {/* <Image
               src="/images/loginBg.png"
               style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
               quality={100}
@@ -141,10 +146,11 @@ const MiddleComponent = ({ children }) => {
               fill
               alt="Image"
               className="z-[0] w-full h-full"
-            />{" "}
-            {children}
-          </section>
-        </Suspense>
+            />{" "} */}
+          <div className="fixed inset-0 bg-login bg-cover bg-top " />
+
+          {children}
+        </section>
         <Footer />
         <ToastContainer
           position="top-right"

@@ -35,7 +35,7 @@ const LeftStats = ({
             T="stats"
             weight="bold"
             size="xl"
-            className="text-primary10 p-6"
+            className="text-primary10 p-6 leading-[140%]"
           >
             catalog
           </Text>
@@ -46,6 +46,7 @@ const LeftStats = ({
                 minWidth: "min-content",
                 whiteSpace: "nowrap",
                 width: "100%",
+                height: "46px",
               }}
               placeholderColor="#7B8293"
               menuStyles={{
@@ -65,7 +66,12 @@ const LeftStats = ({
   return (
     <div className="flex w-[30%] flex-col gap-6">
       <div className="flex bg-input rounded-[16px] flex-col">
-        <Text T="stats" weight="bold" size="xl" className="text-primary10 p-6">
+        <Text
+          T="stats"
+          weight="bold"
+          size="xl"
+          className="text-primary10 p-6 -[140%]"
+        >
           catalog
         </Text>
         <div className="flex flex-col gap-4 pb-4">
@@ -83,7 +89,11 @@ const LeftStats = ({
                     ></div>
                   )}
                   <Text
-                    className="text-linkColor max-w-[150px] truncate block"
+                    className={`text-${
+                      e.id === selectedGame?.game?.id
+                        ? "primary80"
+                        : "linkColor"
+                    } max-w-[150px] truncate block`}
                     T="none"
                     weight="medium"
                     size="sm"
@@ -91,8 +101,20 @@ const LeftStats = ({
                     {e.title}
                   </Text>
                   <Text
-                    className="text-linkColor w-[32px] h-[20px] rounded-[6px] bg-[#272A30] flex items-center justify-center"
+                    className={`text-${
+                      e.id === selectedGame?.game?.id
+                        ? "primary80"
+                        : "linkColor"
+                    } w-[32px] h-[20px] rounded-[6px] bg-[${
+                      e.id === selectedGame?.game?.id ? "#8B6DCA" : "#7B8293"
+                    }] flex items-center justify-center`}
                     T="none"
+                    style={{
+                      backgroundColor:
+                        e.id === selectedGame?.game?.id
+                          ? "rgba(139, 109, 202, 0.15)"
+                          : "rgba(123, 130, 147, 0.15)",
+                    }}
                     weight="medium"
                     size="sm"
                   >
@@ -100,7 +122,7 @@ const LeftStats = ({
                   </Text>
                 </div>
                 {i + 1 !== games.length && (
-                  <div className="w-full bg-[#404658] h-[2px]"></div>
+                  <div className="w-full bg-[#404658] h-[1px]"></div>
                 )}
               </div>
             );

@@ -109,8 +109,8 @@ const CardAndPay = ({ mobile, cheat }) => {
   return (
     <div className="flex gap-6 items-start">
       <div
-        className="flex flex-col w-[70%] gap-8"
-        style={{ width: !isHidedPayment ? "100%" : "70%" }}
+        className="flex flex-col w-[68%] gap-8"
+        style={{ width: !isHidedPayment ? "100%" : "68%" }}
       >
         <RouteCheat
           catalogName={cheat.catalog[`head${getLanguage(locale)}`]}

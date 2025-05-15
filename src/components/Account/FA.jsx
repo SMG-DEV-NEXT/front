@@ -42,7 +42,7 @@ const FA = () => {
           </div>
           <div className="flex flex-col gap-2">
             <Text
-              className="text-primary10"
+              className="text-primary10 leading-[140%]"
               weight="bold"
               size="xl"
               T="account"
@@ -67,7 +67,7 @@ const FA = () => {
           </div>
           <div className="flex flex-col gap-2">
             <Text
-              className="text-primary10"
+              className="text-primary10 leading-[140%]"
               weight="bold"
               size="xl"
               T="account"
@@ -86,6 +86,7 @@ const FA = () => {
         </div>
         <Button
           T="account"
+          className="h-[46px]"
           onClick={() => mutation.mutate()}
           disabled={mutation.isPending}
         >
@@ -103,7 +104,12 @@ const FA = () => {
           </Text>
         </div>
         <div className="flex flex-col gap-2">
-          <Text className="text-primary10" weight="bold" size="xl" T="account">
+          <Text
+            className="text-primary10 leading-[140%]"
+            weight="bold"
+            size="xl"
+            T="account"
+          >
             FA1title
           </Text>
           <Text
@@ -123,7 +129,12 @@ const FA = () => {
           </Text>
         </div>
         <div className="flex flex-col gap-2">
-          <Text className="text-primary10" weight="bold" size="xl" T="account">
+          <Text
+            className="text-primary10 leading-[140%]"
+            weight="bold"
+            size="xl"
+            T="account"
+          >
             FA2title
           </Text>
           <Text

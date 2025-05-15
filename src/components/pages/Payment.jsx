@@ -18,7 +18,11 @@ const PaymentView = () => {
       /> */}
       <div className="container z-[1]">
         <div className="flex flex-col gap-6  bg-input rounded-[16px] p-6">
-          <Text className="text-primary10" weight="bold" size="t48">
+          <Text
+            className="text-primary10 leading-[120%]"
+            weight="bold"
+            size="t48"
+          >
             Pay
           </Text>
           <Text className="text-linkColor" weight="medium" size="sm">

@@ -150,7 +150,7 @@ function StatView() {
                   </Text>
                 </div>
                 <Text
-                  className="text-primary10 text-[32px]"
+                  className="text-primary10 !text-[32px] leading-[120%]"
                   weight="bold"
                   size=""
                   T="none"
@@ -168,7 +168,7 @@ function StatView() {
               </div>
               <div className="flex flex-col w-full gap-4">
                 <Text
-                  className="text-primary10 text-[32px]"
+                  className="text-primary10 !text-[32px] leading-[120%]"
                   weight="bold"
                   size=""
                   T="none"
@@ -199,7 +199,12 @@ function StatView() {
             className="flex flex-col gap-6 p-6 bg-input rounded-[16px] w-[23.5%]"
             style={{ width: isMobile ? "100%" : "23.5%" }}
           >
-            <Text weight="bold" size="xl" T="stats" className="text-primary10">
+            <Text
+              weight="bold"
+              size="xl"
+              T="stats"
+              className="text-primary10 leading-[140%]"
+            >
               intersting
             </Text>
             {stat?.popular.map((e) => {

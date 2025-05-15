@@ -69,7 +69,12 @@ const AccountTab = ({ selectedTab, setSelectedTab, mobile }) => {
             />
           </div>
           <div className="flex flex-col gap-2">
-            <Text T="none" weight="bold" size="lg" className="text-primary10">
+            <Text
+              T="none"
+              weight="bold"
+              size="xl"
+              className="text-primary10 leading-[140%]"
+            >
               {user.name}
             </Text>
             <div className="py-2 px-3 bg-black text-center rounded-[8px]">
@@ -170,7 +175,12 @@ const AccountTab = ({ selectedTab, setSelectedTab, mobile }) => {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <Text T="none" weight="bold" size="lg" className="text-primary10">
+          <Text
+            T="none"
+            weight="bold"
+            size="xl"
+            className="text-primary10 leading-[140%] "
+          >
             {user.name}
           </Text>
           <div className="py-2 px-3 bg-black text-center rounded-[8px]">
@@ -178,7 +188,7 @@ const AccountTab = ({ selectedTab, setSelectedTab, mobile }) => {
               T="account"
               weight="medium"
               size="sm"
-              className="text-primary10"
+              className=" text-linkColor"
             >
               user
             </Text>

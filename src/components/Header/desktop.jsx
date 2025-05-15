@@ -23,7 +23,6 @@ import { useSettings } from "@/context/Middle";
 const LANGUAGE_ITEMS = [
   { key: "ru", label: "russian" },
   { key: "en", label: "english" },
-  { key: "zh", label: "Chine" },
 ];
 
 export default function Header() {
@@ -62,15 +61,16 @@ export default function Header() {
             <Image
               src={HeaderSettings.header.logo || "/images/logo.png"}
               alt="logo"
-              width={46}
-              height={41}
+              width={43}
+              objectFit="contain"
+              height={48}
             />
           </CustomLink>
           {HeaderSettings.header.routes.map((key) => (
             <CustomLink
               key={key}
               url={`/${key}`}
-              className="text-linkColor text-sm"
+              className="text-linkColor text-sm leading-[140%] font-medium"
             >
               {t(key)}
             </CustomLink>
@@ -80,9 +80,9 @@ export default function Header() {
           {/* Language Switcher */}
           <Dropdown>
             <DropdownTrigger className="z-[0]">
-              <div className="flex language-picker cursor-pointer items-center gap-2 pr-6">
+              <div className="flex language-picker cursor-pointer items-center gap-2 ">
                 <Icon name="Language" />
-                <Text className="text-linkColor text-sm">
+                <Text className="text-linkColor text-sm font-medium">
                   {language.key.toUpperCase()}
                 </Text>
               </div>

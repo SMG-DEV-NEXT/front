@@ -5,6 +5,7 @@ import Text from "../../Text";
 import Image from "next/image";
 import Effect from "../../Animations/Effect";
 import { RightIcon } from "../i";
+import { StartsIcon } from "../Blocks";
 
 const EasyUseBlock = () => {
   return (
@@ -23,7 +24,12 @@ const EasyUseBlock = () => {
           </Text>
         </div>
         <div className="flex flex-col gap-2 w-[80%]">
-          <Text T="Main" weight="bold" size="xl" className="text-primary10">
+          <Text
+            T="Main"
+            weight="bold"
+            size="xl"
+            className="text-primary10 leading-[140%]"
+          >
             same
           </Text>
           <Text T="Main" className="text-linkColor" weight="medium" size="sm">
@@ -40,7 +46,12 @@ const Choose = () => {
     <div className="flex relative w-full h-[295px] bg-[url('/images/chooseBG.png')] bg-no-repeat bg-center bg-cover  rounded-2xl">
       <div className="absolute bottom-[24px]">
         <div className="flex flex-col px-6 gap-2">
-          <Text T="Main" weight="bold" size="xl" className="text-primary10">
+          <Text
+            T="Main"
+            weight="bold"
+            size="xl"
+            className="text-primary10 leading-[140%]"
+          >
             choose
           </Text>
           <Text T="Main" className="text-linkColor" weight="medium" size="sm">
@@ -55,17 +66,16 @@ const Choose = () => {
 const Starts = () => {
   return (
     <div className="p-6 flex flex-col gap-2 rounded-2xl bg-input relative h-[144px] overflow-hidden">
-      <Image
-        src="/images/lights/light1.png"
-        fill
-        alt="light"
-        className="z-[1]"
-        style={{
-          opacity: 0.7,
-        }}
-      />
+      <div className="absolute top-[-200%]">
+        <StartsIcon />
+      </div>
       <div className="flex items-center gap-[6px] z-[2]">
-        <Text T="Main" className="text-primary10" size="xl" weight="bold">
+        <Text
+          T="Main"
+          className="text-primary10 leading-[140%]"
+          size="xl"
+          weight="bold"
+        >
           starts
         </Text>
         <Icon name="stars" size={124} />
@@ -79,7 +89,7 @@ const Starts = () => {
 
 function BlocksMobile() {
   return (
-    <div className="relative flex pb-[164px] pt-[10%]  mt-[-40%] z-[3]">
+    <div className="relative flex pb-[80px] z-[5]  pt-[80px]   z-[3]">
       <div className="absolute top-[-20%] z-[2] right-[0%] h-full">
         <RightIcon />
       </div>

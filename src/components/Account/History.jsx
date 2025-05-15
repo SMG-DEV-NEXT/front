@@ -45,7 +45,12 @@ const HistoryAccountItem = ({
               />
             </div>
             <div className="flex flex-col gap-1">
-              <Text className="text-primary10" weight="bold" size="md" T="none">
+              <Text
+                className="text-primary10 leading-[120%]"
+                weight="bold"
+                size="md"
+                T="none"
+              >
                 {cheat[`title${getLanguage(locale)}`]}
               </Text>
               <Text
@@ -67,7 +72,7 @@ const HistoryAccountItem = ({
         <td className="text-center bg-black  w-full  justify-end">
           <div className="flex gap-6 items-center  ">
             <Text
-              className="text-primary10 whitespace-nowrap text-center"
+              className="text-primary10 whitespace-nowrap text-center leading-[120%]"
               weight="semi"
               size="lg"
               T="none"
@@ -127,7 +132,12 @@ const HistoryAccountItemMobile = ({
         </div>
 
         <div className="flex flex-col gap-1 w-full">
-          <Text className="text-primary10" weight="bold" size="md" T="none">
+          <Text
+            className="text-primary10 leading-[120%]"
+            weight="bold"
+            size="md"
+            T="none"
+          >
             {cheat[`title${getLanguage(locale)}`]}
           </Text>
           <Text className="text-linkColor" weight="medium" size="sm" T="none">
@@ -143,7 +153,7 @@ const HistoryAccountItemMobile = ({
           priceTable
         </Text>
         <Text
-          className="text-primary10 text-end"
+          className="text-primary10 text-end leading-[120%]"
           weight="semi"
           size="lg"
           T="none"

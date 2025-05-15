@@ -16,7 +16,12 @@ const FAQTabs = ({ sections, mobile, selectedStat, handleSelectTab }) => {
       {sections.map((e, indexSection) => {
         return (
           <div key={e.id} className="flex flex-col gap-3">
-            <Text T="none" weight="bold" size="xl" className="text-primary10">
+            <Text
+              T="none"
+              weight="bold"
+              size="xl"
+              className="text-primary10 leading-[140%]"
+            >
               {e[`title${locale}`]}
             </Text>
             <div className="flex flex-col">

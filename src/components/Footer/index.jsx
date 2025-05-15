@@ -53,7 +53,7 @@ function Footer() {
       />
     );
   return (
-    <div className="flex bg-input pt-[48px] pb-[64px] mt-auto">
+    <div className="flex bg-input pt-[48px] z-[1] pb-[64px] mt-auto">
       <div className="container flex justify-between">
         <div className="flex h-full justify-between flex-col">
           <div className="flex items-center gap-6">
@@ -73,7 +73,7 @@ function Footer() {
               />
             )}
 
-            <Text size="sm" className="text-linkColor w-[50%]">
+            <Text size="sm" className="text-linkColor w-[50%]" weight="medium">
               secure
             </Text>
           </div>
@@ -84,6 +84,7 @@ function Footer() {
                 <Image
                   src={e}
                   width={60}
+                  objectFit="contain"
                   alt="FooterPayLogos"
                   height={60}
                   key={crypto.randomUUID()}
@@ -94,7 +95,11 @@ function Footer() {
         </div>
         <div className="flex gap-[96px]">
           <div className="flex flex-col gap-4">
-            <Text className="text-linkColor" weight="bold" size="lg">
+            <Text
+              className="text-linkColor leading-[140%]"
+              weight="bold"
+              size="lg"
+            >
               navigation
             </Text>
             {navigateTabs.map((e) => {
@@ -108,7 +113,11 @@ function Footer() {
             })}
           </div>
           <div className="flex flex-col gap-4">
-            <Text className="text-linkColor" weight="bold" size="lg">
+            <Text
+              className="text-linkColor leading-[140%]"
+              weight="bold"
+              size="lg"
+            >
               other
             </Text>
             {otherTabs.map((e) => {
@@ -123,7 +132,11 @@ function Footer() {
           </div>
           <div className="flex justify-between flex-col">
             <div className="flex flex-col gap-4">
-              <Text className="text-linkColor" weight="bold" size="lg">
+              <Text
+                className="text-linkColor leading-[140%]"
+                weight="bold"
+                size="lg"
+              >
                 social
               </Text>
               <div className="flex gap-4">
@@ -144,7 +157,11 @@ function Footer() {
               </div>
             </div>
             <div className="flex flex-col gap-4">
-              <Text className="text-linkColor" weight="bold" size="lg">
+              <Text
+                className="text-linkColor leading-[140%]"
+                weight="bold"
+                size="lg"
+              >
                 help
               </Text>
               <div className="flex gap-4">

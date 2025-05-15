@@ -9,10 +9,10 @@ import CustomLink from "../CustomLink";
 function Forget3({ isMobile, openLogin }) {
   if (isMobile) {
     return (
-      <div className="flex flex-col gap-6 z-[1] w-full min-w-[350px] max-w-[350px] items-center">
+      <div className="flex flex-col gap-6 z-[1] w-full w-[302px] max-w-[302px] items-center">
         <Text
           T="login"
-          className="text-primary10 whitespace-nowrap"
+          className="text-primary10 whitespace-nowrap leading-[120%]"
           size="2xl"
           weight="bold"
         >
@@ -22,14 +22,14 @@ function Forget3({ isMobile, openLogin }) {
           <div className="flex flex-col gap-4 w-full">
             <Text
               T="login"
-              className="text-center text-linkColor"
+              className="text-center text-linkColor "
               weight="medium"
               size="sm"
             >
               goToLogin
             </Text>
           </div>
-          <Button className="w-full" onClick={openLogin}>
+          <Button className="w-full h-[46px" onClick={openLogin}>
             go
           </Button>
         </div>
@@ -50,7 +50,7 @@ function Forget3({ isMobile, openLogin }) {
       <div className="flex flex-col gap-6 z-[1] w-[39%] max-w-[552px] items-center">
         <Text
           T="login"
-          className="text-primary10 whitespace-nowrap"
+          className="text-primary10 whitespace-nowrap leading-[120%]"
           size="t48"
           weight="bold"
         >
@@ -68,7 +68,7 @@ function Forget3({ isMobile, openLogin }) {
             </Text>
           </div>
           <CustomLink url="/login">
-            <Button className="w-full">go</Button>
+            <Button className="w-full h-[46px]">go</Button>
           </CustomLink>
         </div>
       </div>

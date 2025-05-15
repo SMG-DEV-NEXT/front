@@ -83,7 +83,7 @@ function View({ isMobile, goToRegistration, goToForgetPassword, onClose }) {
               />
             </div>
 
-            <Button T="login" className="w-full">
+            <Button T="login" className="w-full h-[46px]">
               login
             </Button>
           </div>
@@ -91,9 +91,14 @@ function View({ isMobile, goToRegistration, goToForgetPassword, onClose }) {
       );
     }
     return (
-      <div className="relative h-full  flex items-center justify-center w-[350px]">
+      <div className="relative h-full  flex items-center justify-center w-[302px]">
         <div className="flex flex-col gap-6 z-[1] w-full max-w-[552px] items-center">
-          <Text T="login" className="text-primary10" size="2xl" weight="bold">
+          <Text
+            T="login"
+            className="text-primary10 leading-[120%]"
+            size="2xl"
+            weight="bold"
+          >
             ourCabinet
           </Text>
           <div className="flex flex-col bg-input  gap-6 rounded-2xl w-full">
@@ -103,7 +108,7 @@ function View({ isMobile, goToRegistration, goToForgetPassword, onClose }) {
                 value={inputs.email}
                 onChange={(e) => handleChangeInput("email", e.target.value)}
                 type="mail"
-                styleDiv={{ backgroundColor: "#272c33" }}
+                styleDiv={{ backgroundColor: "#272c33", height: "46px" }}
                 iconLeft="mail"
                 placeholder="example@gmail.com"
               />
@@ -112,10 +117,10 @@ function View({ isMobile, goToRegistration, goToForgetPassword, onClose }) {
                 label="password"
                 iconLeft="lock"
                 onChange={(e) => handleChangeInput("password", e.target.value)}
-                styleDiv={{ backgroundColor: "#272c33" }}
+                styleDiv={{ backgroundColor: "#272c33", height: "46px" }}
                 type="password"
                 iconRight={true}
-                placeholder="asdasdasd"
+                placeholder="password"
               />
             </div>
             <div className="flex items-center justify-between">
@@ -137,13 +142,13 @@ function View({ isMobile, goToRegistration, goToForgetPassword, onClose }) {
               <Button
                 disabled={mutation.isPending}
                 T="login"
-                className="w-full"
+                className="w-full h-[46px]"
                 onClick={() => mutation.mutate(inputs)}
               >
                 login
               </Button>
               <Button
-                className="w-full"
+                className="w-full h-[46px]"
                 variant="secondary"
                 onClick={goToRegistration}
               >
@@ -168,8 +173,13 @@ function View({ isMobile, goToRegistration, goToForgetPassword, onClose }) {
           alt="Image"
           className="z-[0]"
         /> */}
-        <div className="flex flex-col gap-6 z-[1]">
-          <Text T="login" className="text-primary10" size="t48" weight="bold">
+        <div className="flex flex-col items-center gap-6 z-[1]">
+          <Text
+            T="login"
+            className="text-primary10 leading-[120%]"
+            size="t48"
+            weight="bold"
+          >
             ourCabinet
           </Text>
           <div className="flex flex-col bg-input p-6 gap-6 rounded-2xl">
@@ -182,7 +192,7 @@ function View({ isMobile, goToRegistration, goToForgetPassword, onClose }) {
               />
             </div>
 
-            <Button T="login" className="w-full">
+            <Button T="login" className="w-full h-[46px]">
               login
             </Button>
           </div>
@@ -204,7 +214,7 @@ function View({ isMobile, goToRegistration, goToForgetPassword, onClose }) {
       <div className="flex flex-col gap-6 z-[1] w-[45%] max-w-[570px] items-center">
         <Text
           T="login"
-          className="text-primary10 text-center"
+          className="text-primary10 text-center leading-[120%]"
           size="t48"
           weight="bold"
         >
@@ -217,7 +227,7 @@ function View({ isMobile, goToRegistration, goToForgetPassword, onClose }) {
               value={inputs.email}
               onChange={(e) => handleChangeInput("email", e.target.value)}
               type="mail"
-              styleDiv={{ backgroundColor: "#272c33" }}
+              styleDiv={{ backgroundColor: "#272c33", height: "46px" }}
               iconLeft="mail"
               placeholder="example@gmail.com"
             />
@@ -226,7 +236,7 @@ function View({ isMobile, goToRegistration, goToForgetPassword, onClose }) {
               label="password"
               iconLeft="lock"
               onChange={(e) => handleChangeInput("password", e.target.value)}
-              styleDiv={{ backgroundColor: "#272c33" }}
+              styleDiv={{ backgroundColor: "#272c33", height: "46px" }}
               type="password"
               iconRight={true}
               placeholder="asdasdasd"
@@ -252,13 +262,13 @@ function View({ isMobile, goToRegistration, goToForgetPassword, onClose }) {
             <Button
               disabled={mutation.isPending}
               T="login"
-              className="w-full"
+              className="w-full h-[46px]"
               onClick={() => mutation.mutate(inputs)}
             >
               login
             </Button>
             <CustomLink url="/registration" className="w-full">
-              <Button className="w-full" variant="secondary">
+              <Button className="w-full h-[46px]" variant="secondary">
                 register
               </Button>
             </CustomLink>
