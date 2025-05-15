@@ -57,7 +57,7 @@ const CommentEdit = () => {
         route="comment/edit"
         buttonOnClick={onClickSaveButton}
         isDisabledButton={mutate.isPending}
-        settingsRoute={data.data.user.name}
+        settingsRoute={data?.data?.user?.name}
       />
       <div className="flex flex-col gap-6 mt-6">
         <div className="flex gap-6">
