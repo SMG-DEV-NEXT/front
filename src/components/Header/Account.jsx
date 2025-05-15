@@ -16,10 +16,12 @@ import {
   DropdownTrigger,
 } from "@heroui/dropdown";
 import { useRouter } from "next/navigation";
+import { useMobile } from "@/hooks/useMobile";
 
 const HeaderMyAccount = () => {
   const [isOpen, setIsOpen] = useState(false);
   const user = useSelector((state) => state.auth.user);
+  const isMobile = useMobile();
   const dispatch = useDispatch();
   const router = useRouter();
   const mutate = useMutation({
@@ -132,7 +134,7 @@ const HeaderMyAccount = () => {
                 </div>
                 <div className="flex w-full justify-between">
                   <div className="flex flex-col gap-1">
-                    <CustomLink url="/account#history">
+                    <CustomLink url="/account#history" isMobile={isMobile}>
                       <div className="flex items-center gap-1">
                         <Icon name="buy" folder="account" size={16} />
                         <Text
@@ -145,7 +147,7 @@ const HeaderMyAccount = () => {
                         </Text>
                       </div>
                     </CustomLink>
-                    <CustomLink url="/account#history">
+                    <CustomLink url="/account#history" isMobile={isMobile}>
                       <div className="flex items-center gap-1">
                         <Icon name="comment" folder="account" size={16} />
                         <Text
@@ -160,7 +162,7 @@ const HeaderMyAccount = () => {
                     </CustomLink>
                   </div>
                   <div className="flex flex-col gap-1">
-                    <CustomLink url="/account#default">
+                    <CustomLink url="/account#default" isMobile={isMobile}>
                       <div className="flex items-center gap-1">
                         <Icon name="setting" folder="account" size={16} />
                         <Text
@@ -173,7 +175,7 @@ const HeaderMyAccount = () => {
                         </Text>
                       </div>
                     </CustomLink>
-                    <CustomLink url="/">
+                    <CustomLink url="/" isMobile={isMobile}>
                       <div className="flex items-center gap-1" onClick={logout}>
                         <Icon name="out" folder="account" size={16} />
                         <Text
@@ -278,7 +280,7 @@ const HeaderMyAccount = () => {
             </div>
             <div className="flex w-full justify-between">
               <div className="flex flex-col gap-1">
-                <CustomLink url="/account#history">
+                <CustomLink url="/account#history" isMobile={isMobile}>
                   <div className="flex items-center gap-1">
                     <Icon name="buy" folder="account" size={16} />
                     <Text
@@ -291,7 +293,7 @@ const HeaderMyAccount = () => {
                     </Text>
                   </div>
                 </CustomLink>
-                <CustomLink url="/account#history">
+                <CustomLink url="/account#history" isMobile={isMobile}>
                   <div className="flex items-center gap-1">
                     <Icon name="comment" folder="account" size={16} />
                     <Text
@@ -306,7 +308,7 @@ const HeaderMyAccount = () => {
                 </CustomLink>
               </div>
               <div className="flex flex-col gap-1">
-                <CustomLink url="/account#history">
+                <CustomLink url="/account#history" isMobile={isMobile}>
                   <div className="flex items-center gap-1">
                     <Icon name="setting" folder="account" size={16} />
                     <Text
@@ -319,7 +321,7 @@ const HeaderMyAccount = () => {
                     </Text>
                   </div>
                 </CustomLink>
-                <CustomLink url="/">
+                <CustomLink url="/" isMobile={isMobile}>
                   <div className="flex items-center gap-1" onClick={logout}>
                     <Icon name="out" folder="account" size={16} />
                     <Text
