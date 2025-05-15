@@ -67,7 +67,7 @@ const CheatsMobile = ({
           weight="bold"
           size="t48"
         >
-          {T("title")} {api?.catalog[`head${getLanguage(locale)}`]}
+          {T("title")} {api?.catalog?.[`head${getLanguage(locale)}`]}
         </Text>
         <Input
           iconLeft="searchNew"

@@ -169,7 +169,7 @@ const Cheats = () => {
           weight="bold"
           size="t48"
         >
-          {cheatsT("title")} {api?.catalog[`head${getLanguage(locale)}`]}
+          {cheatsT("title")} {api?.catalog?.[`head${getLanguage(locale)}`]}
         </Text>
         <Input
           iconLeft="searchNew"
