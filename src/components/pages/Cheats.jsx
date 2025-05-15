@@ -51,6 +51,7 @@ const Cheats = () => {
       queryFn: () => CheatsService.getCheats(filters),
       keepPreviousData: true,
       placeholderData: previous,
+      suspense: true,
       retry: false,
       refetchOnWindowFocus: false, // Get last known data
     });
@@ -197,7 +198,7 @@ const Cheats = () => {
                   {filters.type !== typesFilter[2] ? (
                     <div className="border-[2px] rounded-full border-linkColor w-4 h-4"></div>
                   ) : (
-                    <div className="border-[2px] rounded-full border-linkColor w-4 h-4 bg-primary80"></div>
+                    <div className=" rounded-full w-4 h-4 bg-primary80"></div>
                   )}
                   <Text
                     className="text-linkColor leading-[140%]"
@@ -215,7 +216,7 @@ const Cheats = () => {
                   {filters.type !== typesFilter[1] ? (
                     <div className="border-[2px] rounded-full border-linkColor w-4 h-4"></div>
                   ) : (
-                    <div className="border-[2px] rounded-full border-linkColor w-4 h-4 bg-primary80"></div>
+                    <div className=" rounded-full  w-4 h-4 bg-primary80"></div>
                   )}{" "}
                   <Text
                     className="text-linkColor leading-[140%]"
@@ -233,7 +234,7 @@ const Cheats = () => {
                   {filters.type !== typesFilter[0] ? (
                     <div className="border-[2px] rounded-full border-linkColor w-4 h-4"></div>
                   ) : (
-                    <div className="border-[2px] rounded-full border-linkColor w-4 h-4 bg-primary80"></div>
+                    <div className=" rounded-full  w-4 h-4 bg-primary80"></div>
                   )}{" "}
                   <Text
                     className="text-linkColor leading-[140%]"

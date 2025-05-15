@@ -4,6 +4,7 @@ import QueryProvider from "../../QueryProvider";
 import MiddleComponent from "../../context/Middle";
 import Providers from "../../components/Provider";
 import { Suspense } from "react";
+import Loading from "../loading";
 
 export default async function RootLayout({ children, params: paramsPromise }) {
   // ✅ Await params (required in Next.js 15)
@@ -17,7 +18,7 @@ export default async function RootLayout({ children, params: paramsPromise }) {
     <NextIntlClientProvider messages={messages}>
       <Providers>
         <QueryProvider>
-          <Suspense fallback={null}>
+          <Suspense fallback={<Loading />}>
             <MiddleComponent>{children}</MiddleComponent>
           </Suspense>
         </QueryProvider>

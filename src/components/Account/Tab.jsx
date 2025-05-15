@@ -104,9 +104,11 @@ const AccountTab = ({ selectedTab, setSelectedTab, mobile }) => {
                     <div className="absolute right-[0] top-[0] z-[0]">
                       <Icon name="elipse" size={200} folder="cheat" />
                     </div>
-                    <div className="absolute left-[0] bottom-[0%] z-[0]">
-                      <Icon name="elipse2" size={200} folder="cheat" />
-                    </div>
+                    {isActive && (
+                      <div className="absolute left-[0]  z-[0]">
+                        <ActiveLightIcon />
+                      </div>
+                    )}
                     <div
                       className="flex  items-center gap-2  cursor-pointer"
                       key={e.value}

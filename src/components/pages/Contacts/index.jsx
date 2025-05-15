@@ -73,6 +73,7 @@ const ContactsView = () => {
     queryFn: ContactsService.getAllContacts,
     queryKey: ["get"],
     refetchOnWindowFocus: false,
+    suspense: true,
     staleTime: 1000 * 60 * 5, // data stays fresh for 5 mins
     cacheTime: 1000 * 60 * 30, // unused data lives for 30 mins
   });

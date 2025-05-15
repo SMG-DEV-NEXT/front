@@ -2,6 +2,7 @@
 import Main from "@/components/pages/Main";
 import "@/styles/global.scss";
 import { Suspense, useEffect, useState } from "react";
+import Loading from "../loading";
 
 export const dynamic = "force-dynamic";
 export const fetchCache = "force-no-store";
@@ -15,7 +16,7 @@ export default function Home() {
 
   if (!mounted) return null;
   return (
-    <Suspense fallback={null}>
+    <Suspense fallback={<Loading />}>
       <Main />
     </Suspense>
   );

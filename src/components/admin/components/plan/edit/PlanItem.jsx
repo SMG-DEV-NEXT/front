@@ -7,11 +7,11 @@ import React, { useEffect, useState } from "react";
 
 const PlanItem = ({
   format,
-  keys,
+  keys = [],
   onAddKeys,
-  price,
+  price = 0,
   onChangeKeys,
-  prcent,
+  prcent = 0,
   setPrsent,
   exchange,
   onChangePrice,

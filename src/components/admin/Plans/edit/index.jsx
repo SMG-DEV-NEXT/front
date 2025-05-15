@@ -129,33 +129,33 @@ const PlanUpdate = () => {
         />
         <PlanItem
           format="day"
-          keys={plan.day.keys}
+          keys={plan.day?.keys}
           exchange={usd}
-          prcent={plan.day.prcent}
+          prcent={plan.day?.prcent}
           onChangePrice={changePrice}
           onChangeKeys={changeKeys}
           setPrsent={changePrcent}
-          price={plan.day.price}
+          price={plan.day?.price}
         />
         <PlanItem
           format="week"
-          keys={plan.week.keys}
+          keys={plan.week?.keys}
           onChangePrice={changePrice}
           exchange={usd}
-          prcent={plan.week.prcent}
+          prcent={plan.week?.prcent}
           onChangeKeys={changeKeys}
           setPrsent={changePrcent}
-          price={plan.week.price}
+          price={plan.week?.price}
         />
         <PlanItem
           format="month"
-          keys={plan.month.keys}
+          keys={plan.month?.keys}
           exchange={usd}
           onChangePrice={changePrice}
-          prcent={plan.month.prcent}
+          prcent={plan.month?.prcent}
           onChangeKeys={changeKeys}
           setPrsent={changePrcent}
-          price={plan.month.price}
+          price={plan.month?.price}
         />
       </div>
     </AdminContainer>

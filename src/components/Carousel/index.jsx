@@ -1,14 +1,34 @@
 "use client";
 import { useState, useEffect } from "react";
 import Card from "../Main/Card";
+import Freecurrencyapi from "@everapi/freecurrencyapi-js";
+import { useLocale } from "next-intl";
 
 const Carousel = ({ items }) => {
   const itemsPerPage = 2;
   const [mounted, setMounted] = useState(false);
+  const locale = useLocale();
+  const [usd, setUSD] = useState(null);
+  const freecurrencyapi = new Freecurrencyapi(
+    "fca_live_tfZjgKTbQ86JVJJm1yKs75nITIE3sDnyYLQCaFyc"
+  );
 
   useEffect(() => {
     setMounted(true); // This runs only on the client
   }, []);
+
+  useEffect(() => {
+    if (freecurrencyapi && usd === null && locale === "en") {
+      freecurrencyapi
+        .latest({
+          base_currency: "USD",
+          currencies: "RUB",
+        })
+        .then((response) => {
+          setUSD(response.data.RUB);
+        });
+    }
+  }, [freecurrencyapi]);
 
   const totalPages = Math.ceil(items.length / itemsPerPage);
 
@@ -38,7 +58,7 @@ const Carousel = ({ items }) => {
             {items
               .slice(i * itemsPerPage, i * itemsPerPage + itemsPerPage)
               .map((item, j) => (
-                <Card key={j} {...item} />
+                <Card key={j} {...item} usd={usd} />
               ))}
           </div>
         ))}

@@ -12,6 +12,42 @@ import Freecurrencyapi from "@everapi/freecurrencyapi-js";
 import { toastError } from "@/utils/error";
 import { useSelector } from "react-redux";
 
+const ActiveLightIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={245}
+      height={46}
+      viewBox="0 0 245 46"
+      fill="none"
+      style={{ overflow: "visible" }}
+    >
+      <g filter="url(#glow1234)">
+        <circle
+          cx={96.32}
+          cy={122.32}
+          r={74.101}
+          fill="#8B6DCA"
+          transform="rotate(5.036 96.32 122.32)"
+          fillOpacity="0.6"
+        />
+      </g>
+      <defs>
+        <filter
+          id="glow1234"
+          x="-200%"
+          y="-200%"
+          width="500%"
+          height="500%"
+          filterUnits="userSpaceOnUse"
+        >
+          <feGaussianBlur stdDeviation="60" />
+        </filter>
+      </defs>
+    </svg>
+  );
+};
+
 const PayCard = ({ mobile, cheat }) => {
   const plan = cheat.plan;
   const [count, setCount] = useState(1);
@@ -129,8 +165,8 @@ const PayCard = ({ mobile, cheat }) => {
                       </div>
                     )}
                     {isActive && (
-                      <div className="absolute left-[0] bottom-[0%] z-[0]">
-                        <Icon name="elipse2" size={200} folder="cheat" />
+                      <div className="absolute left-[0] bottom-[-10%] z-[0]">
+                        <ActiveLightIcon />
                       </div>
                     )}
                     <div className="flex items-center gap-2 z-[1]">

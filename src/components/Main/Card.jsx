@@ -15,25 +15,10 @@ function Card({
   imageWidth = "264",
   cheats,
   id,
+  usd,
 }) {
-  const [usd, setUSD] = useState(null);
   const locale = useLocale();
-  const freecurrencyapi = new Freecurrencyapi(
-    "fca_live_tfZjgKTbQ86JVJJm1yKs75nITIE3sDnyYLQCaFyc"
-  );
 
-  useEffect(() => {
-    if (freecurrencyapi && usd === null) {
-      freecurrencyapi
-        .latest({
-          base_currency: "USD",
-          currencies: "RUB",
-        })
-        .then((response) => {
-          setUSD(response.data.RUB);
-        });
-    }
-  }, [freecurrencyapi]);
   const getMinimumPrice = () => {
     if (!cheats) return;
     const prices = cheats

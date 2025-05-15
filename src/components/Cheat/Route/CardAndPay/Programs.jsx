@@ -125,7 +125,6 @@ const getWindowOptions = (req, value) => {
 const Programs = ({ mobile, cheat }) => {
   const [isOpen, setIsOpen] = useState(false);
   const req = cheat.requirments[0];
-  console.log(getWindowOptions(req, "window"));
   if (mobile) {
     return (
       <div className="flex flex-col gap-4">
@@ -221,7 +220,6 @@ const Programs = ({ mobile, cheat }) => {
       </div>
     );
   }
-  console.log(items);
   return (
     <div className="flex flex-col mt-[54px] gap-4">
       <Text
@@ -235,7 +233,6 @@ const Programs = ({ mobile, cheat }) => {
       <div className="flex flex-col bg-input rounded-[16px]">
         <div className="grid  grid-cols-3 gap-6 gap-y-6 p-6 ">
           {items.map((e) => {
-            console.log(e.value);
             return (
               <div
                 className="flex  gap-3 items-center"
@@ -278,7 +275,7 @@ const Programs = ({ mobile, cheat }) => {
             <div className="grid  grid-cols-3 gap-6 gap-y-6 p-6 ">
               {getWindowOptions(req, "window").map((e, i) => {
                 return (
-                  <div className="flex  gap-3">
+                  <div className="flex  gap-3" key={crypto.randomUUID()}>
                     <div className="p-3 bg-black rounded-[8px]">
                       <div className="relative">
                         <Icon name={e.icon} folder="products" />

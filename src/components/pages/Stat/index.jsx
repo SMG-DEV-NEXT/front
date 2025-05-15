@@ -67,8 +67,8 @@ function StatView() {
     <div
       className="view relative h-full w-full flex items-center justify-center "
       style={{
-        paddingBottom: isMobile ? "60px" : "64px",
-        paddingTop: isMobile ? "60px" : "112px",
+        paddingBottom: isMobile ? "60px" : "164px",
+        paddingTop: isMobile ? "60px" : "64px",
       }}
     >
       {/* <Image

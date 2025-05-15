@@ -45,7 +45,12 @@ const FAQView = () => {
     setSelectedTab({ ...stat, arrI: indexSection });
   };
 
-  if (isPending || !selectedtab) return <Loading />;
+  if (isPending || !selectedtab)
+    return (
+      <div className="min-h-[900px] flex items-center">
+        <Loading noPage={true} />
+      </div>
+    );
 
   const getStatById = (i) => {
     let stat = null;

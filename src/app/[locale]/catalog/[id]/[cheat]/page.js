@@ -1,21 +1,20 @@
-import React from "react";
+import React, { Suspense } from "react";
 import View from "../../../../../components/pages/Cheat";
 import { axiosWithoutAuth } from "@/api";
+import Loading from "@/app/loading";
 export const dynamic = "force-dynamic";
 export const fetchCache = "force-no-store";
 
 export async function generateMetadata({ params }) {
   try {
-    const { data } = await axiosWithoutAuth.get(
-      `https://your-domain.com/cheats/view/${params.cheat}`
-    );
+    const { data } = await axiosWithoutAuth.get(`/cheats/view/${params.cheat}`);
 
     const l = params.locale === "en" ? "En" : "Ru";
     const meta = data?.[`meta${l}`] ?? "";
     const title = data?.[`metaTitle${l}`] ?? "Cheat Info";
 
     return {
-      title,
+      title: `SMG ${title}`,
       description: meta,
     };
   } catch (error) {
@@ -28,7 +27,11 @@ export async function generateMetadata({ params }) {
 }
 
 const CheatPage = () => {
-  return <View />;
+  return (
+    <Suspense fallback={<Loading noPage={true} />}>
+      <View />
+    </Suspense>
+  );
 };
 
 export default CheatPage;

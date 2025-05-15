@@ -6,6 +6,7 @@ export default function Loading({ noPage }) {
     typeof window !== "undefined"
       ? window?.location?.pathname.includes("admin")
       : false;
+
   if (noPage) {
     return (
       <div className="flex w-full py-10 items-center justify-center">
@@ -21,7 +22,7 @@ export default function Loading({ noPage }) {
     );
   }
   return (
-    <div className="flex w-full h-[100vh] bg-input items-center justify-center">
+    <div className="flex w-full h-[100vh] items-center justify-center">
       <Icon name="logo" size={50} />
     </div>
   );

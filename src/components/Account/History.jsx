@@ -123,7 +123,7 @@ const HistoryAccountItemMobile = ({
         <div className="w-[46px] h-[46px] rounded-[8px] overflow-hidden">
           <Image
             src={cheat.image1}
-            objectFit="contain"
+            objectFit="cover"
             alt="Background"
             className="h-[46px]"
             width={46}

@@ -44,18 +44,18 @@ axiosWithoutAuth.interceptors.response.use(
           toastError(data.message);
         }
       } else if (status === 401) {
-        toast.error("Unauthorized! Please log in.");
+        toastError("Unauthorized! Please log in.");
       } else if (status === 403) {
-        toast.error("Forbidden! You do not have access.");
+        toastError("Forbidden! You do not have access.");
       } else if (status === 404) {
-        toast.error("Resource not found.");
+        toastError("Resource not found.");
       } else if (status === 500) {
-        toast.error("Server error! Please try again later.");
+        toastError("Server error! Please try again later.");
       } else {
-        toast.error("An error occurred.");
+        toastError("An error occurred.");
       }
     } else {
-      toast.error("Network error! Please check your connection.");
+      toastError("Network error! Please check your connection.");
     }
 
     return Promise.reject(error);
@@ -85,18 +85,18 @@ axiosLoggedIn.interceptors.request.use(
           toastError(data.message);
         }
       } else if (status === 401) {
-        toast.error("Unauthorized! Please log in.");
+        toastError("Unauthorized! Please log in.");
       } else if (status === 403) {
-        toast.error("Forbidden! You do not have access.");
+        toastError("Forbidden! You do not have access.");
       } else if (status === 404) {
-        toast.error("Resource not found.");
+        toastError("Resource not found.");
       } else if (status === 500) {
-        toast.error("Server error! Please try again later.");
+        toastError("Server error! Please try again later.");
       } else {
-        toast.error("An error occurred.");
+        toastError("An error occurred.");
       }
     } else {
-      toast.error("Network error! Please check your connection.");
+      toastError("Network error! Please check your connection.");
     }
 
     return Promise.reject(error);
@@ -116,18 +116,18 @@ axiosLoggedIn.interceptors.response.use(
           toastError(data.message);
         }
       } else if (status === 401) {
-        toast.error("Unauthorized! Please log in.");
+        toastError("Unauthorized! Please log in.");
       } else if (status === 403) {
-        toast.error("Forbidden! You do not have access.");
+        toastError("Forbidden! You do not have access.");
       } else if (status === 404) {
-        toast.error("Resource not found.");
+        toastError("Resource not found.");
       } else if (status === 500) {
-        toast.error("Server error! Please try again later.");
+        toastError("Server error! Please try again later.");
       } else {
-        toast.error("An error occurred.");
+        toastError("An error occurred.");
       }
     } else {
-      toast.error("Network error! Please check your connection.");
+      toastError("Network error! Please check your connection.");
     }
     if (error?.status === 401) {
       try {

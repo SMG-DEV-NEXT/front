@@ -11,7 +11,7 @@ export async function generateMetadata({ params }) {
     const meta = res.data?.[`meta${params.locale}`];
 
     return {
-      title: `Stat about ${res.data?.[`title${params.locale}`]}`,
+      title: `SMG ${res.data?.[`title${params.locale}`]}`,
       description: meta,
     };
   } catch (error) {

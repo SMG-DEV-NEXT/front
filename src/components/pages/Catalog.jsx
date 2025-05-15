@@ -9,22 +9,43 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import CatalogService from "@/services/Catalog";
 import Loading from "@/app/loading";
 import { useMobile } from "@/hooks/useMobile";
+import Freecurrencyapi from "@everapi/freecurrencyapi-js";
+import { useLocale } from "next-intl";
 
 function View() {
   const [search, setSearch] = useState("");
+  const locale = useLocale();
   const isMobile = useMobile();
   const [debouncedSearch, setDebouncedSearch] = useState("");
+  const [usd, setUSD] = useState(null);
+  const freecurrencyapi = new Freecurrencyapi(
+    "fca_live_tfZjgKTbQ86JVJJm1yKs75nITIE3sDnyYLQCaFyc"
+  );
   const [catalogData, setCatalogData] = useState({
-    data: [],
+    data: null,
     total: 0,
     page: 1,
   });
+
+  useEffect(() => {
+    if (freecurrencyapi && usd === null && locale === "en") {
+      freecurrencyapi
+        .latest({
+          base_currency: "USD",
+          currencies: "RUB",
+        })
+        .then((response) => {
+          setUSD(response.data.RUB);
+        });
+    }
+  }, [freecurrencyapi]);
 
   // Fetch catalogs initially
   const query = useQuery({
     queryFn: () => CatalogService.getCatalogs({ limit: 16, page: 1 }),
     queryKey: ["get-catalogs"],
     refetchOnWindowFocus: false,
+    suspense: true,
   });
 
   // Mutation to fetch filtered data
@@ -124,6 +145,7 @@ function View() {
                   <Card
                     key={item.id}
                     {...item}
+                    usd={usd}
                     imageWidth={isMobile ? "350" : "264"}
                   />
                 ))

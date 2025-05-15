@@ -73,23 +73,23 @@ const DashboardAdminView = () => {
         <div className="flex gap-6">
           <WeekBlock
             title="checkoutedKeys"
-            txt={data.data.keysSold.total}
+            txt={data.data?.keysSold?.total}
             percent={data.data.keysSold.percentChange}
           />
           <WeekBlock
             title="newUsers"
-            txt={data.data.newUsers.total}
+            txt={data.data?.newUsers?.total}
             percent={data.data.newUsers.percentChange}
           />
           <WeekBlock
             title="amount"
-            txt={`${data.data.sales.total} ₽`}
-            percent={data.data.sales.percentChange}
+            txt={`${data.data?.sales?.total} ₽`}
+            percent={data.data?.sales?.percentChange}
           />
         </div>
         <div className="flex gap-6 items-start">
           <Chart />
-          <TransactionTable data={data.data.keysSold.lastWeek} />
+          <TransactionTable data={data.data?.keysSold.lastWeek} />
         </div>
       </div>
     </AdminContainer>

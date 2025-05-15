@@ -56,7 +56,7 @@ const AdminHeader = () => {
       <div></div>
       <div className="flex items-center gap-4">
         <div
-          className="w-[28px] h-5 rounded-[3px] overflow-hidden"
+          className="w-[28px] h-5 rounded-[3px] overflow-hidden cursor-pointer"
           onClick={handleLanguageChange}
         >
           <Image
@@ -67,7 +67,7 @@ const AdminHeader = () => {
             className="w-[28px] h-5 cursor-pointer"
           />
         </div>
-        <div className="rounded-full p-[2px] border border-primary80">
+        <div className="rounded-full p-[2px] border border-primary80 cursor-pointer">
           <Image
             src={"/images/avatar.png"}
             width={36}

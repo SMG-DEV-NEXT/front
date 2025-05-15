@@ -1,10 +1,14 @@
 "use client";
-import React from "react";
+import React, { Suspense } from "react";
 import View from "../../../components/pages/Catalog";
 export const dynamic = "force-dynamic";
 export const fetchCache = "force-no-store";
 function Catalog() {
-  return <View />;
+  return (
+    <Suspense fallback={null}>
+      <View />
+    </Suspense>
+  );
 }
 
 export default Catalog;
