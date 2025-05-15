@@ -47,9 +47,10 @@ const CommentEdit = () => {
     });
   };
 
-  if (isPending) {
+  if (isPending || !data?.data || !data?.data?.user) {
     return <Loading />;
   }
+
   return (
     <AdminContainer>
       <AdminPageHeader

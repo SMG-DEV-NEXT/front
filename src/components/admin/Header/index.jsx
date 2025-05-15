@@ -5,6 +5,7 @@ import { setAuth } from "@/redux/authSlice";
 import UserService from "@/services/User";
 import { removeAccessToken } from "@/utils/token";
 import { useMutation } from "@tanstack/react-query";
+import { useLocale } from "next-intl";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useMemo, useState } from "react";
@@ -16,6 +17,7 @@ const LANGUAGE_ITEMS = [
 ];
 
 const AdminHeader = () => {
+  const locale = useLocale();
   const pathname = usePathname();
   const router = useRouter();
   const dispatch = useDispatch();
@@ -71,6 +73,7 @@ const AdminHeader = () => {
             width={36}
             alt="avatar"
             height={36}
+            onClick={() => router.push(`/${locale}`)}
             className="w-9 h-9 rounded-full"
           />
         </div>
