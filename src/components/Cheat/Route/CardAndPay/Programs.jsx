@@ -173,7 +173,7 @@ const Programs = ({ mobile, cheat }) => {
           {isOpen && (
             <>
               <div className="w-fill h-[1px] bg-[#404658]"></div>
-              <div className="grid  grid-cols-3 gap-6 gap-y-6 p-6 ">
+              <div className="flex flex-col gap-6 gap-y-6 p-6 ">
                 {getWindowOptions(req, "window").map((e, i) => {
                   return (
                     <div className="flex  gap-3">

@@ -51,7 +51,6 @@ const MiddleComponent = ({ children }) => {
     queryKey: ["settings"],
     queryFn: SettingsService.getAllSettings,
     refetchOnWindowFocus: false,
-    suspense: true,
     staleTime: 1000 * 60 * 5, // data stays fresh for 5 mins
     cacheTime: 1000 * 60 * 30, // unused data lives for 30 mins
   });
@@ -59,7 +58,6 @@ const MiddleComponent = ({ children }) => {
     queryKey: ["contacts"],
     queryFn: ContactsService.getAllContacts,
     refetchOnWindowFocus: false,
-    suspense: true,
     staleTime: 1000 * 60 * 5, // data stays fresh for 5 mins
     cacheTime: 1000 * 60 * 30, // unused data lives for 30 mins
   });
@@ -93,13 +91,13 @@ const MiddleComponent = ({ children }) => {
   // if (data && data.data && data.data.isAdmin && !path.includes("admin")) {
   //   redirect(`/${locale}/admin/dashboard`);
   // }
-  // if ((isPending && !!token) || isLoading || isLoadingContacts) {
-  //   return (
-  //     <div className="flex w-full h-[100vh] bg-input items-center justify-center">
-  //       <Icon name="logo" size={50} />
-  //     </div>
-  //   );
-  // }
+  if ((isPending && !!token) || isLoading || isLoadingContacts) {
+    return (
+      <div className="flex w-full h-[100vh] bg-input items-center justify-center">
+        <Icon name="logo" size={50} />
+      </div>
+    );
+  }
   if (path.includes("admin")) {
     return (
       <>

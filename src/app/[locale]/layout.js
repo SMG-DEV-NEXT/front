@@ -18,9 +18,7 @@ export default async function RootLayout({ children, params: paramsPromise }) {
     <NextIntlClientProvider messages={messages}>
       <Providers>
         <QueryProvider>
-          <Suspense fallback={<Loading />}>
-            <MiddleComponent>{children}</MiddleComponent>
-          </Suspense>
+          <MiddleComponent>{children}</MiddleComponent>
         </QueryProvider>
       </Providers>
     </NextIntlClientProvider>

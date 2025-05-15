@@ -137,7 +137,9 @@ axiosLoggedIn.interceptors.response.use(
         return AxiosClassic(error.config);
       } catch (error) {
         removeAccessToken();
-        window.location.href = "/";
+        if (window?.location) {
+          window.location.href = "/";
+        }
       }
     }
   }
