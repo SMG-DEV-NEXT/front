@@ -23,9 +23,23 @@ function Card({
     if (!cheats) return;
     const prices = cheats
       .map((e) => {
-        return e.minimumPrice;
+        let price = 0;
+        if (e.plan?.day) {
+          price = e.plan?.day.price;
+          return price;
+        }
+        if (e.plan?.week) {
+          price = e.plan?.week.price;
+          return price;
+        }
+        if (e.plan?.month) {
+          price = e.plan?.month.price;
+          return price;
+        }
+        price = minimumPrice;
+        return price;
       })
-      .sort();
+      .sort((a, b) => a - b);
     if (locale === "en") {
       return `${((prices[0] || 0) / usd).toFixed(2)} $`;
     }

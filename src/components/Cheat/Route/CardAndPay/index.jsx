@@ -22,7 +22,7 @@ const CardAndPay = ({ mobile, cheat }) => {
         <div className="flex flex-col items-center w-[100%] gap-8">
           <div className="flex gap-6 flex-col items-center  w-full">
             <Image
-              src={cheat.image1}
+              src={cheat.image2 || cheat.image1}
               width={350}
               alt="Background"
               style={{ borderRadius: "12px" }}
@@ -119,7 +119,7 @@ const CardAndPay = ({ mobile, cheat }) => {
         />
         <div className="flex gap-6  w-full">
           <Image
-            src={cheat.image1}
+            src={cheat.image2 || cheat.image1}
             width={264}
             alt="Background"
             style={{ borderRadius: "12px" }}

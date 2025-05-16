@@ -120,18 +120,12 @@ const CheatCreate = () => {
         <div className="flex gap-6">
           <AdminUploadImage
             label={"cheatOblojka"}
-            size={"528x250"}
-            width={528}
-            height={135}
             value={inputs.image1}
             onChange={(e) => handleChangeInput("image1", e)}
           />
           <AdminUploadImage
             label={"cheatPrevyu"}
-            size={"350x450"}
             value={inputs.image2}
-            width={350}
-            height={135}
             onChange={(e) => handleChangeInput("image2", e)}
           />
         </div>

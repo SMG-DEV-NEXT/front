@@ -126,7 +126,7 @@ const StatEdit = () => {
   const options = data?.data
     ? data.data.map((e) => ({ label: e.title, value: e.id }))
     : null;
-  if (statLoading) {
+  if (statLoading && id !== "create") {
     return <Loading />;
   }
   return (

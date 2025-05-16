@@ -160,12 +160,12 @@ const PayCard = ({ mobile, cheat }) => {
                     }`}
                   >
                     {isActive && (
-                      <div className="absolute right-[0] top-[0] z-[0]">
+                      <div className="absolute right-[0] top-[0] z-[-1]">
                         <Icon name="elipse" size={200} folder="cheat" />
                       </div>
                     )}
                     {isActive && (
-                      <div className="absolute left-[0] bottom-[-10%] z-[0]">
+                      <div className="absolute left-[0] bottom-[-10%] z-[-1]">
                         <ActiveLightIcon />
                       </div>
                     )}
