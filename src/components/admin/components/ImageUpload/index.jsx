@@ -17,6 +17,7 @@ export default function AdminUploadImage({
   const [uploading, setUploading] = useState(false);
   const t = useTranslations("admin");
   const fileInputRef = useRef(null);
+  const [isDragging, setIsDragging] = useState(false);
 
   const handleClick = () => {
     if (uploading) return;
@@ -52,6 +53,15 @@ export default function AdminUploadImage({
     onChange("");
   };
 
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+    const files = e.dataTransfer.files;
+    if (files && files.length === 1) {
+      handleFileChange({ target: { files } }); // Simulate the same as file input change
+    }
+  };
+
   return (
     <div className="flex flex-col gap-3 w-full">
       <div className="flex flex-col">
@@ -66,9 +76,24 @@ export default function AdminUploadImage({
       </div>
       <div
         onClick={handleClick}
-        className="flex cursor-pointer w-full flex-col gap-4 items-center justify-center  min-h-[102px] bg-input border border-dashed border-[#7B829333] rounded-[12px] p-5"
+        onDragOver={(e) => e.preventDefault()} // Allow drop
+        onDrop={handleDrop}
+        aria-disabled={uploading}
+        onDragEnter={() => setIsDragging(true)}
+        onDragLeave={() => setIsDragging(false)}
+        className={`flex cursor-pointer w-full flex-col gap-1 items-center justify-center min-h-[102px] border border-dashed rounded-[12px] p-5 transition-colors ${
+          isDragging
+            ? "bg-blue-100 border-blue-500"
+            : "bg-input border-[#7B829333]"
+        }`}
       >
-        <Icon name="upload" folder="admin" size={40} />
+        {uploading ? (
+          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+        ) : (
+          <>
+            <Icon name="upload" folder="admin" size={40} />
+          </>
+        )}
       </div>
       <input
         type="file"

@@ -3,6 +3,9 @@
 import CustomSelect from "@/components/Select";
 import Text from "@/components/Text";
 import React, { useEffect, useRef } from "react";
+const lineHeight = 24; // match your CSS (in px)
+const minLines = 3;
+const minTextAreaHeightFN = lineHeight * minLines;
 
 const AdminBox = ({
   value,
@@ -23,6 +26,19 @@ const AdminBox = ({
 }) => {
   const textareaRef = useRef(null);
   const textareaRef2 = useRef(null);
+
+  const adjustTextareaHeight = () => {
+    const refs = [textareaRef.current, textareaRef2.current];
+
+    refs.forEach((ref) => {
+      if (ref) {
+        ref.style.height = "auto"; // reset height
+        const scrollHeight = ref.scrollHeight;
+        const newHeight = Math.max(scrollHeight, minTextAreaHeightFN);
+        ref.style.height = `${newHeight}px`;
+      }
+    });
+  };
   const handleChange = (e, isSelect) => {
     if (isSelect) {
       onChange(name, e);
@@ -30,14 +46,7 @@ const AdminBox = ({
     }
     const { name: n, value } = e.target;
     onChange(n, type === "number" ? value * 1 : value);
-    if (textareaRef.current) {
-      textareaRef.current.style.height = `${minTextAreaHeight}px`; // Reset height
-      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`; // Expand to fit content
-    }
-    if (textareaRef2.current) {
-      textareaRef2.current.style.height = `${minTextAreaHeight}px`; // Reset height
-      textareaRef2.current.style.height = `${textareaRef2.current.scrollHeight}px`; // Expand to fit content
-    }
+    adjustTextareaHeight();
   };
 
   useEffect(() => {

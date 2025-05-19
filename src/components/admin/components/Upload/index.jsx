@@ -21,12 +21,15 @@ const AdminUpload = ({
   type = "image",
 }) => {
   const [uploading, setUploading] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+
   const t = useTranslations("admin");
   const fileInputRef = useRef(null);
   const handleClick = () => {
     if (uploading || countOfFiles === links.length) return;
     fileInputRef.current.click(); // Open file picker
   };
+  console.log(uploading);
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -90,6 +93,16 @@ const AdminUpload = ({
     const files = links.filter((e, index) => index !== i);
     onChange(name, files);
   };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+
+    const files = e.dataTransfer.files;
+    if (files && files.length === 1) {
+      handleFileChange({ target: { files } }); // Simulate the same as file input change
+    }
+  };
   return (
     <div className="flex p-4 flex-col gap-4 bg-input rounded-[16px] w-full">
       <div className="w-full flex items-center justify-between">
@@ -109,12 +122,27 @@ const AdminUpload = ({
       />
       <div
         onClick={handleClick}
-        className="flex cursor-pointer w-full flex-col gap-1 items-center justify-center  min-h-[102px] bg-input border border-dashed border-[#7B829333] rounded-[12px] p-5"
+        onDragOver={(e) => e.preventDefault()} // Allow drop
+        onDrop={handleDrop}
+        aria-disabled={uploading}
+        onDragEnter={() => setIsDragging(true)}
+        onDragLeave={() => setIsDragging(false)}
+        className={`flex cursor-pointer w-full flex-col gap-1 items-center justify-center min-h-[102px] border border-dashed rounded-[12px] p-5 transition-colors ${
+          isDragging
+            ? "bg-blue-100 border-blue-500"
+            : "bg-input border-[#7B829333]"
+        }`}
       >
-        <Icon name="upload" folder="admin" size={40} />
-        <Text T="admin" weight="medium" className="text-linkColor">
-          {links.length === countOfFiles ? "uploaded" : "upload"}
-        </Text>
+        {uploading ? (
+          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+        ) : (
+          <>
+            <Icon name="upload" folder="admin" size={40} />
+            <Text T="admin" weight="medium" className="text-linkColor">
+              {links.length === countOfFiles ? "uploaded" : "upload"}
+            </Text>
+          </>
+        )}
       </div>
       <div className="flex gap-2 flex-wrap">
         {links.map((e, i) => {
