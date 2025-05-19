@@ -126,9 +126,9 @@ const Cheats = () => {
     return api.data;
   };
   // if (!api?.data && !isPending) return notFound();
-  // if (!data) {
-  //   return <Loading />;
-  // }
+  if (!data) {
+    return <Loading />;
+  }
   if (isMobile && api?.data) {
     return (
       <CheatsMobile
