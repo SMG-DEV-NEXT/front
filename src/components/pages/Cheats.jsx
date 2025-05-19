@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Text from "../Text";
 import ListCheatItem from "../ListCheat";
@@ -11,7 +10,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import CheatsService from "@/services/Cheats";
 import Loading from "@/app/loading";
 import { useLocale, useTranslations } from "next-intl";
-import { notFound, useParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import CheatsMobile from "../Cheat/CheatsMobile";
 import Freecurrencyapi from "@everapi/freecurrencyapi-js";
 import getLanguage from "@/utils/get-language";
@@ -127,9 +126,9 @@ const Cheats = () => {
     return api.data;
   };
   // if (!api?.data && !isPending) return notFound();
-  if (!data) {
-    return <Loading />;
-  }
+  // if (!data) {
+  //   return <Loading />;
+  // }
   if (isMobile && api?.data) {
     return (
       <CheatsMobile
@@ -154,15 +153,6 @@ const Cheats = () => {
 
   return (
     <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[112px]">
-      {/* <Image
-        src="/images/loginBg.png"
-        style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
-        quality={100}
-        priority
-        fill
-        alt="Image"
-        className="z-[0]"
-      /> */}
       <div className="flex flex-col gap-6 z-[1] container items-center">
         <Text
           T="none"

@@ -1,8 +1,5 @@
 "use client";
-import Image from "next/image";
 import React from "react";
-import Text from "../../Text";
-import RouteCheat from "../../Cheat/Route";
 import CardAndPay from "../../Cheat/Route/CardAndPay";
 import FunctionalCheat, { FunctionalItemsMobile } from "../../Cheat/Functional";
 import Medias from "../../Cheat/Media";
@@ -34,15 +31,6 @@ const View = () => {
   if (isMobile) {
     return (
       <div className="view relative h-full w-full flex items-center justify-center pt-[60px] pb-[60px]">
-        {/* <Image
-          src="/images/loginBg.png"
-          style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
-          quality={100}
-          priority
-          fill
-          alt="Image"
-          className="z-[0]"
-        /> */}
         <div className="container flex flex-col gap-10 z-[1]">
           <CardAndPay mobile={isMobile} cheat={data.data} />
           <FunctionalCheat mobile={isMobile} cheat={data.data} />
@@ -59,15 +47,6 @@ const View = () => {
   }
   return (
     <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[158px]">
-      {/* <Image
-        src="/images/loginBg.png"
-        style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
-        quality={100}
-        priority
-        fill
-        alt="Image"
-        className="z-[0]"
-      /> */}
       <div className="container z-[1]">
         <CardAndPay mobile={isMobile} cheat={data.data} />
         <FunctionalCheat mobile={isMobile} cheat={data.data} />

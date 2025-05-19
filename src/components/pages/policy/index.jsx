@@ -13,15 +13,6 @@ const PolicyView = () => {
         paddingBottom: !isMobile ? "164px" : "60px",
       }}
     >
-      {/* <Image
-        src="/images/loginBg.png"
-        style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
-        quality={100}
-        priority
-        fill
-        alt="Image"
-        className="z-[0]"
-      /> */}
       <div className="container z-[1]">
         <div className="flex flex-col gap-6  bg-input rounded-[16px] p-6">
           <Text

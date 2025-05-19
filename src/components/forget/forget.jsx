@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import React from "react";
 import Button from "../Button";
 import Text from "../Text";
@@ -36,15 +35,6 @@ function Forget2FA({ code, setCode, onApply, isMobile }) {
   }
   return (
     <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[344px]">
-      {/* <Image
-        src="/images/loginBg.png"
-        style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
-        quality={100}
-        priority
-        alt="Background"
-        fill
-        className="z-[0]"
-      /> */}
       <div className="flex flex-col gap-6 z-[1]">
         <Text
           T="login"

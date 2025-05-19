@@ -2,7 +2,6 @@
 import Image from "next/image";
 import React from "react";
 import Text from "../../Text";
-import Icon from "../../Icons";
 import Effect from "../../Animations/Effect";
 import { useMobile } from "@/hooks/useMobile";
 import { useQuery } from "@tanstack/react-query";
@@ -93,15 +92,6 @@ const ContactsView = () => {
       }] pt-[${isMobile ? "60px" : "64px"}] `}
       style={{ paddingBottom: isMobile ? "60px" : "256px" }}
     >
-      {/* <Image
-        src="/images/loginBg.png"
-        style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
-        quality={100}
-        priority
-        fill
-        alt="Image"
-        className="z-[0]"
-      /> */}
       <div className="container flex flex-col gap-[48px] items-center z-[1]">
         <div className="flex flex-col gap-6  items-center">
           <Text
@@ -171,166 +161,6 @@ const ContactsView = () => {
               </Effect>
             );
           })}
-        </div>
-      </div>
-    </div>
-  );
-  return (
-    <div
-      className={`view relative h-full w-full flex items-center justify-center pb-[${
-        isMobile ? "60px" : "256px"
-      }] pt-[${isMobile ? "60px" : "64px"}] `}
-      style={{ paddingBottom: isMobile ? "60px" : "256px" }}
-    >
-      {/* <Image
-        src="/images/loginBg.png"
-        style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
-        quality={100}
-        priority
-        fill
-        alt="Image"
-        className="z-[0]"
-      /> */}
-      <div className="container flex flex-col gap-[48px] items-center z-[1]">
-        <div className="flex flex-col gap-6  items-center">
-          <Text
-            T="contacts"
-            weight="bold"
-            size="t48"
-            className="text-primary10"
-          >
-            contactsT
-          </Text>
-          <Text
-            T="contacts"
-            weight="medium"
-            size="sm"
-            className="text-linkColor text-center max-w-[450px]"
-          >
-            contactsS
-          </Text>
-        </div>
-        <div
-          className={
-            isMobile ? "flex gap-6 w-full flex-col" : "flex gap-6 w-full "
-          }
-        >
-          <Effect type="to-right" className="w-full">
-            <div className="flex relative flex-col items-center overflow-hidden w-full py-6 bg-input rounded-[16px] gap-3">
-              <Icon
-                name="light3"
-                className={`absolute w-full z-[1] ${
-                  isMobile ? "top-[-70px]" : "top-0"
-                }`}
-              />
-              <Icon name="3" folder="contacts" className="z-[2] " size={64} />
-              <div className="flex flex-col items-center gap-1 z-[2]">
-                <Text
-                  className="text-primary10"
-                  weight="bold"
-                  size="20"
-                  T="contacts"
-                >
-                  discordT
-                </Text>
-                <Text
-                  className="text-linkColor"
-                  weight="medium"
-                  size="sm"
-                  T="contacts"
-                >
-                  discordS
-                </Text>
-              </div>
-            </div>
-          </Effect>
-          <Effect type="to-top" className="w-full">
-            <div className="flex relative flex-col items-center overflow-hidden w-full py-6 bg-input rounded-[16px] gap-3">
-              <Icon
-                name="light3"
-                className={`absolute w-full z-[1] ${
-                  isMobile ? "top-[-70px]" : "top-0"
-                }`}
-              />
-              <Icon name="2" folder="contacts" className="z-[2] " size={64} />
-              <div className="flex flex-col items-center gap-1 z-[2]">
-                <Text
-                  className="text-primary10"
-                  weight="bold"
-                  size="20"
-                  T="contacts"
-                >
-                  vkT
-                </Text>
-                <Text
-                  className="text-linkColor"
-                  weight="medium"
-                  size="sm"
-                  T="contacts"
-                >
-                  vkS
-                </Text>
-              </div>
-            </div>
-          </Effect>
-          <Effect type="to-top" className="w-full">
-            <div className="flex relative flex-col items-center overflow-hidden w-full py-6 bg-input rounded-[16px] gap-3">
-              <Icon
-                name="light3"
-                className={`absolute w-full z-[1] ${
-                  isMobile ? "top-[-70px]" : "top-0"
-                }`}
-              />
-              <Icon name="1" folder="contacts" className="z-[2] " size={64} />
-              <div className="flex flex-col items-center gap-1 z-[2]">
-                <Text
-                  className="text-primary10"
-                  weight="bold"
-                  size="20"
-                  T="contacts"
-                >
-                  tgT
-                </Text>
-                <Text
-                  className="text-linkColor"
-                  weight="medium"
-                  size="sm"
-                  T="contacts"
-                >
-                  tgS
-                </Text>
-              </div>
-            </div>
-          </Effect>
-          <Effect type="to-left" className="w-full">
-            <div className="flex relative flex-col items-center overflow-hidden w-full py-6 bg-input rounded-[16px] gap-3">
-              <Icon
-                name="light3"
-                className={`absolute w-full z-[1] ${
-                  isMobile ? "top-[-70px]" : "top-0"
-                }`}
-              />
-              <Icon name="1" folder="contacts" className="z-[2] " size={64} />
-              <div className="flex flex-col items-center gap-1 z-[2]">
-                <Text
-                  className="text-primary10"
-                  weight="bold"
-                  size="20"
-                  T="contacts"
-                >
-                  helpT
-                </Text>
-                <Text
-                  className="text-linkColor"
-                  weight="medium"
-                  size="sm"
-                  T="contacts"
-                >
-                  helpS
-                </Text>
-              </div>
-            </div>
-          </Effect>
         </div>
       </div>
     </div>

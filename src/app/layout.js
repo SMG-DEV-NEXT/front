@@ -1,6 +1,3 @@
-import { Suspense } from "react";
-import Loading from "./loading";
-
 // app/layout.js
 export const dynamic = "force-dynamic";
 export default function RootLayout({ children }) {

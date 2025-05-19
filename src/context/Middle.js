@@ -1,11 +1,5 @@
 "use client";
-import React, {
-  createContext,
-  Suspense,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import React, { createContext, useContext, useEffect } from "react";
 import { getAccessToken } from "../utils/token";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import UserService from "../services/User";
@@ -131,15 +125,6 @@ const MiddleComponent = ({ children }) => {
         <Top />
         <Header />
         <section className="content relative bg-mainBlack">
-          {/* <Image
-              src="/images/loginBg.png"
-              style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
-              quality={100}
-              priority
-              fill
-              alt="Image"
-              className="z-[0] w-full h-full"
-            />{" "} */}
           <div className="fixed inset-0 bg-login bg-cover bg-top " />
 
           {children}

@@ -21,33 +21,6 @@ import moment from "moment";
 //   catalog: "Rust",
 // };
 
-const popularStats = [
-  {
-    id: 1,
-    title: "Как пользоваться приватным читом Rust SMG в 2024-ом году",
-    date: "04.11.2024",
-    view: "120",
-  },
-  {
-    id: 2,
-    title: "Как пользоваться приватным читом Rust SMG в 2024-ом году",
-    date: "04.11.2024",
-    view: "120",
-  },
-  {
-    id: 3,
-    title: "Как пользоваться приватным читом Rust SMG в 2024-ом году",
-    date: "04.11.2024",
-    view: "120",
-  },
-  {
-    id: 4,
-    title: "Как пользоваться приватным читом Rust SMG в 2024-ом году",
-    date: "04.11.2024",
-    view: "120",
-  },
-];
-
 function StatView() {
   const t = useTranslations("stats");
   const { id } = useParams();
@@ -71,15 +44,6 @@ function StatView() {
         paddingTop: isMobile ? "60px" : "64px",
       }}
     >
-      {/* <Image
-        src="/images/loginBg.png"
-        style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
-        quality={100}
-        priority
-        fill
-        alt="Image"
-        className="z-[0]"
-      /> */}
       <div className="container flex flex-col gap-8 z-[1] ">
         {!isMobile && (
           <RouteStat

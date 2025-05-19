@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Text from "../Text";
 import Input from "../Input";
@@ -96,16 +95,6 @@ function View() {
 
   return (
     <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[112px]">
-      {/* <Image
-        src="/images/loginBg.png"
-        fill
-        style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
-        quality={100}
-        priority
-        alt="Background Image"
-        className="z-[0]"
-      /> */}
-
       <div className="container flex flex-col items-center gap-6 z-[1]">
         <Text
           T="catalog"

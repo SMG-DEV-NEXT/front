@@ -70,15 +70,6 @@ const View = () => {
   if (isMobile) {
     return (
       <div className="view relative h-full w-full flex items-center justify-center pt-[60px] pb-[60px]">
-        {/* <Image
-          src="/images/loginBg.png"
-          style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
-          quality={100}
-          priority
-          fill
-          alt="Image"
-          className="z-[0]"
-        /> */}
         <div className="container z-[1]">
           <div className="flex flex-col gap-[40px] items-center ">
             <Text
@@ -106,15 +97,6 @@ const View = () => {
   }
   return (
     <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[158px]">
-      {/* <Image
-        src="/images/loginBg.png"
-        style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
-        quality={100}
-        priority
-        fill
-        alt="Image"
-        className="z-[0]"
-      /> */}
       <div className="container z-[1]">
         <div className="flex flex-col gap-[48px] items-center ">
           <Text T="account" weight="bold" size="t48" className="text-primary10">

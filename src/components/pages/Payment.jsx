@@ -1,21 +1,11 @@
 "use client";
 import React from "react";
 import Text from "../Text";
-import Image from "next/image";
 import Icon from "../Icons";
 
 const PaymentView = () => {
   return (
     <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[453px]">
-      {/* <Image
-        src="/images/loginBg.png"
-        style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
-        quality={100}
-        priority
-        fill
-        alt="Image"
-        className="z-[0]"
-      /> */}
       <div className="container z-[1]">
         <div className="flex flex-col gap-6  bg-input rounded-[16px] p-6">
           <Text

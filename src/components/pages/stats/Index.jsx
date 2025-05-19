@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import StatsHeader from "../../Stats/Header";
 import LeftStats from "../../Stats/Left";
@@ -10,7 +9,6 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import StatsService from "@/services/Stats";
 import Loading from "@/app/loading";
 import { useTranslations } from "next-intl";
-import { usePathname, useRouter } from "next/navigation";
 
 const StatsView = () => {
   const isMobile = useMobile();
@@ -94,15 +92,6 @@ const StatsView = () => {
   if (isMobile) {
     return (
       <div className="view relative h-full w-full flex items-center justify-center pt-[60px] pb-[60px]">
-        {/* <Image
-          src="/images/loginBg.png"
-          style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
-          quality={100}
-          priority
-          fill
-          alt="Image"
-          className="z-[0]"
-        /> */}
         <div className="container z-[1] flex flex-col gap-6">
           <StatsHeader
             search={search}
@@ -133,15 +122,6 @@ const StatsView = () => {
   }
   return (
     <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[112px]">
-      {/* <Image
-        src="/images/loginBg.png"
-        style={{ objectFit: "cover", objectPosition: "top" }} // или 'cover'
-        quality={100}
-        priority
-        fill
-        alt="Image"
-        className="z-[0]"
-      /> */}
       <div className="container z-[1] flex flex-col gap-6">
         <StatsHeader
           search={search}
