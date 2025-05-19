@@ -22,7 +22,7 @@ export default function Loading({ noPage }) {
     );
   }
   return (
-    <div className="flex w-full h-[100vh]   items-center justify-center">
+    <div className="flex w-full h-[100vh] items-center justify-center">
       <Icon name="logo" size={50} />
     </div>
   );

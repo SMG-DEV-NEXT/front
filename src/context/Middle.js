@@ -23,7 +23,6 @@ import Footer from "@/components/Footer";
 import { redirect, usePathname } from "next/navigation";
 import { useLocale } from "next-intl";
 import dynamic from "next/dynamic";
-import Loading from "@/app/loading";
 import SettingsService from "@/services/Settings";
 import { ContactsService } from "@/services/Contacts";
 import Image from "next/image";
@@ -92,11 +91,7 @@ const MiddleComponent = ({ children }) => {
   //   redirect(`/${locale}/admin/dashboard`);
   // }
   if ((isPending && !!token) || isLoading || isLoadingContacts) {
-    return (
-      <div className="flex w-full h-[100vh] bg-input items-center justify-center">
-        <Icon name="logo" size={50} />
-      </div>
-    );
+    return null;
   }
   if (path.includes("admin")) {
     return (
