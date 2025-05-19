@@ -5,7 +5,13 @@ import Text from "../Text";
 import "./index.scss";
 import { useMobile } from "../../hooks/useMobile";
 
-const TwoFactorInput = ({ length = 6, onComplete, code, setCode }) => {
+const TwoFactorInput = ({
+  length = 6,
+  onComplete,
+  code,
+  setCode,
+  label = "2fa",
+}) => {
   const inputRefs = useRef([]);
   const isMobile = useMobile();
   const handleChange = (index, e) => {
@@ -40,7 +46,7 @@ const TwoFactorInput = ({ length = 6, onComplete, code, setCode }) => {
     return (
       <div className="flex gap-3 flex-wrap w-full flex-col">
         <Text className="text-primary10" weight="medium" size="sm">
-          2fa
+          {label}
         </Text>
         <div className="w-full mobTwoFactor">
           {code.map((_, index) => (
@@ -66,7 +72,7 @@ const TwoFactorInput = ({ length = 6, onComplete, code, setCode }) => {
   return (
     <div className="flex gap-3  w-full flex-col">
       <Text className="text-primary10" weight="medium" size="sm">
-        2fa
+        {label}
       </Text>
       <div className="flex gap-2 w-full">
         {code.map((_, index) => (

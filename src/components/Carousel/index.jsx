@@ -37,7 +37,7 @@ const Carousel = ({ items }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % totalPages);
-    }, 30000);
+    }, 10000);
     return () => clearInterval(interval);
   }, [totalPages]);
 

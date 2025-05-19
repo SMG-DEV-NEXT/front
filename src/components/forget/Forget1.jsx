@@ -7,12 +7,14 @@ import { toastError } from "../../utils/error";
 import { useMutation } from "@tanstack/react-query";
 import UserService from "../../services/User";
 
-function Forget1({ email, setEmail, setStep, isMobile }) {
+function Forget1({ email, setEmail, setStep, isMobile, setIsTwoFactorForget }) {
   const mutate = useMutation({
     mutationFn: UserService.forgetStep1,
     mutationKey: ["forget"],
-    onSuccess: () => {
+    onSuccess: ({ data }) => {
       setStep(2);
+      console.log(data);
+      setIsTwoFactorForget(data.isTwoFactor);
     },
   });
   const onChangeStep = () => {

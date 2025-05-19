@@ -9,6 +9,7 @@ import { toastError } from "../../utils/error";
 
 function Forget({ isMobile, goToLogin }) {
   const [step, setStep] = useState(1);
+  const [isTwoFactorForget, setIsTwoFactorForget] = useState(false);
   const [email, setEmail] = useState("");
   const [code, setCode] = useState(new Array(6).fill(""));
 
@@ -37,6 +38,7 @@ function Forget({ isMobile, goToLogin }) {
       <Forget1
         isMobile={isMobile}
         email={email}
+        setIsTwoFactorForget={setIsTwoFactorForget}
         setEmail={setEmail}
         setStep={setStep}
       />
@@ -47,6 +49,7 @@ function Forget({ isMobile, goToLogin }) {
       <Forget2FA
         isMobile={isMobile}
         code={code}
+        isTwoFactorForget={isTwoFactorForget}
         setCode={setCode}
         onApply={handleApplyCode}
       />

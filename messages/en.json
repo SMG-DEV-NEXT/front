@@ -65,7 +65,8 @@
     "check": "Check",
     "notFoundTitle": "Something went wrong...",
     "notFoundText": "The page you are looking for does not exist or has been moved",
-    "notFoundBtn": "Go to Home"
+    "notFoundBtn": "Go to Home",
+    "codeEmail": "The code has been sent to your email"
   },
   "Main": {
     "topT": "Private cheats from the developer",

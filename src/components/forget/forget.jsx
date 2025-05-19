@@ -4,7 +4,7 @@ import Button from "../Button";
 import Text from "../Text";
 import TwoFactorInput from "../TwoFactorInput";
 
-function Forget2FA({ code, setCode, onApply, isMobile }) {
+function Forget2FA({ code, setCode, onApply, isMobile, isTwoFactorForget }) {
   if (isMobile) {
     return (
       <div className="flex flex-col gap-6 z-[1] min-w-[302px] w-[302px]">
@@ -21,6 +21,7 @@ function Forget2FA({ code, setCode, onApply, isMobile }) {
             <TwoFactorInput
               length={6}
               code={code}
+              label={!isTwoFactorForget ? "codeEmail" : undefined}
               setCode={setCode}
               onComplete={(code) => onApply(code)}
             />
@@ -48,6 +49,7 @@ function Forget2FA({ code, setCode, onApply, isMobile }) {
           <div className="flex flex-col gap-4 w-full">
             <TwoFactorInput
               length={6}
+              label={!isTwoFactorForget ? "codeEmail" : undefined}
               code={code}
               setCode={setCode}
               onComplete={(code) => onApply(code)}

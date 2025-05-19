@@ -44,22 +44,21 @@ function ViewRegistration({ isMobile, goToLogin, onClose }) {
   const handleChangeInput = (name, value) => {
     setInputs({ ...inputs, [name]: value });
   };
-
   const handleSumbit = () => {
     if (!isCheckedForget) {
       toastError(
-        "You must read and agree to the terms and conditions of the service."
+        "Вы должны ознакомиться и согласиться с условиями использования сервиса."
       );
       return;
     }
 
     if (inputs.password !== inputs.confirmPassword) {
-      toastError("Password and confirm password do not match.");
+      toastError("Пароль и подтверждение пароля не совпадают.");
       return;
     }
+
     mutation.mutate(inputs);
   };
-
   if (isMobile) {
     return (
       <div className="flex flex-col gap-6 z-[1] w-[302px]  w-full max-w-[552px] items-center">
