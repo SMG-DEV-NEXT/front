@@ -19,7 +19,7 @@ function Forget1({ email, setEmail, setStep, isMobile, setIsTwoFactorForget }) {
   });
   const onChangeStep = () => {
     if (!email) {
-      toastError("Email field is required.");
+      toastError("email_required");
       return;
     }
     mutate.mutate(email);

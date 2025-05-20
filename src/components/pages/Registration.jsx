@@ -46,14 +46,12 @@ function ViewRegistration({ isMobile, goToLogin, onClose }) {
   };
   const handleSumbit = () => {
     if (!isCheckedForget) {
-      toastError(
-        "Вы должны ознакомиться и согласиться с условиями использования сервиса."
-      );
+      toastError("terms_required");
       return;
     }
 
     if (inputs.password !== inputs.confirmPassword) {
-      toastError("Пароль и подтверждение пароля не совпадают.");
+      toastError("passwords_do_not_match");
       return;
     }
 

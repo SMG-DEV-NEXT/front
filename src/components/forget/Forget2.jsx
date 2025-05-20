@@ -21,7 +21,7 @@ function Forget2({ email, setStep, isMobile }) {
 
   const handleSubmit = () => {
     if (password !== password2) {
-      toastError("Password and confirm password do not match.");
+      toastError("passwords_do_not_match");
       return;
     }
     mutation.mutate({

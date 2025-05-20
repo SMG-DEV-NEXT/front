@@ -21,7 +21,7 @@ function Forget({ isMobile, goToLogin }) {
         setStep(3);
         return;
       }
-      toastError("Code is wrong");
+      toastError("code_wrong");
       setCode(new Array(6).fill(""));
     },
   });
