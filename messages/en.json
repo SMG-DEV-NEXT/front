@@ -69,7 +69,9 @@
     "copy": "Copy",
     "copyActive": "Copied",
     "mailError": "Please enter a valid email address.",
-    "codeEmail": "The code has been sent to your email"
+    "codeEmail": "The code has been sent to your email",
+    "findCheat": "Search cheat...",
+    "generalLink": "Main Telegram link"
   },
   "Main": {
     "topT": "Private cheats from the developer",

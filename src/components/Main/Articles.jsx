@@ -8,17 +8,14 @@ import Image from "next/image";
 import Effect from "../Animations/Effect";
 import { MomentFunctions } from "@/services/Moment";
 import { useLocale } from "next-intl";
-
+import { BottomAxyus } from "./i";
 function Articles({ data }) {
   const locale = useLocale();
   return (
     <div className="w-full bg-mainBlack py-[164px] relative">
-      <Image
-        src="/images/ArticlesBG.png"
-        fill
-        alt="article"
-        style={{ inset: "inital", top: "10%", zIndex: 1 }}
-      />
+      <div className="absolute right-0 bottom-[-13%]">
+        <BottomAxyus />
+      </div>
       <div className="container relative" style={{ zIndex: 2 }}>
         <div className="flex flex-col gap-[32px]">
           <div className="flex items-center justify-between">

@@ -5,8 +5,26 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Icon from "../Icons";
 
-export default function ImageWithPreview(imageProps) {
+export default function ImageWithPreview({ ...imageProps }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [dimensions, setDimensions] = useState({
+    width: 250,
+    height: 0,
+  });
+
+  useEffect(() => {
+    const img = new window.Image();
+    img.src = imageProps.src;
+    img.onload = () => {
+      const aspectRatio = img.naturalHeight / img.naturalWidth;
+      setDimensions({
+        width: 250,
+        height: Math.round(250 * aspectRatio),
+      });
+    };
+  }, [imageProps.src]);
+
+  // Wait until height is known
 
   // Prevent body scrolling when modal is open
   useEffect(() => {
@@ -19,14 +37,40 @@ export default function ImageWithPreview(imageProps) {
       document.body.style.overflow = "";
     };
   }, [isOpen]);
+  if (dimensions.height === 0) return null;
   return (
     <>
       {/* Thumbnail */}
       <div
-        onClick={() => setIsOpen(true)}
-        className="cursor-pointer inline-block"
+        onClick={() => imageProps.onClick()}
+        className="relative  overflow-hidden rounded-[16px] cursor-pointer w-full inline-block overflow-hidden group"
       >
-        <Image {...imageProps} />
+        <Image
+          {...imageProps}
+          width={dimensions.width}
+          height={dimensions.height}
+        />
+
+        {/* Overlay при наведении */}
+        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <div className="bg-white/10 p-3 rounded-full border border-white/30 backdrop-blur-sm hover:scale-110 transition-transform">
+            {/* SVG icon */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </div>
+        </div>
       </div>
 
       {/* Fullscreen Preview */}

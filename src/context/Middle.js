@@ -99,7 +99,7 @@ const MiddleComponent = ({ children }) => {
             isLoadingSaveQuery: mutation.isPending,
           }}
         >
-          <section className="content">{children}</section>
+          <section className="content relative">{children}</section>
           <ToastContainer
             position="top-right"
             closeOnClick
@@ -127,7 +127,7 @@ const MiddleComponent = ({ children }) => {
         <section className="content relative bg-mainBlack">
           <div className="fixed inset-0 bg-login bg-cover bg-top " />
 
-          {children}
+          <div className="z-1">{children}</div>
         </section>
         <Footer />
         <ToastContainer

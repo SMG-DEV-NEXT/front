@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Icon from "../Icons";
 import Text from "../Text";
 import { useTranslations } from "next-intl";
@@ -22,6 +22,7 @@ import ViewRegistration from "../pages/Registration";
 import Forget from "../pages/Forget";
 import { useSettings } from "@/context/Middle";
 import { MainSettings } from "@/script/main";
+import { createPortal } from "react-dom";
 
 const LANGUAGE_ITEMS = [
   { key: "ru", label: "russian" },
@@ -61,6 +62,14 @@ export default function HeaderMobile() {
     [pathname]
   );
 
+  useEffect(() => {
+    if (isOpenBar) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isOpenBar]);
+
   const [language, setLanguage] = useState(
     LANGUAGE_ITEMS.find((item) => item.key === currentLangKey) ||
       LANGUAGE_ITEMS[0]
@@ -77,43 +86,110 @@ export default function HeaderMobile() {
       className="header-container  z-[12]"
       style={{ backgroundColor: "#0E0F12" }}
     >
-      <div
-        className={`bg-input header-bar p-6 flex flex-col${
-          isOpenBar && " header-open"
-        }`}
-      >
+      {createPortal(
         <div
-          className="flex gap-2 cursor-pointer ml-2"
+          style={{
+            background: !isOpenBar ? "tertiary" : `rgba(0,0,0,0.5)`,
+            backdropFilter: !isOpenBar ? "" : "blur(3px)",
+            transition: "0.3s",
+            visibility: !isOpenBar ? "hidden" : "visible",
+            left: "0%",
+            zIndex: isOpenBar ? "8000" : "-5",
+          }}
           onClick={() => setIsOpenBar(false)}
+          className="w-full absolute   h-full absolute "
+        ></div>,
+        document.body.querySelector("section")
+      )}
+      {createPortal(
+        <div
+          style={{
+            transform: `translateX(${!isOpenBar ? "-100%" : "0%"})`,
+            transition: "0.3s",
+          }}
+          className="absolute min-w-[280px] h-full  z-[9999]  "
         >
           <div
-            className="w-[2px] rounded-full h-[19px] bg-linkColor"
-            style={{ transform: "rotate(45deg)" }}
-          ></div>
-          <div
-            className="w-[2px] rounded-full h-[19px] bg-linkColor ml-[-10px]"
-            style={{ transform: "rotate(-45deg)" }}
-          ></div>
-        </div>
-        <div className="flex flex-col mt-6">
-          {HeaderSettings.header.routes.map((key) => (
-            <CustomLink
-              key={key}
-              url={`/${key}`}
-              className="text-linkColor text-md"
-            >
-              <div onClick={() => setIsOpenBar(false)}>{t(key)}</div>
-            </CustomLink>
-          ))}
-        </div>
-      </div>
+            className="absolute left-0 top-0 w-full h-full z-[9000]"
+            style={{ background: "rgb(14,15,18)" }}
+          >
+            <div className="flex flex-col gap-[40px] pr-5 pl-5 pt-5">
+              <div className="flex flex-col gap-3">
+                {HeaderSettings.header.routes.map((key) => (
+                  <CustomLink
+                    key={key}
+                    url={`/${key}`}
+                    className="text-linkColor text-lg hover:text-primary10 duration-200"
+                  >
+                    <div onClick={() => setIsOpenBar(false)}>{t(key)}</div>
+                  </CustomLink>
+                ))}
+              </div>
+              {user?.id ? (
+                <HeaderMyAccount />
+              ) : (
+                <div
+                  className="buttons"
+                  style={{
+                    maxWidth: "max-content",
+                    boxShadow: "inset 0 8px 18.5px rgba(207, 184, 255, 0.75)",
+                  }}
+                >
+                  <Text
+                    className="text-primary10 cursor-pointer"
+                    onClick={() => {
+                      setIsOpenBar(false);
+                      setIsOpenLoginModal(true);
+                    }}
+                    weight="semi"
+                    size="sm"
+                  >
+                    login
+                  </Text>
+                  <div className="buttons-line"></div>
+                  <Text
+                    className="text-primary10 cursor-pointer"
+                    onClick={() => {
+                      setIsOpenBar(false);
+                      setIsOpenRegistrationModal(true);
+                    }}
+                    weight="semi"
+                    size="sm"
+                  >
+                    register
+                  </Text>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>,
+        document.body.querySelector("section")
+      )}
+
       <div className="container flex items-center justify-between py-4 header">
         <div className="flex items-center gap-6">
-          <div
-            className="flex flex-col gap-1 cursor-pointer ml-2"
-            onClick={() => setIsOpenBar(true)}
-          >
-            <MenuIcon />
+          <div className="flex flex-col gap-1 cursor-pointer ml-2">
+            <button
+              className="relative w-5 h-5 flex flex-col justify-between items-center group"
+              onClick={() => setIsOpenBar(!isOpenBar)}
+              aria-label="Toggle menu"
+            >
+              <span
+                className={`w-full h-[2px] bg-linkColor rounded transition-transform duration-300 ${
+                  isOpenBar ? "rotate-45 translate-y-[2.8px] mt-2" : ""
+                }`}
+              />
+              <span
+                className={`w-full h-[2px] bg-linkColor rounded transition-all duration-300 ${
+                  isOpenBar ? "opacity-0" : "opacity-100"
+                }`}
+              />
+              <span
+                className={`w-full h-[2px] bg-linkColor rounded transition-transform duration-300 ${
+                  isOpenBar ? "-rotate-45 -translate-y-[7px]" : ""
+                }`}
+              />
+            </button>
           </div>
           <CustomLink url="">
             <Image
@@ -177,20 +253,22 @@ export default function HeaderMobile() {
             <DropdownTrigger className="z-[0]">
               <div className="flex language-picker cursor-pointer items-center gap-2 ">
                 <Icon name="Language" />
-                {/* <Text className="text-linkColor text-sm">
+                <Text className="text-linkColor text-sm">
                   {language.key.toUpperCase()}
-                </Text> */}
+                </Text>
               </div>
             </DropdownTrigger>
             <DropdownMenu
               aria-label="Select Language"
-              className="flex flex-col rounded-2xl overflow-hidden items-center"
+              className="flex flex-col rounded-[16px] overflow-hidden items-center"
             >
-              {LANGUAGE_ITEMS.map((item) => (
+              {LANGUAGE_ITEMS.map((item, i) => (
                 <DropdownItem
                   key={item.key}
                   onClick={() => handleLanguageChange(item)}
-                  className="language-item justify-center"
+                  className={`language-item justify-center rounded-${
+                    i === 0 ? "t" : "b"
+                  }-2xl`}
                   style={{
                     backgroundColor:
                       item.key === language.key ? "#8B6DCA" : "#272c33",
@@ -208,25 +286,6 @@ export default function HeaderMobile() {
           {/* <Input iconLeft="searchNew" /> */}
 
           {/* Auth Buttons */}
-          {user?.id ? (
-            <HeaderMyAccount />
-          ) : (
-            <div
-              className="buttons"
-              style={{
-                boxShadow: "inset 0 8px 18.5px rgba(207, 184, 255, 0.75)",
-              }}
-            >
-              <Text
-                className="text-primary10 cursor-pointer"
-                onClick={() => setIsOpenLoginModal(true)}
-                weight="semi"
-                size="sm"
-              >
-                login
-              </Text>
-            </div>
-          )}
         </div>
       </div>
     </div>

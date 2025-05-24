@@ -17,7 +17,7 @@ const AdminBox = ({
   viewLength,
   isGuarante,
   multipleOptions,
-  minTextAreaHeight = "46px",
+  minTextAreaHeight = 46,
   isUpperCode = true,
   name,
   style = {},
@@ -34,7 +34,7 @@ const AdminBox = ({
       if (ref) {
         ref.style.height = "auto"; // reset height
         const scrollHeight = ref.scrollHeight;
-        const newHeight = Math.max(scrollHeight, minTextAreaHeightFN);
+        const newHeight = Math.max(scrollHeight, minTextAreaHeight);
         ref.style.height = `${newHeight}px`;
       }
     });
@@ -58,7 +58,7 @@ const AdminBox = ({
       textareaRef2.current.style.height = `${minTextAreaHeight}px`; // Reset height
       textareaRef2.current.style.height = `${textareaRef.current.scrollHeight}px`; // Expand to fit content
     }
-  }, []);
+  }, [minTextAreaHeight]);
 
   if (isMultipleLanguage) {
     return (
@@ -138,7 +138,10 @@ const AdminBox = ({
   }
 
   return (
-    <div className="flex p-4 flex-col gap-4 bg-input rounded-[16px] w-full">
+    <div
+      style={style}
+      className="flex p-4 flex-col gap-4 bg-input rounded-[16px] w-full"
+    >
       <Text T="admin" weight="semi" size="md" className="text-primary10">
         {label}
       </Text>

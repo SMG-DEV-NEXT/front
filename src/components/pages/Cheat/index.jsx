@@ -11,6 +11,8 @@ import { notFound, useParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import CheatsService from "@/services/Cheats";
 import Loading from "@/app/loading";
+import Text from "@/components/Text";
+import { getLocale } from "@/utils/getlocale";
 
 const View = () => {
   const isMobile = useMobile(1030);
@@ -33,13 +35,26 @@ const View = () => {
       <div className="view relative h-full w-full flex items-center justify-center pt-[60px] pb-[60px]">
         <div className="container flex flex-col gap-10 z-[1]">
           <CardAndPay mobile={isMobile} cheat={data.data} />
-          <FunctionalCheat mobile={isMobile} cheat={data.data} />
+          <Medias mobile={isMobile} cheat={data.data} />
           {data.data.type !== "detected" && (
             <PayCard mobile={isMobile} cheat={data.data} />
           )}
-          <Medias mobile={isMobile} cheat={data.data} />
+          <FunctionalCheat mobile={isMobile} cheat={data.data} />
           <Programs mobile={isMobile} cheat={data.data} />
-          <FunctionalItemsMobile cheat={data.data} />
+          <div className="flex flex-col gap-4">
+            <Text
+              className="text-primary10 leading-[140%]"
+              T="product"
+              weight="bold"
+              size="xl"
+            >
+              about
+            </Text>
+            <Text T="none" className="text-primary10" size="sm" weight="medium">
+              {data.data[`about${getLocale() == "en" ? "En" : "Ru"}`]}
+            </Text>
+          </div>
+
           <Comments mobile={isMobile} cheat={data.data} />
         </div>
       </div>
@@ -50,7 +65,6 @@ const View = () => {
       <div className="container z-[1]">
         <CardAndPay mobile={isMobile} cheat={data.data} />
         <FunctionalCheat mobile={isMobile} cheat={data.data} />
-        <Medias mobile={isMobile} cheat={data.data} />
         <Comments mobile={isMobile} cheat={data.data} />
       </div>
     </div>

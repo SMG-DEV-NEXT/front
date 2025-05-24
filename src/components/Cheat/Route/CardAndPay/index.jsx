@@ -13,9 +13,11 @@ import Programs from "./Programs";
 import { useLocale } from "next-intl";
 import getLanguage from "@/utils/get-language";
 import { getStars } from "@/utils/getStarsCheat";
+import Medias from "../../Media";
 const CardAndPay = ({ mobile, cheat }) => {
   const type = "Undetected";
   const locale = useLocale();
+  const text = cheat[`about${getLanguage(locale)}`];
   if (mobile) {
     return (
       <div className="flex flex-col gap-6 items-start">
@@ -108,10 +110,7 @@ const CardAndPay = ({ mobile, cheat }) => {
   const isHidedPayment = type === "detected";
   return (
     <div className="flex gap-6 items-start">
-      <div
-        className="flex flex-col w-[68%] gap-8"
-        style={{ width: !isHidedPayment ? "100%" : "68%" }}
-      >
+      <div className="flex flex-col w-[68%] gap-8" style={{ width: "68%" }}>
         <RouteCheat
           catalogName={cheat.catalog[`head${getLanguage(locale)}`]}
           cheatName={cheat[`title${getLanguage(locale)}`]}
@@ -183,9 +182,29 @@ const CardAndPay = ({ mobile, cheat }) => {
             </div>
           </div>
         </div>
+        <Medias mobile={mobile} cheat={cheat} />
         <Programs cheat={cheat} />
       </div>
-      {!isHidedPayment && <PayCard cheat={cheat} />}
+      <div
+        className="flex flex-col gap-6 min-w-[32%]"
+        style={{ width: mobile ? "100%" : "32%" }}
+      >
+        {!isHidedPayment && <PayCard cheat={cheat} />}
+
+        <div className="flex flex-col gap-4">
+          <Text
+            className="text-primary10 leading-[140%]"
+            T="product"
+            weight="bold"
+            size="xl"
+          >
+            about
+          </Text>
+          <Text T="none" className="text-primary10" size="sm" weight="medium">
+            {text}
+          </Text>
+        </div>
+      </div>
     </div>
   );
 };

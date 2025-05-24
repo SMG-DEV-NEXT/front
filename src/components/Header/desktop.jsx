@@ -19,6 +19,7 @@ import HeaderMyAccount from "./Account";
 import { useSelector } from "react-redux";
 import { MainSettings } from "@/script/main";
 import { useSettings } from "@/context/Middle";
+import { CheatSearch } from "./search";
 
 const LANGUAGE_ITEMS = [
   { key: "ru", label: "russian" },
@@ -80,7 +81,7 @@ export default function Header() {
           {/* Language Switcher */}
           <Dropdown>
             <DropdownTrigger className="z-[0]">
-              <div className="flex language-picker cursor-pointer items-center gap-2 ">
+              <div className="flex language-picker mr-6 cursor-pointer items-center gap-2 ">
                 <Icon name="Language" />
                 <Text className="text-linkColor text-sm font-medium">
                   {language.key.toUpperCase()}
@@ -89,13 +90,15 @@ export default function Header() {
             </DropdownTrigger>
             <DropdownMenu
               aria-label="Select Language"
-              className="flex flex-col rounded-2xl overflow-hidden items-center"
+              className="flex flex-col rounded-[16px] overflow-hidden items-center"
             >
-              {LANGUAGE_ITEMS.map((item) => (
+              {LANGUAGE_ITEMS.map((item, i) => (
                 <DropdownItem
                   key={item.key}
                   onClick={() => handleLanguageChange(item)}
-                  className="language-item justify-center"
+                  className={`language-item justify-center rounded-${
+                    i === 0 ? "t" : "b"
+                  }-2xl`}
                   style={{
                     backgroundColor:
                       item.key === language.key ? "#8B6DCA" : "#272c33",
@@ -110,6 +113,7 @@ export default function Header() {
           </Dropdown>
 
           {/* Search Input */}
+          <CheatSearch />
           {/* <Input iconLeft="searchNew" /> */}
 
           {/* Auth Buttons */}

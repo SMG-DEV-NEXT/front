@@ -6,8 +6,12 @@ import Text from "@/components/Text";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import FunctionItem from "./function";
+import Tab from "./Tab";
+import FunctionsCheatPreview from "@/components/Cheat/Functional";
+import Modal from "@/components/Modal";
 
 const FunctionsCheat = ({ functions, onChange }) => {
+  const [isPreview, setIsPreview] = useState(false);
   const [newTabValue, setNewTabValue] = useState("");
   const [selectedFunction, setSelectedFunction] = useState({});
 
@@ -25,7 +29,7 @@ const FunctionsCheat = ({ functions, onChange }) => {
       ...functions,
       {
         title: newTabValue,
-        functions: [],
+        tabs: [],
       },
     ]);
     setNewTabValue("");
@@ -36,7 +40,7 @@ const FunctionsCheat = ({ functions, onChange }) => {
       if (e.title === selectedFunction.title) {
         return {
           ...e,
-          functions: [...e.functions, item],
+          tabs: [...e.tabs, item],
         };
       }
       return e;
@@ -45,14 +49,14 @@ const FunctionsCheat = ({ functions, onChange }) => {
 
     setSelectedFunction({
       ...selectedFunction,
-      functions: [...selectedFunction.functions, item],
+      tabs: [...selectedFunction.tabs, item],
     });
   };
 
   const onDeleteItem = (index) => {
     const newSelectedFunctions = {
       ...selectedFunction,
-      functions: selectedFunction.functions.filter((item, i) => i !== index),
+      tabs: selectedFunction.tabs.filter((item, i) => i !== index),
     };
     const newItems = functions.map((e) => {
       if (e.title === selectedFunction.title) {
@@ -63,38 +67,80 @@ const FunctionsCheat = ({ functions, onChange }) => {
     onChange("functions", newItems);
     setSelectedFunction(newSelectedFunctions);
   };
+
+  const handleSaveTabFunction = (data) => {
+    const newSelectedFunctions = {
+      ...selectedFunction,
+      tabs: selectedFunction.tabs.map((item) => {
+        if (item.key === data.oldKey) {
+          return data;
+        }
+        return item;
+      }),
+    };
+    const newItems = functions.map((e) => {
+      if (e.title === selectedFunction.title) {
+        return newSelectedFunctions;
+      }
+      return e;
+    });
+    onChange("functions", newItems);
+    setSelectedFunction(newSelectedFunctions);
+  };
+
+  const handleDeleteFunction = (item) => {
+    onChange(
+      "functions",
+      functions.filter((e) => e.title !== item.title)
+    );
+    if (item.title === selectedFunction.title) {
+      setSelectedFunction({});
+    }
+  };
+
+  const handleChangeIcon = (icon) => {
+    const newItems = functions.map((e) => {
+      if (e.title === selectedFunction.title) {
+        return {
+          ...e,
+          icon,
+        };
+      }
+      return e;
+    });
+    onChange("functions", newItems);
+
+    setSelectedFunction({
+      ...selectedFunction,
+      icon,
+    });
+  };
   return (
     <div className="flex flex-col p-4 justify-between gap-4 bg-input rounded-[16px] w-full">
-      <Text T="admin" weight="semi" size="md" className="text-primary10">
-        cheatFunctions
-      </Text>
+      <Modal isOpen={isPreview} onClose={() => setIsPreview(false)}>
+        <div className="w-[600px] mt-[-40px]">
+          <FunctionsCheatPreview cheat={{ functions }} />
+        </div>
+      </Modal>
+      <div className="flex w-full justify-between items-center">
+        <Text T="admin" weight="semi" size="md" className="text-primary10">
+          cheatFunctions
+        </Text>
+        <AdminButton onClick={() => setIsPreview(true)}>preview</AdminButton>
+      </div>
       {/* <Text T="admin" weight="semi" size="md" className="text-primary10">
           functionsAlert
         </Text> */}
       <div className="flex gap-2 items-center flex-wrap">
-        {functions.map((e) => {
-          if (e.title === selectedFunction.title) {
-            return (
-              <div
-                key={crypto.randomUUID()}
-                className="bg-primary80 cursor-pointer py-[6px] px-3 rounded-[8px] border border-[#919EAB3D] flex items-center"
-              >
-                <Text T="none" weight="semi" className="text-[#141A21]">
-                  {e.title}
-                </Text>
-              </div>
-            );
-          }
+        {functions.map((e, i) => {
           return (
-            <div
-              key={crypto.randomUUID()}
-              onClick={() => setSelectedFunction(e)}
-              className=" py-[6px] cursor-pointer px-3 rounded-[8px] border border-[#919EAB3D] flex items-center"
-            >
-              <Text T="none" weight="semi" className="text-primary10">
-                {e.title}
-              </Text>
-            </div>
+            <Tab
+              onDelete={() => handleDeleteFunction(e)}
+              onSelect={() => setSelectedFunction(e)}
+              title={e.title}
+              isActive={e.title === selectedFunction.title}
+              key={i}
+            />
           );
         })}
         <div className="flex gap-2">
@@ -112,7 +158,9 @@ const FunctionsCheat = ({ functions, onChange }) => {
         <FunctionItem
           onAddItem={handleAddItem}
           onDeleteItem={onDeleteItem}
+          handleChangeIcon={handleChangeIcon}
           f={selectedFunction}
+          handleSaveTabFunction={handleSaveTabFunction}
         />
       )}
     </div>

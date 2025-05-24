@@ -51,6 +51,9 @@ const CheatsService = {
   getTop: () => {
     return axiosWithoutAuth.get(`/cheats/api/top`);
   },
+  search: (s) => {
+    return axiosWithoutAuth.get(`/cheats/head/${s}`);
+  },
 };
 
 export default CheatsService;

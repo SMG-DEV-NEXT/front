@@ -10,6 +10,7 @@ import { useTranslations } from "next-intl";
 import PositionEditor from "../components/PositionEditor";
 import AdminUploadImage from "../components/ImageUpload";
 import AdminButton from "../components/button";
+import Input from "@/components/Input";
 
 const MainAdminView = () => {
   const { updateSetting, settings, isLoading, isLoadingSaveQuery } =
@@ -62,6 +63,7 @@ const MainAdminView = () => {
       <AdminPageHeader
         buttonOnClick={() => updateSetting("main", inputs)}
         route="settings"
+        isDisabledButton={isLoadingSaveQuery}
         buttonText="save"
       />
 
@@ -167,6 +169,11 @@ const MainAdminView = () => {
                 })}
               </div>
             </div>
+            <Input
+              label="generalLink"
+              value={inputs.link}
+              setValue={(e) => handleChange("link", e)}
+            />
           </div>
         </div>
       </div>

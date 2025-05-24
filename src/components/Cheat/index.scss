@@ -5,6 +5,12 @@
   color: black !important; /* Text color */
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1) !important; /* Optional shadow */
 }
+.tippy-tooltip .tippy-arrow {
+  left: 50% !important;
+  display: none !important;
+  transform: translateX(-50%) rotate(45deg) !important;
+}
+
 .tippy-tooltip-content {
   font-family: "Gilroy";
   font-style: normal;
@@ -16,8 +22,7 @@
 
 /* Customizing the Arrow */
 .arrow-big {
-  border-right-color: #e9e3f6 !important; /* Matches the background */
-  left: -5px !important; /* Adjust arrow positioning */
+  border-top-color: #e9e3f6 !important; /* Matches the background */
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;

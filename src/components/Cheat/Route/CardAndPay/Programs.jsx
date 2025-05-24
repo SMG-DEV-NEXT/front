@@ -78,7 +78,7 @@ const GetText = ({ value, req }) => {
     if (!label) return;
     return (
       <Text T="none" className="text-primary10" weight="semi" size="base">
-        {label.join(" / ")}
+        {label.join(",")}
       </Text>
     );
   }
@@ -151,7 +151,9 @@ const Programs = ({ mobile, cheat }) => {
                     >
                       {e.title}
                     </Text>
-                    {e.title === "gameTime" ? (
+                    <GetText value={e.value} req={req} />
+
+                    {/* {e.title === "gameTime" ? (
                       <div onClick={() => setIsOpen(!isOpen)}>
                         <Text
                           T="product"
@@ -164,7 +166,7 @@ const Programs = ({ mobile, cheat }) => {
                       </div>
                     ) : (
                       <GetText value={e.value} req={req} />
-                    )}
+                    )} */}
                   </div>
                 </div>
               );
@@ -221,7 +223,7 @@ const Programs = ({ mobile, cheat }) => {
     );
   }
   return (
-    <div className="flex flex-col mt-[54px] gap-4">
+    <div className="flex flex-col  gap-4">
       <Text
         T="product"
         weight="bold"
@@ -250,7 +252,9 @@ const Programs = ({ mobile, cheat }) => {
                   >
                     {e.title}
                   </Text>
-                  {e.title === "gameTime" ? (
+                  <GetText value={e.value} req={req} />
+
+                  {/* {e.title === "gameTime" ? (
                     <div onClick={() => setIsOpen(!isOpen)}>
                       <Text
                         T="product"
@@ -263,7 +267,7 @@ const Programs = ({ mobile, cheat }) => {
                     </div>
                   ) : (
                     <GetText value={e.value} req={req} />
-                  )}
+                  )} */}
                 </div>
               </div>
             );

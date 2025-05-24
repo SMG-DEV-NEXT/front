@@ -4,10 +4,12 @@ import Icon from "../Icons";
 import Text from "../Text";
 import Button from "../Button";
 import { useState } from "react";
+import { useSettings } from "@/context/Middle";
 
 const Top = () => {
   const [isVisible, setIsVisible] = useState(true);
-
+  const { settings } = useSettings();
+  const data = settings.data.find((e) => e.title === "main")?.settings || {};
   // useEffect(() => {
   //   const closeFromLocalStorage =
   //     typeof window !== "undefined" ? localStorage.getItem("close") : "false";
@@ -31,6 +33,7 @@ const Top = () => {
           <Text className="text-primary10 leading-[140%]">top</Text>
           <Button
             variant="primary10"
+            onClick={() => (window.location.href = data.link)}
             className="bg-primary20 !px-3 !py-2 text-[12px] leading-[14px]"
           >
             go

@@ -13,7 +13,6 @@ function Forget1({ email, setEmail, setStep, isMobile, setIsTwoFactorForget }) {
     mutationKey: ["forget"],
     onSuccess: ({ data }) => {
       setStep(2);
-      console.log(data);
       setIsTwoFactorForget(data.isTwoFactor);
     },
   });

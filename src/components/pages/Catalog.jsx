@@ -94,7 +94,7 @@ function View() {
   };
 
   return (
-    <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[112px]">
+    <div className="view relative h-full w-full flex items-center  pt-[64px] pb-[112px]">
       <div className="container flex flex-col items-center gap-6 z-[1]">
         <Text
           T="catalog"

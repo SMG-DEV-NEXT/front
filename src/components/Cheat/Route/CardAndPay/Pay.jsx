@@ -132,10 +132,7 @@ const PayCard = ({ mobile, cheat }) => {
   };
 
   return (
-    <div
-      className="flex flex-col min-w-[32%]"
-      style={{ width: mobile ? "100%" : "32%" }}
-    >
+    <div className="flex flex-col min-w-[100%]">
       <div className="rounded-t-2xl bg-input p-6">
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-2">

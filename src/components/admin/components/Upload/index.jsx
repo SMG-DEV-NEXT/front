@@ -29,7 +29,6 @@ const AdminUpload = ({
     if (uploading || countOfFiles === links.length) return;
     fileInputRef.current.click(); // Open file picker
   };
-  console.log(uploading);
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
