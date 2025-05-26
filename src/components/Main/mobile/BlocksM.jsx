@@ -9,7 +9,7 @@ import { StartsIcon } from "../Blocks";
 
 const EasyUseBlock = () => {
   return (
-    <div className="flex h-full relative p-6 bg-input rounded-2xl min-h-[443px] bg-[url('/images/easyBG.png')] bg-no-repeat bg-center bg-cover">
+    <div className="flex h-full relative p-6 bg-input rounded-2xl min-h-[443px] bg-[url('/images/easyBG.webp')] bg-no-repeat bg-center bg-cover">
       <div className="flex z-[2] flex-col justify-between">
         <div
           className="flex items-center gap-2 p-3 rounded-xl"
@@ -43,7 +43,7 @@ const EasyUseBlock = () => {
 
 const Choose = () => {
   return (
-    <div className="flex relative w-full h-[295px] bg-[url('/images/chooseBG.png')] bg-no-repeat bg-center bg-cover  rounded-2xl">
+    <div className="flex relative w-full h-[295px] bg-[url('/images/chooseBG.webp')] bg-no-repeat bg-center bg-cover  rounded-2xl">
       <div className="absolute bottom-[24px]">
         <div className="flex flex-col px-6 gap-2">
           <Text

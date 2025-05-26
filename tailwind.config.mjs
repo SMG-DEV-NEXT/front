@@ -25,7 +25,7 @@ export default {
     backgroundImage: {
       "top-gradient":
         "linear-gradient(90deg, #0D0E11 0%, #8B6DCA 25%, #8B6DCA 60%, #0D0E11 100%)",
-      login: "url('/images/loginBg.png')",
+      login: "url('/images/loginBg.webp')",
     },
   },
   plugins: [],

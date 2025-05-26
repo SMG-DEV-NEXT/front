@@ -10,10 +10,8 @@ import MainTopMobile from "../Main/mobile/TopM";
 import AboutMobile from "../Main/mobile/AboutM";
 import ArticlesMobile from "../Main/mobile/ArticlesMobile";
 import { useQueries } from "@tanstack/react-query";
-import CheatsService from "@/services/Cheats";
 import StatsService from "@/services/Stats";
 import CatalogService from "@/services/Catalog";
-import Loading from "@/app/loading";
 import { Axyus, HugeGlow, LeftIcon, RightIcon } from "../Main/i";
 
 function Main() {
@@ -34,7 +32,6 @@ function Main() {
       },
     ],
   });
-  const isLoading = [catalogs, stats].some((result) => result.isLoading);
   if (isMobile) {
     return (
       <div className=" view flex flex-col w-full">

@@ -3,6 +3,7 @@ import React from "react";
 import Icon from "../Icons";
 import Text from "../Text";
 import Effect from "../Animations/Effect";
+import { BottomAxyusBlock } from "./i";
 
 export const StartsIcon = () => {
   return (
@@ -49,8 +50,8 @@ export const StartsIcon = () => {
 
 const EasyUseBlock = () => {
   return (
-    <div className="flex h-full relative p-6 bg-input rounded-2xl bg-[url('/images/easyBG.png')] bg-no-repeat bg-center bg-cover">
-      {/* <Image fill src="/images/easyBG.png" alt="background" /> */}
+    <div className="flex h-full relative p-6 bg-input rounded-2xl bg-[url('/images/easyBG.webp')] bg-no-repeat bg-center bg-cover">
+      {/* <Image fill src="/images/easyBG.webp" alt="background" /> */}
       <div className="flex z-[2] flex-col justify-between">
         <div
           className="flex items-center gap-2 p-3 rounded-xl"
@@ -84,7 +85,7 @@ const EasyUseBlock = () => {
 
 const Choose = () => {
   return (
-    <div className="flex relative  bg-[url('/images/chooseBG.png')] bg-no-repeat bg-center bg-cover min-h-[295px]">
+    <div className="flex relative  bg-[url('/images/chooseBG.webp')] bg-no-repeat bg-center bg-cover min-h-[295px]">
       {/* <Image
         src="/images/chooseBG.png"
         alt="background"
@@ -138,7 +139,7 @@ function Blocks() {
   return (
     <div className="relative flex pb-[164px] z-[10]">
       <div className="absolute bottom-[-14%] left-[0]">
-        <Icon name="frame301" className="w-full h-full" />
+        <BottomAxyusBlock />
       </div>
       <div className="container">
         <div className="flex gap-6">
