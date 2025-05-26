@@ -4,7 +4,7 @@ import Icon from "../Icons";
 import Text from "../Text";
 import Effect from "../Animations/Effect";
 import { BottomAxyusBlock } from "./i";
-
+import Image from "next/image";
 export const StartsIcon = () => {
   return (
     <svg
@@ -50,8 +50,20 @@ export const StartsIcon = () => {
 
 const EasyUseBlock = () => {
   return (
-    <div className="flex h-full relative p-6 bg-input rounded-2xl bg-[url('/images/easyBG.webp')] bg-no-repeat bg-center bg-cover">
+    <div className="flex h-full rounded-[16px] overflow-hidden relative p-6 bg-input rounded-2xl bg-no-repeat bg-center bg-cover">
       {/* <Image fill src="/images/easyBG.webp" alt="background" /> */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/frame288.png" // Добавь изображение сюда
+          alt="Authority EFT Cards"
+          fill
+          className="object-cover object-top opacity-80"
+          quality={100}
+          priority
+        />
+        {/* Градиент для читаемости текста */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0C0C0F] via-[#0C0C0F]/80 to-transparent z-10" />
+      </div>
       <div className="flex z-[2] flex-col justify-between">
         <div
           className="flex items-center gap-2 p-3 rounded-xl"
@@ -85,15 +97,24 @@ const EasyUseBlock = () => {
 
 const Choose = () => {
   return (
-    <div className="flex relative  bg-[url('/images/chooseBG.webp')] bg-no-repeat bg-center bg-cover min-h-[295px]">
-      {/* <Image
-        src="/images/chooseBG.png"
-        alt="background"
-        width={552}
-        height={295}
-      /> */}
-      <div className="absolute bottom-[24px]">
-        <div className="flex flex-col px-6 gap-2">
+    <section className="relative bg-[#0C0C0F] rounded-2xl overflow-hidden px-6 py-6 md:px-10 md:py-8 flex flex-col justify-end aspect-[552/295] min-h-[295px]">
+      {/* Фоновое изображение с затемнением */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/frame289.png" // Добавь изображение сюда
+          alt="Authority EFT Cards"
+          fill
+          className="object-cover object-top opacity-80"
+          quality={100}
+          priority
+        />
+        {/* Градиент для читаемости текста */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0C0C0F] via-[#0C0C0F]/80 to-transparent z-10" />
+      </div>
+
+      {/* Текстовый контент */}
+      <div className="relative z-20 max-w-[80%] sm:max-w-[80%]">
+        <div className="flex flex-col  gap-2">
           <Text
             T="Main"
             weight="bold"
@@ -107,8 +128,79 @@ const Choose = () => {
           </Text>
         </div>
       </div>
-    </div>
+    </section>
   );
+  // return (
+  //   <div
+  //     style={{ aspectRatio: "552 / 295" }}
+  //     className="flex bg-input rounded-[16px] relative overflow-hidden bg-no-repeat bg-center bg-cover min-h-[295px]"
+  //   >
+  //     <div className="absolute top-[-7%] left-0 z-[2] isolate">
+  //       <BloksIcon1 />
+  //     </div>
+  //     <div className="absolute  rotate-[-90deg] left-[-30%] z-[2] isolate">
+  //       <BloksIcon1 />
+  //     </div>
+  //     <div className="absolute  top-[-50%] rotate-[90deg] right-[-30%] z-[2] isolate">
+  //       <BloksIcon1 />
+  //     </div>
+  //     <div
+  //       className="absolute z-[0]"
+  //       style={{
+  //         left: "3.8%",
+  //         top: "-10.5%",
+  //         width: "35.7%",
+  //         height: "67.8%",
+  //       }}
+  //     >
+  //       <Icon name="5" style={{ width: "100%", height: "100%" }} />
+  //     </div>
+
+  //     {/* Иконка 2 */}
+  //     <div
+  //       className="absolute z-[-0]"
+  //       style={{
+  //         left: "43.1%",
+  //         top: "-5.4%",
+  //         width: "27.2%",
+  //         height: "52.2%",
+  //         transform: "rotate(4deg)",
+  //       }}
+  //     >
+  //       <Icon name="5" style={{ width: "100%", height: "100%" }} />
+  //     </div>
+
+  //     {/* Иконка 3 */}
+  //     <div
+  //       className="absolute z-[0]"
+  //       style={{
+  //         right: "-20.1%",
+  //         top: "-11.8%",
+  //         width: "45%",
+  //         height: "76.6%",
+  //         transform: "rotate(20deg)",
+  //       }}
+  //     >
+  //       <Icon name="5" style={{ width: "100%", height: "100%" }} />
+  //     </div>
+  //     {/* bg-[url('/images/chooseBG.webp')] */}
+  //     <div className="absolute bottom-[24px]">
+  //       <div className="flex flex-col px-6 gap-2">
+  //         <Text
+  //           T="Main"
+  //           weight="bold"
+  //           size="lg"
+  //           className="text-primary10 leading-[20px]"
+  //         >
+  //           choose
+  //         </Text>
+  //         <Text T="Main" className="text-linkColor" weight="medium" size="sm">
+  //           chooseText
+  //         </Text>
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
 };
 
 const Starts = () => {
