@@ -53,7 +53,8 @@ const PayModal = ({
     mutationKey: ["checkout"],
     onSuccess: ({ data }) => {
       if (data) {
-        window.location = `/${locale}/preview/${data}`;
+        // это уже payment_url, редиректим на страницу оплаты Точки
+        window.location.href = data;
       }
     },
   });
@@ -100,6 +101,7 @@ const PayModal = ({
       promo: promo,
       type: typeCheckout,
       count,
+      locale,
     });
   };
 
