@@ -34,10 +34,20 @@ const nextConfig = {
   reactStrictMode: true,
   productionBrowserSourceMaps: true,
   images: {
+    domains: ["localhost"],
     remotePatterns: [
       {
         protocol: "https",
         hostname: "res.cloudinary.com",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "4000",
+      },
+      {
+        protocol: "https",
+        hostname: "https://smg-back.ru",
       },
     ],
   },

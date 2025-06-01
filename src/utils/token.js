@@ -2,11 +2,16 @@ import Cookies from "js-cookie";
 import { ACCESS_TOKEN } from "../../costants/token";
 
 export const getAccessToken = () => {
-  return Cookies.get(ACCESS_TOKEN) || sessionStorage.getItem(ACCESS_TOKEN);
+  if (typeof window !== "undefined") {
+    return Cookies.get(ACCESS_TOKEN) || sessionStorage.getItem(ACCESS_TOKEN);
+  }
+  return Cookies.get(ACCESS_TOKEN);
 };
 
 export const removeAccessToken = () => {
-  sessionStorage.removeItem(ACCESS_TOKEN);
+  if (typeof window !== "undefined") {
+    sessionStorage.removeItem(ACCESS_TOKEN);
+  }
   return Cookies.remove(ACCESS_TOKEN);
 };
 
