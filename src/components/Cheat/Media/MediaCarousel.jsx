@@ -113,6 +113,7 @@ export default function MediaCarousel({ items, initialIndex = 0, onClose }) {
                     fill
                     className="object-contain rounded-lg"
                     priority
+                    objectFit="contain"
                   />
                 </div>
               )}

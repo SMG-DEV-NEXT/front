@@ -27,37 +27,24 @@ const FAQTabs = ({ sections, mobile, selectedStat, handleSelectTab }) => {
             <div className="flex flex-col">
               {e.stats.map((stat) => {
                 const dataStats = JSON.parse(stat.data);
-                if (stat.id === selectedStat.id) {
-                  return (
-                    <div className="flex rounded-2xl px-3 bg-[#8B6DCA26] items-center gap-2 py-3 cursor-pointer">
-                      {dataStats.icon && (
-                        <Image
-                          src={dataStats.iconActive || dataStats.icon}
-                          width={20}
-                          height={20}
-                          objectFit="contain"
-                          alt="logo"
-                        />
-                      )}
-                      <Text
-                        T="none"
-                        weight="medium"
-                        size="sm"
-                        className="text-primary80"
-                      >
-                        {dataStats[`title${locale}`]}
-                      </Text>
-                    </div>
-                  );
-                }
+                const isActive = stat.id === selectedStat.id;
+
                 return (
                   <div
                     onClick={() => handleSelectTab(indexSection, stat)}
-                    className="flex items-center px-3 gap-2 py-3 cursor-pointer"
+                    key={stat.id}
+                    style={{ transition: "0.3s" }}
+                    className={`flex items-center bg-[${
+                      isActive ? "#8B6DCA26" : "tertiary"
+                    }]  rounded-2xl px-3 gap-2 py-3 cursor-pointer`}
                   >
                     {dataStats.icon && (
                       <Image
-                        src={dataStats.icon}
+                        src={
+                          isActive
+                            ? dataStats.iconActive || dataStats.icon
+                            : dataStats.icon
+                        }
                         width={20}
                         height={20}
                         objectFit="contain"
@@ -68,7 +55,9 @@ const FAQTabs = ({ sections, mobile, selectedStat, handleSelectTab }) => {
                       T="none"
                       weight="medium"
                       size="sm"
-                      className="text-linkColor"
+                      className={`${
+                        !isActive ? "text-linkColor" : "text-primary80"
+                      }`}
                     >
                       {dataStats[`title${locale}`]}
                     </Text>

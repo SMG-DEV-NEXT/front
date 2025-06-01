@@ -1,48 +1,41 @@
+import { axiosWithoutAuth } from "@/api";
 import { NextResponse } from "next/server";
-import cloudinary from "../../../../lib/cloudinary";
 
 export async function POST(req) {
   try {
     const contentType = req.headers.get("content-type");
 
-    if (contentType.includes("application/json")) {
-      // Image upload (Base64)
+    if (contentType?.includes("application/json")) {
+      // For base64 image (optional — not recommended for large files)
       const { image } = await req.json();
-      const uploadedResponse = await cloudinary.uploader.upload(image, {
-        folder: "nextjs_uploads",
-        resource_type: "image",
+      console.log(image);
+      const data = await axiosWithoutAuth.post("upload/image", {
+        body: JSON.stringify({ image }),
       });
-
-      return NextResponse.json({ url: uploadedResponse.secure_url });
+      console.log(data);
+      return NextResponse.json(data);
     } else {
-      // Video upload (FormData)
+      // For multipart/form-data (file upload)
       const formData = await req.formData();
-      const file = formData.get("video");
-      if (!file)
+      const file = formData.get("video") || formData.get("file");
+
+      if (!file || !(file instanceof File)) {
         return NextResponse.json(
           { error: "No file provided" },
           { status: 400 }
         );
+      }
 
-      const arrayBuffer = await file.arrayBuffer();
-      const buffer = Buffer.from(arrayBuffer);
-
-      const uploadedResponse = await new Promise((resolve, reject) => {
-        cloudinary.uploader
-          .upload_stream(
-            { resource_type: "video", folder: "nextjs_uploads" },
-            (error, result) => {
-              if (error) reject(error);
-              else resolve(result);
-            }
-          )
-          .end(buffer);
+      const uploadForm = new FormData();
+      uploadForm.append("file", file);
+      const responseData = await axiosWithoutAuth.post("upload/image", {
+        body: uploadForm,
       });
 
-      return NextResponse.json({ url: uploadedResponse.secure_url });
+      return NextResponse.json(responseData);
     }
   } catch (error) {
-    console.log(error);
+    console.error("Upload error:", error);
     return NextResponse.json(
       { error: "Upload failed", details: error.message },
       { status: 500 }

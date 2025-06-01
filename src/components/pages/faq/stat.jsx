@@ -75,6 +75,7 @@ const FaqStat = ({
           return (
             <Component
               {...e}
+              key={crypto.randomUUID()}
               handleChangeTab={handleChangeTab}
               locale={locale}
               mobile={mobile}

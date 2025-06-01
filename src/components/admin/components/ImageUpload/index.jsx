@@ -5,6 +5,7 @@ import Image from "next/image";
 import Text from "@/components/Text";
 import Icon from "@/components/Icons";
 import { useTranslations } from "next-intl";
+import { axiosWithoutAuth } from "@/api";
 
 export default function AdminUploadImage({
   label,
@@ -27,26 +28,23 @@ export default function AdminUploadImage({
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
-
     setUploading(true);
-    const formData = new FileReader();
-    formData.onloadend = async () => {
-      try {
-        const response = await fetch("/api/upload", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ image: formData.result }),
-        });
-
-        const data = await response.json();
-
-        onChange(data.url);
-      } catch (error) {
-      } finally {
-        setUploading(false);
+    const formData = new FormData();
+    formData.append("file", file); // MUST be 'file'
+    try {
+      const { data } = await axiosWithoutAuth.post("upload/image", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      if (data.url) {
+        onChange(`${process.env.NEXT_PUBLIC_API_URL}${data.url}`); // your callback with uploaded URL
       }
-    };
-    formData.readAsDataURL(file);
+    } catch (error) {
+      console.error("Upload failed:", error);
+    } finally {
+      setUploading(false);
+    }
   };
 
   const clear = () => {

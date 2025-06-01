@@ -37,9 +37,7 @@ function View({ isMobile, goToRegistration, goToForgetPassword, onClose }) {
         setStep(2);
         return;
       }
-      if (inputs.rememberMe) {
-        setAccessToken(token);
-      }
+      setAccessToken(token, inputs.rememberMe);
       if (isMobile) {
         onClose();
       }

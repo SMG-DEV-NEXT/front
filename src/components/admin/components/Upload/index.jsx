@@ -1,5 +1,6 @@
 "use client";
 
+import { axiosWithoutAuth } from "@/api";
 import Icon from "@/components/Icons";
 import Text from "@/components/Text";
 import { useTranslations } from "next-intl";
@@ -29,61 +30,85 @@ const AdminUpload = ({
     if (uploading || countOfFiles === links.length) return;
     fileInputRef.current.click(); // Open file picker
   };
+  // const handleFileChange = async (e) => {
+  //   const file = e.target.files[0];
+  //   if (!file) return;
+
+  //   setUploading(true);
+
+  //   // Check if file is an image or video
+  //   const isImage = file.type.startsWith("image/");
+  //   const isVideo = file.type.startsWith("video/");
+
+  //   if (isImage) {
+  //     // Handle image as Base64
+  //     const reader = new FileReader();
+  //     reader.onloadend = async () => {
+  //       try {
+  //         const response = await fetch("/api/upload", {
+  //           method: "POST",
+  //           headers: { "Content-Type": "application/json" },
+  //           body: JSON.stringify({ image: reader.result }), // Send base64 data
+  //         });
+
+  //         const data = await response.json();
+  //         if (data.url) {
+  //           onChange(name, [...links, data.url]);
+  //         }
+  //       } catch (error) {
+  //         console.error("Upload failed:", error);
+  //       } finally {
+  //         setUploading(false);
+  //       }
+  //     };
+
+  //     reader.readAsDataURL(file);
+  //   } else if (isVideo) {
+  //     // Handle video as FormData
+  //     const formData = new FormData();
+  //     formData.append("video", file);
+
+  //     try {
+  //       const response = await fetch("/api/upload", {
+  //         method: "POST",
+  //         body: formData, // Send raw file for videos
+  //       });
+
+  //       const data = await response.json();
+  //       if (data.url) {
+  //         onChange(name, [...links, data.url]);
+  //       }
+  //     } catch (error) {
+  //       console.error("Upload failed:", error);
+  //     } finally {
+  //       setUploading(false);
+  //     }
+  //   } else {
+  //     alert("Unsupported file type");
+  //     setUploading(false);
+  //   }
+  // };
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
-
     setUploading(true);
-
-    // Check if file is an image or video
-    const isImage = file.type.startsWith("image/");
-    const isVideo = file.type.startsWith("video/");
-
-    if (isImage) {
-      // Handle image as Base64
-      const reader = new FileReader();
-      reader.onloadend = async () => {
-        try {
-          const response = await fetch("/api/upload", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ image: reader.result }), // Send base64 data
-          });
-
-          const data = await response.json();
-          if (data.url) {
-            onChange(name, [...links, data.url]);
-          }
-        } catch (error) {
-          console.error("Upload failed:", error);
-        } finally {
-          setUploading(false);
-        }
-      };
-
-      reader.readAsDataURL(file);
-    } else if (isVideo) {
-      // Handle video as FormData
-      const formData = new FormData();
-      formData.append("video", file);
-
-      try {
-        const response = await fetch("/api/upload", {
-          method: "POST",
-          body: formData, // Send raw file for videos
-        });
-
-        const data = await response.json();
-        if (data.url) {
-          onChange(name, [...links, data.url]);
-        }
-      } catch (error) {
-        console.error("Upload failed:", error);
-      } finally {
-        setUploading(false);
+    const formData = new FormData();
+    formData.append("file", file); // MUST be 'file'
+    try {
+      const { data } = await axiosWithoutAuth.post("upload/image", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      if (data.url) {
+        onChange(name, [
+          ...links,
+          `${process.env.NEXT_PUBLIC_API_URL}${data.url}`,
+        ]);
       }
-    } else {
-      alert("Unsupported file type");
+    } catch (error) {
+      console.error("Upload failed:", error);
+    } finally {
       setUploading(false);
     }
   };

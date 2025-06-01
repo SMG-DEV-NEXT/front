@@ -1,19 +1,26 @@
+import MediaCarousel from "@/components/Cheat/Media/MediaCarousel";
 import ImageWithPreview from "@/components/PreviewImage";
+import { useState } from "react";
+import { createPortal } from "react-dom";
 
 export default function ScreensGrid({ screens, mobile }) {
+  const [isOpenCarousel, setIsOpenCarousel] = useState({
+    isOpen: false,
+    index: 0,
+  });
   const getWidthClass = (count) => {
     if (mobile) return "w-full";
     switch (count) {
       case 1:
-        return "w-full";
+        return "max-w-full";
       case 2:
-        return "w-1/2";
+        return "max-w-1/2";
       case 3:
-        return "w-1/3";
+        return "max-w-1/3";
       case 4:
-        return "w-1/4";
+        return "max-w-1/4";
       default:
-        return "w-full";
+        return "max-w-full";
     }
   };
 
@@ -24,14 +31,30 @@ export default function ScreensGrid({ screens, mobile }) {
       className="flex gap-2"
       style={{ flexWrap: mobile ? "wrap" : "nowrap" }}
     >
+      {isOpenCarousel.isOpen &&
+        createPortal(
+          <MediaCarousel
+            items={screens.map((e) => ({
+              src: e,
+              type: "image",
+            }))}
+            initialIndex={isOpenCarousel.index}
+            onClose={() => setIsOpenCarousel({ isOpen: false, index: 0 })}
+          />,
+          document.body
+        )}
       {screens.map((src, i) => (
-        <div key={i} className={`${widthClass} relative aspect-video`}>
+        <div key={i} className={`${widthClass} relative`}>
           <ImageWithPreview
             src={src}
+            onClick={() =>
+              setIsOpenCarousel({
+                isOpen: true,
+                index: i,
+              })
+            }
             alt={`screenshot-${i}`}
-            fill
             className="rounded-lg object-cover"
-            sizes="(max-width: 768px) 100vw, 33vw"
             priority={i === 0}
           />
         </div>

@@ -4,8 +4,9 @@ import { useState, useRef } from "react";
 import Text from "../Text";
 import Icon from "../Icons";
 import Image from "next/image";
+import { axiosWithoutAuth } from "@/api";
 
-export default function UploadImage({ label,value,onChange }) {
+export default function UploadImage({ label, value, onChange }) {
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef(null);
 
@@ -16,26 +17,23 @@ export default function UploadImage({ label,value,onChange }) {
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
-
     setUploading(true);
-    const formData = new FileReader();
-    formData.onloadend = async () => {
-      try {
-        const response = await fetch("/api/upload", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ image: formData.result }),
-        });
-
-        const data = await response.json();
-
-        onChange(data.url);
-      } catch (error) {
-      } finally {
-        setUploading(false);
+    const formData = new FormData();
+    formData.append("file", file); // MUST be 'file'
+    try {
+      const { data } = await axiosWithoutAuth.post("upload/image", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      if (data.url) {
+        onChange(`${process.env.NEXT_PUBLIC_API_URL}${data.url}`); // your callback with uploaded URL
       }
-    };
-    formData.readAsDataURL(file);
+    } catch (error) {
+      console.error("Upload failed:", error);
+    } finally {
+      setUploading(false);
+    }
   };
 
   return (
@@ -47,7 +45,12 @@ export default function UploadImage({ label,value,onChange }) {
         <div className="flex items-center gap-2 w-[70%]">
           <Icon name="file" size={20} />
           {value ? (
-            <Text T="none" className="text-linkColor w-[100%] overflow-hidden" weight="medium" size="sm">
+            <Text
+              T="none"
+              className="text-linkColor w-[100%] overflow-hidden"
+              weight="medium"
+              size="sm"
+            >
               {value}...
             </Text>
           ) : (
@@ -70,11 +73,7 @@ export default function UploadImage({ label,value,onChange }) {
             disabled={uploading}
           >
             {uploading ? (
-              <Text
-                className="text-primary10"
-                weight="medium"
-                size="sm"
-              >
+              <Text className="text-primary10" weight="medium" size="sm">
                 uploading
               </Text>
             ) : (

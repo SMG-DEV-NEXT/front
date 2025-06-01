@@ -127,7 +127,7 @@ const MiddleComponent = ({ children }) => {
         <section className="content relative bg-mainBlack">
           <div className="fixed inset-0 bg-login bg-cover bg-top " />
 
-          <div className="z-1">{children}</div>
+          <div className="z-[1]">{children}</div>
         </section>
         <Footer />
         <ToastContainer
