@@ -47,7 +47,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "https://smg-back.ru",
+        hostname: "smg-back.ru",
       },
     ],
   },
