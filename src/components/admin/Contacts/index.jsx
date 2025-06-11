@@ -19,6 +19,8 @@ const ContactsAdminView = () => {
     queryFn: ContactsService.getAllContacts,
     queryKey: ["get"],
     refetchOnWindowFocus: false,
+    staleTime: 0,
+    cacheTime: 0,
   });
 
   const deleteMutation = useMutation({

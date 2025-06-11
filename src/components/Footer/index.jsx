@@ -18,10 +18,10 @@ const navigateTabs = [
 ];
 
 const otherTabs = [
-  { label: "resel", value: "/" },
+  { label: "resel", value: "/reseller" },
   { label: "konf", value: "/policy" },
   { label: "Pay", value: "/payment" },
-  { label: "User", value: "/" },
+  { label: "User", value: "/agreement" },
 ];
 function Footer() {
   const isMobile = useMobile();

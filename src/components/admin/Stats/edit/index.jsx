@@ -14,7 +14,7 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const queryInputs = (e) => {
-  const { catalog, id, ...data } = e;
+  const { catalog, id, popular, ...data } = e;
   return {
     ...data,
     type: data.type.value,
@@ -25,7 +25,7 @@ const queryInputs = (e) => {
 const StatEdit = () => {
   const statTypes = [
     { label: "Published", value: "published" },
-    { label: "Unpublished", value: "unpublished" },
+    { label: "Unpublished", value: "unpublish" },
   ];
   const locale = useLocale();
   const router = useRouter();
@@ -100,7 +100,6 @@ const StatEdit = () => {
       });
     }
   }, [stat]);
-
   const handleSave = () => {
     if (id === "create") {
       mutation.mutate(queryInputs(inputs));

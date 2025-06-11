@@ -19,7 +19,7 @@ const ComponentsAsBlockTypes = {
 };
 
 const FaqStat = ({
-  stat,
+  stat = {},
   mobile,
   getStatById,
   locale,

@@ -57,7 +57,7 @@ const CheatsMobile = ({
           weight="bold"
           size="t48"
         >
-          {T("title")} {api?.catalog?.[`head${getLanguage(locale)}`]}
+          {T("title")} {api?.catalog?.[`title`]}
         </Text>
         <Input
           iconLeft="searchNew"
@@ -149,7 +149,7 @@ const CheatsMobile = ({
                 </div>
               </div>
             </div>
-            {!api.hideFilterBar ? (
+            {!api.hideFilterBar && !(api.lowPrice === api.maxPrice) ? (
               <div className="p-6 flex flex-col gap-4 border-y border-y-[#404658]">
                 <Text
                   T="cheats"

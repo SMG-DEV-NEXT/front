@@ -217,7 +217,7 @@ function View({ isMobile, goToRegistration, goToForgetPassword, onClose }) {
               styleDiv={{ backgroundColor: "#272c33", height: "46px" }}
               type="password"
               iconRight={true}
-              placeholder="asdasdasd"
+              placeholder="password"
             />
           </div>
           <div className="flex items-center justify-between">

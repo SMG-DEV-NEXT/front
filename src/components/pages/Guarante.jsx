@@ -17,7 +17,8 @@ import {
 
 const GuaranteView = () => {
   const { settings } = useSettings();
-  const guarante = settings.data.find((e) => e.title === "guarante")?.settings;
+  const guarante =
+    settings.data.find((e) => e.title === "guarante")?.settings || {};
   const locale = useLocale();
   const MobileComponent = dynamic(() => import("../GuaranteMobile.jsx"), {
     ssr: false, // Disable SSR for this component (optional)

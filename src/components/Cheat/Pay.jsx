@@ -90,7 +90,7 @@ const PayModal = ({
     if (promoQuery?.data?.data) {
       prcentL += promoQuery?.data?.data.percent;
     }
-    if (prcentL === 100) return 0;
+    if (prcentL > 100) return 0;
     return getPrcent(pay, prcentL).toFixed(2);
   };
 
@@ -103,6 +103,13 @@ const PayModal = ({
       count,
       locale,
     });
+  };
+
+  const getOldPrice = () => {
+    if (locale === "ru") {
+      return pay.pay;
+    }
+    return (pay.pay / usd).toFixed(2);
   };
 
   const isShowingPrcentPrice = promoQuery?.data?.data || pay.prcent > 0;
@@ -130,13 +137,13 @@ const PayModal = ({
             </Text>
           )}
         </div>
-        <CustomSelect
+        {/* <CustomSelect
           options={options}
           label={"methodPay"}
           inputStyles={{ height: "46px" }}
           value={selectedOption}
           setValue={setSelectedOption}
-        />
+        /> */}
         <div className="flex gap-2 items-end">
           <Input
             setValue={setPromo}
@@ -153,7 +160,9 @@ const PayModal = ({
           <Button
             className=" h-[48px]"
             disabled={promoQuery.isPending}
-            onClick={() => promoQuery.mutate(promo)}
+            onClick={() => {
+              promoQuery.mutate(promo.trim() === "" ? "discount" : promo);
+            }}
           >
             check
           </Button>
@@ -190,7 +199,7 @@ const PayModal = ({
                   size="SM"
                   className="text-linkColor line-through whitespace-nowrap "
                 >
-                  {pay.pay * count}
+                  {getOldPrice() * count}
                   {locale === "ru" ? " ₽" : " $"}
                 </Text>
               </div>
@@ -201,7 +210,7 @@ const PayModal = ({
                 size="lg"
                 className="text-primary10 whitespace-nowrap"
               >
-                {pay.pay * count}
+                {getOldPrice() * count}
                 {locale === "ru" ? " ₽" : " $"}
               </Text>
             )}
@@ -241,13 +250,13 @@ const PayModal = ({
           </Text>
         )}
       </div>
-      <CustomSelect
+      {/* <CustomSelect
         options={options}
         label={"methodPay"}
         inputStyles={{ height: "46px" }}
         value={selectedOption}
         setValue={setSelectedOption}
-      />
+      /> */}
       <div className="flex gap-2 items-end">
         <Input
           setValue={setPromo}
@@ -264,7 +273,9 @@ const PayModal = ({
         <Button
           className=" h-[48px]"
           disabled={promoQuery.isPending}
-          onClick={() => promoQuery.mutate(promo)}
+          onClick={() => {
+            promoQuery.mutate(promo.trim() === "" ? "discount" : promo);
+          }}
         >
           check
         </Button>
@@ -301,7 +312,7 @@ const PayModal = ({
                 size="SM"
                 className="text-linkColor line-through whitespace-nowrap"
               >
-                {pay.pay * count}
+                {getOldPrice() * count}
                 {locale === "ru" ? "₽" : "$"}
               </Text>
             </div>
@@ -312,7 +323,7 @@ const PayModal = ({
               size="lg"
               className="text-primary10 whitespace-nowrap"
             >
-              {pay.pay * count}
+              {getOldPrice() * count}
               {locale === "ru" ? "₽" : "$"}
             </Text>
           )}

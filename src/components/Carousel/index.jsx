@@ -44,7 +44,6 @@ const Carousel = ({ items }) => {
   const goToSlide = (index) => {
     setCurrentIndex(index);
   };
-
   if (!mounted) return null;
   return (
     <div className="relative w-full max-w-lg mx-auto overflow-hidden rounded-2xl">

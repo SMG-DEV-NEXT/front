@@ -140,7 +140,7 @@ const AdminUpload = ({
       <input
         type="file"
         ref={fileInputRef}
-        accept={types[type]}
+        accept={types[type] ? types[type] : type}
         onChange={handleFileChange}
         style={{ display: "none" }}
       />

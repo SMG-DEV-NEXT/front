@@ -9,6 +9,8 @@ import "react-tippy/dist/tippy.css";
 import Modal from "@/components/Modal";
 import TabEditModal from "./TabEditModal";
 import Tab from "./Tab";
+import AdminUploadImage from "@/components/admin/components/ImageUpload";
+import AdminUpload from "@/components/admin/components/Upload";
 
 const FunctionItem = ({
   f,
@@ -16,9 +18,13 @@ const FunctionItem = ({
   onDeleteItem,
   handleSaveTabFunction,
   handleChangeIcon,
+  selectedBlock,
+  selectedTab,
+  setSelectedBlock,
+  setSelectedTab,
 }) => {
   const [newTabValue, setNewTabValue] = useState();
-  const [selectedTab, setSelectedTab] = useState();
+
   const handleAddElement = () => {
     if (!newTabValue) {
       toast.error("Fields is missing.");
@@ -35,14 +41,21 @@ const FunctionItem = ({
       blocks: [],
     });
   };
+
   return (
     <div className="flex flex-col gap-4">
-      <Input
+      <AdminUploadImage
+        value={f.icon}
+        type=".svg"
+        onChange={(e) => handleChangeIcon(e)}
+        label="Icon"
+      />
+      {/* <Input
         value={f.icon}
         label="Icon"
         onChange={(e) => handleChangeIcon(e.target.value)}
         styleDiv={{ backgroundColor: "#272c33", height: "38px" }}
-      />
+      /> */}
       <Text T="admin" weight="semi" size="md" className="text-primary10">
         tabsFunctions
       </Text>
@@ -50,11 +63,14 @@ const FunctionItem = ({
         {f.tabs.map((e, i) => {
           return (
             <Tab
-              // isActive={e.key === selectedTab?.key}
+              isActive={e.key === selectedTab?.key}
               onDelete={() => onDeleteItem(i)}
               key={crypto.randomUUID()}
               title={e.key}
-              onSelect={() => setSelectedTab(e)}
+              onSelect={() => {
+                setSelectedTab(e);
+                setSelectedBlock({});
+              }}
             />
           );
         })}
@@ -77,16 +93,12 @@ const FunctionItem = ({
         </div>
       </div>
       {selectedTab && (
-        <Modal
-          width={"600px"}
-          isOpen={selectedTab?.key}
-          onClose={() => setSelectedTab({})}
-        >
-          <TabEditModal
-            handleSaveTabFunction={handleSaveTabFunction}
-            tab={selectedTab}
-          />
-        </Modal>
+        <TabEditModal
+          selectedBlock={selectedBlock}
+          setSelectedBlock={setSelectedBlock}
+          handleSaveTabFunction={handleSaveTabFunction}
+          tab={selectedTab}
+        />
       )}
     </div>
   );

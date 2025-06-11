@@ -3,7 +3,7 @@ import React from "react";
 import AdminContainer from "../components/container";
 import AdminPageHeader from "../components/header";
 import { useLocale } from "next-intl";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { FAQService } from "@/services/FAQ";
 import Loading from "@/app/loading";
 import Text from "@/components/Text";
@@ -13,11 +13,23 @@ import { useRouter } from "next/navigation";
 const FAQAdminView = () => {
   const locale = useLocale();
   const router = useRouter();
-  const { data, isPending } = useQuery({
+  const { data, isPending, refetch } = useQuery({
     queryKey: ["get-faq"],
     queryFn: FAQService.getAdminFaq,
     refetchOnWindowFocus: false,
+    staleTime: 0,
+    cacheTime: 0,
   });
+  const initMutation = useMutation({
+    mutationFn: FAQService.initFAQContent,
+    mutationKey: ["Init"],
+    onSuccess: () => {
+      refetch();
+    },
+  });
+  if (data?.data?.length === 0 && !initMutation.isPending) {
+    initMutation.mutate();
+  }
   return (
     <AdminContainer>
       <div className="flex flex-col gap-6">

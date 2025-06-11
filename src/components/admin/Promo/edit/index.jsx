@@ -31,6 +31,8 @@ const PromoEditAdminView = () => {
     queryFn: () => promoApi.getPromocodeById(id),
     queryKey: ["Get"],
     enabled: id !== "create",
+    cacheTime: 0,
+    staleTime: 0,
     refetchOnWindowFocus: false,
   });
 

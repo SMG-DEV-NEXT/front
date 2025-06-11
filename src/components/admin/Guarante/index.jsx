@@ -38,7 +38,7 @@ const GuaranteAdminView = () => {
       blockTextru: "",
       blockTexten: "",
     },
-    ...(settings.data.find((e) => e.title === "guarante").settings || {}),
+    ...(settings.data.find((e) => e.title === "guarante")?.settings || {}),
   });
 
   const handleChange = (n, value, block) => {

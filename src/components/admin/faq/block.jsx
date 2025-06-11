@@ -26,6 +26,8 @@ const FaqBlockEdit = () => {
   const { data, isPending } = useQuery({
     queryKey: "get-faq-block",
     queryFn: () => FAQService.getBlockFaq(id),
+    staleTime: 0,
+    cacheTime: 0,
   });
 
   const updateMutation = useMutation({

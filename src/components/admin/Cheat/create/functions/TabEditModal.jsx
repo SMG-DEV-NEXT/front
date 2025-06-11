@@ -1,22 +1,30 @@
 "use client";
 import AdminBox from "@/components/admin/components/Box";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Tab from "./Tab";
 import Text from "@/components/Text";
 import Input from "@/components/Input";
 import AdminButton from "@/components/admin/components/button";
 import EdtiBlokTab from "./EditBlokTab";
 import { toast } from "react-toastify";
-const TabEditModal = ({ tab, handleSaveTabFunction }) => {
+const TabEditModal = ({
+  tab,
+  handleSaveTabFunction,
+  selectedBlock,
+  setSelectedBlock,
+}) => {
   const [inputs, setInputs] = useState({ ...tab, oldKey: tab.key });
   const [newFunctionValue, setNewFunctionValue] = useState("");
-  const [selectedBlock, setSelectedBlock] = useState({});
   const handleChangeInput = (name, value) => {
     setInputs((e) => ({
       ...e,
       [name]: value,
     }));
   };
+
+  useEffect(() => {
+    handleSaveTabFunction(inputs);
+  }, [inputs]);
 
   const handleAddFunction = () => {
     const itemCheck = inputs.blocks.find((e) => e.title === newFunctionValue);
@@ -108,13 +116,6 @@ const TabEditModal = ({ tab, handleSaveTabFunction }) => {
           <EdtiBlokTab onChange={handleEditFunction} blok={selectedBlock} />
         )}
       </div>
-      <AdminButton
-        onClick={() => {
-          handleSaveTabFunction(inputs);
-        }}
-      >
-        save
-      </AdminButton>
     </div>
   );
 };

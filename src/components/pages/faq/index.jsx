@@ -88,14 +88,16 @@ const FAQView = () => {
               mobile={isMobile}
               selectedStat={selectedtab}
             />
-            <FaqStat
-              handleChangeTab={handleSelectTab}
-              allStats={allStats}
-              mobile={isMobile}
-              getStatById={getStatById}
-              stat={selectedtab}
-              locale={locale}
-            />
+            {selectedtab?.data && (
+              <FaqStat
+                handleChangeTab={handleSelectTab}
+                allStats={allStats}
+                mobile={isMobile}
+                getStatById={getStatById}
+                stat={selectedtab}
+                locale={locale}
+              />
+            )}
           </div>
         </div>
       </div>
@@ -113,13 +115,15 @@ const FAQView = () => {
             sections={data.data}
             selectedStat={selectedtab}
           />
-          <FaqStat
-            handleChangeTab={handleSelectTab}
-            allStats={allStats}
-            getStatById={getStatById}
-            stat={selectedtab}
-            locale={locale}
-          />
+          {selectedtab?.data && (
+            <FaqStat
+              handleChangeTab={handleSelectTab}
+              allStats={allStats}
+              getStatById={getStatById}
+              stat={selectedtab}
+              locale={locale}
+            />
+          )}
         </div>
       </div>
     </div>

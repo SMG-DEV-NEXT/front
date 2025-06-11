@@ -20,9 +20,13 @@ const PromoAdminView = () => {
   const [page, setPage] = useState(1);
 
   const { data, isPending, refetch } = useQuery({
-    queryFn: () => promoApi.getAllPromocodes({ page, limit }),
+    queryFn: () => {
+      return promoApi.getAllPromocodes({ page, limit });
+    },
     queryKey: ["getAll", limit, page],
-    refetchOnWindowFocus: false,
+    refetchOnWindowFocus: true,
+    cacheTime: 0,
+    staleTime: 0,
   });
 
   const deleteMutation = useMutation({

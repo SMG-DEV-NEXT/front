@@ -54,7 +54,7 @@ const Cheats = () => {
       retry: false,
       refetchOnWindowFocus: false, // Get last known data
     });
-
+  console.log(filters);
   useEffect(() => {
     const handler = setTimeout(() => {
       setFilters({ ...filters, search });
@@ -160,7 +160,7 @@ const Cheats = () => {
           weight="bold"
           size="t48"
         >
-          {cheatsT("title")} {api?.catalog?.[`head${getLanguage(locale)}`]}
+          {cheatsT("title")} {api?.catalog?.[`title`]}
         </Text>
         <Input
           iconLeft="searchNew"
@@ -237,7 +237,7 @@ const Cheats = () => {
                 </div>
               </div>
             </div>
-            {!api.hideFilterBar ? (
+            {!api.hideFilterBar && !(api.lowPrice === api.maxPrice) ? (
               <div className="p-6 flex flex-col gap-4 border-y border-y-[#404658]">
                 <Text
                   T="cheats"

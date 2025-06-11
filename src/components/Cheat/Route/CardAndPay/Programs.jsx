@@ -62,7 +62,7 @@ const display = [
 const GetText = ({ value, req }) => {
   if (value === "oc") {
     const label = (
-      SystemOptions.filter((e) => req[value].includes(e.value)) || []
+      SystemOptions.filter((e) => req[value]?.includes(e.value)) || []
     ).map((e) => e.label);
     if (!label) return;
     return (
@@ -73,7 +73,7 @@ const GetText = ({ value, req }) => {
   }
   if (value === "window") {
     const label = (
-      TypeWindow.filter((e) => req[value].includes(e.value)) || []
+      TypeWindow.filter((e) => req[value]?.includes(e.value)) || []
     ).map((e) => e.label);
     if (!label) return;
     return (
@@ -84,7 +84,7 @@ const GetText = ({ value, req }) => {
   }
   if (value === "processor") {
     const label = (
-      ProcessorOptions.filter((e) => req[value].includes(e.value)) || []
+      ProcessorOptions.filter((e) => req[value]?.includes(e.value)) || []
     ).map((e) => e.label);
     if (!label) return;
     return (
@@ -95,7 +95,7 @@ const GetText = ({ value, req }) => {
   }
   if (value === "spoofer") {
     const label = (
-      Spoofer.filter((e) => req[value].includes(e.value)) || []
+      Spoofer.filter((e) => req[value]?.includes(e.value)) || []
     ).map((e) => e.label);
     if (!label) return;
     return (
@@ -112,7 +112,7 @@ const GetText = ({ value, req }) => {
 };
 const getWindowOptions = (req, value) => {
   const label = (
-    TypeWindow.filter((e) => req[value].includes(e.value)) || []
+    TypeWindow.filter((e) => req[value]?.includes(e.value)) || []
   ).map((e) => e.label);
   return label.map((e) => {
     return {

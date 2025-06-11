@@ -14,7 +14,8 @@ const FunctionsCheat = ({ functions, onChange }) => {
   const [isPreview, setIsPreview] = useState(false);
   const [newTabValue, setNewTabValue] = useState("");
   const [selectedFunction, setSelectedFunction] = useState({});
-
+  const [selectedBlock, setSelectedBlock] = useState({});
+  const [selectedTab, setSelectedTab] = useState();
   const handleAddFunction = () => {
     if (!newTabValue.length) {
       toast.error("Title is missing!");
@@ -136,7 +137,11 @@ const FunctionsCheat = ({ functions, onChange }) => {
           return (
             <Tab
               onDelete={() => handleDeleteFunction(e)}
-              onSelect={() => setSelectedFunction(e)}
+              onSelect={() => {
+                setSelectedFunction(e);
+                setSelectedTab();
+                setSelectedBlock({});
+              }}
               title={e.title}
               isActive={e.title === selectedFunction.title}
               key={i}
@@ -157,6 +162,10 @@ const FunctionsCheat = ({ functions, onChange }) => {
       {!!selectedFunction.title && (
         <FunctionItem
           onAddItem={handleAddItem}
+          selectedBlock={selectedBlock}
+          setSelectedBlock={setSelectedBlock}
+          selectedTab={selectedTab}
+          setSelectedTab={setSelectedTab}
           onDeleteItem={onDeleteItem}
           handleChangeIcon={handleChangeIcon}
           f={selectedFunction}

@@ -31,6 +31,7 @@ const TransactionView = () => {
     queryKey: ["get-all-dataa"],
     staleTime: 0,
     refetchOnWindowFocus: false,
+    cacheTime: 0,
   });
   const { data, isPending } = useQuery({
     queryKey: ["transactions", filters],
@@ -76,8 +77,8 @@ const TransactionView = () => {
             <div className="">
               <CustomSelect
                 options={cheats.data.map((e) => ({
-                  label: e.cheat[`title${getLanguage(locale)}`],
-                  value: e.cheat.id,
+                  label: e.cheat?.[`title${getLanguage(locale)}`],
+                  value: e.cheat?.id,
                 }))}
                 value={
                   selectedCheat

@@ -11,6 +11,9 @@ export const FAQService = {
   createFaqStat: (data) => {
     return axiosLoggedIn.post(`/faq/admin/stat`, data);
   },
+  initFAQContent: (data) => {
+    return axiosLoggedIn.post(`/faq/admin/init`, data);
+  },
   // Create a new contact
   getAdminFaq: () => {
     return axiosLoggedIn.get("/faq/admin/faq");

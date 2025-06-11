@@ -19,7 +19,7 @@ function MainTop({ data }) {
     return {
       imageUrl: e.imageUrl,
       id: e.id,
-      title: `title${getLanguage(locale)}`,
+      title: e.title,
       cheats: e.cheats,
     };
   });
@@ -61,7 +61,7 @@ function MainTop({ data }) {
               </div>
             </div>
           </Effect>
-          <div className="flex flex-col bg-input p-6 rounded-2xl z-[2px] gap-6 relative">
+          <div className="flex flex-col bg-input p-6 rounded-2xl min-h-[312px] min-w-[450px] z-[2px] gap-6 relative">
             <div className="absolute  overflow-hidden top-[-63%] left-[-95%] ">
               <HugeGlow />
             </div>

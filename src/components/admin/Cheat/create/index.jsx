@@ -20,7 +20,7 @@ import getBody from "@/utils/getBodyForCreateCheat";
 const CheatCreate = () => {
   const t = useTranslations("admin");
   const { data, isPending } = useQuery({
-    queryFn: AdminCatalog.getAllCatalogs,
+    queryFn: AdminCatalog.getAllPublishedCatalogs,
     queryKey: ["get-all"],
     staleTime: 0,
     refetchOnWindowFocus: false,

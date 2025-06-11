@@ -112,7 +112,7 @@ const CardAndPay = ({ mobile, cheat }) => {
     <div className="flex gap-6 items-start">
       <div className="flex flex-col w-[68%] gap-8" style={{ width: "68%" }}>
         <RouteCheat
-          catalogName={cheat.catalog[`head${getLanguage(locale)}`]}
+          catalogName={cheat.catalog[`title`]}
           cheatName={cheat[`title${getLanguage(locale)}`]}
           catalogId={cheat.catalog.id}
         />

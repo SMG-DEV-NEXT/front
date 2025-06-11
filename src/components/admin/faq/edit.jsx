@@ -146,6 +146,9 @@ const AdminFaqStatView = () => {
     });
     setBloks(newBloks);
   };
+  console.log(
+    isPending || (loadingStat && idStat !== "create") || isLoadingStats
+  );
   if (isPending || (loadingStat && idStat !== "create") || isLoadingStats)
     return <Loading />;
 
@@ -165,6 +168,7 @@ const AdminFaqStatView = () => {
     );
   };
 
+  console.log(1);
   return (
     <AdminContainer>
       <div className="flex flex-col gap-6">

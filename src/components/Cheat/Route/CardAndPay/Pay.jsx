@@ -131,6 +131,10 @@ const PayCard = ({ mobile, cheat }) => {
     return price - pr;
   };
 
+  const openRules = () => {
+    window.open(`/${locale}/agreement`, "_blank");
+    setConfirm(true);
+  };
   return (
     <div className="flex flex-col min-w-[100%]">
       <div className="rounded-t-2xl bg-input p-6">
@@ -342,6 +346,11 @@ const PayCard = ({ mobile, cheat }) => {
                   weight="medium"
                   size="sm"
                   T="cheat"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openRules();
+                  }}
                 >
                   rules2
                 </Text>
@@ -367,11 +376,7 @@ const PayCard = ({ mobile, cheat }) => {
             </Text>
           </div>
           <Text T="none" weight="medium" size="sm" className="text-primary10">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate
+            {cheat[`instruction${locale === "ru" ? "Ru" : "En"}`]}
           </Text>
         </div>
       </Modal>

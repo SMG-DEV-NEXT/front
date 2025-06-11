@@ -239,6 +239,7 @@ import { useState } from "react";
 import Text from "../Text";
 import "./index.scss";
 import data from "./exampleData.json";
+import SvgRefIcon from "@/components/SvgRefIcon";
 
 import SelectedTabFunctional from "./functional/tab";
 
@@ -282,6 +283,14 @@ export default function SettingsPanel({ mobile, cheat }) {
                 }`}
               >
                 {e.icon && (
+                  <SvgRefIcon
+                    url={e.icon}
+                    color={
+                      e.title === selectedTab.title ? "#E9E3F6" : "#8B6DCA"
+                    }
+                  />
+                )}
+                {/* {e.icon && (
                   <div
                     className="w-5 h-5 flex items-center"
                     dangerouslySetInnerHTML={{
@@ -300,7 +309,7 @@ export default function SettingsPanel({ mobile, cheat }) {
                         .replace("<svg", '<svg width="20" height="20"'),
                     }}
                   ></div>
-                )}
+                )} */}
                 {!mobile && (
                   <Text
                     T="none"

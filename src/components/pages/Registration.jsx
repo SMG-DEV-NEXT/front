@@ -12,12 +12,14 @@ import { useDispatch } from "react-redux";
 import { setAuth } from "../../redux/authSlice";
 import { useRouter } from "next/navigation";
 import { setAccessToken } from "../../utils/token";
+import { useLocale } from "next-intl";
 /* auth */
 
 function ViewRegistration({ isMobile, goToLogin, onClose }) {
   const [isCheckedForget, setIsCheckedForget] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
+  const location = useLocale();
   const mutation = useMutation({
     mutationFn: UserService.registration,
     onSuccess: ({ data }) => {
@@ -27,10 +29,7 @@ function ViewRegistration({ isMobile, goToLogin, onClose }) {
         onClose();
       }
       dispatch(setAuth(user));
-      if (!isMobile) {
-        // window.location = `/${locale}`;
-        router.push(`/${locale}`);
-      }
+      router.push(`/${location}`);
     },
   });
 

@@ -7,12 +7,17 @@ import Icon from "@/components/Icons";
 import { useTranslations } from "next-intl";
 import { axiosWithoutAuth } from "@/api";
 
+const types = {
+  image: ".jpg, .jpeg, .png, .gif, .bmp, .webp, .svg, .tiff, .ico",
+  video: ".mp4, .mov, .avi, .wmv, .flv, .mkv, .webm, .mpeg",
+};
 export default function AdminUploadImage({
   label,
   value,
   onChange,
   size,
   width = 72,
+  type = "image",
   height = 72,
 }) {
   const [uploading, setUploading] = useState(false);
@@ -95,6 +100,7 @@ export default function AdminUploadImage({
       </div>
       <input
         type="file"
+        accept={types[type] ? types[type] : type}
         ref={fileInputRef}
         onChange={handleFileChange}
         style={{ display: "none" }}

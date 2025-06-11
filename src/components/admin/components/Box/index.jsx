@@ -45,7 +45,7 @@ const AdminBox = ({
       return;
     }
     const { name: n, value } = e.target;
-    onChange(n, type === "number" ? value * 1 : value);
+    onChange(n, type === "number" && value !== "" ? value * 1 : value);
     adjustTextareaHeight();
   };
 
