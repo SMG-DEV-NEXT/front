@@ -15,9 +15,6 @@ export const axiosLoggedIn = axios.create({
   baseURL: BASE_URL,
   headers: {
     "Content-Type": "application/json",
-    "Cache-Control": "no-cache", // Не использовать кеш
-    Pragma: "no-cache", // Для старых HTTP/1.0 прокси
-    "If-Modified-Since": "0", // Заставляет сервер не отдавать 304
   },
   withCredentials: true, // To send cookies (important for HTTP-only cookies)
 });
@@ -27,9 +24,7 @@ export const axiosWithoutAuth = axios.create({
   baseURL: BASE_URL,
   headers: {
     "Content-Type": "application/json",
-    "Cache-Control": "no-cache", // Не использовать кеш
-    Pragma: "no-cache", // Для старых HTTP/1.0 прокси
-    "If-Modified-Since": "0", // Заставляет сервер не отдавать 304
+    // Заставляет сервер не отдавать 304
   },
   withCredentials: true, // Enable cookies for all requests if needed
 });
