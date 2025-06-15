@@ -21,11 +21,11 @@ export default function UploadImage({ label, value, onChange }) {
     const formData = new FormData();
     formData.append("file", file); // MUST be 'file'
     try {
-      const { data } = await axiosWithoutAuth.post("upload/image", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const { data } = await axiosWithoutAuth.post(
+        "upload/image",
+        formData,
+        {}
+      );
       if (data.url) {
         onChange(`${process.env.NEXT_PUBLIC_API_URL}${data.url}`); // your callback with uploaded URL
       }

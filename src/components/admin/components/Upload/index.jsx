@@ -95,11 +95,11 @@ const AdminUpload = ({
     const formData = new FormData();
     formData.append("file", file); // MUST be 'file'
     try {
-      const { data } = await axiosWithoutAuth.post("upload/image", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const { data } = await axiosWithoutAuth.post(
+        "upload/image",
+        formData,
+        {}
+      );
       if (data.url) {
         onChange(name, [
           ...links,
