@@ -27,7 +27,7 @@ export async function POST(req) {
       }
 
       const uploadForm = new FormData();
-      uploadForm.append("image", file);
+      uploadForm.append("file", file);
       const responseData = await axiosImageUpload.post("upload/image", {
         body: uploadForm,
       });

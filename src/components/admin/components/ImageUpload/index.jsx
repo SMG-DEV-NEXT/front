@@ -35,7 +35,7 @@ export default function AdminUploadImage({
     if (!file) return;
     setUploading(true);
     const formData = new FormData();
-    formData.append("image", file); // MUST be 'file'
+    formData.append("file", file); // MUST be 'file'
     try {
       const { data } = await axiosImageUpload.post("upload/image", formData, {
         headers: {
