@@ -93,7 +93,7 @@ const AdminUpload = ({
     if (!file) return;
     setUploading(true);
     const formData = new FormData();
-    formData.append("file", file); // MUST be 'file'
+    formData.append("image", file); // MUST be 'file'
     try {
       const { data } = await axiosWithoutAuth.post(
         "upload/image",

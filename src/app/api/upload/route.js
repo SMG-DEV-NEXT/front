@@ -27,7 +27,7 @@ export async function POST(req) {
       }
 
       const uploadForm = new FormData();
-      uploadForm.append("file", file);
+      uploadForm.append("image", file);
       const responseData = await axiosWithoutAuth.post("upload/image", {
         body: uploadForm,
       });

@@ -35,13 +35,13 @@ export default function AdminUploadImage({
     if (!file) return;
     setUploading(true);
     const formData = new FormData();
-    formData.append("file", file); // MUST be 'file'
+    formData.append("image", file); // MUST be 'file'
     try {
-      const { data } = await axiosWithoutAuth.post(
-        "upload/image",
-        formData,
-        {}
-      );
+      const { data } = await axiosWithoutAuth.post("upload/image", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       if (data.url) {
         onChange(`${process.env.NEXT_PUBLIC_API_URL}${data.url}`); // your callback with uploaded URL
       }
