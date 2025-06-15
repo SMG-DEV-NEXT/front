@@ -39,6 +39,7 @@ const CatalogView = () => {
     mutationFn: AdminCatalog.deleteCatalogs,
     mutationKey: ["delete-catalogs"],
     onSuccess: (e) => {
+      if (!e) return;
       setItems(items.filter((a) => !selectedIds.includes(a.id)));
       setSelectedIds([]);
       toast.success(e.data.message);
