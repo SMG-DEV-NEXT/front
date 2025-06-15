@@ -1,6 +1,6 @@
 "use client";
 
-import { axiosWithoutAuth } from "@/api";
+import { axiosImageUpload } from "@/api";
 import Icon from "@/components/Icons";
 import Text from "@/components/Text";
 import { useTranslations } from "next-intl";
@@ -93,13 +93,11 @@ const AdminUpload = ({
     if (!file) return;
     setUploading(true);
     const formData = new FormData();
-    formData.append("image", file); // MUST be 'file'
+    formData.append("file", file); // MUST be 'file'
     try {
-      const { data } = await axiosWithoutAuth.post(
-        "upload/image",
-        formData,
-        {}
-      );
+      const { data } = await axiosImageUpload.post("upload/image", formData, {
+        withCredentials: true,
+      });
       if (data.url) {
         onChange(name, [
           ...links,

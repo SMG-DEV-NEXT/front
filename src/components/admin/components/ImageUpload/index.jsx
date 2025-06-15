@@ -5,7 +5,7 @@ import Image from "next/image";
 import Text from "@/components/Text";
 import Icon from "@/components/Icons";
 import { useTranslations } from "next-intl";
-import { axiosWithoutAuth } from "@/api";
+import { axiosImageUpload } from "@/api";
 
 const types = {
   image: ".jpg, .jpeg, .png, .gif, .bmp, .webp, .svg, .tiff, .ico",
@@ -37,7 +37,7 @@ export default function AdminUploadImage({
     const formData = new FormData();
     formData.append("image", file); // MUST be 'file'
     try {
-      const { data } = await axiosWithoutAuth.post("upload/image", formData, {
+      const { data } = await axiosImageUpload.post("upload/image", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

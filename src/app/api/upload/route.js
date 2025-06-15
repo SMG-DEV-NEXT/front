@@ -1,4 +1,4 @@
-import { axiosWithoutAuth } from "@/api";
+import { axiosImageUpload } from "@/api";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
@@ -28,7 +28,7 @@ export async function POST(req) {
 
       const uploadForm = new FormData();
       uploadForm.append("image", file);
-      const responseData = await axiosWithoutAuth.post("upload/image", {
+      const responseData = await axiosImageUpload.post("upload/image", {
         body: uploadForm,
       });
 

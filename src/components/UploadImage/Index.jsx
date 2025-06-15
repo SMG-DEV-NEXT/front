@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import Text from "../Text";
 import Icon from "../Icons";
 import Image from "next/image";
-import { axiosWithoutAuth } from "@/api";
+import { axiosImageUpload } from "@/api";
 
 export default function UploadImage({ label, value, onChange }) {
   const [uploading, setUploading] = useState(false);
@@ -21,7 +21,7 @@ export default function UploadImage({ label, value, onChange }) {
     const formData = new FormData();
     formData.append("image", file); // MUST be 'file'
     try {
-      const { data } = await axiosWithoutAuth.post(
+      const { data } = await axiosImageUpload.post(
         "upload/image",
         formData,
         {}

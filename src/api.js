@@ -28,6 +28,11 @@ export const axiosWithoutAuth = axios.create({
   withCredentials: true, // Enable cookies for all requests if needed
 });
 
+export const axiosImageUpload = axios.create({
+  baseURL: BASE_URL,
+  withCredentials: true, // Enable cookies for all requests if needed
+});
+
 axiosWithoutAuth.interceptors.response.use(
   (config) => {
     return config;
