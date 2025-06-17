@@ -102,6 +102,7 @@
   "catalog": {
     "gameCatalog": "Game Catalog",
     "noItem": "No search results found.",
+    "search": "Enter the product name",
     "catalogText": "A large catalog of private cheats directly from developers — play fully immersed in the action!"
   },
   "cheats": {

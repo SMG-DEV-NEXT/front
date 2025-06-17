@@ -11,6 +11,7 @@ import moment from "moment";
 import { useTranslations } from "next-intl";
 import { notFound, useParams } from "next/navigation";
 import React from "react";
+import { useSelector } from "react-redux";
 
 const keyses = [
   { label: "order", value: "id" },
@@ -30,6 +31,7 @@ function calculatePercentageDifference(original, newNumber) {
 
 const CodePreview = () => {
   const { id } = useParams();
+  const user = useSelector((state) => state.auth);
   const isMobile = useMobile();
   const t = useTranslations("preview");
   const { data, isPending } = useQuery({
@@ -149,9 +151,11 @@ const CodePreview = () => {
           <CustomLink url="/">
             <Button T="preview">main</Button>
           </CustomLink>
-          <CustomLink url="/login">
-            <Button T="preview">login</Button>
-          </CustomLink>
+          {!user?.user && (
+            <CustomLink url="/login">
+              <Button T="preview">login</Button>
+            </CustomLink>
+          )}
         </div>
       </div>
     </div>

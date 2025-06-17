@@ -16,7 +16,7 @@ function MainTopMobile() {
   const router = useRouter();
   const locale = useLocale();
   return (
-    <div className="flex w-full relative flex-col  z-[5]    overflow-hidden">
+    <div className="flex w-full relative flex-col  z-[10]    overflow-hidden">
       <div className="container z-[2] pt-[80px]">
         <div className="flex flex-col items-center justify-between">
           <Effect type="to-right" className="w-full">

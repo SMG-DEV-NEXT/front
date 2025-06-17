@@ -94,6 +94,14 @@ const AdminFaqStatView = () => {
     mutationKey: "create-faq-stat",
     onSuccess: ({ data }) => {
       if (data && data.id) {
+        setDataStat({
+          titleru: "",
+          titleen: "",
+          icon: "",
+          textru: "",
+          texten: "",
+          iconActive: "",
+        });
         toast.success("Created successfuly");
         router.push(`/${locale}/admin/faq/${id}/${data.id}`);
       }

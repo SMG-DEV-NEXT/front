@@ -9,7 +9,7 @@ import CatalogService from "@/services/Catalog";
 import Loading from "@/app/loading";
 import { useMobile } from "@/hooks/useMobile";
 import Freecurrencyapi from "@everapi/freecurrencyapi-js";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 function View() {
   const [search, setSearch] = useState("");
@@ -93,6 +93,8 @@ function View() {
     setSearch(e.target.value);
   };
 
+  const tr = useTranslations("catalog");
+
   return (
     <div className="view relative h-full w-full flex items-center  pt-[64px] pb-[112px]">
       <div className="container flex flex-col items-center gap-6 z-[1]">
@@ -118,7 +120,7 @@ function View() {
           value={search}
           onChange={handleSearchChange}
           iconLeft="searchNew"
-          placeholder="Введите название товара"
+          placeholder={tr("search")}
           styleDiv={{ padding: "20px" }}
         />
 

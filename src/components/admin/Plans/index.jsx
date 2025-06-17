@@ -62,7 +62,7 @@ const PlansView = () => {
     <AdminContainer>
       <div className="flex flex-col w-full">
         <AdminPageHeader
-          route={"plan"}
+          route={"plans"}
           buttonText="add"
           buttonOnClick={() => router.push(`/${locale}/admin/cheats/create`)}
         />

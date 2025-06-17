@@ -14,8 +14,6 @@ const DefaultSettings = ({ user, mobile, usd }) => {
   const [inputs, setInputs] = useState({
     name: user?.name,
     image: user?.logo,
-    password: "",
-    confirmPassword: "",
   });
   const dispatch = useDispatch();
 

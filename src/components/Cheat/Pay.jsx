@@ -81,9 +81,8 @@ const PayModal = ({
       icon: <Icon name="crypto" folder="pay" />,
     },
   ];
-
   const handleCheckPrice = (pay, prcent) => {
-    let prcentL = prcent;
+    let prcentL = prcent || 0;
     if (reseller?.data) {
       prcentL += reseller?.data.prcent;
     }
@@ -112,7 +111,8 @@ const PayModal = ({
     return (pay.pay / usd).toFixed(2);
   };
 
-  const isShowingPrcentPrice = promoQuery?.data?.data || pay.prcent > 0;
+  const isShowingPrcentPrice =
+    promoQuery?.data?.data || pay.prcent > 0 || reseller?.data?.prcent > 0;
   if (mobile) {
     return (
       <div className="flex flex-col gap-4">

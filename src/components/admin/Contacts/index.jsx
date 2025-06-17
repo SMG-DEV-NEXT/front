@@ -17,7 +17,7 @@ const ContactsAdminView = () => {
 
   const { data, isPending, refetch } = useQuery({
     queryFn: ContactsService.getAllContacts,
-    queryKey: ["get"],
+    queryKey: ["getContacts"],
     refetchOnWindowFocus: false,
     staleTime: 0,
     cacheTime: 0,

@@ -121,10 +121,10 @@ const PlanUpdate = () => {
     <AdminContainer>
       <div className="flex flex-col gap-6 pb-10">
         <AdminPageHeader
-          route={"plan"}
+          route={"plans"}
           buttonText="save"
           isDisabledButton={mutate.isPending}
-          settingsRoute={"plan"}
+          settingsRoute={"plans"}
           buttonOnClick={handleSave}
         />
         <PlanItem

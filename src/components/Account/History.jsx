@@ -198,14 +198,33 @@ const HistoryAccount = ({ mobile, usd }) => {
     queryKey: ["get-list", page],
     queryFn: () => CheckotuService.getListClient({ page }),
     refetchOnWindowFocus: false,
+    staleTime: 0,
+    cacheTime: 0,
   });
 
+  const t = useTranslations("catalog");
   if (isPending || !data)
     return (
       <div className="flex bg-input rounded-[16px] p-6 gap-6 flex-col items-center w-full">
         <Loading />
       </div>
     );
+  if (data.data.data.length === 0) {
+    return (
+      <div className="flex bg-input rounded-[16px] p-6 gap-6 flex-col items-center w-full">
+        <div className="flex flex-col gap-[10px] w-full ">
+          <Text
+            className="text-linkColor text-center"
+            weight="medium"
+            size="sm"
+            T="catalog"
+          >
+            noItem
+          </Text>
+        </div>
+      </div>
+    );
+  }
   if (mobile) {
     return (
       <div className="flex bg-input rounded-[16px] p-6 gap-6 flex-col items-center w-full">

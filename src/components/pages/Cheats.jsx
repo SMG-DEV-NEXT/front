@@ -23,6 +23,8 @@ const Cheats = () => {
   const [search, setSearch] = useState("");
   const locale = useLocale();
   const cheatsT = useTranslations("cheats");
+  const t = useTranslations("catalog");
+
   const [selectedFilterTag, setSelectedFilterTag] = useState(null);
   const [tags, setTags] = useState([]);
   const [usd, setUSD] = useState(null);
@@ -54,7 +56,6 @@ const Cheats = () => {
       retry: false,
       refetchOnWindowFocus: false, // Get last known data
     });
-  console.log(filters);
   useEffect(() => {
     const handler = setTimeout(() => {
       setFilters({ ...filters, search });
@@ -166,7 +167,7 @@ const Cheats = () => {
           iconLeft="searchNew"
           value={search}
           setValue={(e) => handleInputChange("search", e)}
-          placeholder="Введите название товара"
+          placeholder={t("search")}
           styleDiv={{ padding: "20px" }}
         />
         <div className="flex gap-6 w-full ">

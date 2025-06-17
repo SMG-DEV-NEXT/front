@@ -9,6 +9,7 @@ import Modal from "@/components/Modal";
 import Button from "@/components/Button";
 import Loading from "@/app/loading";
 import getLanguage from "@/utils/get-language";
+import { useTranslations } from "next-intl";
 export const dynamic = "force-dynamic";
 
 const CheatsMobile = ({
@@ -47,13 +48,14 @@ const CheatsMobile = ({
       })
     );
   }, [items]); // won't re-render unless data changes
+  const tr = useTranslations("catalog");
 
   return (
     <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[112px]">
       <div className="flex flex-col gap-6 z-[1] container items-center">
         <Text
           T="none"
-          className="text-primary10 leading-[120%]"
+          className="text-primary10 leading-[120%] text-center"
           weight="bold"
           size="t48"
         >
@@ -63,7 +65,7 @@ const CheatsMobile = ({
           iconLeft="searchNew"
           value={search}
           setValue={(e) => handleInputChange("search", e)}
-          placeholder="Введите название товара"
+          placeholder={tr("search")}
           styleDiv={{ padding: "20px" }}
         />
         <div className="flex w-full justify-end">
@@ -78,11 +80,9 @@ const CheatsMobile = ({
         </div>
         <Modal
           isOpen={isOpenFilterMobile}
-          width={400}
-          customTop={"50px"}
           onClose={() => setIsOpenFilterMobile(false)}
         >
-          <div className="flex flex-col w-[302px] bg-input rounded-2xl w-full">
+          <div className="flex flex-col min-w-[302px] bg-input rounded-2xl w-full">
             <div className="pb-6 flex flex-col gap-4">
               <Text
                 T="cheats"

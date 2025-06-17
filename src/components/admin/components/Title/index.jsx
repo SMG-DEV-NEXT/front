@@ -24,7 +24,7 @@ const routes = {
   "catalog/create": { title: "catalog", icon: CatalogIcon },
   "cheats/create": { title: "cheats", icon: CatalogIcon },
   cheat: { title: "cheats", icon: CheatIcon },
-  plan: { title: "plan", icon: PlanIcon },
+  plans: { title: "plan", icon: PlanIcon },
   comment: { title: "reviews", icon: ReviewIcon },
   stats: { title: "stats", icon: StatsIcon },
   guarante: { title: "guarante", icon: GuaranteIcon },
