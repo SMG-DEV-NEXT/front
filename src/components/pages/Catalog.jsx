@@ -41,7 +41,7 @@ function View() {
 
   // Fetch catalogs initially
   const query = useQuery({
-    queryFn: () => CatalogService.getCatalogs({ limit: 16, page: 1 }),
+    queryFn: () => CatalogService.getCatalogs({ limit: 12, page: 1 }),
     queryKey: ["get-catalogs"],
     refetchOnWindowFocus: false,
     suspense: true,
@@ -77,7 +77,7 @@ function View() {
     if (debouncedSearch || debouncedSearch === "") {
       catalogMutation.mutate({
         page: 1,
-        limit: 16,
+        limit: 12,
         search: debouncedSearch,
       });
     }
@@ -85,7 +85,7 @@ function View() {
 
   // Handle pagination change
   const handlePageChange = (page) => {
-    catalogMutation.mutate({ page, limit: 16, search });
+    catalogMutation.mutate({ page, limit: 12, search });
   };
 
   // Handle search input change
