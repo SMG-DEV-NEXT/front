@@ -58,7 +58,7 @@ const AccountTab = ({ selectedTab, setSelectedTab, mobile }) => {
           </Modal>
         )}
         <div className="flex gap-4 items-center">
-          <div className="logo w-[84px] h-[84px] bg-black rounded-full flex items-center justify-center">
+          <div className="logo w-[84px] h-[84px] bg-black rounded-full flex items-center justify-center overflow-hidden rounded-full">
             <Image
               src={
                 user.logo ||
