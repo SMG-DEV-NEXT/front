@@ -73,7 +73,7 @@ const FunctionsCheat = ({ functions, onChange }) => {
     const newSelectedFunctions = {
       ...selectedFunction,
       tabs: selectedFunction.tabs.map((item) => {
-        if (item.key === data.oldKey) {
+        if (item.id === data.id) {
           return data;
         }
         return item;
@@ -88,7 +88,6 @@ const FunctionsCheat = ({ functions, onChange }) => {
     onChange("functions", newItems);
     setSelectedFunction(newSelectedFunctions);
   };
-
   const handleDeleteFunction = (item) => {
     onChange(
       "functions",

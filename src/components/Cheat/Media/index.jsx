@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Text from "../../Text";
 import Icon from "../../Icons";
 import ImageWithPreview from "@/components/PreviewImage";
@@ -12,6 +12,8 @@ const Medias = ({ mobile, cheat }) => {
     isOpen: false,
     index: 0,
   });
+  const scrollRef = useRef(null); // 👈 Create ref
+
   const getMediaItems = () => {
     const items = [];
     if (cheat.videos[0]) {
@@ -27,6 +29,12 @@ const Medias = ({ mobile, cheat }) => {
       });
     });
     return items;
+  };
+
+  const scrollRight = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: 250, behavior: "smooth" }); // 👈 Scroll right by 200px
+    }
   };
   if (mobile) {
     return (
@@ -49,7 +57,10 @@ const Medias = ({ mobile, cheat }) => {
           media
         </Text>
         <div className="flex gap-6 items-center">
-          <div className="flex overflow-x-auto items-center gap-3 scrollbar-hide">
+          <div
+            ref={scrollRef}
+            className="flex overflow-x-auto items-center gap-3 scrollbar-hide"
+          >
             {cheat.videos[0] && (
               <div
                 onClick={() => setIsOpenCarousel({ isOpen: true, index: 0 })}
@@ -91,7 +102,11 @@ const Medias = ({ mobile, cheat }) => {
               );
             })}
           </div>
-          <Icon name="arrowRightCricle" className="cursor-pointer" />
+          <Icon
+            onClick={scrollRight}
+            name="arrowRightCricle"
+            className="cursor-pointer"
+          />
         </div>
       </div>
     );
@@ -116,7 +131,10 @@ const Medias = ({ mobile, cheat }) => {
         media
       </Text>
       <div className="flex gap-6 items-center max-w-[100%]">
-        <div className="flex items-center overflow-x-auto max-w-[100%] gap-3 scrollbar-hide">
+        <div
+          ref={scrollRef}
+          className="flex items-center overflow-x-auto max-w-[100%] gap-3 scrollbar-hide"
+        >
           {cheat.videos[0] && (
             <div
               onClick={() => setIsOpenCarousel({ isOpen: true, index: 0 })}
@@ -171,7 +189,11 @@ const Medias = ({ mobile, cheat }) => {
             );
           })}
         </div>
-        <Icon name="arrowRightCricle" className="cursor-pointer" />
+        <Icon
+          onClick={scrollRight}
+          name="arrowRightCricle"
+          className="cursor-pointer"
+        />
       </div>
     </div>
   );

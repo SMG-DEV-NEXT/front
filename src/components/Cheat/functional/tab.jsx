@@ -11,8 +11,8 @@ const SelectedTabFunctional = ({ tab }) => {
     setSelectedTab(tab.tabs[0]);
   }, [tab]);
   return (
-    <div className="flex flex-col gap-6 w-full pb-1">
-      <div className="flex gap-4">
+    <div className="flex flex-col overflow-x-auto tab-scroll gap-6 w-full pb-1 max-w-full">
+      <div className="flex gap-4  max-w-full">
         {tab.tabs.map((e) => {
           return (
             <div

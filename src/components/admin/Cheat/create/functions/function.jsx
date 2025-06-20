@@ -36,12 +36,13 @@ const FunctionItem = ({
       return;
     }
     setNewTabValue("");
+    const id = `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
     onAddItem({
       key: newTabValue,
+      id: id,
       blocks: [],
     });
   };
-
   return (
     <div className="flex flex-col gap-4">
       <AdminUploadImage
@@ -63,7 +64,7 @@ const FunctionItem = ({
         {f.tabs.map((e, i) => {
           return (
             <Tab
-              isActive={e.key === selectedTab?.key}
+              isActive={e.id === selectedTab?.id}
               onDelete={() => onDeleteItem(i)}
               key={crypto.randomUUID()}
               title={e.key}

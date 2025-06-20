@@ -9,12 +9,14 @@ export default function Icon({
   className = "",
   style,
   folder,
+  onClick = () => {},
 }) {
   if (!name) return null; // Prevent errors if no name is provided
   return (
     <Image
       src={folder ? `/icons/${folder}/${name}.svg` : `/icons/${name}.svg`} // Assumes SVG format
       alt={alt || name}
+      onClick={onClick}
       width={size}
       style={style}
       height={h || size}

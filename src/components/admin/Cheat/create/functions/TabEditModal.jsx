@@ -23,6 +23,12 @@ const TabEditModal = ({
   };
 
   useEffect(() => {
+    if (tab.id !== inputs.id) {
+      setInputs({ ...tab, oldKey: tab.key });
+    }
+  }, [tab]);
+
+  useEffect(() => {
     handleSaveTabFunction(inputs);
   }, [inputs]);
 
@@ -51,6 +57,14 @@ const TabEditModal = ({
     });
     setNewFunctionValue("");
   };
+
+  // useEffect(() => {
+  //   console.log(11111);
+  //   if (tab.oldKey !== inputs?.oldKey) {
+  //     setInputs({ ...tab, oldKey: tab.key });
+  //   }
+  //   setInputs({ ...tab });
+  // }, [tab]);
 
   const handleEditFunction = (name, value) => {
     setInputs({
