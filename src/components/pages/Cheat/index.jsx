@@ -18,11 +18,15 @@ const View = () => {
   const isMobile = useMobile(1030);
   const { cheat } = useParams();
   const { data, isPending } = useQuery({
-    refetchOnWindowFocus: false,
+    refetchOnWindowFocus: true,
     queryFn: () => CheatsService.getCheat(cheat),
-    queryKey: ["get-cheat"],
+    queryKey: ["get-cheat", cheat],
     retry: false,
+    cacheTime: 0, // No caching
+    staleTime: 0, // Data is always stale
   });
+
+  console.log(isPending, data);
 
   if (!data?.data && !isPending) return notFound();
 

@@ -16,7 +16,7 @@ const CommentEdit = () => {
   const { id } = useParams();
   const [inputs, setInputs] = useState({});
   const { data, isPending } = useQuery({
-    queryKey: ["get"],
+    queryKey: ["get-comment", id],
     queryFn: () => CheatsService.getComment(id),
     refetchOnWindowFocus: false,
   });

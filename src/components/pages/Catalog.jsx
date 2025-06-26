@@ -2,11 +2,11 @@
 import React, { useEffect, useState } from "react";
 import Text from "../Text";
 import Input from "../Input";
-import Card from "../Main/Card";
 import Pagination from "../pagination";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import CatalogService from "@/services/Catalog";
 import Loading from "@/app/loading";
+import CatalogCard from "@/components/Main/CatalogCard";
 import { useMobile } from "@/hooks/useMobile";
 import Freecurrencyapi from "@everapi/freecurrencyapi-js";
 import { useLocale, useTranslations } from "next-intl";
@@ -133,7 +133,7 @@ function View() {
                 </Text>
               ) : (
                 catalogData.data.map((item) => (
-                  <Card
+                  <CatalogCard
                     key={item.id}
                     {...item}
                     usd={usd}

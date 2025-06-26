@@ -14,9 +14,11 @@ import { useLocale } from "next-intl";
 import getLanguage from "@/utils/get-language";
 import { getStars } from "@/utils/getStarsCheat";
 import Medias from "../../Media";
+import cheatTypes from "@/utils/cheat-types";
 const CardAndPay = ({ mobile, cheat }) => {
   const type = "Undetected";
   const locale = useLocale();
+  const CheatType = cheatTypes.find((e) => e.value === cheat.type);
   const text = cheat[`about${getLanguage(locale)}`];
   if (mobile) {
     return (
@@ -54,7 +56,7 @@ const CardAndPay = ({ mobile, cheat }) => {
                     T="none"
                     className={textStylesByType[cheat.type]}
                   >
-                    {cheat.type}
+                    {CheatType?.label}
                   </Text>
                 </div>
                 <div className="flex gap-2 gap-3 bg-[#79CA6D26] py-2 px-3 rounded-lg">
@@ -141,7 +143,7 @@ const CardAndPay = ({ mobile, cheat }) => {
                   T="none"
                   className={textStylesByType[cheat.type]}
                 >
-                  {cheat.type}
+                  {CheatType?.label}
                 </Text>
               </div>
               <div className="flex gap-2 gap-3 bg-[#79CA6D26] py-2 px-3 rounded-lg">

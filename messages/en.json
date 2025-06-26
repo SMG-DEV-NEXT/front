@@ -70,7 +70,7 @@
     "copyActive": "Copied",
     "mailError": "Please enter a valid email address.",
     "codeEmail": "The code has been sent to your email",
-    "findCheat": "Search cheat...",
+    "findCheat": "Search",
     "generalLink": "Main Telegram link"
   },
   "Main": {
@@ -153,6 +153,7 @@
     "star": "Rating",
     "send": "Send",
     "enterComment": "Write your review",
+    "commentLimit": "You've already commented on this post. Each user can leave only one comment.",
     "forSendMessage": "To submit a review for the product, please log in to the website"
   },
   "account": {

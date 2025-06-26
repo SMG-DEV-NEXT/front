@@ -12,7 +12,7 @@ const TableFaq = ({ cols, rows }) => {
             {cols.map((col) => (
               <th
                 key={col}
-                className="p-3 bg-[#272C33] rounded-[12px] text-left align-top"
+                className="p-3 bg-[#272C33] rounded-[12px] text-left align-middle"
               >
                 <Text
                   T="none"
@@ -35,14 +35,14 @@ const TableFaq = ({ cols, rows }) => {
                   return (
                     <td
                       key={crypto.randomUUID()}
-                      className="p-3 bg-[#272C33] rounded-[12px] align-top"
+                      className="p-3 bg-[#272C33] rounded-[12px] align-middle "
                     >
                       <Text
                         T="none"
                         weight="bold"
                         size="base"
                         onClick={() => window.open(cell, "_blank")}
-                        className="text-primary80 cursor-pointer leading-[140%] break-words whitespace-normal"
+                        className="text-primary80 mt-auto cursor-pointer leading-[140%] break-words whitespace-normal"
                       >
                         {cell}
                       </Text>
@@ -52,7 +52,7 @@ const TableFaq = ({ cols, rows }) => {
                 return (
                   <td
                     key={crypto.randomUUID()}
-                    className="p-3 bg-[#272C33] rounded-[12px] align-top"
+                    className="p-3 bg-[#272C33] rounded-[12px] align-middle"
                   >
                     <Text
                       T="none"

@@ -98,6 +98,10 @@ const Cheats = () => {
         ).values(),
       ];
       setTags(uniqueTags);
+      const find = uniqueTags.find((e) => e.ru === selectedFilterTag?.ru);
+      if (find) {
+        return;
+      }
       setSelectedFilterTag(null);
     }
   }, [data]);
@@ -130,6 +134,10 @@ const Cheats = () => {
   if (!data) {
     return <Loading />;
   }
+  const handeApplyMobileChanges = (selectedFilterTag, filterInputs) => {
+    setFilters(filterInputs);
+    setSelectedFilterTag(selectedFilterTag);
+  };
   if (isMobile && api?.data) {
     return (
       <CheatsMobile
@@ -139,6 +147,7 @@ const Cheats = () => {
         api={api}
         typesFilter={typesFilter}
         T={cheatsT}
+        save={handeApplyMobileChanges}
         selectedFilterTag={selectedFilterTag}
         setSelectedFilterTag={setSelectedFilterTag}
         tags={tags}
@@ -275,7 +284,13 @@ const Cheats = () => {
                     return (
                       <div
                         key={crypto.randomUUID()}
-                        onClick={() => setSelectedFilterTag(e)}
+                        onClick={() => {
+                          if (selectedFilterTag?.[locale] === e[locale]) {
+                            setSelectedFilterTag(null);
+                            return;
+                          }
+                          setSelectedFilterTag(e);
+                        }}
                         className={`flex py-2 px-3 rounded-lg bg-${
                           selectedFilterTag?.[locale] === e[locale]
                             ? "primary80"

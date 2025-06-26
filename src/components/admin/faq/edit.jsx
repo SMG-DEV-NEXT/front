@@ -74,7 +74,7 @@ const AdminFaqStatView = () => {
   });
 
   const { data: stat, isPending: loadingStat } = useQuery({
-    queryKey: "get-faq-stat",
+    queryKey: ["get-faq-stat", idStat],
     queryFn: () => FAQService.getFaqStat(idStat),
     enabled: idStat !== "create",
     refetchOnWindowFocus: false,

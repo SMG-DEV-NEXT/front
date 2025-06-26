@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Text from "../Text";
 import ListCheatItem from "../ListCheat";
 import Input from "../Input";
@@ -28,8 +28,25 @@ const CheatsMobile = ({
   usd,
   setSelectedFilterTag,
   id,
+  save,
 }) => {
   const [isOpenFilterMobile, setIsOpenFilterMobile] = useState(false);
+  const [filterTag, setFilterTag] = useState(selectedFilterTag);
+  const [debouncedFilters, setDebouncedFilters] = useState({
+    ...filters,
+  });
+  useEffect(() => {
+    setDebouncedFilters(filters);
+  }, [filters]);
+  useEffect(() => {
+    setFilterTag(selectedFilterTag);
+  }, [selectedFilterTag]);
+  const handleDebounceChange = (name, value) => {
+    setDebouncedFilters({
+      ...debouncedFilters,
+      [name]: value,
+    });
+  };
   const itemList = useMemo(() => {
     return items?.length === 0 ? (
       <Text weight="semi" size="md" className="text-linkColor mt-5">
@@ -49,6 +66,19 @@ const CheatsMobile = ({
     );
   }, [items]); // won't re-render unless data changes
   const tr = useTranslations("catalog");
+
+  const clearInputs = () => {
+    save(null, {
+      ...filters,
+      search: "",
+      type: typesFilter[0],
+      price_start: 0,
+      price_end: 1000,
+      range: null,
+      sortingTags: [],
+    });
+    setIsOpenFilterMobile(false);
+  };
 
   return (
     <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[112px]">
@@ -94,10 +124,10 @@ const CheatsMobile = ({
               </Text>
               <div className="flex flex-col gap-3">
                 <div
-                  onClick={() => handleInputChange("type", typesFilter[2])}
+                  onClick={() => handleDebounceChange("type", typesFilter[2])}
                   className="flex items-center gap-2 cursor-pointer"
                 >
-                  {filters?.type !== typesFilter[2] ? (
+                  {debouncedFilters?.type !== typesFilter[2] ? (
                     <div className="border rounded-full border-linkColor w-4 h-4"></div>
                   ) : (
                     <div className="border rounded-full border-linkColor w-4 h-4 bg-primary80"></div>
@@ -112,10 +142,10 @@ const CheatsMobile = ({
                   </Text>
                 </div>
                 <div
-                  onClick={() => handleInputChange("type", typesFilter[1])}
+                  onClick={() => handleDebounceChange("type", typesFilter[1])}
                   className="flex items-center gap-2 cursor-pointer"
                 >
-                  {filters?.type !== typesFilter[1] ? (
+                  {debouncedFilters?.type !== typesFilter[1] ? (
                     <div className="border rounded-full border-linkColor w-4 h-4"></div>
                   ) : (
                     <div className="border rounded-full border-linkColor w-4 h-4 bg-primary80"></div>
@@ -130,10 +160,10 @@ const CheatsMobile = ({
                   </Text>
                 </div>
                 <div
-                  onClick={() => handleInputChange("type", typesFilter[0])}
+                  onClick={() => handleDebounceChange("type", typesFilter[0])}
                   className="flex items-center gap-2 cursor-pointer"
                 >
-                  {filters?.type !== typesFilter[0] ? (
+                  {debouncedFilters?.type !== typesFilter[0] ? (
                     <div className="border rounded-full border-linkColor w-4 h-4"></div>
                   ) : (
                     <div className="border rounded-full border-linkColor w-4 h-4 bg-primary80"></div>
@@ -161,8 +191,8 @@ const CheatsMobile = ({
                 </Text>
                 <PriceSortInput
                   currency={usd ? "$" : "₽"}
-                  range={filters.range}
-                  setRange={(e) => handleInputChange("range", e)}
+                  range={debouncedFilters?.range}
+                  setRange={(e) => handleDebounceChange("range", e)}
                   min={api?.lowPrice}
                   usd={usd}
                   max={api?.maxPrice}
@@ -186,9 +216,15 @@ const CheatsMobile = ({
                     return (
                       <div
                         key={crypto.randomUUID()}
-                        onClick={() => setSelectedFilterTag(e)}
+                        onClick={() => {
+                          if (filterTag?.[locale] === e[locale]) {
+                            setFilterTag(null);
+                            return;
+                          }
+                          setFilterTag(e);
+                        }}
                         className={`flex py-2 px-3 rounded-lg bg-${
-                          selectedFilterTag?.[locale] === e[locale]
+                          filterTag?.[locale] === e[locale]
                             ? "primary80"
                             : "black"
                         } cursor-pointer`}
@@ -196,7 +232,7 @@ const CheatsMobile = ({
                         <Text
                           T="none"
                           className={`text-${
-                            selectedFilterTag?.[locale] === e[locale]
+                            filterTag?.[locale] === e[locale]
                               ? "primary10"
                               : "linkColor"
                           }`}
@@ -221,8 +257,22 @@ const CheatsMobile = ({
               </div>
             </div>
             <div className="flex flex-col gap-2 border-t border-t-[#404658] pt-6">
-              <Button>filter</Button>
-              <Button variant="secondary">clear</Button>
+              <Button
+                onClick={() => {
+                  save(filterTag, debouncedFilters);
+                  setIsOpenFilterMobile(false);
+                }}
+              >
+                filter
+              </Button>
+              <Button
+                variant="secondary"
+                onClick={() => {
+                  clearInputs();
+                }}
+              >
+                clear
+              </Button>
             </div>
           </div>
         </Modal>

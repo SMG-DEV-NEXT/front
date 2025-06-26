@@ -66,6 +66,7 @@ const FAQView = () => {
       if (element.id === i) stat = element;
     });
     if (stat) return { stat, i: 2 };
+    return { stat, i: 0 };
   };
 
   const allStats = data.data[selectedtab.arrI || 0].stats.flat();

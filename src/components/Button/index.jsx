@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useTranslations } from "next-intl";
 import Icon from "../Icons";
 
@@ -11,7 +11,7 @@ export default function Button({
   leftIcon,
   style = {},
   iconSize,
-  disabled
+  disabled,
 }) {
   const baseStyles =
     "px-4 py-2 rounded-lg relative text-center justify-center font-medium transition-all duration-300 flex items-center gap-3";
@@ -24,16 +24,21 @@ export default function Button({
     outline: "border border-blue-600 text-blue-600 hover:bg-blue-100",
   };
   const t = useTranslations(T);
-  const disabledStyles = "bg-[#8B6DCA26] text-primary10 opacity-[0.7] cursor-not-allowed shadow-none before:shadow-none";
+  const disabledStyles =
+    "bg-[#8B6DCA26] text-primary10 opacity-[0.7] cursor-not-allowed shadow-none before:shadow-none";
 
   return (
     <button
       onClick={onClick}
       style={style}
       disabled={disabled}
-      className={`${baseStyles} ${variants[variant]} ${className} ${disabled ? disabledStyles : variants[variant]} `}
+      className={`${baseStyles} ${variants[variant]} ${className} ${
+        disabled ? disabledStyles : variants[variant]
+      } hover:scale-105 hover:shadow-xl  hover:from-purple-600 
+hover:to-indigo-500  transition-all duration-300 ease-out
+`}
     >
-        {disabled ? (
+      {disabled ? (
         <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div> // Circle Loader
       ) : (
         leftIcon && <Icon size={iconSize} name={leftIcon} />

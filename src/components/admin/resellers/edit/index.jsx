@@ -19,7 +19,7 @@ const ResellerEditAdminView = () => {
 
   const { data, isPending, fetchStatus } = useQuery({
     queryFn: () => ResellerService.getReseller(id),
-    queryKey: ["Get"],
+    queryKey: ["Get-Reseller", id],
     enabled: id !== "create",
     refetchOnWindowFocus: false,
   });

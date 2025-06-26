@@ -165,7 +165,7 @@ const TransactionTable = ({ items = [] }) => {
                       size="sm"
                       className="text-linkColor"
                     >
-                      {e.email}
+                      {e.reseller || e.email}
                     </Text>
                   </div>
                 </th>
@@ -263,7 +263,7 @@ const TransactionTable = ({ items = [] }) => {
                       className="text-linkColor"
                     >
                       {e.checkoutedPrice} /{" "}
-                      {(e.checkoutedPrice / (e.price / 100)).toFixed(2)}%
+                      {100 - (e.checkoutedPrice / (e.price / 100)).toFixed(2)}%
                     </Text>
                   </div>
                 </th>

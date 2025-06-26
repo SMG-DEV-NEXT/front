@@ -2,8 +2,6 @@ import React, { Suspense } from "react";
 import View from "../../../../../components/pages/Cheat";
 import { axiosWithoutAuth } from "@/api";
 import Loading from "@/app/loading";
-export const dynamic = "force-dynamic";
-export const fetchCache = "force-no-store";
 
 export async function generateMetadata({ params }) {
   try {

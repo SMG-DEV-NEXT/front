@@ -36,7 +36,7 @@ const CodePreview = () => {
   const t = useTranslations("preview");
   const { data, isPending } = useQuery({
     queryFn: () => CheckoutService.info(id),
-    queryKey: ["Check"],
+    queryKey: ["Check", id],
     retry: false,
     refetchOnWindowFocus: false,
   });

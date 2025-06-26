@@ -35,7 +35,7 @@ const UpdateCatalog = () => {
     queryFn: ({ queryKey }) => {
       return AdminCatalog.getCatalog(id);
     },
-    queryKey: ["get-catalog"],
+    queryKey: ["get-catalog", id],
     staleTime: 0,
     refetchOnWindowFocus: false,
   });

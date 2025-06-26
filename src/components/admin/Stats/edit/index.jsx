@@ -85,7 +85,7 @@ const StatEdit = () => {
 
   const { data: stat, isPending: statLoading } = useQuery({
     queryFn: () => StatsService.getStat(id),
-    queryKey: ["get-stat"],
+    queryKey: ["get-stat", id],
     enabled: id !== "create",
     refetchOnWindowFocus: false,
   });

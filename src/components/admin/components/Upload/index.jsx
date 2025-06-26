@@ -23,7 +23,7 @@ const AdminUpload = ({
 }) => {
   const [uploading, setUploading] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
-
+  const prcent = useRef(0);
   const t = useTranslations("admin");
   const fileInputRef = useRef(null);
   const handleClick = () => {
@@ -97,7 +97,20 @@ const AdminUpload = ({
     try {
       const { data } = await axiosImageUpload.post("upload/image", formData, {
         withCredentials: true,
+        onUploadProgress: (progressEvent) => {
+          // progressEvent.loaded: bytes uploaded so far
+          // progressEvent.total: total bytes to upload (may be undefined)
+          if (progressEvent.total) {
+            const percentCompleted = Math.round(
+              (progressEvent.loaded * 100) / progressEvent.total
+            );
+            prcent.current = percentCompleted;
+            // e.g. update a progress bar in your UI:
+            // myProgressBar.value = percentCompleted;
+          }
+        },
       });
+      prcent.current = 0;
       if (data.url) {
         onChange(name, [
           ...links,
@@ -156,7 +169,12 @@ const AdminUpload = ({
         }`}
       >
         {uploading ? (
-          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+          <div className="relative w-10 h-10 flex items-center justify-center text-white">
+            <div className="w-10 h-10 border-4 border-white border-t-transparent rounded-full animate-spin opacity-30" />
+            <span className="absolute text-sm font-semibold">
+              {prcent.current}%
+            </span>
+          </div>
         ) : (
           <>
             <Icon name="upload" folder="admin" size={40} />

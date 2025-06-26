@@ -11,6 +11,7 @@ import getLanguage from "@/utils/get-language";
 
 import moment from "moment";
 import { useRouter } from "next/navigation";
+import { axiosLoggedIn } from "@/api";
 const types = {
   day: "1 day",
   week: "1 week",
@@ -22,6 +23,8 @@ const HistoryAccountItem = ({
   checkoutedPrice,
   type,
   usd,
+  id,
+  download,
   locale,
   createdAt,
   router,
@@ -96,6 +99,7 @@ const HistoryAccountItem = ({
             </Button>
             <Button
               T="account"
+              onClick={() => download(id, cheat[`title${getLanguage(locale)}`])}
               className="text-[14px] h-[46px] whitepspace-nowrap mr-3"
             >
               download
@@ -110,8 +114,10 @@ const HistoryAccountItemMobile = ({
   cheat,
   checkoutedPrice,
   type,
+  download,
   usd,
   locale,
+  id,
   createdAt,
   router,
 }) => {
@@ -176,6 +182,7 @@ const HistoryAccountItemMobile = ({
         </Button>
         <Button
           T="account"
+          onClick={() => download(id, cheat[`title${getLanguage(locale)}`])}
           className="text-[14px] w-full h-[46px] whitepspace-nowrap mr-3"
         >
           download
@@ -201,6 +208,21 @@ const HistoryAccount = ({ mobile, usd }) => {
     staleTime: 0,
     cacheTime: 0,
   });
+  const downloadTransaction = async (id, cheatTitle) => {
+    const response = await axiosLoggedIn.get(
+      `/checkout/document?id=${id}&locale=${locale}`,
+      {
+        responseType: "blob", // 👈 very important
+      }
+    );
+    const url = window.URL.createObjectURL(new Blob([response.data]));
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", `${cheatTitle}.txt`);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  };
 
   const t = useTranslations("catalog");
   if (isPending || !data)
@@ -236,6 +258,7 @@ const HistoryAccount = ({ mobile, usd }) => {
                 router={router}
                 usd={usd}
                 locale={locale}
+                download={downloadTransaction}
                 key={e.id}
                 {...e}
               />
@@ -296,6 +319,7 @@ const HistoryAccount = ({ mobile, usd }) => {
             return (
               <HistoryAccountItem
                 router={router}
+                download={downloadTransaction}
                 usd={usd}
                 locale={locale}
                 key={e.id}

@@ -33,7 +33,7 @@ const ReselllerService = {
   },
 
   check(email) {
-    return axiosWithoutAuth.post("/resellers/check", { email });
+    return axiosLoggedIn.post("/resellers/check", { email });
   },
 };
 

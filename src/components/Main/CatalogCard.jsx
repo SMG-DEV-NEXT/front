@@ -7,39 +7,23 @@ import "./index.scss";
 import CustomLink from "../CustomLink";
 import Freecurrencyapi from "@everapi/freecurrencyapi-js";
 import { useLocale } from "next-intl";
-import { useMobile } from "@/hooks/useMobile";
-function Card({
+function CatalogCard({
   imageUrl,
   title,
   products,
   minimumPrice,
   imageWidth = 264,
   cheats,
-  plan,
   id,
   usd,
-  catalogId,
 }) {
   const locale = useLocale();
 
   const getMinimumPrice = () => {
-    let price = 0;
-    if (plan?.day) {
-      price = plan?.day.price;
-    }
-    if (plan?.week && !price) {
-      price = plan?.week.price;
-    }
-    if (plan?.month && !price) {
-      price = plan?.month.price;
-    }
-    if (locale === "en") {
-      return `${((price || 0) / usd).toFixed(2)} $`;
-    }
-    return `${price || 0} ₽`;
     if (!cheats) return;
     const prices = cheats
       .map((e) => {
+        let price = 0;
         if (e.plan?.day) {
           price = e.plan?.day.price;
           return price;
@@ -62,16 +46,15 @@ function Card({
     return `${prices[0] || 0} ₽`;
   };
   return (
-    <CustomLink url={`/catalog/${catalogId}/${id}`}>
+    <CustomLink url={`/catalog/${id}`}>
       <div
-        className="flex  relative rounded-2xl shadow-md z-[11]  overflow-hidden flex-col bg-[#272C33]  h-[252px] group"
+        className="flex relative rounded-2xl shadow-md z-[11]  overflow-hidden flex-col bg-[#272C33]  h-[252px] group"
         style={{ width: imageWidth }}
       >
         <div className="absolute inset-0 transition-transform duration-500 ease-in-out group-hover:scale-110">
           <Image
             src={imageUrl}
             fill
-            objectPosition="center"
             priority
             alt="card"
             className="z-[1] rounded-2xl object-cover"
@@ -92,7 +75,7 @@ function Card({
             >
               {title}
             </Text>
-            {/* <div className="flex">
+            <div className="flex">
               <Text
                 T="none"
                 className="text-linkColor pr-1"
@@ -109,7 +92,7 @@ function Card({
               >
                 product
               </Text>
-            </div> */}
+            </div>
           </div>
           <div className="line shadowBlock"></div>
           <div className="flex justify-between bg-[#272c33]  px-6 py-3">
@@ -143,4 +126,4 @@ function Card({
   );
 }
 
-export default Card;
+export default CatalogCard;

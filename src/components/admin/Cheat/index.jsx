@@ -21,7 +21,7 @@ const CheatView = () => {
   const [items, setItems] = useState([]);
   const { data, isPending } = useQuery({
     queryFn: CheatService.getCheats,
-    queryKey: ["get-all"],
+    queryKey: ["get-all-cheats"],
     staleTime: 0,
     refetchOnWindowFocus: false,
   });

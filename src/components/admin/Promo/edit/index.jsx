@@ -29,7 +29,7 @@ const PromoEditAdminView = () => {
   const { id } = useParams();
   const { data, isPending, fetchStatus } = useQuery({
     queryFn: () => promoApi.getPromocodeById(id),
-    queryKey: ["Get"],
+    queryKey: ["Get", id],
     enabled: id !== "create",
     cacheTime: 0,
     staleTime: 0,

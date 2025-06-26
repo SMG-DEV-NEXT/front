@@ -21,7 +21,7 @@ const PlanUpdate = () => {
     queryFn: () => {
       return CheatService.getPlan(id);
     },
-    queryKey: ["get-plan"],
+    queryKey: ["get-plan", id],
     refetchOnWindowFocus: false,
     staleTime: 0,
   });

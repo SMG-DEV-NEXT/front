@@ -33,7 +33,7 @@ const UpdateCheat = () => {
     queryFn: () => {
       return CheatService.getCheat(id);
     },
-    queryKey: ["get-cheat"],
+    queryKey: ["get-cheat", id],
     refetchOnWindowFocus: false,
     staleTime: 0,
   });

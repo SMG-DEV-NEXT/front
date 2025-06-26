@@ -25,12 +25,8 @@ export default function ScreensGrid({ screens, mobile }) {
   };
 
   const widthClass = getWidthClass(screens.length);
-
   return (
-    <div
-      className="flex gap-2"
-      style={{ flexWrap: mobile ? "wrap" : "nowrap" }}
-    >
+    <div className="gap-2" style={{ flexWrap: mobile ? "wrap" : "nowrap" }}>
       {isOpenCarousel.isOpen &&
         createPortal(
           <MediaCarousel

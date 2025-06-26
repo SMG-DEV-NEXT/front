@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Icon from "../Icons";
 
 export default function ImageWithPreview({ ...imageProps }) {
   const [isOpen, setIsOpen] = useState(false);
+  const blockRef = useRef();
   const [dimensions, setDimensions] = useState({
     width: 250,
     height: 0,
@@ -18,8 +19,8 @@ export default function ImageWithPreview({ ...imageProps }) {
     img.onload = () => {
       const aspectRatio = img.naturalHeight / img.naturalWidth;
       setDimensions({
-        width: 250,
-        height: Math.round(250 * aspectRatio),
+        width: img.naturalWidth,
+        height: Math.round(img.naturalWidth * aspectRatio),
       });
     };
   }, [imageProps.src]);
@@ -43,6 +44,8 @@ export default function ImageWithPreview({ ...imageProps }) {
       {/* Thumbnail */}
       <div
         onClick={() => imageProps.onClick()}
+        ref={blockRef}
+        style={{ width: dimensions.width, maxWidth: "100%" }}
         className="relative  overflow-hidden rounded-[16px] cursor-pointer w-full inline-block overflow-hidden group"
       >
         <Image

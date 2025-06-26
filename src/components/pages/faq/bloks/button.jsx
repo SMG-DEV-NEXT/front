@@ -13,6 +13,7 @@ const FaqButton = ({
   locale,
 }) => {
   const { stat, i } = getStatById(link);
+  if (!stat) return;
   const data = getJSONData(stat);
   return (
     <div

@@ -8,16 +8,19 @@ const PriceRangeSelector = ({
   min = 0,
   max = 1000,
   currency,
-  range,
+  range = [],
   setRange,
   usd,
 }) => {
-  const [priceRange, setPriceRange] = useState([min, max]);
+  const [priceRange, setPriceRange] = useState([
+    range[0] || min,
+    range[1] || max,
+  ]);
   const hasInitialized = useRef(false); // ✅ Block first handleChange
 
   // Set initial range from props
   useEffect(() => {
-    setPriceRange([min, max]);
+    setPriceRange([range[0] || min, range[1] || max]);
   }, [min, max]);
   // Debounced effect to send range to parent
   useEffect(() => {

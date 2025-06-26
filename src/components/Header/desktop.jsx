@@ -127,13 +127,21 @@ export default function Header() {
               }}
             >
               <CustomLink url="/login">
-                <Text className="text-primary10" weight="semi" size="sm">
+                <Text
+                  className="text-primary10 px-5 py-3"
+                  weight="semi"
+                  size="sm"
+                >
                   login
                 </Text>
               </CustomLink>
               <div className="buttons-line"></div>
               <CustomLink url="/registration">
-                <Text className="text-primary10" weight="semi" size="sm">
+                <Text
+                  className="text-primary10 px-5 py-3"
+                  weight="semi"
+                  size="sm"
+                >
                   register
                 </Text>
               </CustomLink>

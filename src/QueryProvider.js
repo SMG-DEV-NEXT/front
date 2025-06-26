@@ -9,12 +9,13 @@ export default function QueryProvider({ children }) {
       new QueryClient({
         defaultOptions: {
           queries: {
-            retry: false, // Don't retry failed requests
-            refetchOnWindowFocus: false, // Don't refetch on window focus
-            refetchOnReconnect: false, // Don't refetch when reconnecting
-            refetchInterval: false, // No automatic polling
-            refetchIntervalInBackground: false, // No polling in background
-            staleTime: Infinity,
+            cacheTime: 0, // No caching
+            staleTime: 0, // Data is always stale
+            retry: false,
+            refetchOnWindowFocus: false,
+            refetchOnReconnect: false,
+            refetchInterval: false,
+            refetchIntervalInBackground: false,
           },
         },
       })

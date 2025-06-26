@@ -65,7 +65,7 @@ const FaqStat = ({
         </div>
         {data[`text${locale}`] && (
           <Text T="none" weight="medium" size="sm" className="text-linkColor">
-            {data[`text${locale}`]} asdasdasdas
+            {data[`text${locale}`]}
           </Text>
         )}
       </div>

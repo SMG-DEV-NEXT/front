@@ -83,7 +83,7 @@ const PayModal = ({
   ];
   const handleCheckPrice = (pay, prcent) => {
     let prcentL = prcent || 0;
-    if (reseller?.data) {
+    if (reseller?.data && reseller?.data.email === user.email) {
       prcentL += reseller?.data.prcent;
     }
     if (promoQuery?.data?.data) {
@@ -92,7 +92,6 @@ const PayModal = ({
     if (prcentL > 100) return 0;
     return getPrcent(pay, prcentL).toFixed(2);
   };
-
   const handleCheckout = () => {
     checkoutFunction.mutate({
       email: mail,

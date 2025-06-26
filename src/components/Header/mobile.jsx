@@ -136,7 +136,7 @@ export default function HeaderMobile() {
                   }}
                 >
                   <Text
-                    className="text-primary10 cursor-pointer"
+                    className="text-primary10 cursor-pointer px-5 py-3"
                     onClick={() => {
                       setIsOpenBar(false);
                       setIsOpenLoginModal(true);
@@ -148,7 +148,7 @@ export default function HeaderMobile() {
                   </Text>
                   <div className="buttons-line"></div>
                   <Text
-                    className="text-primary10 cursor-pointer"
+                    className="text-primary10 cursor-pointer px-5 py-3"
                     onClick={() => {
                       setIsOpenBar(false);
                       setIsOpenRegistrationModal(true);

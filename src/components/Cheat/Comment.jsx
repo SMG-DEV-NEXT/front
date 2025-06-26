@@ -126,6 +126,7 @@ const CommentInput = ({
   isLoading,
 }) => {
   const t = useTranslations("comments");
+
   if (mobile) {
     return (
       <div className="flex flex-col gap-3">
@@ -237,6 +238,12 @@ const Comments = ({ mobile, cheat }) => {
     });
   };
 
+  const isOpenInput = () => {
+    const email = user.email;
+    const comment = comments.find((e) => e.user.email == email);
+    return !comment;
+  };
+
   if (mobile) {
     return (
       <div className="flex flex-col w-full gap-4">
@@ -264,15 +271,30 @@ const Comments = ({ mobile, cheat }) => {
             </div>
           )}
           {user ? (
-            <CommentInput
-              stars={stars}
-              setStars={setStars}
-              send={handleSendComment}
-              mobile={mobile}
-              value={value}
-              isLoading={handleSend.isPending}
-              setValue={setValue}
-            />
+            <>
+              {isOpenInput() ? (
+                <CommentInput
+                  stars={stars}
+                  setStars={setStars}
+                  send={handleSendComment}
+                  mobile={mobile}
+                  value={value}
+                  isLoading={handleSend.isPending}
+                  setValue={setValue}
+                />
+              ) : (
+                <div className="py-[18px] rounded-[12px] px-6 bg-black">
+                  <Text
+                    T="comments"
+                    className="text-linkColor"
+                    size="sm"
+                    weight="medium"
+                  >
+                    commentLimit
+                  </Text>
+                </div>
+              )}
+            </>
           ) : (
             <div className="py-[18px] rounded-[12px] px-6 bg-black">
               <Text
@@ -300,30 +322,45 @@ const Comments = ({ mobile, cheat }) => {
         title
       </Text>
       <div className="flex flex-col gap-6 bg-input rounded-[16px] p-6">
-         {comments.length > 0 && (
-            <div className="flex flex-col gap-2 overflow-y-auto max-h-[360px] comment-scroll pr-2">
-              {comments.map((e) => {
-                return (
-                  <Comment
-                    starTab={e.stars}
-                    key={e.id}
-                    comment={e}
-                    mobile={mobile}
-                  />
-                );
-              })}
-            </div>
-          )}
+        {comments.length > 0 && (
+          <div className="flex flex-col gap-2 overflow-y-auto max-h-[360px] comment-scroll pr-2">
+            {comments.map((e) => {
+              return (
+                <Comment
+                  starTab={e.stars}
+                  key={e.id}
+                  comment={e}
+                  mobile={mobile}
+                />
+              );
+            })}
+          </div>
+        )}
         {user ? (
-          <CommentInput
-            stars={stars}
-            setStars={setStars}
-            send={handleSendComment}
-            mobile={mobile}
-            isLoading={handleSend.isPending}
-            value={value}
-            setValue={setValue}
-          />
+          <>
+            {isOpenInput() ? (
+              <CommentInput
+                stars={stars}
+                setStars={setStars}
+                send={handleSendComment}
+                mobile={mobile}
+                value={value}
+                isLoading={handleSend.isPending}
+                setValue={setValue}
+              />
+            ) : (
+              <div className="py-[18px] rounded-[12px] px-6 bg-black">
+                <Text
+                  T="comments"
+                  className="text-linkColor"
+                  size="sm"
+                  weight="medium"
+                >
+                  commentLimit
+                </Text>
+              </div>
+            )}
+          </>
         ) : (
           <div className="py-[18px] rounded-[12px] px-6 bg-black">
             <Text

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Text from "../../Text";
 import Icon from "../../Icons";
 import ImageWithPreview from "@/components/PreviewImage";
@@ -33,9 +33,42 @@ const Medias = ({ mobile, cheat }) => {
 
   const scrollRight = () => {
     if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 250, behavior: "smooth" }); // 👈 Scroll right by 200px
+      scrollRef.current.scrollBy({
+        left: mobile ? 200 : 250,
+        behavior: "smooth",
+      }); // 👈 Scroll right by 200px
     }
   };
+
+  const scrollLeft = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({
+        left: mobile ? -200 : -250,
+        behavior: "smooth",
+      }); // 👈 Scroll right by 200px
+    }
+  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const el = scrollRef.current;
+      if (!el) return;
+
+      const maxScrollLeft = el.scrollWidth - el.clientWidth;
+
+      // Only scroll right if we are not at the end yet
+      if (el.scrollLeft < maxScrollLeft - 10) {
+        el.scrollBy({
+          left: mobile ? 200 : 250,
+          behavior: "smooth",
+        });
+      } else {
+        // Optional: go back to the start when at the end
+        el.scrollTo({ left: 0, behavior: "smooth" });
+      }
+    }, 3500); // every 5 seconds
+
+    return () => clearInterval(interval); // cleanup on unmount
+  }, [mobile]);
   if (mobile) {
     return (
       <div className="flex flex-col gap-4 max-w-[100%]">
@@ -57,6 +90,12 @@ const Medias = ({ mobile, cheat }) => {
           media
         </Text>
         <div className="flex gap-6 items-center">
+          <Icon
+            onClick={scrollLeft}
+            name="arrowRightCricle"
+            style={{ transform: "rotate(180deg)" }}
+            className="cursor-pointer"
+          />
           <div
             ref={scrollRef}
             className="flex overflow-x-auto items-center gap-3 scrollbar-hide"
@@ -95,7 +134,7 @@ const Medias = ({ mobile, cheat }) => {
                         index: i + cheat.videos?.length,
                       })
                     }
-                    className="object-contain rounded-[16px]"
+                    className="object-contain rounded-[16px] "
                     sizes="250px"
                   />
                 </div>
@@ -131,6 +170,12 @@ const Medias = ({ mobile, cheat }) => {
         media
       </Text>
       <div className="flex gap-6 items-center max-w-[100%]">
+        <Icon
+          onClick={scrollLeft}
+          name="arrowRightCricle"
+          style={{ transform: "rotate(180deg)" }}
+          className="cursor-pointer"
+        />
         <div
           ref={scrollRef}
           className="flex items-center overflow-x-auto max-w-[100%] gap-3 scrollbar-hide"
@@ -138,7 +183,7 @@ const Medias = ({ mobile, cheat }) => {
           {cheat.videos[0] && (
             <div
               onClick={() => setIsOpenCarousel({ isOpen: true, index: 0 })}
-              className="h-[150px] relative min-w-[150px] rounded-[16px] bg-input flex items-center justify-center"
+              className="h-[150px] relative min-w-[250px] rounded-[16px] bg-input flex items-center justify-center"
             >
               <div className="absolute cursor-pointer inset-0 flex items-center justify-center group">
                 <div className="w-16 border border-primary10 h-16 rounded-full bg-black/60 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-black/80">
@@ -182,7 +227,7 @@ const Medias = ({ mobile, cheat }) => {
                       index: i + cheat.videos?.length,
                     })
                   }
-                  className="object-contain rounded-[16px]"
+                  className="object-contain rounded-[16px] border-2 border-linkColor"
                   sizes="250px"
                 />
               </div>

@@ -27,7 +27,7 @@ function StatView() {
   const locale = useLocale();
   const { data, isPending } = useQuery({
     queryFn: () => StatsService.getStatUser(id),
-    queryKey: ["getStat"],
+    queryKey: ["getStat", id],
     refetchOnWindowFocus: false,
   });
   const isMobile = useMobile();

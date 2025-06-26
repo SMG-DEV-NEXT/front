@@ -44,7 +44,7 @@ const ContactsEditAdminView = () => {
   const { id } = useParams();
   const { data, isPending, fetchStatus } = useQuery({
     queryFn: () => ContactsService.getContact(id),
-    queryKey: ["Get"],
+    queryKey: ["Get-contacts", id],
     enabled: id !== "create",
     refetchOnWindowFocus: false,
   });

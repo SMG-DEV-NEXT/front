@@ -17,10 +17,12 @@ function MainTop({ data }) {
   const locale = useLocale();
   const items = data.data.map((e) => {
     return {
-      imageUrl: e.imageUrl,
+      imageUrl: e.image2,
       id: e.id,
-      title: e.title,
+      plan: e.plan,
+      title: e[`title${locale === "en" ? "En" : "Ru"}`],
       cheats: e.cheats,
+      catalogId: e.catalogId,
     };
   });
   return (

@@ -11,7 +11,10 @@ export const FAQService = {
   createFaqStat: (data) => {
     return axiosLoggedIn.post(`/faq/admin/stat`, data);
   },
-  initFAQContent: (data) => {
+  deleteFaqStat: (id) => {
+    return axiosLoggedIn.post(`/faq/admin/remove`, { id });
+  },
+  AQContent: (data) => {
     return axiosLoggedIn.post(`/faq/admin/init`, data);
   },
   // Create a new contact
