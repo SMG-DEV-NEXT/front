@@ -176,7 +176,6 @@ const AdminFaqStatView = () => {
     );
   };
 
-  console.log(1);
   return (
     <AdminContainer>
       <div className="flex flex-col gap-6">

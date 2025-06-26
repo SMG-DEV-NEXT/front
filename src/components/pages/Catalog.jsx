@@ -137,7 +137,7 @@ function View() {
                     key={item.id}
                     {...item}
                     usd={usd}
-                    imageWidth={isMobile ? "350" : "264"}
+                    imageWidth={isMobile ? 350 : 264}
                   />
                 ))
               )}
