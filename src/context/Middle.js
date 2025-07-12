@@ -9,6 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import Header from "@/components/Header";
 import "../styles/global.scss";
 import "react-toastify/dist/ReactToastify.css";
+import ChatWidget from "../components/mini-chat";
 
 const Top = dynamic(() => import("@/components/Top"), { ssr: false });
 const Icon = dynamic(() => import("../components/Icons"), { ssr: false });
@@ -110,7 +111,7 @@ const MiddleComponent = ({ children }) => {
       </>
     );
   }
-
+  console.log(isPending);
   return (
     <>
       <SettingsContext.Provider
@@ -130,6 +131,7 @@ const MiddleComponent = ({ children }) => {
           <div className="z-[1]">{children}</div>
         </section>
         <Footer />
+        <ChatWidget user={data?.data} />
         <ToastContainer
           position="top-right"
           closeOnClick

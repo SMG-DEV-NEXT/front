@@ -37,6 +37,8 @@ const routes = {
   "contacts/edit": { title: "contacts", icon: ContactsIcon },
   help: { title: "help", icon: null },
   promo: { title: "promo", icon: PromoIcon },
+  "referral/edit": { title: "referral", icon: PromoIcon },
+  referral: { title: "referral", icon: PromoIcon },
   "promo/edit": { title: "promo", icon: PromoIcon },
   settings: { title: "settings", icon: SettingsIcon },
   smtp: { title: "SMTP", icon: SMTPIcon },

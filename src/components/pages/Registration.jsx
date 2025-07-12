@@ -12,13 +12,14 @@ import { useDispatch } from "react-redux";
 import { setAuth } from "../../redux/authSlice";
 import { useRouter } from "next/navigation";
 import { setAccessToken } from "../../utils/token";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 /* auth */
 
 function ViewRegistration({ isMobile, goToLogin, onClose }) {
   const [isCheckedForget, setIsCheckedForget] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
+  const t = useTranslations("Index");
   const location = useLocale();
   const mutation = useMutation({
     mutationFn: UserService.registration,
@@ -84,7 +85,7 @@ function ViewRegistration({ isMobile, goToLogin, onClose }) {
               type="text"
               styleDiv={{ backgroundColor: "#272c33", height: "46px" }}
               iconLeft="profile"
-              placeholder="DuckStep3"
+              placeholder={t("yourname")}
             />
             <Input
               label="password"
@@ -186,7 +187,7 @@ function ViewRegistration({ isMobile, goToLogin, onClose }) {
               type="text"
               styleDiv={{ backgroundColor: "#272c33", height: "46px" }}
               iconLeft="profile"
-              placeholder="DuckStep3"
+              placeholder={t("yourname")}
             />
             <Input
               label="password"

@@ -48,7 +48,7 @@ export const ActiveLightIcon = () => {
   );
 };
 
-const PayCard = ({ mobile, cheat }) => {
+const PayCard = ({ mobile, cheat, ref }) => {
   const plan = cheat.plan;
   const [count, setCount] = useState(1);
   const [confirm, setConfirm] = useState(false);
@@ -127,7 +127,11 @@ const PayCard = ({ mobile, cheat }) => {
   }, [freecurrencyapi]);
 
   const getPricePrcent = (price, prcent) => {
-    const pr = (price / 100) * prcent;
+    const pr = prcent > 0 ? (price / 100) * prcent : 0;
+    if (cheat.refUser) {
+      const refUserPrice = (price / 100) * cheat.refUser.prcentToPrice;
+      return price - (pr + refUserPrice) > 0 ? price - (pr + refUserPrice) : 0;
+    }
     return price - pr;
   };
 
@@ -198,7 +202,7 @@ const PayCard = ({ mobile, cheat }) => {
                         </Text>
                       </div>
                     </div>
-                    {e.prcent > 0 ? (
+                    {e.prcent > 0 || cheat.refUser?.prcentToPrice > 0 ? (
                       <div className="flex gap-1 items-center ">
                         <Text
                           className="text-linkColor line-through mb-[-10px]"
@@ -392,6 +396,8 @@ const PayCard = ({ mobile, cheat }) => {
         >
           <PayModal
             mobile={mobile}
+            ref={ref}
+            refData={cheat.refUser}
             plnaId={cheat.id}
             active={active}
             count={count}

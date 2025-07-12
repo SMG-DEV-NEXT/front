@@ -23,6 +23,7 @@ const TransactionView = () => {
     cheatId: "",
     startDate: "",
     endDate: "",
+    search: "",
     page: 1,
     limit: 30,
   });
@@ -43,11 +44,12 @@ const TransactionView = () => {
       if (filters.endDate) query.append("endDate", filters.endDate);
       if (filters.page) query.append("page", filters.page.toString());
       if (filters.limit) query.append("limit", filters.limit.toString());
+      if (filters.search) query.append("search", filters.search);
 
       return CheckoutService.getList(query.toString());
     },
-    keepPreviousData: true, // <---- ADD THIS LINE
-    staleTime: 1000 * 60 * 5, // optional: keeps data fresh for 5 min
+    cacheTime: 0,
+    staleTime: 0, // optional: keeps data fresh for 5 min
   });
   // const GetMutation = useMutation({
   //   mutationFn: CheatService.getPlans,
@@ -72,7 +74,7 @@ const TransactionView = () => {
     <AdminContainer>
       <div className="flex flex-col w-full">
         <AdminPageHeader route={"transaction"} />
-        <div className="flex mt-4 w-full justify-between">
+        <div className="flex mt-4 w-full gap-5 justify-between">
           {!loading && cheats?.data && (
             <div className="">
               <CustomSelect
@@ -94,6 +96,12 @@ const TransactionView = () => {
               />
             </div>
           )}
+          <Input
+            value={filters.search}
+            styleDiv={{ height: "38px" }}
+            setValue={(e) => handleChangeFilter("search", e)}
+            placeholder="IP Adress or User Name/Email"
+          />
           <div className="flex items-center gap-[14px]">
             <Text
               T="admin"

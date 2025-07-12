@@ -3,19 +3,77 @@ import React, { useState } from "react";
 import Text from "@/components/Text";
 import Icon from "@/components/Icons";
 import AdminButton from "../button";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import getLanguage from "@/utils/get-language";
 import { useRouter } from "next/navigation";
 import moment from "moment";
 import Image from "next/image";
+import Modal from "@/components/Modal";
 
 const TransactionTable = ({ items = [] }) => {
   const [isReversed, setIsReversed] = useState(false);
+  const [modalInfo, setModalInfo] = useState({
+    open: false,
+    codes: [],
+  });
   const router = useRouter();
   const locale = useLocale();
   const data = isReversed ? [...items].reverse() : items;
+
+  const handleOpenModal = (codes) => {
+    setModalInfo({
+      open: true,
+      codes,
+    });
+  };
+
+  const handleCloseModal = () => {
+    setModalInfo({
+      open: false,
+      codes: [],
+    });
+  };
+  const t = useTranslations("preview");
+
   return (
     <div className="flex w-full bg-input rounded-[16px] text-white mt-6 overflow-hidden">
+      <Modal isOpen={modalInfo.open} onClose={handleCloseModal}>
+        <div
+          className={`flex  rounded-2xl bg-input mt-4  p-4 border-linkColor border flex-col gap-2 w-${"full"}`}
+        >
+          <Text
+            T="preview"
+            weight="semi"
+            size="lg"
+            className="text-linkColor text-center"
+          >
+            codesAdmin
+          </Text>
+          {modalInfo.codes.map((e, i) => {
+            return (
+              <div className="flex gap-2 w-full justify-between" key={e}>
+                <Text
+                  T="none"
+                  weight="semi"
+                  size="md"
+                  className="text-primary10"
+                >
+                  {t("code")}
+                  {i + 1}:
+                </Text>
+                <Text
+                  T="none"
+                  weight="semi"
+                  size="md"
+                  className="text-linkColor"
+                >
+                  {e}
+                </Text>
+              </div>
+            );
+          })}
+        </div>
+      </Modal>
       <table className="w-full overflow-auto">
         <thead className="bg-[#1E2026]">
           <tr className="w-full">
@@ -148,7 +206,25 @@ const TransactionTable = ({ items = [] }) => {
         <tbody>
           {data.map((e, i) => {
             return (
-              <tr key={e.id} className="w-full">
+              <tr
+                key={e.id}
+                className="w-full cursor-pointer transition duration-300 hover:bg-gray-300 hover:bg-opacity-30 "
+                onClick={() => {
+                  handleOpenModal(e.codes);
+                }}
+              >
+                <th>
+                  <div className="h-[56px] px-[18px] flex items-center justify-start flex items-center gap-[6px]">
+                    <Text
+                      T="none"
+                      weight="semi"
+                      size="sm"
+                      className="text-linkColor"
+                    >
+                      {e.reseller || e.email}
+                    </Text>
+                  </div>
+                </th>
                 {/* <td>
                   <div className="h-[56px] px-[18px] flex items-center justify-center">
                     <Checkbox
@@ -156,7 +232,7 @@ const TransactionTable = ({ items = [] }) => {
                       setIsChecked={() => onSelectItem(e.id)}
                     />
                   </div>
-                </td> */}
+                </td> *p
                 <th>
                   <div className="h-[56px] px-[18px] flex items-center justify-start flex items-center gap-[6px]">
                     <Text

@@ -14,19 +14,24 @@ import Loading from "@/app/loading";
 import Text from "@/components/Text";
 import { getLocale } from "@/utils/getlocale";
 
+function getQueryParam(key) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(key);
+}
 const View = () => {
   const isMobile = useMobile(1030);
   const { cheat } = useParams();
+  const ref = getQueryParam("ref");
+
   const { data, isPending } = useQuery({
     refetchOnWindowFocus: true,
-    queryFn: () => CheatsService.getCheat(cheat),
+    queryFn: () => CheatsService.getCheat({ cheat, refId: ref }),
     queryKey: ["get-cheat", cheat],
     retry: false,
+    refetchOnWindowFocus: false,
     cacheTime: 0, // No caching
     staleTime: 0, // Data is always stale
   });
-
-  console.log(isPending, data);
 
   if (!data?.data && !isPending) return notFound();
 
@@ -41,7 +46,7 @@ const View = () => {
           <CardAndPay mobile={isMobile} cheat={data.data} />
           <Medias mobile={isMobile} cheat={data.data} />
           {data.data.type !== "detected" && (
-            <PayCard mobile={isMobile} cheat={data.data} />
+            <PayCard ref={ref} mobile={isMobile} cheat={data.data} />
           )}
           <FunctionalCheat mobile={isMobile} cheat={data.data} />
           <Programs mobile={isMobile} cheat={data.data} />
@@ -67,7 +72,7 @@ const View = () => {
   return (
     <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[158px]">
       <div className="container z-[1]">
-        <CardAndPay mobile={isMobile} cheat={data.data} />
+        <CardAndPay ref={ref} mobile={isMobile} cheat={data.data} />
         <FunctionalCheat mobile={isMobile} cheat={data.data} />
         <Comments mobile={isMobile} cheat={data.data} />
       </div>

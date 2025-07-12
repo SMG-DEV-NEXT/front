@@ -63,7 +63,7 @@ function MainTop({ data }) {
               </div>
             </div>
           </Effect>
-          <div className="flex flex-col bg-input p-6 rounded-2xl min-h-[312px] min-w-[450px] z-[2px] gap-6 relative">
+          <div className="flex flex-col bg-input p-6 rounded-2xl min-h-[312px] min-w-[580px]  z-[2px] gap-6 relative">
             <div className="absolute  overflow-hidden top-[-63%] left-[-95%] ">
               <HugeGlow />
             </div>

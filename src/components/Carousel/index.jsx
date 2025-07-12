@@ -46,7 +46,7 @@ const Carousel = ({ items }) => {
   };
   if (!mounted) return null;
   return (
-    <div className="relative w-full max-w-lg mx-auto overflow-hidden rounded-2xl">
+    <div className="relative w-full  overflow-hidden rounded-2xl">
       {/* Carousel Items */}
       <div
         className="flex transition-transform duration-500 ease-out rounded-2xl w-full"

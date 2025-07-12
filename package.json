@@ -41,7 +41,9 @@
     "recharts": "^2.15.3",
     "sass": "^1.85.0",
     "slick-carousel": "^1.8.1",
-    "swiper": "^11.2.4"
+    "socket.io-client": "^4.8.1",
+    "swiper": "^11.2.4",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@types/node": "22.14.1",

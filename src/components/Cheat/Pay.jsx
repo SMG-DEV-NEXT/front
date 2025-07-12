@@ -26,6 +26,8 @@ const PayModal = ({
   usd,
   plnaId,
   active,
+  ref,
+  refData,
 }) => {
   const [prcent, setPrcent] = useState(pay.prcent);
   const t = useTranslations("Index");
@@ -82,7 +84,7 @@ const PayModal = ({
     },
   ];
   const handleCheckPrice = (pay, prcent) => {
-    let prcentL = prcent || 0;
+    let prcentL = prcent > 0 ? prcent : 0;
     if (reseller?.data && reseller?.data.email === user.email) {
       prcentL += reseller?.data.prcent;
     }
@@ -96,6 +98,7 @@ const PayModal = ({
     checkoutFunction.mutate({
       email: mail,
       itemId: plnaId,
+      ref,
       promo: promo,
       type: typeCheckout,
       count,
@@ -111,7 +114,10 @@ const PayModal = ({
   };
 
   const isShowingPrcentPrice =
-    promoQuery?.data?.data || pay.prcent > 0 || reseller?.data?.prcent > 0;
+    promoQuery?.data?.data ||
+    pay.prcent > 0 ||
+    reseller?.data?.prcent > 0 ||
+    refData?.prcentToPrice > 0;
   if (mobile) {
     return (
       <div className="flex flex-col gap-4">

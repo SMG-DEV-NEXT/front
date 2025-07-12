@@ -77,6 +77,7 @@ const pagesRoutes = [
     title: "contacts",
   },
   { route: "/promo", iconComponent: icons.PromoIcon, title: "promo" },
+  { route: "/referral", iconComponent: icons.PromoIcon, title: "referral" },
   { route: "/faq", iconComponent: icons.FAQIcon, title: "faq" },
 ];
 

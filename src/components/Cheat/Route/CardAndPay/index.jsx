@@ -15,7 +15,7 @@ import getLanguage from "@/utils/get-language";
 import { getStars } from "@/utils/getStarsCheat";
 import Medias from "../../Media";
 import cheatTypes from "@/utils/cheat-types";
-const CardAndPay = ({ mobile, cheat }) => {
+const CardAndPay = ({ mobile, cheat, ref }) => {
   const type = "Undetected";
   const locale = useLocale();
   const CheatType = cheatTypes.find((e) => e.value === cheat.type);
@@ -191,7 +191,7 @@ const CardAndPay = ({ mobile, cheat }) => {
         className="flex flex-col gap-6 min-w-[32%]"
         style={{ width: mobile ? "100%" : "32%" }}
       >
-        {!isHidedPayment && <PayCard cheat={cheat} />}
+        {!isHidedPayment && <PayCard cheat={cheat} ref={ref} />}
 
         <div className="flex flex-col gap-4">
           <Text

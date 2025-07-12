@@ -20,8 +20,8 @@ const CheatsService = {
     );
   },
 
-  getCheat: (id) => {
-    return axiosWithoutAuth.get(`/cheats/view/${id}`);
+  getCheat: ({ cheat: id, refId }) => {
+    return axiosWithoutAuth.get(`/cheats/view/${id}?ref=${refId}`);
   },
 
   createComment: (options) => {
