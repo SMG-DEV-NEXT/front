@@ -7,7 +7,6 @@ import Modal from "@/components/Modal";
 import DeleteModal from "../Modals/deleteModal";
 import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 
 const ReferralTable = ({ items = { data: [] }, isPending, deleteItem }) => {
   const router = useRouter();
