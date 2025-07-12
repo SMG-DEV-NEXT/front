@@ -11,7 +11,7 @@ import Loading from "@/app/loading";
 import PromoTable from "../components/tables/PromoTable";
 import Text from "@/components/Text";
 import Pagination from "@/components/pagination";
-import ReferralTable from "../components/tables/referralTable";
+import ReferralTable from "../components/tables/ReferralTable";
 import { referralService } from "@/services/Referral";
 const limits = [30, 50, 100];
 const ReferralAdminView = () => {
