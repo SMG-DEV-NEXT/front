@@ -48,7 +48,7 @@ export default function ChatWidget({ user }) {
 
   useEffect(() => {
     const id = user ? user.id : getUserId();
-    socket.current = io("http://localhost:4000");
+    socket.current = io(process.env.NEXT_PUBLIC_API_WEBHOOK);
 
     setUserId(id);
     socket.current.on("connect", () => {
