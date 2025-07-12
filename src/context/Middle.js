@@ -111,7 +111,6 @@ const MiddleComponent = ({ children }) => {
       </>
     );
   }
-  console.log(isPending);
   return (
     <>
       <SettingsContext.Provider

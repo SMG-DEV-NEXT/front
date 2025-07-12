@@ -48,8 +48,9 @@ export default function ChatWidget({ user }) {
 
   useEffect(() => {
     const id = user ? user.id : getUserId();
-    socket.current = io(process.env.NEXT_PUBLIC_API_URL);
-
+    socket.current = io(process.env.NEXT_PUBLIC_API_WEBHOOK, {
+      transports: ["websocket"],
+    });
     setUserId(id);
     socket.current.on("connect", () => {
       socket.current.emit("register", id); // send userId after connection
@@ -62,8 +63,10 @@ export default function ChatWidget({ user }) {
       }
       setAdmin((e) => [...e, data]);
     });
+    return () => {
+      socket.current.disconnect();
+    };
   }, []);
-
   useEffect(() => {
     if (!getQuery.isPending && getQuery.data) {
       setAdmin(getQuery.data.data.filter((e) => e.role === "admin"));
