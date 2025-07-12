@@ -375,7 +375,6 @@ const PayCard = ({ mobile, cheat, ref }) => {
         >
           <div className="flex items-center iconInfo gap-2">
             <Icon name="infoI" folder="cheat" />
-            <Icon name="infoI" folder="cheat" />
 
             <Text className="text-primary80" weight="semi" size="sm" T="cheat">
               instructions
