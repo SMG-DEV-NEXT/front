@@ -48,11 +48,11 @@ export default function ChatWidget({ user }) {
 
   useEffect(() => {
     const id = user ? user.id : getUserId();
-    socket.current = io(process.env.NEXT_PUBLIC_API_WEBHOOK);
+    socket.current = io(process.env.NEXT_PUBLIC_API_URL);
 
     setUserId(id);
     socket.current.on("connect", () => {
-      socket.current.emit("register", userId); // send userId after connection
+      socket.current.emit("register", id); // send userId after connection
     });
 
     socket.current.on("new-message", (data) => {
