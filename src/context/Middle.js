@@ -60,6 +60,7 @@ const MiddleComponent = ({ children }) => {
   //   redirect(`/${locale}/login`);
   // }
   useEffect(() => {
+    alert(1);
     if (!token && path.includes("admin")) {
       redirect(`/${locale}/login`);
     }
