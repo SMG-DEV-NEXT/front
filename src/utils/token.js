@@ -12,6 +12,7 @@ export const removeAccessToken = () => {
   if (typeof window !== "undefined") {
     sessionStorage.removeItem(ACCESS_TOKEN);
   }
+
   localStorage.removeItem("anon_user_id");
 
   return Cookies.remove(ACCESS_TOKEN);

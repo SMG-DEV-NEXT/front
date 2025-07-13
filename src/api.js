@@ -18,7 +18,7 @@ export const axiosLoggedIn = axios.create({
   },
   withCredentials: true, // To send cookies (important for HTTP-only cookies)
 });
-console.log(1);
+
 // Axios instance for non-logged-in routes (no Authorization header)
 export const axiosWithoutAuth = axios.create({
   baseURL: BASE_URL,
