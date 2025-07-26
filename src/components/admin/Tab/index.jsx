@@ -72,6 +72,11 @@ const pagesRoutes = [
     title: "resellers",
   },
   {
+    route: "/requests",
+    iconComponent: icons.ResellerIcon,
+    title: "requests",
+  },
+  {
     route: "/contacts",
     iconComponent: icons.ContactsIcon,
     title: "contacts",

@@ -30,6 +30,7 @@ const routes = {
   guarante: { title: "guarante", icon: GuaranteIcon },
   rules: { title: "rules", icon: GuaranteIcon },
   resellers: { title: "resellers", icon: ResellerIcon },
+  requests: { title: "requests", icon: ResellerIcon },
   "resellers/edit": { title: "resellers", icon: ResellerIcon },
   "stats/edit": { title: "stats", icon: StatsIcon },
   "comment/edit": { title: "reviews", icon: ReviewIcon },

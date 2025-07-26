@@ -65,15 +65,28 @@
     "cheat": "Item",
     "empty": "No results found for your query.",
     "check": "Check",
-    "notFoundTitle": "Something went wrong...",
-    "notFoundText": "The page you're looking for does not exist or has been moved",
-    "notFoundBtn": "Go to homepage",
+    "notFoundTitle": "Page Not Found",
+    "notFoundText": "Unfortunately, we couldn't find this page — you can go to the homepage or go back.",
+    "notFoundBtn": "Go to Homepage",
+    "notFoundBack": "Go Back",
     "copy": "Copy",
     "copyActive": "Copied",
     "mailError": "Please enter a valid email address.",
     "codeEmail": "The code has been sent to your email",
     "findCheat": "Search",
-    "generalLink": "Main Telegram link"
+    "generalLink": "Main Telegram link",
+    "resurse": "Your resource",
+    "resuresePl": "Example: website, Telegram channel, blog, etc.",
+    "emailPL": "example@gmail.com",
+    "audotoria": "Audience size",
+    "audotoriaPL": "Example: 10,000 subscribers",
+    "product": "Which products would you like to receive?",
+    "send": "Send Request",
+    "successRequest": "Your application has been successfully submitted"
+  },
+  "reseller": {
+    "title": "Become a Reseller",
+    "text": "Sell our products and earn with us"
   },
   "Main": {
     "topT": "Private cheats from the developer",
@@ -247,8 +260,10 @@
     "plan": "Subscription",
     "transactions": "Transactions",
     "reviews": "Reviews",
+    "product": "Product",
     "review": "Review",
     "blog": "Blog",
+    "requests": "Orders",
     "stats": "Articles",
     "pages": "Pages",
     "guarante": "Guarantees",
@@ -373,7 +388,10 @@
     "checkoutedKeys": "Keys Sold",
     "newUsers": "New Users",
     "amount": "Sales Amount",
-    "profit": "Profit"
+    "profit": "Profit",
+    "auditory": "Auditory",
+    "not": "Note",
+    "resurse": "Resource"
   },
   "preview": {
     "title": "Thank you for your purchase!",

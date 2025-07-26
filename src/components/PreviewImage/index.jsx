@@ -10,20 +10,21 @@ export default function ImageWithPreview({ ...imageProps }) {
   const blockRef = useRef();
   const [dimensions, setDimensions] = useState({
     width: 250,
-    height: 0,
+    height: 300,
   });
 
-  useEffect(() => {
-    const img = new window.Image();
-    img.src = imageProps.src;
-    img.onload = () => {
-      const aspectRatio = img.naturalHeight / img.naturalWidth;
-      setDimensions({
-        width: img.naturalWidth,
-        height: Math.round(img.naturalWidth * aspectRatio),
-      });
-    };
-  }, [imageProps.src]);
+  // useEffect(() => {
+  //   const img = new window.Image();
+  //   img.src = imageProps.src;
+  //   img.onload = () => {
+  //     const aspectRatio = img.naturalHeight / img.naturalWidth;
+  //     setDimensions({
+  //       width: img.naturalWidth,
+  //       height: 200,
+  //       // height: Math.round(img.naturalWidth * aspectRatio),
+  //     });
+  //   };
+  // }, [imageProps.src]);
 
   // Wait until height is known
 
@@ -52,6 +53,7 @@ export default function ImageWithPreview({ ...imageProps }) {
           {...imageProps}
           width={dimensions.width}
           height={dimensions.height}
+          style={{ height: 180, objectFit: "cover" }}
         />
 
         {/* Overlay при наведении */}

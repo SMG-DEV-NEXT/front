@@ -35,6 +35,24 @@ const ReselllerService = {
   check(email) {
     return axiosLoggedIn.post("/resellers/check", { email });
   },
+
+  request(data) {
+    return axiosWithoutAuth.post("/resellers/request", data);
+  },
+
+  updateRequest(data) {
+    return axiosLoggedIn.put("/resellers/request", data);
+  },
+
+  getRequests({ skip = 0, take = 30 }) {
+    return axiosLoggedIn.get("/resellers/request", {
+      params: { skip, take },
+    });
+  },
+
+  deleteRequest(id) {
+    return axiosLoggedIn.delete(`/resellers/request/${id}`);
+  },
 };
 
 export default ReselllerService;

@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useContext, useEffect } from "react";
+import React, { createContext, useContext, useEffect, useRef } from "react";
 import { getAccessToken } from "../utils/token";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import UserService from "../services/User";
@@ -21,6 +21,62 @@ import dynamic from "next/dynamic";
 import SettingsService from "@/services/Settings";
 import { ContactsService } from "@/services/Contacts";
 import Image from "next/image";
+
+export function ChatbroWidget() {
+  const isConnected = useRef(false);
+  useEffect(() => {
+    if (isConnected.current) return;
+    const script = document.createElement("script");
+    // script.src = "https://www.chatbro.com/embed.js";
+
+    script.id = "chatBroEmbedCode";
+    script.type = "text/javascript";
+    function ChatbroLoader(chats, async) {
+      async = !1 !== async;
+      var params = {
+          embedChatsParameters: chats instanceof Array ? chats : [chats],
+          lang: navigator.language || navigator.userLanguage,
+          needLoadCode: "undefined" == typeof Chatbro,
+          embedParamsVersion: localStorage.embedParamsVersion,
+          chatbroScriptVersion: localStorage.chatbroScriptVersion,
+        },
+        xhr = new XMLHttpRequest();
+      xhr.withCredentials = !0;
+      xhr.onload = function () {
+        eval(xhr.responseText);
+      };
+      xhr.onerror = function () {
+        console.error("Chatbro loading error");
+      };
+      xhr.open(
+        "GET",
+        "https://www.chatbro.com/embed.js?" +
+          btoa(unescape(encodeURIComponent(JSON.stringify(params)))),
+        async
+      );
+      xhr.send();
+      isConnected.current = true;
+    }
+    /* Chatbro Widget Embed Code End */
+    ChatbroLoader({
+      encodedChatId: "897PD",
+      chatRight: "20px",
+      chatHeaderBackgroundColor: "#8767CF",
+      chatHeaderTextColor: "#E9E3F6",
+      chatBodyBackgroundColor: "#E9E3F6",
+      chatBodyTextColor: "#8767CF",
+      chatState: "minimized",
+      chatInputTextColor: "#181A1F",
+      avatarBorderRadius: "12px",
+    });
+
+    // return () => {
+    //   document.head.removeChild(script);
+    // };
+  }, []);
+
+  return null; // widget is injected into DOM
+}
 
 const SettingsContext = createContext({
   isLoading: false,
@@ -59,6 +115,7 @@ const MiddleComponent = ({ children }) => {
   //   console.log(2);
   //   redirect(`/${locale}/login`);
   // }
+
   useEffect(() => {
     if (!token && path.includes("admin")) {
       redirect(`/${locale}/login`);
@@ -130,7 +187,7 @@ const MiddleComponent = ({ children }) => {
           <div className="z-[1]">{children}</div>
         </section>
         <Footer />
-        <ChatWidget user={data?.data} />
+        <ChatbroWidget />
         <ToastContainer
           position="top-right"
           closeOnClick

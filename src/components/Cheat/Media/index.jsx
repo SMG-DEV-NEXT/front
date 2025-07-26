@@ -89,21 +89,25 @@ const Medias = ({ mobile, cheat }) => {
         >
           media
         </Text>
-        <div className="flex gap-6 items-center">
-          <Icon
+        <div className="flex gap-6 relative rounded-[16px] overflow-hidden items-center">
+          <div
             onClick={scrollLeft}
-            name="arrowRightCricle"
-            style={{ transform: "rotate(180deg)" }}
-            className="cursor-pointer"
-          />
+            className={`cursor-pointer absolute h-[101%] w-15 top-1/2 left-0 z-10 items-center flex -translate-y-1/2 bg-input/50 backdrop-blur-md p-2 shadow-md hover:bg-input/60 transition`}
+          >
+            <Icon
+              name="arrowRightCricle"
+              style={{ transform: "rotate(180deg)" }}
+              className="cursor-pointer"
+            />
+          </div>
           <div
             ref={scrollRef}
-            className="flex overflow-x-auto items-center gap-3 scrollbar-hide"
+            className="flex items-center overflow-x-auto max-w-[100%] gap-3 scrollbar-hide"
           >
             {cheat.videos[0] && (
               <div
                 onClick={() => setIsOpenCarousel({ isOpen: true, index: 0 })}
-                className="h-[150px] relative min-w-[150px] rounded-[16px] bg-input flex items-center justify-center"
+                className="h-[180px] relative min-w-[250px] rounded-[16px] bg-input flex items-center justify-center"
               >
                 <div className="absolute cursor-pointer inset-0 flex items-center justify-center group">
                   <div className="w-16 border border-primary10 h-16 rounded-full bg-black/60 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-black/80">
@@ -119,12 +123,25 @@ const Medias = ({ mobile, cheat }) => {
                 </div>
               </div>
             )}
+            {/* {cheat.videos[0] && (
+            <video
+              width={250}
+              height={250}
+              controls
+              style={{
+                width: `${250}px`,
+                height: `${250}px`,
+              }}
+              alt="Uploaded preview"
+              className={`rounded-2xl mt-1 z-[1]`}
+            >
+              <source src={cheat.videos[0]} type="video/mp4" />
+            </video>
+          )} */}
+
             {cheat.images.map((e, i) => {
               return (
-                <div
-                  key={crypto.randomUUID()}
-                  className="relative min-w-[250px] flex items-center  overflow-hidden"
-                >
+                <div className="relative min-w-[250px] flex items-center  rounded-[16px] overflow-hidden">
                   <ImageWithPreview
                     src={e}
                     alt="MediaImage"
@@ -135,23 +152,23 @@ const Medias = ({ mobile, cheat }) => {
                       })
                     }
                     className="object-contain rounded-[16px] "
-                    sizes="250px"
                   />
                 </div>
               );
             })}
           </div>
-          <Icon
+          <div
             onClick={scrollRight}
-            name="arrowRightCricle"
-            className="cursor-pointer"
-          />
+            className={`absolute cursor-pointer h-[101%] w-15 top-1/2 right-0 items-center flex -translate-y-1/2 bg-input/50 backdrop-blur-md p-2 shadow-md hover:bg-input/60 transition`}
+          >
+            <Icon name="arrowRightCricle" className="cursor-pointer" />
+          </div>
         </div>
       </div>
     );
   }
   return (
-    <div className="flex flex-col gap-4  max-w-[100%] mt-[20px]">
+    <div className="flex flex-col gap-4 max-w-[100%] mt-[20px]">
       {isOpenCarousel.isOpen &&
         createPortal(
           <MediaCarousel
@@ -169,13 +186,17 @@ const Medias = ({ mobile, cheat }) => {
       >
         media
       </Text>
-      <div className="flex gap-6 items-center max-w-[100%]">
-        <Icon
+      <div className="flex gap-6   rounded-[16px] overflow-hidden items-center max-w-[100%] relative">
+        <div
           onClick={scrollLeft}
-          name="arrowRightCricle"
-          style={{ transform: "rotate(180deg)" }}
-          className="cursor-pointer"
-        />
+          className={`absolute cursor-pointer h-[101%] w-15 top-1/2 left-0 z-10 items-center flex -translate-y-1/2 bg-input/50 backdrop-blur-md p-2 shadow-md hover:bg-input/60 transition`}
+        >
+          <Icon
+            name="arrowRightCricle"
+            style={{ transform: "rotate(180deg)" }}
+            className="cursor-pointer"
+          />
+        </div>
         <div
           ref={scrollRef}
           className="flex items-center overflow-x-auto max-w-[100%] gap-3 scrollbar-hide"
@@ -183,7 +204,7 @@ const Medias = ({ mobile, cheat }) => {
           {cheat.videos[0] && (
             <div
               onClick={() => setIsOpenCarousel({ isOpen: true, index: 0 })}
-              className="h-[150px] relative min-w-[250px] rounded-[16px] bg-input flex items-center justify-center"
+              className="h-[180px] relative min-w-[250px] rounded-[16px] bg-input flex items-center justify-center"
             >
               <div className="absolute cursor-pointer inset-0 flex items-center justify-center group">
                 <div className="w-16 border border-primary10 h-16 rounded-full bg-black/60 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-black/80">
@@ -217,7 +238,7 @@ const Medias = ({ mobile, cheat }) => {
 
           {cheat.images.map((e, i) => {
             return (
-              <div className="relative min-w-[250px] flex items-center  overflow-hidden">
+              <div className="relative min-w-[250px] flex items-center  rounded-[16px] overflow-hidden">
                 <ImageWithPreview
                   src={e}
                   alt="MediaImage"
@@ -228,17 +249,17 @@ const Medias = ({ mobile, cheat }) => {
                     })
                   }
                   className="object-contain rounded-[16px] border-2 border-linkColor"
-                  sizes="250px"
                 />
               </div>
             );
           })}
         </div>
-        <Icon
+        <div
           onClick={scrollRight}
-          name="arrowRightCricle"
-          className="cursor-pointer"
-        />
+          className={`absolute cursor-pointer h-[101%] w-15 top-1/2 right-0 items-center flex -translate-y-1/2 bg-input/50 backdrop-blur-md p-2 shadow-md hover:bg-input/60 transition`}
+        >
+          <Icon name="arrowRightCricle" className="cursor-pointer" />
+        </div>
       </div>
     </div>
   );
