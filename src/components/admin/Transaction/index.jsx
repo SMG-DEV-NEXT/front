@@ -14,6 +14,7 @@ import CustomSelect from "@/components/Select";
 import { CheatService } from "@/services/Admin";
 import getLanguage from "@/utils/get-language";
 import Input from "@/components/Input";
+import Checkbox from "@/components/checkbox";
 
 const limits = [30, 50, 100];
 
@@ -26,6 +27,9 @@ const TransactionView = () => {
     search: "",
     page: 1,
     limit: 30,
+    reseller: false,
+    referral: false,
+    promo: false,
   });
   const { data: cheats, isPending: loading } = useQuery({
     queryFn: CheatService.getPlansTransactions,
@@ -45,7 +49,10 @@ const TransactionView = () => {
       if (filters.page) query.append("page", filters.page.toString());
       if (filters.limit) query.append("limit", filters.limit.toString());
       if (filters.search) query.append("search", filters.search);
-
+      if (filters.reseller) query.append("reseller", true);
+      if (filters.referral) query.append("referral", true);
+      if (filters.promo) query.append("promo", true);
+      console.log(filters.referral);
       return CheckoutService.getList(query.toString());
     },
     cacheTime: 0,
@@ -142,6 +149,23 @@ const TransactionView = () => {
               setValue={(e) => handleChangeFilter("endDate", e)}
             />
           </div>
+        </div>
+        <div className="flex mt-4 gap-6">
+          <Checkbox
+            text={"resellers"}
+            checked={filters.reseller}
+            onCheck={(e) => handleChangeFilter("reseller", e)}
+          />
+          <Checkbox
+            text={"referral"}
+            checked={filters.referral}
+            onCheck={(e) => handleChangeFilter("referral", e)}
+          />
+          <Checkbox
+            text={"promo"}
+            checked={filters.promo}
+            onCheck={(e) => handleChangeFilter("promo", e)}
+          />
         </div>
         {isPending ? (
           <Loading noPage={false} />
