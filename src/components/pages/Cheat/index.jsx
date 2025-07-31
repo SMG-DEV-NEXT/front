@@ -34,7 +34,6 @@ const View = () => {
   });
 
   if (!data?.data && !isPending) return notFound();
-
   if (isPending || !data) {
     return <Loading />;
   }

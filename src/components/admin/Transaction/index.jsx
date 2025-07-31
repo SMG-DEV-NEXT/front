@@ -52,7 +52,6 @@ const TransactionView = () => {
       if (filters.reseller) query.append("reseller", true);
       if (filters.referral) query.append("referral", true);
       if (filters.promo) query.append("promo", true);
-      console.log(filters.referral);
       return CheckoutService.getList(query.toString());
     },
     cacheTime: 0,

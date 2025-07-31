@@ -16,7 +16,12 @@ export default function AdminLayout({ children }) {
       <AdminTab />
       <div className="flex pl-[280px] flex-col w-full">
         <AdminHeader />
-        <div className="">{children}</div>
+        <div
+          className="overflow-auto w-full search-scroll"
+          style={{ minHeight: `calc(100% - 90px)` }}
+        >
+          {children}
+        </div>
       </div>
     </div>
   );

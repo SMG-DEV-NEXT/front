@@ -215,7 +215,7 @@ const Comments = ({ mobile, cheat }) => {
   const [stars, setStars] = useState(5);
   const [comments, setComments] = useState(cheat.comments);
   const { user } = useSelector((state) => state.auth);
-
+  const { commentAccess } = cheat;
   const handleSend = useMutation({
     mutationFn: CheatsService.createComment,
     mutationKey: ["create"],
@@ -236,12 +236,6 @@ const Comments = ({ mobile, cheat }) => {
       text: value,
       stars,
     });
-  };
-
-  const isOpenInput = () => {
-    const email = user.email;
-    const comment = comments.find((e) => e.user.email == email);
-    return !comment;
   };
 
   if (mobile) {
@@ -272,7 +266,7 @@ const Comments = ({ mobile, cheat }) => {
           )}
           {user ? (
             <>
-              {isOpenInput() ? (
+              {commentAccess ? (
                 <CommentInput
                   stars={stars}
                   setStars={setStars}
@@ -338,7 +332,7 @@ const Comments = ({ mobile, cheat }) => {
         )}
         {user ? (
           <>
-            {isOpenInput() ? (
+            {commentAccess ? (
               <CommentInput
                 stars={stars}
                 setStars={setStars}

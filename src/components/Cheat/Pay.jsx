@@ -149,29 +149,31 @@ const PayModal = ({
           value={selectedOption}
           setValue={setSelectedOption}
         /> */}
-        <div className="flex gap-2 items-end">
-          <Input
-            setValue={setPromo}
-            value={promo}
-            label={"promo"}
-            iconRight={{
-              icon: promoQuery?.data?.data ? "tick" : "remove",
-              folder: "pay",
-            }}
-            styleDiv={{
-              backgroundColor: "#272C33",
-            }}
-          />
-          <Button
-            className=" h-[48px]"
-            disabled={promoQuery.isPending}
-            onClick={() => {
-              promoQuery.mutate(promo.trim() === "" ? "discount" : promo);
-            }}
-          >
-            check
-          </Button>
-        </div>
+        {!refData && (
+          <div className="flex gap-2 items-end">
+            <Input
+              setValue={setPromo}
+              value={promo}
+              label={"promo"}
+              iconRight={{
+                icon: promoQuery?.data?.data ? "tick" : "remove",
+                folder: "pay",
+              }}
+              styleDiv={{
+                backgroundColor: "#272C33",
+              }}
+            />
+            <Button
+              className=" h-[48px]"
+              disabled={promoQuery.isPending}
+              onClick={() => {
+                promoQuery.mutate(promo.trim() === "" ? "discount" : promo);
+              }}
+            >
+              check
+            </Button>
+          </div>
+        )}
         <div className="flex gap-2 flex-col mt-2">
           <div className="w-full flex gap-2 py-3 px-4 bg-black items-center rounded-[12px]">
             <Text
@@ -262,29 +264,31 @@ const PayModal = ({
         value={selectedOption}
         setValue={setSelectedOption}
       /> */}
-      <div className="flex gap-2 items-end">
-        <Input
-          setValue={setPromo}
-          value={promo}
-          label={"promo"}
-          iconRight={{
-            icon: promoQuery?.data?.data ? "tick" : "remove",
-            folder: "pay",
-          }}
-          styleDiv={{
-            backgroundColor: "#272C33",
-          }}
-        />
-        <Button
-          className=" h-[48px]"
-          disabled={promoQuery.isPending}
-          onClick={() => {
-            promoQuery.mutate(promo.trim() === "" ? "discount" : promo);
-          }}
-        >
-          check
-        </Button>
-      </div>
+      {!refData && (
+        <div className="flex gap-2 items-end">
+          <Input
+            setValue={setPromo}
+            value={promo}
+            label={"promo"}
+            iconRight={{
+              icon: promoQuery?.data?.data ? "tick" : "remove",
+              folder: "pay",
+            }}
+            styleDiv={{
+              backgroundColor: "#272C33",
+            }}
+          />
+          <Button
+            className=" h-[48px]"
+            disabled={promoQuery.isPending}
+            onClick={() => {
+              promoQuery.mutate(promo.trim() === "" ? "discount" : promo);
+            }}
+          >
+            check
+          </Button>
+        </div>
+      )}
       <div className="flex gap-2 mt-2">
         <div className="w-full flex gap-2 py-3 px-4 bg-black items-center rounded-[12px]">
           <Text

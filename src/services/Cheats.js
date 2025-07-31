@@ -21,7 +21,7 @@ const CheatsService = {
   },
 
   getCheat: ({ cheat: id, refId }) => {
-    return axiosWithoutAuth.get(`/cheats/view/${id}?ref=${refId}`);
+    return axiosLoggedIn.get(`/cheats/view/${id}?ref=${refId}`);
   },
 
   createComment: (options) => {

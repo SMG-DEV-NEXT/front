@@ -36,7 +36,7 @@ const TransactionTable = ({ items = [] }) => {
   const t = useTranslations("preview");
 
   return (
-    <div className="flex w-full bg-input rounded-[16px] text-white mt-6 overflow-hidden">
+    <div className="flex  overflow-hidden  bg-input rounded-[16px] text-white mt-6 ">
       <Modal isOpen={modalInfo.open} onClose={handleCloseModal}>
         <div
           className={`flex  rounded-2xl bg-input mt-4  p-4 border-linkColor border flex-col gap-2 w-${"full"}`}
@@ -74,7 +74,7 @@ const TransactionTable = ({ items = [] }) => {
           })}
         </div>
       </Modal>
-      <table className="w-full overflow-auto">
+      <table className="bg-input ">
         <thead className="bg-[#1E2026]">
           <tr className="w-full">
             {/* <th>
@@ -136,6 +136,20 @@ const TransactionTable = ({ items = [] }) => {
               <div className="h-[56px] px-[18px] flex items-center justify-center flex items-center gap-[6px]">
                 <Text weight="semi" size="sm" className="text-linkColor">
                   promo
+                </Text>
+              </div>
+            </th>
+            <th>
+              <div className="h-[56px] px-[18px] flex items-center justify-center flex items-center gap-[6px]">
+                <Text weight="semi" size="sm" className="text-linkColor">
+                  referral
+                </Text>
+              </div>
+            </th>
+            <th>
+              <div className="h-[56px] px-[18px] flex items-center justify-center flex items-center gap-[6px]">
+                <Text weight="semi" size="sm" className="text-linkColor">
+                  reseller
                 </Text>
               </div>
             </th>
@@ -303,6 +317,40 @@ const TransactionTable = ({ items = [] }) => {
                       className=" py-[2px] px-[6px] rounded-[6px]"
                     >
                       {e.promoCode ? "yes" : "no"}
+                    </Text>
+                  </div>
+                </th>
+                <th>
+                  <div className="h-[56px] px-[18px] flex items-center justify-center flex items-center gap-[6px]">
+                    <Text
+                      T="admin"
+                      weight="semi"
+                      size="sm"
+                      style={{
+                        backgroundColor: e.referralId
+                          ? "#22C55E29"
+                          : "#DE595929",
+                        color: e.referralId ? "#22C55E" : "#DE5959",
+                      }}
+                      className=" py-[2px] px-[6px] rounded-[6px]"
+                    >
+                      {e.referralId ? "yes" : "no"}
+                    </Text>
+                  </div>
+                </th>
+                <th>
+                  <div className="h-[56px] px-[18px] flex items-center justify-center flex items-center gap-[6px]">
+                    <Text
+                      T="admin"
+                      weight="semi"
+                      size="sm"
+                      style={{
+                        backgroundColor: e.reseller ? "#22C55E29" : "#DE595929",
+                        color: e.reseller ? "#22C55E" : "#DE5959",
+                      }}
+                      className=" py-[2px] px-[6px] rounded-[6px]"
+                    >
+                      {e.reseller ? "yes" : "no"}
                     </Text>
                   </div>
                 </th>

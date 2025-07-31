@@ -105,7 +105,6 @@ const CheatCreate = () => {
         <AdminBox
           value={{ rus: inputs.aboutRu, en: inputs.aboutEn }}
           name="about"
-          maxLength={300}
           isMultipleLanguage={true}
           onChange={handleChangeInput}
           label={"cheatAbout"}

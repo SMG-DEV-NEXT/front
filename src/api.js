@@ -84,6 +84,7 @@ axiosLoggedIn.interceptors.request.use(
     if (error.response) {
       const { status, data } = error.response;
       // Handle validation errors from Nest.js
+
       if (status === 400 && data.message) {
         if (Array.isArray(data.message)) {
           data.message.forEach((msg) => toastError(msg));

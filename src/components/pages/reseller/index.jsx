@@ -2,20 +2,16 @@
 import React, { useState } from "react";
 import Text from "../../Text";
 import Input from "../../Input";
-import Checkbox from "../../checkbox";
 import Button from "../../Button";
-import CustomLink from "../../CustomLink";
 import CustomSelect from "../../Select";
 import { useMutation } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
-import { useLocale, useTranslations } from "next-intl";
-import UserService from "@/services/User";
+import { useTranslations } from "next-intl";
 import Icon from "@/components/Icons";
 import ReselllerService from "@/services/Reseller";
-import { Axyus, HugeGlow, LeftIcon, RightIcon } from "../../Main/i";
+import { HugeGlow, LeftIcon, RightIcon } from "../../Main/i";
 import { toast } from "react-toastify";
 import { useMobile } from "@/hooks/useMobile";
+import { toastError } from "@/utils/error";
 /* auth */
 
 function View() {
@@ -42,6 +38,13 @@ function View() {
 
   const onSave = () => {
     const { payMethod, ...values } = inputs;
+    const isHaveInvalidField = Object.keys(values).forEach((element) => {
+      return !!values[element]?.length;
+    });
+    if (isHaveInvalidField || !payMethod?.label) {
+      toastError(t("fieldsError"));
+      return;
+    }
     mutation.mutate({
       ...values,
       payMethod: payMethod?.label,
@@ -64,20 +67,20 @@ function View() {
       icon: <Icon name="paypal" folder="pay" />,
     },
     {
-      value: "crypto",
+      value: "steam",
       label: "Steam Skins",
       icon: <Icon name="steam" folder="pay" />,
     },
     {
-      value: "steam",
-      label: "Cripto",
+      value: "crypto",
+      label: "Crypto",
       icon: <Icon name="crypto" folder="pay" />,
     },
   ];
 
   if (isMobile) {
     return (
-      <div className="relative h-full w-full flex items-center justify-center pt-[64px] pb-[164px]">
+      <div className="relative h-full w-full flex items-center justify-center overflow-hidden pt-[64px] pb-[164px]">
         <div className="flex flex-col gap-8 z-[1] w-full px-2  items-center">
           <div className="flex flex-col gap-6">
             <Text
@@ -157,7 +160,7 @@ function View() {
     );
   }
   return (
-    <div className="relative h-full w-full flex items-center justify-center pt-[64px] pb-[164px]">
+    <div className="relative overflow-hidden h-full w-full flex items-center justify-center pt-[64px] pb-[164px]">
       <div className="absolute top-[2] z-[0] left-[0] h-full">
         <LeftIcon />
       </div>
@@ -223,12 +226,14 @@ function View() {
               value={inputs.product}
               onChange={(e) => handleChangeInput("product", e.target.value)}
               type="text"
+              placeholder="SKY EFT"
               styleDiv={{ backgroundColor: "#272c33", height: "46px" }}
               iconLeft="product"
             />
             <CustomSelect
               options={options}
               label={"methodPay"}
+              placeholder={t("selectPlaceholder")}
               inputStyles={{ height: "46px" }}
               value={inputs.payMethod}
               setValue={(e) => handleChangeInput("payMethod", e)}
