@@ -17,6 +17,9 @@ export const AdminCatalog = {
   getCatalog: (id) => {
     return axiosLoggedIn.get(`/catalog/${id}`);
   },
+  getCatalogAdmin: (id) => {
+    return axiosLoggedIn.get(`/catalog/admin/${id}`);
+  },
   deleteCatalog: (id) => {
     return axiosLoggedIn.delete(`/catalog/${id}`);
   },

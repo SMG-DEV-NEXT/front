@@ -33,7 +33,7 @@ const UpdateCatalog = () => {
 
   const { data, isPending } = useQuery({
     queryFn: ({ queryKey }) => {
-      return AdminCatalog.getCatalog(id);
+      return AdminCatalog.getCatalogAdmin(id);
     },
     queryKey: ["get-catalog", id],
     staleTime: 0,
