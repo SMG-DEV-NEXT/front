@@ -7,12 +7,12 @@ import AdminBox from "../../components/Box";
 import Text from "@/components/Text";
 
 const Blok = ({ order, data, handleChange, handleDelete }) => {
-  const { titleru, titleen, textru, texten } = data || {};
+  const { aboutru, abouten, titleru, titleen } = data || {};
   const [inputs, setInputs] = useState({
     titleru,
     titleen,
-    textru,
-    texten,
+    aboutru,
+    abouten,
   });
   const debouncedInputs = useDebounce(inputs);
   useEffect(() => {
@@ -33,7 +33,7 @@ const Blok = ({ order, data, handleChange, handleDelete }) => {
       </div>
       <AdminBox
         isMultipleLanguage={true}
-        value={{ rus: inputs.titleru, en: titleen }}
+        value={{ rus: inputs.titleru, en: inputs.titleen }}
         onChange={(name, value) => setInputs({ ...inputs, [name]: value })}
         label="title"
         name="title"
@@ -42,7 +42,7 @@ const Blok = ({ order, data, handleChange, handleDelete }) => {
       />
       <AdminBox
         isMultipleLanguage={true}
-        value={{ rus: inputs.textru, en: texten }}
+        value={{ rus: inputs.aboutru, en: inputs.abouten }}
         onChange={(name, value) => setInputs({ ...inputs, [name]: value })}
         label="about"
         name="about"

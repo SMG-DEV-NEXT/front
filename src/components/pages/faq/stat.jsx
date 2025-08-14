@@ -40,7 +40,7 @@ const FaqStat = ({
   const nextData = next ? getJSONData(next) : {};
   return (
     <div
-      style={{ width: mobile ? "100%" : "71%" }}
+      style={{ width: "100%" }}
       className="w-[71%] bg-input rounded-2xl flex flex-col p-6 gap-6"
     >
       <div className="flex flex-col gap-2">

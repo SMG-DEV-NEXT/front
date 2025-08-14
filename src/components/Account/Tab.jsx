@@ -93,55 +93,64 @@ const AccountTab = ({ selectedTab, setSelectedTab, mobile }) => {
         <div className="flex gap-2 flex-col">
           {AccountTabs.map((e) => {
             const Component = e.icon;
-            if (e.value === selectedTab.value) {
-              return (
-                <div
-                  className={`p-[2px] relative rounded-xl ${" bg-[linear-gradient(to_right,#8B6DCA_0%,transparent_41%,#8B6DCA_100%)]"}`}
-                  key={e.value}
-                >
-                  <div
-                    className={`relative z-[1] overflow-hidden flex py-[13px] px-4 items-center rounded-xl justify-between cursor-pointer bg-${"input"}`}
-                  >
-                    <div className="absolute right-[0] top-[0] z-[0]">
-                      <Icon name="elipse" size={200} folder="cheat" />
-                    </div>
-                    <div className="absolute left-[0]  z-[0]">
-                      <ActiveLightIcon />
-                    </div>
-                    <div
-                      className="flex  items-center gap-2  cursor-pointer"
-                      key={e.value}
-                      onClick={() => handleChooseTab(e)}
-                    >
-                      <Component color="#8B6DCA" />
-                      <Text
-                        T="account"
-                        weight="medium"
-                        size="sm"
-                        className="text-primary10"
-                      >
-                        {e.label}
-                      </Text>
-                    </div>{" "}
-                  </div>
-                </div>
-              );
-            }
+            const isActive = e.value === selectedTab.value;
+
             return (
               <div
-                className="flex bg-black items-center gap-2  rounded-[12px] cursor-pointer py-[13px] px-4"
                 key={e.value}
                 onClick={() => handleChooseTab(e)}
+                className="p-[2px] relative rounded-xl overflow-hidden transition-all duration-700"
               >
-                <Component />
-                <Text
-                  T="account"
-                  weight="medium"
-                  size="sm"
-                  className="text-linkColor"
+                {/* Gradient background layer (fades in/out) */}
+                <div
+                  className={`absolute inset-0 rounded-xl
+          transition-opacity duration-700
+          bg-[linear-gradient(to_right,#8B6DCA_0%,transparent_41%,#8B6DCA_100%)]
+          ${isActive ? "opacity-100" : "opacity-0"}
+        `}
+                />
+
+                {/* Inner content */}
+                <div
+                  className={`relative z-[1] overflow-hidden transition-colors duration-700
+          flex py-[13px] px-4 items-center rounded-xl justify-between cursor-pointer
+          ${isActive ? "bg-input" : "bg-black"}
+        `}
                 >
-                  {e.label}
-                </Text>
+                  {/* Background icons */}
+                  <div
+                    className={`absolute right-0 top-0 z-[-1]
+            transition-opacity duration-700
+            ${isActive ? "opacity-100" : "opacity-0"}
+          `}
+                  >
+                    <Icon name="elipse" size={200} folder="cheat" />
+                  </div>
+
+                  <div
+                    className={`absolute left-0 z-[-1]
+            transition-opacity duration-700
+            ${isActive ? "opacity-100" : "opacity-0"}
+          `}
+                  >
+                    <ActiveLightIcon />
+                  </div>
+
+                  {/* Icon + Text */}
+                  <div className="flex items-center gap-2 z-[1]">
+                    <Component color={isActive ? "#8B6DCA" : undefined} />
+                    <Text
+                      T="account"
+                      weight="medium"
+                      size="sm"
+                      className={`transition-colors duration-700 ${
+                        isActive ? "text-primary10" : "text-linkColor"
+                      }`}
+                    >
+                      {e.label}
+                    </Text>
+                  </div>
+                </div>
               </div>
             );
           })}
@@ -199,55 +208,64 @@ const AccountTab = ({ selectedTab, setSelectedTab, mobile }) => {
       <div className="flex gap-2 flex-col">
         {AccountTabs.map((e) => {
           const Component = e.icon;
-          if (e.value === selectedTab.value) {
-            return (
-              <div
-                className={`p-[2px] relative rounded-xl ${" bg-[linear-gradient(to_right,#8B6DCA_0%,transparent_41%,#8B6DCA_100%)]"}`}
-                key={e.value}
-              >
-                <div
-                  className={`relative z-[1] overflow-hidden flex py-[13px] px-4 items-center rounded-xl justify-between cursor-pointer bg-${"input"}`}
-                >
-                  <div className="absolute right-[0] top-[0] z-[0]">
-                    <Icon name="elipse" size={200} folder="cheat" />
-                  </div>
-                  <div className="absolute left-[0]  z-[0]">
-                    <ActiveLightIcon />
-                  </div>
-                  <div
-                    className="flex  items-center gap-2  cursor-pointer"
-                    key={e.value}
-                    onClick={() => handleChooseTab(e)}
-                  >
-                    <Component color="#8B6DCA" />
-                    <Text
-                      T="account"
-                      weight="medium"
-                      size="sm"
-                      className="text-primary10"
-                    >
-                      {e.label}
-                    </Text>
-                  </div>{" "}
-                </div>
-              </div>
-            );
-          }
+          const isActive = e.value === selectedTab.value;
+
           return (
             <div
-              className="flex bg-black items-center gap-2  rounded-[12px] cursor-pointer py-[13px] px-4"
               key={e.value}
               onClick={() => handleChooseTab(e)}
+              className="p-[2px] relative rounded-xl overflow-hidden transition-all duration-700"
             >
-              <Component />
-              <Text
-                T="account"
-                weight="medium"
-                size="sm"
-                className="text-linkColor"
+              {/* Gradient background layer (fades in/out) */}
+              <div
+                className={`absolute inset-0 rounded-xl
+          transition-opacity duration-700
+          bg-[linear-gradient(to_right,#8B6DCA_0%,transparent_41%,#8B6DCA_100%)]
+          ${isActive ? "opacity-100" : "opacity-0"}
+        `}
+              />
+
+              {/* Inner content */}
+              <div
+                className={`relative z-[1] overflow-hidden transition-colors duration-700
+          flex py-[13px] px-4 items-center rounded-xl justify-between cursor-pointer
+          ${isActive ? "bg-input" : "bg-black"}
+        `}
               >
-                {e.label}
-              </Text>
+                {/* Background icons */}
+                <div
+                  className={`absolute right-0 top-0 z-[-1]
+            transition-opacity duration-700
+            ${isActive ? "opacity-100" : "opacity-0"}
+          `}
+                >
+                  <Icon name="elipse" size={200} folder="cheat" />
+                </div>
+
+                <div
+                  className={`absolute left-0 z-[-1]
+            transition-opacity duration-700
+            ${isActive ? "opacity-100" : "opacity-0"}
+          `}
+                >
+                  <ActiveLightIcon />
+                </div>
+
+                {/* Icon + Text */}
+                <div className="flex items-center gap-2 z-[1]">
+                  <Component color={isActive ? "#8B6DCA" : undefined} />
+                  <Text
+                    T="account"
+                    weight="medium"
+                    size="sm"
+                    className={`transition-colors duration-700 ${
+                      isActive ? "text-primary10" : "text-linkColor"
+                    }`}
+                  >
+                    {e.label}
+                  </Text>
+                </div>
+              </div>
             </div>
           );
         })}

@@ -32,6 +32,7 @@ function Main() {
       },
     ],
   });
+
   if (isMobile) {
     return (
       <div className=" view flex flex-col w-full">

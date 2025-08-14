@@ -9,21 +9,42 @@ const TableFaq = ({ cols, rows }) => {
       <table className="w-full table-fixed  border-separate border-spacing-2">
         <thead>
           <tr>
-            {cols.map((col) => (
-              <th
-                key={col}
-                className="p-3 bg-[#272C33] rounded-[12px] text-left align-middle"
-              >
-                <Text
-                  T="none"
-                  weight="bold"
-                  size="base"
-                  className="text-primary10 leading-[140%] break-words whitespace-normal"
+            {cols.map((col) => {
+              const is = isUrl(col);
+              if (is) {
+                return (
+                  <td
+                    key={crypto.randomUUID()}
+                    className="p-3 bg-[#272C33] rounded-[12px] text-left align-middle "
+                  >
+                    <Text
+                      T="none"
+                      weight="bold"
+                      size="base"
+                      onClick={() => window.open(col, "_blank")}
+                      className="text-primary80 mt-auto cursor-pointer leading-[140%] break-words whitespace-normal"
+                    >
+                      {col}
+                    </Text>
+                  </td>
+                );
+              }
+              return (
+                <th
+                  key={col}
+                  className="p-3 bg-[#272C33] rounded-[12px] text-left align-middle"
                 >
-                  {col}
-                </Text>
-              </th>
-            ))}
+                  <Text
+                    T="none"
+                    weight="bold"
+                    size="base"
+                    className="text-primary10 leading-[140%] break-words whitespace-normal"
+                  >
+                    {col}
+                  </Text>
+                </th>
+              );
+            })}
           </tr>
         </thead>
         <tbody>

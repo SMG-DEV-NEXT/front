@@ -90,7 +90,9 @@ const HistoryAccountItem = ({
             <Button
               variant="secondary"
               onClick={() =>
-                router.push(`/${locale}/catalog/${cheat.catalogId}/${cheat.id}`)
+                router.push(
+                  `/${locale}/catalog/${cheat.catalog.link}/${cheat.link}`
+                )
               }
               T="account"
               className="text-[14px] h-[46px] whitespace-nowrap"
@@ -174,7 +176,7 @@ const HistoryAccountItemMobile = ({
           variant="secondary"
           T="account"
           onClick={() =>
-            router.push(`/${locale}/catalog/${cheat.catalogId}/${cheat.id}`)
+            router.push(`/${locale}/catalog/${cheat.catalog.ink}/${cheat.link}`)
           }
           className="text-[14px] w-full h-[46px] whitespace-nowrap"
         >

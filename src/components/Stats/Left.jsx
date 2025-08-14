@@ -82,45 +82,51 @@ const LeftStats = ({
                   className="flex relative overflow-hidden justify-between px-6 w-full cursor-pointer"
                   onClick={() => setSelectedGame(e.id)}
                 >
-                  {e.id === selectedGame?.game?.id && (
-                    <div
-                      className="absolute bg-primary80 w-5 h-5 rounded-full top-[50%] left-[-10px]"
-                      style={{ transform: "translateY(-50%)" }}
-                    ></div>
-                  )}
+                  {/* Animated circle indicator */}
+                  <div
+                    className={`absolute bg-primary80 w-5 h-5 rounded-full top-[50%] left-[-10px]
+        transition-all duration-500 ease-in-out
+        ${
+          e.id === selectedGame?.game?.id
+            ? "opacity-100 translate-x-0"
+            : "opacity-0 -translate-x-4"
+        }
+      `}
+                    style={{ transform: "translateY(-50%)" }}
+                  ></div>
+
+                  {/* Title */}
                   <Text
-                    className={`text-${
-                      e.id === selectedGame?.game?.id
-                        ? "primary80"
-                        : "linkColor"
-                    } max-w-[150px] truncate block`}
+                    className={`max-w-[150px] truncate block transition-colors duration-500 ease-in-out
+        ${e.id === selectedGame?.game?.id ? "text-primary80" : "text-linkColor"}
+      `}
                     T="none"
                     weight="medium"
                     size="sm"
                   >
                     {e.title}
                   </Text>
+
+                  {/* Stats box */}
                   <Text
-                    className={`text-${
-                      e.id === selectedGame?.game?.id
-                        ? "primary80"
-                        : "linkColor"
-                    } w-[32px] h-[20px] rounded-[6px] bg-[${
-                      e.id === selectedGame?.game?.id ? "#8B6DCA" : "#7B8293"
-                    }] flex items-center justify-center`}
-                    T="none"
+                    className={`w-[32px] h-[20px] rounded-[6px] flex items-center justify-center
+        transition-all duration-500 ease-in-out
+        ${e.id === selectedGame?.game?.id ? "text-primary80" : "text-linkColor"}
+      `}
                     style={{
                       backgroundColor:
                         e.id === selectedGame?.game?.id
                           ? "rgba(139, 109, 202, 0.15)"
                           : "rgba(123, 130, 147, 0.15)",
                     }}
+                    T="none"
                     weight="medium"
                     size="sm"
                   >
                     {e.stats.length}
                   </Text>
                 </div>
+
                 {i + 1 !== games.length && (
                   <div className="w-full bg-[#404658] h-[1px]"></div>
                 )}

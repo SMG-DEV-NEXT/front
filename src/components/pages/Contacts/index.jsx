@@ -118,10 +118,14 @@ const ContactsView = () => {
         >
           {items.map((e) => {
             return (
-              <Effect key={e.id} type="to-top" className="w-full">
+              <Effect
+                key={e.id}
+                type="to-top"
+                className={isMobile ? "w-full" : "w-1/4"}
+              >
                 <div
                   onClick={() => handleClickUrl(e.url)}
-                  className="flex cursor-pointer relative flex-col items-center overflow-hidden w-full py-6 bg-input rounded-[16px] gap-3"
+                  className={`flex cursor-pointer relative flex-col items-center overflow-hidden w-full h-full py-6 bg-input rounded-[16px] gap-3`}
                 >
                   {isMobile ? (
                     <div className="absolute top-[-100%] ">
@@ -137,7 +141,7 @@ const ContactsView = () => {
                     width={64}
                     height={64}
                     alt="logo"
-                    className="z-[2]"
+                    className="z-[2] w-[64px] h-[64px]"
                   />{" "}
                   <div className="flex flex-col items-center gap-1 z-[2]">
                     <Text
@@ -149,7 +153,7 @@ const ContactsView = () => {
                       {e[`title${locale}`]}
                     </Text>
                     <Text
-                      className="text-linkColor"
+                      className="text-linkColor text-center px-2"
                       weight="medium"
                       size="sm"
                       T="none"

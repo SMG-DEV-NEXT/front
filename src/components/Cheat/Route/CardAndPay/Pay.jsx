@@ -149,36 +149,56 @@ const PayCard = ({ mobile, cheat, ref }) => {
               const isActive = e.days === active?.days;
               return (
                 <div
-                  className={`p-[2px] relative rounded-xl ${
-                    isActive &&
-                    " bg-[linear-gradient(to_right,#8B6DCA_0%,transparent_41%,#8B6DCA_100%)]"
-                  }`}
+                  className={`p-[2px] relative rounded-xl overflow-hidden
+    transition-all duration-700
+  `}
                   key={e.days}
                   onClick={() => {
                     setActive(e);
                     setCount(1);
                   }}
                 >
+                  {/* Gradient background layer (fades in/out) */}
                   <div
-                    className={`relative z-[1] overflow-hidden flex py-3 px-4 items-center rounded-xl justify-between cursor-pointer bg-${
-                      isActive ? "input" : "black"
-                    }`}
+                    className={`absolute inset-0 rounded-xl
+      transition-opacity duration-700
+      bg-[linear-gradient(to_right,#8B6DCA_0%,transparent_41%,#8B6DCA_100%)]
+      ${isActive ? "opacity-100" : "opacity-0"}
+    `}
+                  />
+
+                  {/* Inner content */}
+                  <div
+                    className={`relative z-[1] overflow-hidden transition-colors duration-700
+      flex py-3 px-4 items-center rounded-xl justify-between cursor-pointer
+      ${isActive ? "bg-input" : "bg-black"}
+    `}
                   >
-                    {isActive && (
-                      <div className="absolute right-[0] top-[0] z-[-1]">
-                        <Icon name="elipse" size={200} folder="cheat" />
-                      </div>
-                    )}
-                    {isActive && (
-                      <div className="absolute left-[0] bottom-[-10%] z-[-1]">
-                        <ActiveLightIcon />
-                      </div>
-                    )}
+                    {/* Animated icons */}
+                    <div
+                      className={`absolute right-0 top-0 z-[-1]
+        transition-opacity duration-700
+        ${isActive ? "opacity-100" : "opacity-0"}
+      `}
+                    >
+                      <Icon name="elipse" size={200} folder="cheat" />
+                    </div>
+
+                    <div
+                      className={`absolute left-0 bottom-[-10%] z-[-1]
+        transition-opacity duration-700
+        ${isActive ? "opacity-100" : "opacity-0"}
+      `}
+                    >
+                      <ActiveLightIcon />
+                    </div>
+
+                    {/* Radio button */}
                     <div className="flex items-center gap-2 z-[1]">
                       {isActive ? (
                         <div className="w-5 h-5 relative">
                           <div className="w-4 h-4 left-[2px] top-[2px] absolute rounded-full border-2 border-[#8b6dc9]" />
-                          <div className="w-2 h-2 left-[6px] top-[6px] absolute bg-[#8b6dc9] rounded-full" />
+                          <div className="w-2 h-2 absolute inset-0 m-auto bg-[#8b6dc9] rounded-full" />
                         </div>
                       ) : (
                         <div className="border rounded-full border-linkColor w-4 h-4"></div>
@@ -202,10 +222,12 @@ const PayCard = ({ mobile, cheat, ref }) => {
                         </Text>
                       </div>
                     </div>
+
+                    {/* Price section — same logic */}
                     {e.prcent > 0 || cheat.refUser?.prcentToPrice > 0 ? (
-                      <div className="flex gap-1 items-center ">
+                      <div className="flex gap-1 items-center">
                         <Text
-                          className="text-linkColor line-through mb-[-10px]"
+                          className="text-linkColor line-through mb-[-10px] transition-colors duration-500"
                           T="none"
                           weight="semi"
                           size="sm"
@@ -214,7 +236,7 @@ const PayCard = ({ mobile, cheat, ref }) => {
                           {locale === "ru" ? "₽" : "$"}
                         </Text>
                         <Text
-                          className="text-primary10 leading-[120%]"
+                          className="text-primary10 leading-[120%] transition-colors duration-500"
                           T="none"
                           weight="semi"
                           size="lg"
@@ -229,7 +251,7 @@ const PayCard = ({ mobile, cheat, ref }) => {
                       </div>
                     ) : (
                       <Text
-                        className="text-primary10 leading-[120%]"
+                        className="text-primary10 leading-[120%] transition-colors duration-500"
                         T="none"
                         weight="semi"
                         size="lg"
@@ -391,25 +413,21 @@ const PayCard = ({ mobile, cheat, ref }) => {
         customTop={120}
         onClose={() => setIsOpenCheckout(false)}
       >
-        <div
-          className="flex  flex-col gap-6"
-          style={{ width: mobile ? "302px" : "504px" }}
-        >
-          <PayModal
-            mobile={mobile}
-            ref={ref}
-            refData={cheat.refUser}
-            plnaId={cheat.id}
-            active={active}
-            count={count}
-            pay={active}
-            getPrcent={getPricePrcent}
-            user={user}
-            locale={locale}
-            usd={usd}
-          />
-        </div>
+        <PayModal
+          mobile={mobile}
+          ref={ref}
+          refData={cheat.refUser}
+          plnaId={cheat.id}
+          active={active}
+          count={count}
+          pay={active}
+          getPrcent={getPricePrcent}
+          user={user}
+          locale={locale}
+          usd={usd}
+        />
       </Modal>
+
       <div
         onClick={() => setIsOpenInfoModal(true)}
         className="rounded-b-2xl px-4 py-3 flex items-center cursor-pointer gap-2 bg-primary80"

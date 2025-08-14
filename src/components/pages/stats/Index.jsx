@@ -9,6 +9,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import StatsService from "@/services/Stats";
 import Loading from "@/app/loading";
 import { useTranslations } from "next-intl";
+import Effect from "@/components/Animations/Effect";
 
 const StatsView = () => {
   const isMobile = useMobile();
@@ -107,12 +108,19 @@ const StatsView = () => {
               setSelectedGame={handleSelectGame}
             />
             {selectedGame.game && (
-              <RightStats
-                mobile={true}
-                selectedFilterDate={selectedFilter}
-                handleChangePage={handleChangePage}
-                game={selectedGame}
-              />
+              <Effect
+                type="to-top"
+                className="w-[100%]"
+                onceEffect={true}
+                key={selectedGame.game.id}
+              >
+                <RightStats
+                  mobile={true}
+                  selectedFilterDate={selectedFilter}
+                  handleChangePage={handleChangePage}
+                  game={selectedGame}
+                />
+              </Effect>
             )}
             <PopularStats popular={data.stats} />
           </div>
@@ -137,11 +145,18 @@ const StatsView = () => {
             setSelectedGame={handleSelectGame}
           />
           {selectedGame.game && (
-            <RightStats
-              handleChangePage={handleChangePage}
-              game={selectedGame}
-              selectedFilterDate={selectedFilter}
-            />
+            <Effect
+              type="to-left"
+              className="w-[100%]"
+              onceEffect={true}
+              key={selectedGame.game.id}
+            >
+              <RightStats
+                handleChangePage={handleChangePage}
+                game={selectedGame}
+                selectedFilterDate={selectedFilter}
+              />
+            </Effect>
           )}
         </div>
       </div>

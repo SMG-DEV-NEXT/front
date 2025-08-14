@@ -100,6 +100,12 @@ const CatalogCreate = () => {
           />
         </div>
         <AdminBox
+          value={inputs.link}
+          name="link"
+          onChange={handleChangeInput}
+          label={"catalogLink"}
+        />
+        <AdminBox
           value={{ rus: inputs.headRu, en: inputs.headEn }}
           name="head"
           maxLength={300}

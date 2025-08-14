@@ -16,6 +16,7 @@ function CatalogCard({
   cheats,
   id,
   usd,
+  link,
 }) {
   const locale = useLocale();
 
@@ -46,7 +47,7 @@ function CatalogCard({
     return `${prices[0] || 0} ₽`;
   };
   return (
-    <CustomLink url={`/catalog/${id}`}>
+    <CustomLink url={`/catalog/${link}`}>
       <div
         className="flex relative rounded-2xl shadow-md z-[11]  overflow-hidden flex-col bg-[#272C33]  h-[252px] group"
         style={{ width: imageWidth }}

@@ -116,7 +116,7 @@ const CardAndPay = ({ mobile, cheat, ref }) => {
         <RouteCheat
           catalogName={cheat.catalog[`title`]}
           cheatName={cheat[`title${getLanguage(locale)}`]}
-          catalogId={cheat.catalog.id}
+          catalogId={cheat.catalog.link}
         />
         <div className="flex gap-6  w-full">
           <Image

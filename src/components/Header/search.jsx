@@ -45,7 +45,7 @@ export function CheatSearch() {
   }, [query]);
 
   const handleOpenCheat = (cheat) => {
-    router.push(`/${locale}/catalog/${cheat.catalogId}/${cheat.id}`);
+    router.push(`/${locale}/catalog/${cheat.catalog.link}/${cheat.link}`);
   };
 
   return (

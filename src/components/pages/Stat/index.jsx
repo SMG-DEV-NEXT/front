@@ -47,7 +47,7 @@ function StatView() {
       <div className="container flex flex-col gap-8 z-[1] ">
         {!isMobile && (
           <RouteStat
-            catalogId={stat.catalog.id}
+            catalogId={stat.catalog.link}
             statName={stat[`title${locale}`]}
             catalogName={stat.catalog.title}
           />

@@ -105,7 +105,11 @@ function Footer() {
             {navigateTabs.map((e) => {
               return (
                 <CustomLink url={e.value} key={e.label}>
-                  <Text size="sm" className="text-linkColor" weight="medium">
+                  <Text
+                    size="sm"
+                    className="text-linkColor  hover:opacity-70 transition-opacity duration-300"
+                    weight="medium"
+                  >
                     {e.label}
                   </Text>
                 </CustomLink>
@@ -123,7 +127,11 @@ function Footer() {
             {otherTabs.map((e) => {
               return (
                 <CustomLink url={e.value} key={e.label}>
-                  <Text size="sm" className="text-linkColor" weight="medium">
+                  <Text
+                    size="sm"
+                    className="text-linkColor hover:opacity-70 transition-opacity duration-300"
+                    weight="medium"
+                  >
                     {e.label}
                   </Text>
                 </CustomLink>

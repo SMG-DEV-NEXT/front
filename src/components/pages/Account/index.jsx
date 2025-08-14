@@ -16,6 +16,7 @@ import { useSelector } from "react-redux";
 import { useMobile } from "@/hooks/useMobile";
 import Freecurrencyapi from "@everapi/freecurrencyapi-js";
 import { useLocale } from "next-intl";
+import Effect from "@/components/Animations/Effect";
 
 export const AccountTabs = [
   { value: "default", label: "default", icon: MyAccountDefaultIcon },
@@ -86,9 +87,16 @@ const View = () => {
                 mobile={isMobile}
                 setSelectedTab={onChangeTab}
               />
-              <div className="w-full">
-                <Component usd={usd} mobile={isMobile} user={user} />
-              </div>
+              <Effect
+                type="to-left"
+                className="w-full"
+                onceEffect={false}
+                key={tab.value}
+              >
+                <div className="w-full">
+                  <Component mobile={true} user={user} usd={usd} />
+                </div>
+              </Effect>
             </div>
           </div>
         </div>
@@ -104,9 +112,16 @@ const View = () => {
           </Text>
           <div className="flex  gap-6 items-start w-full">
             <AccountTab selectedTab={tab} setSelectedTab={onChangeTab} />
-            <div className="w-[66%]">
-              <Component user={user} usd={usd} />
-            </div>
+            <Effect
+              type="to-left"
+              className="w-[66%]"
+              onceEffect={false}
+              key={tab.value}
+            >
+              <div className="w-full">
+                <Component user={user} usd={usd} />
+              </div>
+            </Effect>
           </div>
         </div>
       </div>

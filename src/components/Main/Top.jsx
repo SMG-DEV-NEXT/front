@@ -22,7 +22,8 @@ function MainTop({ data }) {
       plan: e.plan,
       title: e[`title${locale === "en" ? "En" : "Ru"}`],
       cheats: e.cheats,
-      catalogId: e.catalogId,
+      catalogId: e.catalog.link,
+      link: e.link,
     };
   });
   return (

@@ -171,13 +171,19 @@ const HeaderMyAccount = () => {
           </div>
         </div>
         {user.isAdmin && (
-          <CustomLink url="/admin/dashboard">
-            <div className="flex w-full items-center justify-center gap-1 text-center">
-              <Text T="none" weigth="bold" size="sm" className="text-linkColor">
-                Admin Dashboard
-              </Text>
-            </div>
-          </CustomLink>
+          <div
+            onClick={() =>
+              window.open(
+                `${window.location.origin}/ru/admin/dashboard`,
+                "_blank"
+              )
+            }
+            className="flex cursor-pointer w-full items-center justify-center gap-1 text-center"
+          >
+            <Text T="none" weigth="bold" size="sm" className="text-linkColor">
+              Admin Dashboard
+            </Text>
+          </div>
         )}
       </div>
     );
@@ -336,18 +342,24 @@ const HeaderMyAccount = () => {
                   </div>
                 </div>
                 {user.isAdmin && (
-                  <CustomLink url="/admin/dashboard">
-                    <div className="flex w-full items-center justify-center gap-1 text-center">
-                      <Text
-                        T="none"
-                        weigth="bold"
-                        size="sm"
-                        className="text-linkColor"
-                      >
-                        Admin Dashboard
-                      </Text>
-                    </div>
-                  </CustomLink>
+                  <div
+                    onClick={() =>
+                      window.open(
+                        `${window.location.origin}/ru/admin/dashboard`,
+                        "_blank"
+                      )
+                    }
+                    className="flex cursor-pointer w-full items-center justify-center gap-1 text-center"
+                  >
+                    <Text
+                      T="none"
+                      weigth="bold"
+                      size="sm"
+                      className="text-linkColor"
+                    >
+                      Admin Dashboard
+                    </Text>
+                  </div>
                 )}
               </div>
             </DropdownItem>

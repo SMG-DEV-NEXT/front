@@ -156,7 +156,7 @@ const RightStats = ({ mobile, game, handleChangePage, selectedFilterDate }) => {
     );
   }
   return (
-    <div className="flex flex-col w-[70%] gap-6 items-center rounded-[16px] bg-input p-6">
+    <div className="flex flex-col w-[100%] gap-6 items-center rounded-[16px] bg-input p-6">
       <Text
         weight="bold"
         T="none"

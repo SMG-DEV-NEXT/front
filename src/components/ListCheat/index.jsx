@@ -44,6 +44,7 @@ const ListCheatItem = (props) => {
     catalogId,
     comments,
     usd,
+    link,
   } = props;
   const getMinimumPrice = () => {
     let price = 0;
@@ -73,7 +74,7 @@ const ListCheatItem = (props) => {
             height="210"
             width="350"
             objectFit="contain"
-            onClick={() => router.push(`${catalogId}/${id}`)}
+            onClick={() => router.push(`${catalogId}/${link}`)}
             className="object-cover cursor-pointer"
           />
         )}
@@ -83,7 +84,13 @@ const ListCheatItem = (props) => {
         >
           <div className="flex flex-col gap-[10px]">
             <div className="flex flex-col gap-[10px] ">
-              <Text T="none" className="text-primary10" weight="bold" size="lg">
+              <Text
+                T="none"
+                className="text-primary10 cursor-pointer"
+                weight="bold"
+                size="lg"
+                onClick={() => router.push(`${catalogId}/${link}`)}
+              >
                 {props[`title${getLanguage()}`]}
               </Text>
               <div className="flex  gap-2">
@@ -169,7 +176,7 @@ const ListCheatItem = (props) => {
                 </Text>
               </div>
               {type !== "detected" && (
-                <CustomLink url={`/catalog/${catalogId}/${id}`}>
+                <CustomLink url={`/catalog/${catalogId}/${link}`}>
                   <Button
                     T="cheats"
                     className="text-sm"
@@ -193,7 +200,7 @@ const ListCheatItem = (props) => {
           src={image1}
           alt="Background"
           height="210"
-          onClick={() => router.push(`${catalogId}/${id}`)}
+          onClick={() => router.push(`${catalogId}/${link}`)}
           width="220"
           objectFit="contain"
           className="object-cover cursor-pointer"
@@ -204,7 +211,8 @@ const ListCheatItem = (props) => {
           <div className="flex items-center justify-between">
             <Text
               T="none"
-              className="text-primary10 leading-[140%]"
+              className="text-primary10 leading-[140%] cursor-pointer"
+              onClick={() => router.push(`${catalogId}/${link}`)}
               weight="bold"
               size="lg"
             >
@@ -276,7 +284,7 @@ const ListCheatItem = (props) => {
               </Text>
             </div>
             {type !== "detected" && (
-              <CustomLink url={`/catalog/${catalogId}/${id}`}>
+              <CustomLink url={`/catalog/${catalogId}/${link}`}>
                 <Button
                   T="cheats"
                   className="text-sm"

@@ -9,6 +9,7 @@ import FaqTabs from "./tabs";
 import FaqStat from "./stat";
 import { useLocale } from "next-intl";
 import { useMobile } from "@/hooks/useMobile";
+import Effect from "@/components/Animations/Effect";
 const FAQView = () => {
   const [selectedtab, setSelectedTab] = useState(null);
   const locale = useLocale();
@@ -89,15 +90,23 @@ const FAQView = () => {
               mobile={isMobile}
               selectedStat={selectedtab}
             />
+
             {selectedtab?.data && (
-              <FaqStat
-                handleChangeTab={handleSelectTab}
-                allStats={allStats}
-                mobile={isMobile}
-                getStatById={getStatById}
-                stat={selectedtab}
-                locale={locale}
-              />
+              <Effect
+                type="to-bottom"
+                className="w-[100%]"
+                onceEffect={true}
+                key={selectedtab.id}
+              >
+                <FaqStat
+                  handleChangeTab={handleSelectTab}
+                  allStats={allStats}
+                  mobile={isMobile}
+                  getStatById={getStatById}
+                  stat={selectedtab}
+                  locale={locale}
+                />
+              </Effect>
             )}
           </div>
         </div>
@@ -116,14 +125,22 @@ const FAQView = () => {
             sections={data.data}
             selectedStat={selectedtab}
           />
+
           {selectedtab?.data && (
-            <FaqStat
-              handleChangeTab={handleSelectTab}
-              allStats={allStats}
-              getStatById={getStatById}
-              stat={selectedtab}
-              locale={locale}
-            />
+            <Effect
+              type="to-left"
+              className="w-[71%]"
+              onceEffect={true}
+              key={selectedtab.id}
+            >
+              <FaqStat
+                handleChangeTab={handleSelectTab}
+                allStats={allStats}
+                getStatById={getStatById}
+                stat={selectedtab}
+                locale={locale}
+              />
+            </Effect>
           )}
         </div>
       </div>
