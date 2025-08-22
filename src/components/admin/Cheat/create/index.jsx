@@ -160,7 +160,12 @@ const CheatCreate = () => {
           onChange={handleChangeInput}
           label={"cheatLink"}
         />
-        <Text T="none" weight="bold" size="lg" className="text-primary10">
+        <Text
+          T="none"
+          weight="bold"
+          size="lg"
+          className="text-primary10 dark:text-linkColor"
+        >
           SEO
         </Text>
         <AdminBox
@@ -184,7 +189,12 @@ const CheatCreate = () => {
           onChange={handleChangeInput}
           name="tags"
         />
-        <Text T="admin" weight="bold" size="lg" className="text-primary10">
+        <Text
+          T="admin"
+          weight="bold"
+          size="lg"
+          className="text-primary10 dark:text-linkColor"
+        >
           more
         </Text>
         <div className="flex gap-6">

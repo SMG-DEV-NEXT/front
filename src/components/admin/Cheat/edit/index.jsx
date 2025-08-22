@@ -189,7 +189,12 @@ const UpdateCheat = () => {
             onChange={handleChangeInput}
             label={"cheatLink"}
           />
-          <Text T="none" weight="bold" size="lg" className="text-primary10">
+          <Text
+            T="none"
+            weight="bold"
+            size="lg"
+            className="text-primary10 dark:text-linkColor"
+          >
             SEO
           </Text>
           <AdminBox
