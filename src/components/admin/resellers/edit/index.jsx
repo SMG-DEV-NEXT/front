@@ -81,7 +81,7 @@ const ResellerEditAdminView = () => {
       {isPending && fetchStatus !== "idle" ? (
         <Loading />
       ) : (
-        <div className="flex mt-6 gap-6">
+        <div className="flex mt-6 dark-box border-none dark:rounded-lg gap-6">
           <AdminBox
             label={"mail"}
             isInput={true}

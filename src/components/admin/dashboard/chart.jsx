@@ -33,7 +33,6 @@ export default function RevenueChart() {
         filterData.to
       ),
   });
-
   useEffect(() => {
     if (!chart?.data) return;
     const { trend, percent } = chart.data;
@@ -70,25 +69,43 @@ export default function RevenueChart() {
     }
   }, [chart]);
 
+  const handleReset = () => {
+    setFilterData({
+      range: { label: "Неделя", value: "week" },
+      from: null,
+      to: null,
+    });
+  };
+
   if (isPending) {
     return (
-      <div className="bg-[#181A1F] p-6 gap-6 flex flex-col rounded-2xl w-full">
+      <div className="bg-[#181A1F] dark:bg-white dark:border dark:border-input p-6 gap-6 flex flex-col rounded-2xl w-full">
         <Loading noPage={true} />
       </div>
     );
   }
 
   return (
-    <div className="bg-[#181A1F] p-6 gap-6 flex flex-col rounded-2xl w-full">
+    <div className="bg-[#181A1F] dark:bg-white dark:border dark:border-input p-6 gap-6 flex flex-col rounded-2xl w-full">
       <div className="flex justify-between items-center  w-full">
         <div className="flex flex-col gap-[10px]">
-          <Text T="admin" weight="bold" size="lg" className="text-primary10">
+          <Text
+            T="admin"
+            weight="bold"
+            size="lg"
+            className="text-primary10 dark:text-linkColor"
+          >
             profit
           </Text>
           {!(filterData.from && filterData.to) && (
             <div className="flex gap-1 items-center">
               <Stack backgroundColor={"#00A76F"} color={"#00A76F"} />
-              <Text T="none" weight="semi" size="sm" className="text-primary10">
+              <Text
+                T="none"
+                weight="semi"
+                size="sm"
+                className="text-primary10 dark:text-linkColor"
+              >
                 {chart.data?.percent}%
               </Text>
               <Text
@@ -102,7 +119,7 @@ export default function RevenueChart() {
             </div>
           )}
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 items-center">
           <CustomSelect
             options={[
               {
@@ -130,6 +147,15 @@ export default function RevenueChart() {
             initialEndDate={filterData.to}
             initialStartDate={filterData.from}
           />
+          <Text
+            T="none"
+            onClick={handleReset}
+            size="md"
+            weight="medium"
+            className="text-linkColor cursor-pointer"
+          >
+            Reset
+          </Text>
         </div>
       </div>
       <ResponsiveContainer width="100%" height={310}>

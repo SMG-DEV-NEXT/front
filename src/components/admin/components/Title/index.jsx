@@ -77,13 +77,20 @@ const AdminTitle = ({ settingsRoute, route, faqStatRoute }) => {
           onClick={handleClickTitle}
           className={`text-${
             settingsRoute !== undefined ? "[#637381]" : "primary10"
+          } dark:text-${
+            settingsRoute !== undefined ? "linkColor" : "linkColor"
           } cursor-${settingsRoute !== undefined ? "pointer" : "default"}`}
         >
           {r.title}
         </Text>
         {settingsRoute !== undefined && (
           <>
-            <Icon name="arrowR" folder="admin" size={16} className="w-4 h-4" />
+            <Icon
+              name="arrowR"
+              folder="admin"
+              size={16}
+              className="w-4 h-4 dark:text-white"
+            />
             <Text
               onClick={handleClickSettingsRoute}
               T="none"
@@ -91,6 +98,8 @@ const AdminTitle = ({ settingsRoute, route, faqStatRoute }) => {
               size="2xl"
               className={`text-${
                 faqStatRoute !== undefined ? "[#637381]" : "primary10"
+              }  dark:text-${
+                settingsRoute !== undefined ? "linkColor" : "linkColor"
               } cursor-${faqStatRoute !== undefined ? "pointer" : "default"}`}
             >
               {t("settings")} {settingsRoute}
@@ -100,7 +109,12 @@ const AdminTitle = ({ settingsRoute, route, faqStatRoute }) => {
         {faqStatRoute !== undefined && (
           <>
             <Icon name="arrowR" folder="admin" size={16} className="w-4 h-4" />
-            <Text T="none" weight="semi" size="2xl" className="text-primary10">
+            <Text
+              T="none"
+              weight="semi"
+              size="2xl"
+              className="text-primary10 dark:text-linkColor"
+            >
               {t("settings")} {faqStatRoute}
             </Text>
           </>

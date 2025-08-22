@@ -4,12 +4,14 @@ import Button from "@/components/Button";
 import Icon from "@/components/Icons";
 import Input from "@/components/Input";
 import Text from "@/components/Text";
+import { useTheme } from "next-themes";
 import { useLocale } from "next-intl";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
 const TagSelector = ({ value, onChange, name }) => {
   const locale = useLocale();
+  const { theme } = useTheme();
   const [newItemInputs, setNewItemInputs] = useState({
     ru: "",
     en: "",
@@ -40,17 +42,22 @@ const TagSelector = ({ value, onChange, name }) => {
   };
 
   return (
-    <div className="flex p-4 flex-col gap-4 bg-input rounded-[16px] w-full">
-      <Text T="admin" weight="semi" size="md" className="text-primary10">
+    <div className="flex p-4 flex-col gap-4 bg-input dark-box rounded-[16px] w-full">
+      <Text
+        T="admin"
+        weight="semi"
+        size="md"
+        className="text-primary10 dark:text-linkColor"
+      >
         tag
       </Text>
-      <div className="flex flex-wrap p-[11px] bg-black rounded-[10px] gap-2">
+      <div className="flex flex-wrap p-[11px] bg-black dark-box rounded-[10px] gap-2">
         {!!value.length ? (
           value.map((e, i) => {
             return (
               <div
                 key={i}
-                className="py-[2px] px-[6px] flex items-center gap-[6px] bg-[#7B829329] rounded-[6px]"
+                className="py-[2px] px-[6px] flex items-center gap-[6px] bg-[#7B829329] dark:bg-white rounded-[6px]"
               >
                 <Text T="none" weight="semi" className="text-[#97A0B5]">
                   {e[locale]}
@@ -65,7 +72,12 @@ const TagSelector = ({ value, onChange, name }) => {
             );
           })
         ) : (
-          <Text T="none" weight="semi" size="md" className="text-primary10">
+          <Text
+            T="none"
+            weight="semi"
+            size="md"
+            className="text-primary10 dark:text-linkColor"
+          >
             Empty
           </Text>
         )}
@@ -78,7 +90,9 @@ const TagSelector = ({ value, onChange, name }) => {
           <div className="w-full flex flex-col items-end gap-1">
             <Input
               value={newItemInputs.ru}
-              styleDiv={{ backgroundColor: "#272c33" }}
+              styleDiv={{
+                backgroundColor: theme !== "dark" ? "#272c33" : "transpartent",
+              }}
               onChange={(e) => handleChange(e, "ru")}
             />
             {maxLength && (
@@ -95,7 +109,9 @@ const TagSelector = ({ value, onChange, name }) => {
           <div className="w-full flex flex-col items-end gap-1">
             <Input
               value={newItemInputs.en}
-              styleDiv={{ backgroundColor: "#272c33" }}
+              styleDiv={{
+                backgroundColor: theme !== "dark" ? "#272c33" : "transpartent",
+              }}
               onChange={(e) => handleChange(e, "en")}
             />
             {maxLength && (

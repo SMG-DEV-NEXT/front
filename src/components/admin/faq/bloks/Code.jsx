@@ -30,9 +30,14 @@ export default function CodeEditor({
   }, [value]);
 
   return (
-    <div className="flex flex-col gap-4 bg-input rounded-2xl p-4 ">
+    <div className="flex flex-col gap-4 bg-input dark-box rounded-2xl p-4 ">
       <div className="flex items-center justify-between w-full">
-        <Text T="admin" weight="bold" size="lg" className="text-primary10">
+        <Text
+          T="admin"
+          weight="bold"
+          size="lg"
+          className="text-primary10 dark:text-linkColor"
+        >
           code
         </Text>
         <div
@@ -43,7 +48,7 @@ export default function CodeEditor({
         </div>
       </div>
       <textarea
-        className="w-full h-64 text-[#E9E3F7] font-medium leading-[28px] text-lg outline-none rounded-2xl font-mono bg-[#272C33]  px-4 py-[9px]"
+        className="w-full h-64 text-[#E9E3F7] dark:text-linkColor font-medium leading-[28px] text-lg outline-none rounded-2xl font-mono bg-[#272C33] dark-box px-4 py-[9px]"
         value={value}
         ref={textareaRef}
         onChange={(e) => setValue(e.target.value)}

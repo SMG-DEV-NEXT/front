@@ -22,6 +22,7 @@ const FunctionItem = ({
   selectedTab,
   setSelectedBlock,
   setSelectedTab,
+  theme,
 }) => {
   const [newTabValue, setNewTabValue] = useState();
 
@@ -57,7 +58,12 @@ const FunctionItem = ({
         onChange={(e) => handleChangeIcon(e.target.value)}
         styleDiv={{ backgroundColor: "#272c33", height: "38px" }}
       /> */}
-      <Text T="admin" weight="semi" size="md" className="text-primary10">
+      <Text
+        T="admin"
+        weight="semi"
+        size="md"
+        className="text-primary10 dark:text-linkColor"
+      >
         tabsFunctions
       </Text>
       <div className="flex gap-2 items-center flex-wrap">
@@ -79,7 +85,11 @@ const FunctionItem = ({
           <Input
             value={newTabValue}
             onChange={(e) => setNewTabValue(e.target.value)}
-            styleDiv={{ backgroundColor: "#272c33", height: "38px" }}
+            styleDiv={
+              theme !== "dark"
+                ? { backgroundColor: "#272c33", height: "38px" }
+                : {}
+            }
           />
         </div>
         <div className="flex items-center">
@@ -99,6 +109,7 @@ const FunctionItem = ({
           setSelectedBlock={setSelectedBlock}
           handleSaveTabFunction={handleSaveTabFunction}
           tab={selectedTab}
+          theme={theme}
         />
       )}
     </div>

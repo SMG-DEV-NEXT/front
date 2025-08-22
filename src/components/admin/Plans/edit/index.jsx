@@ -11,6 +11,7 @@ import { useLocale } from "next-intl";
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import AdminButton from "../../components/button";
 
 const PlanUpdate = () => {
   const router = useRouter();
@@ -157,6 +158,11 @@ const PlanUpdate = () => {
           setPrsent={changePrcent}
           price={plan.month?.price}
         />
+        <div className="flex w-full justify-center">
+          <AdminButton onClick={handleSave} disabled={mutate.isPending}>
+            save
+          </AdminButton>
+        </div>
       </div>
     </AdminContainer>
   );

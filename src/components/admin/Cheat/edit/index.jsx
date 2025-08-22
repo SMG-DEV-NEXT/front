@@ -18,6 +18,7 @@ import Requirments from "../create/requirments";
 import FunctionsCheat from "../create/functions";
 import { useParams } from "next/navigation";
 import Loading from "@/app/loading";
+import AdminButton from "../../components/button";
 
 const UpdateCheat = () => {
   const t = useTranslations("admin");
@@ -212,7 +213,12 @@ const UpdateCheat = () => {
             onChange={handleChangeInput}
             name="tags"
           />
-          <Text T="admin" weight="bold" size="lg" className="text-primary10">
+          <Text
+            T="admin"
+            weight="bold"
+            size="lg"
+            className="text-primary10 dark:text-linkColor"
+          >
             more
           </Text>
           <div className="flex gap-6">
@@ -264,6 +270,14 @@ const UpdateCheat = () => {
               value={inputs.imageUrl}
               onChange={(e) => handleChangeInput("imageUrl", e)}
             />
+          </div>
+          <div className="flex w-full justify-center">
+            <AdminButton
+              onClick={onClickSaveButton}
+              disabled={mutation.isPending}
+            >
+              save
+            </AdminButton>
           </div>
         </div>
       )}

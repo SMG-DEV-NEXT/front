@@ -27,7 +27,12 @@ const AdminRoute = ({ title, route, IconComponent, active }) => {
       <CustomLink url={`/admin${route}`}>
         <div className="flex py-[10px] px-3 items-center cursor-pointer gap-3 bg-[#8B6DCA14] rounded-[6px]">
           <IconComponent active={true} />
-          <Text T="admin" weight="semi" size="sm" className="text-primary80">
+          <Text
+            T="admin"
+            weight="semi"
+            size="sm"
+            className="text-primary80 dark:text-linkColor"
+          >
             {title}
           </Text>
         </div>
@@ -96,10 +101,15 @@ const AdminTab = () => {
 
   const isActiveRoute = (route) => pathname.includes(route);
   return (
-    <div className="flex fixed h-[100vh] flex-col border-r border-[#919EAB14] max-h-full overflow-auto tab-scroll pb-10 min-w-[280px]">
+    <div className="flex fixed h-[100vh] flex-col border-r border-[#919EAB14] max-h-full overflow-auto tab-scroll pb-10 min-w-[280px] dark:border-white">
       <div className="flex p-6 items-center gap-[14px]">
         <Image alt="Logo" src="/images/logo.png" width={46} height={46} />
-        <Text T="none" weight="extrabold" size="2xl" className="text-primary10">
+        <Text
+          T="none"
+          weight="extrabold"
+          size="2xl"
+          className="text-primary10 dark:text-linkColor"
+        >
           DASHBOARD
         </Text>
       </div>

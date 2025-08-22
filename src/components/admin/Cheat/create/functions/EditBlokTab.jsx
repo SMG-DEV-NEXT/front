@@ -8,7 +8,7 @@ import EditFunction from "./EditSelectedTabFunction";
 import Tab from "./Tab";
 import { toast } from "react-toastify";
 
-const EditBlokTab = ({ blok, onChange }) => {
+const EditBlokTab = ({ blok, onChange, theme }) => {
   const [selectedItem, setSelectedItem] = useState({});
   const [t, setT] = useState(blok.title);
   const [newItemValue, setNewItemValue] = useState();
@@ -64,7 +64,6 @@ const EditBlokTab = ({ blok, onChange }) => {
       <AdminBox
         value={{ rus: blok.aboutru || "", en: blok.abouten || "" }}
         name="about"
-        style={{ padding: 0 }}
         isInput={true}
         isMultipleLanguage={true}
         minTextAreaHeight={20}
@@ -73,7 +72,12 @@ const EditBlokTab = ({ blok, onChange }) => {
         label={"about"}
       />
       <div className="flex flex-col gap-4">
-        <Text T="admin" weight="semi" size="md" className="text-primary10">
+        <Text
+          T="admin"
+          weight="semi"
+          size="md"
+          className="text-primary10 dark:text-linkColor"
+        >
           cheatFunctions
         </Text>
         <div className="flex gap-2 items-center flex-wrap">
@@ -92,7 +96,11 @@ const EditBlokTab = ({ blok, onChange }) => {
             <Input
               value={newItemValue}
               onChange={(e) => setNewItemValue(e.target.value)}
-              styleDiv={{ backgroundColor: "#272c33", height: "38px" }}
+              styleDiv={
+                theme !== "dark"
+                  ? { backgroundColor: "#272c33", height: "38px" }
+                  : {}
+              }
             />
           </div>
           <div className="flex items-center">
@@ -106,7 +114,11 @@ const EditBlokTab = ({ blok, onChange }) => {
           </div>
         </div>
         {selectedItem?.title && (
-          <EditFunction onChange={handleEditFunction} {...selectedItem} />
+          <EditFunction
+            theme={theme}
+            onChange={handleEditFunction}
+            {...selectedItem}
+          />
         )}
       </div>
     </div>

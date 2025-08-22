@@ -10,7 +10,8 @@ import Header from "@/components/Header";
 import "../styles/global.scss";
 import "react-toastify/dist/ReactToastify.css";
 import ChatWidget from "../components/mini-chat";
-
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 const Top = dynamic(() => import("@/components/Top"), { ssr: false });
 const Icon = dynamic(() => import("../components/Icons"), { ssr: false });
 
@@ -21,6 +22,7 @@ import dynamic from "next/dynamic";
 import SettingsService from "@/services/Settings";
 import { ContactsService } from "@/services/Contacts";
 import Image from "next/image";
+import { ThemeProvider } from "next-themes";
 
 export function ChatbroWidget() {
   const isConnected = useRef(false);
@@ -124,6 +126,9 @@ const MiddleComponent = ({ children }) => {
       dispatch(setAuth(data.data));
     }
   }, [data, dispatch]);
+  const currentTheme = window
+    ? window.localStorage.getItem("theme") || "light"
+    : "light";
 
   const mutation = useMutation({
     mutationFn: async ({ title, settings }) => {
@@ -157,13 +162,17 @@ const MiddleComponent = ({ children }) => {
             isLoadingSaveQuery: mutation.isPending,
           }}
         >
-          <section className="content relative">{children}</section>
-          <ToastContainer
-            position="top-right"
-            closeOnClick
-            pauseOnHover
-            autoClose={3000}
-          />
+          <ThemeProvider attribute="class" defaultTheme={currentTheme}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <section className="content relative">{children}</section>
+              <ToastContainer
+                position="top-right"
+                closeOnClick
+                pauseOnHover
+                autoClose={3000}
+              />
+            </LocalizationProvider>
+          </ThemeProvider>
         </SettingsContext.Provider>
       </>
     );

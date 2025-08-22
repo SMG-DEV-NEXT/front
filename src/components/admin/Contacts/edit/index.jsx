@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import { ContactsService } from "@/services/Contacts";
 import { useLocale, useTranslations } from "next-intl";
 import AdminUploadImage from "@/components/admin/components/ImageUpload";
+import AdminButton from "../../components/button";
 
 const contactServices = [
   { label: "telegram", value: "telegram" },
@@ -182,6 +183,14 @@ const ContactsEditAdminView = () => {
             value={inputs.icon}
             onChange={(e) => handleChange("icon", e)}
           />
+          <div className="flex w-full justify-center">
+            <AdminButton
+              onClick={handleClickButton}
+              disabled={createMutation.isPending || updateMutation.isPending}
+            >
+              save
+            </AdminButton>
+          </div>
         </div>
       )}
     </AdminContainer>

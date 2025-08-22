@@ -12,6 +12,7 @@ const TabEditModal = ({
   handleSaveTabFunction,
   selectedBlock,
   setSelectedBlock,
+  theme,
 }) => {
   const [inputs, setInputs] = useState({ ...tab, oldKey: tab.key });
   const [newFunctionValue, setNewFunctionValue] = useState("");
@@ -94,7 +95,12 @@ const TabEditModal = ({
         onChange={handleChangeInput}
       />
       <div className="flex flex-col w-full gap-4">
-        <Text T="admin" weight="semi" size="md" className="text-primary10">
+        <Text
+          T="admin"
+          weight="semi"
+          size="md"
+          className="text-primary10 dark:text-linkColor"
+        >
           blok
         </Text>
         <div className="flex gap-2 w-full  items-center flex-wrap">
@@ -113,7 +119,11 @@ const TabEditModal = ({
             <Input
               value={newFunctionValue}
               onChange={(e) => setNewFunctionValue(e.target.value)}
-              styleDiv={{ backgroundColor: "#272c33", height: "38px" }}
+              styleDiv={
+                theme !== "dark"
+                  ? { backgroundColor: "#272c33", height: "38px" }
+                  : {}
+              }
             />
           </div>
           <div className="flex items-center ">
@@ -127,7 +137,11 @@ const TabEditModal = ({
           </div>
         </div>
         {selectedBlock?.title && (
-          <EdtiBlokTab onChange={handleEditFunction} blok={selectedBlock} />
+          <EdtiBlokTab
+            theme={theme}
+            onChange={handleEditFunction}
+            blok={selectedBlock}
+          />
         )}
       </div>
     </div>

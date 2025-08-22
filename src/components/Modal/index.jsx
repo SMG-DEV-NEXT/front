@@ -42,7 +42,7 @@ export default function Modal({ isOpen, onClose, children, width, customTop }) {
           width: width || (isMobile ? "90%" : "auto"),
           top: customTop || undefined,
         }}
-        className={`bg-input rounded-2xl p-6 transform transition-all duration-300 ease-out
+        className={`bg-input dark-box rounded-2xl p-6 transform transition-all duration-300 ease-out
           ${animate ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0"}
         `}
         onClick={(e) => e.stopPropagation()}

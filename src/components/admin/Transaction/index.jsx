@@ -82,7 +82,7 @@ const TransactionView = () => {
         <AdminPageHeader route={"transaction"} />
         <div className="flex mt-4 w-full gap-5 justify-between">
           {!loading && cheats?.data && (
-            <div className="">
+            <div className=" w-2/4">
               <CustomSelect
                 options={cheats.data.map((e) => ({
                   label: e.cheat?.[`title${getLanguage(locale)}`],

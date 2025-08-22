@@ -42,13 +42,13 @@ const FAQAdminView = () => {
               return (
                 <div
                   key={e.id}
-                  className="flex px-4 py-[19px] rounded-[16px] bg-input justify-between items-center"
+                  className="flex px-4 py-[19px] rounded-[16px] bg-input dark-box justify-between items-center"
                 >
                   <Text
                     T="none"
                     weight="bold"
                     size="md"
-                    className="text-primary10"
+                    className="text-primary10 dark:text-linkColor"
                   >
                     {e[`title${locale}`]}
                   </Text>

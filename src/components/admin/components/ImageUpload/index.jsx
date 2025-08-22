@@ -68,11 +68,15 @@ export default function AdminUploadImage({
   return (
     <div className="flex flex-col gap-3 w-full">
       <div className="flex flex-col">
-        <Text T="admin" className="text-[#E9E3F7]" weight="semi">
+        <Text
+          T="admin"
+          className="text-[#E9E3F7] dark:text-linkColor"
+          weight="semi"
+        >
           {label}
         </Text>
         {size && (
-          <Text T="none" className="text-linkColor" weight="normal">
+          <Text T="none" className="text-linkColor " weight="normal">
             {t("size")} {Number.isNaN(size) ? `${size} x ${size}` : size}
           </Text>
         )}
@@ -87,7 +91,7 @@ export default function AdminUploadImage({
         className={`flex cursor-pointer w-full flex-col gap-1 items-center justify-center min-h-[102px] border border-dashed rounded-[12px] p-5 transition-colors ${
           isDragging
             ? "bg-blue-100 border-blue-500"
-            : "bg-input border-[#7B829333]"
+            : "bg-input dark:bg-white border-[#7B829333]"
         }`}
       >
         {uploading ? (

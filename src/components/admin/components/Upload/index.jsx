@@ -139,12 +139,22 @@ const AdminUpload = ({
     }
   };
   return (
-    <div className="flex p-4 flex-col gap-4 bg-input rounded-[16px] w-full">
+    <div className="flex p-4 flex-col gap-4 bg-input dark-box rounded-[16px] w-full">
       <div className="w-full flex items-center justify-between">
-        <Text T="admin" weight="semi" size="md" className="text-primary10">
+        <Text
+          T="admin"
+          weight="semi"
+          size="md"
+          className="text-primary10 dark:text-linkColor"
+        >
           {label}
         </Text>
-        <Text T="none" weight="medium" size="md" className="text-linkColor">
+        <Text
+          T="none"
+          weight="medium"
+          size="md"
+          className="text-linkColor dark:text-linkColor"
+        >
           {links.length}/{countOfFiles}
         </Text>
       </div>
@@ -165,7 +175,7 @@ const AdminUpload = ({
         className={`flex cursor-pointer w-full flex-col gap-1 items-center justify-center min-h-[102px] border border-dashed rounded-[12px] p-5 transition-colors ${
           isDragging
             ? "bg-blue-100 border-blue-500"
-            : "bg-input border-[#7B829333]"
+            : "bg-input dark-box border-[#7B829333]"
         }`}
       >
         {uploading ? (

@@ -8,20 +8,20 @@ export default function Loading({ noPage }) {
       : false;
   if (noPage) {
     return (
-      <div className="flex w-full py-10 items-center justify-center">
+      <div className="flex w-full py-10 dark:bg-white items-center justify-center">
         <Icon name="logo" size={50} />
       </div>
     );
   }
   if (isAdmin) {
     return (
-      <div className="flex w-full h-[100vh] items-center justify-center">
+      <div className="flex w-full h-[100vh] dark:bg-white items-center justify-center">
         <Icon name="logo" size={50} />
       </div>
     );
   }
   return (
-    <div className="flex w-full h-[100vh] bg-input items-center justify-center">
+    <div className="flex w-full h-[100vh] bg-input dark:bg-white items-center justify-center">
       <Icon name="logo" size={50} />
     </div>
   );

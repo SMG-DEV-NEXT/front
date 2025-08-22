@@ -45,21 +45,21 @@ const TableFaq = ({ cols: col, rows: row, handleChangeRow, changeCol }) => {
     return () => clearTimeout(timer);
   }, [debouncedCols]);
   return (
-    <div className="flex flex-col w-full">
-      <div className="w-full flex bg-[#272C33] p-3 rounded-[12px]">
+    <div className="flex flex-col w-full ">
+      <div className="w-full flex bg-[#272C33] dark-box p-3 rounded-[12px]">
         {cols.map((e, i) => {
           return (
             <textarea
               value={e}
               onChange={(text) => handleChangeCol(i, text.target.value)}
-              className="bg-[#272C33] border-none font-medium text-lg leading-[140%] break-words w-full text-primary10"
+              className="bg-[#272C33]  rounded-xl dark:p-2  dark-box dark:text-linkColor font-medium text-lg leading-[140%] break-words w-full text-primary10"
             />
           );
         })}
       </div>
       {rows.map((e, rowIndex) => {
         return (
-          <div className="w-full border-[#272C33] border-b-[1px] flex">
+          <div className="w-full border-[#272C33]  border-b-[1px] flex">
             {cols.map((a, i) => {
               return (
                 <div
@@ -71,7 +71,7 @@ const TableFaq = ({ cols: col, rows: row, handleChangeRow, changeCol }) => {
                     onChange={(text) =>
                       handleChangeRowInput(rowIndex, i, text.target.value)
                     }
-                    className="bg-mainBlack border-none font-medium text-md leading-[140%] break-words w-full text-primary10"
+                    className="bg-mainBlack  rounded-xl dark:p-2 dark-box dark:text-linkColor font-medium text-md leading-[140%] break-words w-full text-primary10"
                   />
                   {/* <Text
                       T="none"

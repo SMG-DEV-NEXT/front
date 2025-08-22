@@ -1,4 +1,5 @@
 export default {
+  darkMode: "class",
   content: [
     "./src/**/*.{js,ts,jsx,tsx}", // Make sure Tailwind scans your files
   ],
@@ -28,5 +29,16 @@ export default {
       login: "url('/images/loginBg.webp')",
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        ".dark-box": {
+          "@apply dark:bg-white dark:border dark:border-input": {},
+        },
+        ".dark-head": {
+          "@apply dark:bg-white dark:border-b dark:border-input": {},
+        },
+      });
+    },
+  ],
 };

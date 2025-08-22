@@ -125,7 +125,7 @@ const FaqBlockEdit = () => {
           }
         />
         <div className="flex flex-col gap-4">
-          <div className="bg-input rounded-2xl flex flex-col">
+          <div className="bg-input dark:bg-white dark:gap-2 rounded-2xl flex flex-col">
             <AdminBox
               isMultipleLanguage={true}
               value={{ rus: inputs.titleru, en: inputs.titleen }}
@@ -151,7 +151,7 @@ const FaqBlockEdit = () => {
                 T="admin"
                 weight="semi"
                 size="lg"
-                className="text-primary10"
+                className="text-primary10 dark:text-linkColor"
               >
                 faqStats
               </Text>
@@ -167,13 +167,13 @@ const FaqBlockEdit = () => {
               return (
                 <div
                   key={e.id}
-                  className="flex bg-input items-center justify-between rounded-2xl p-4"
+                  className="flex bg-input items-center dark-box justify-between rounded-2xl p-4"
                 >
                   <Text
                     T="none"
                     weight="semi"
                     size="lg"
-                    className="text-primary10"
+                    className="text-primary10 dark:text-linkColor"
                   >
                     {i + 1} {data[`title${locale}`]}
                   </Text>
@@ -199,6 +199,14 @@ const FaqBlockEdit = () => {
               );
             })}
           </div>
+        </div>
+        <div className="flex w-full justify-center">
+          <AdminButton
+            onClick={handleUpdateFaqBlock}
+            disabled={updateMutation.isPending}
+          >
+            save
+          </AdminButton>
         </div>
       </div>
     </AdminContainer>

@@ -62,7 +62,7 @@ const CatalogTable = ({
 
   const data = isReversed ? [...items].reverse() : items;
   return (
-    <div className="flex w-full bg-input rounded-[16px] text-white mt-6 overflow-hidden">
+    <div className="flex w-full bg-input dark:bg-white dark:border dark:border-input rounded-[16px] text-white mt-6 overflow-hidden">
       {deleteInformation.isOpenModal && (
         <Modal
           onClose={onCloseDeleteModal}
@@ -80,7 +80,7 @@ const CatalogTable = ({
         </Modal>
       )}
       <table className="w-full">
-        <thead className="bg-[#1E2026]">
+        <thead className="bg-[#1E2026] dark:bg-white dark:border-b dark:border-input">
           <tr className="w-full">
             <th>
               <div className="h-[56px] px-[18px] flex items-center justify-center">
@@ -169,7 +169,10 @@ const CatalogTable = ({
         <tbody>
           {data.map((e, i) => {
             return (
-              <tr key={e.id} className="w-full">
+              <tr
+                key={e.id}
+                className="w-full dark:border-b dark:border-input last:border-none"
+              >
                 <td>
                   <div className="h-[56px] px-[18px] flex items-center justify-center">
                     <Checkbox

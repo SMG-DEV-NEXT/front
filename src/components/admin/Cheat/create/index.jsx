@@ -16,6 +16,7 @@ import { toast } from "react-toastify";
 import FunctionsCheat from "./functions";
 import Requirments from "./requirments";
 import getBody from "@/utils/getBodyForCreateCheat";
+import AdminButton from "../../components/button";
 
 const CheatCreate = () => {
   const t = useTranslations("admin");
@@ -232,6 +233,14 @@ const CheatCreate = () => {
             value={inputs.imageUrl}
             onChange={(e) => handleChangeInput("imageUrl", e)}
           />
+        </div>
+        <div className="flex w-full justify-center">
+          <AdminButton
+            onClick={onClickSaveButton}
+            disabled={mutation.isPending}
+          >
+            save
+          </AdminButton>
         </div>
       </div>
     </AdminContainer>

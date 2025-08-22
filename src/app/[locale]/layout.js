@@ -12,6 +12,7 @@ export default async function RootLayout({ children, params: paramsPromise }) {
   const locale = params?.locale || "en";
 
   const messages = await getMessages({ locale });
+
   return (
     <NextIntlClientProvider messages={messages}>
       <Providers>

@@ -5,7 +5,7 @@ import React from "react";
 
 const PositionEditor = ({ pos, itemValue, items, label, onChangePosition }) => {
   return (
-    <div className="flex bg-input w-full rounded-[16px] p-4 gap-[32px]">
+    <div className="flex bg-input w-full rounded-[16px] dark-box p-4 gap-[32px]">
       <Input
         styleDiv={{ border: "1px solid #919EAB3D" }}
         label="position"

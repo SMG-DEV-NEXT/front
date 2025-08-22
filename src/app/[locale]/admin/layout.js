@@ -12,7 +12,7 @@ export default function AdminLayout({ children }) {
     redirect(`/${locale}`);
   }
   return (
-    <div className="admin-x  flex bg-mainBlack min-h-[100vh]">
+    <div className="admin-x  flex bg-mainBlack dark:bg-white min-h-[100vh]">
       <AdminTab />
       <div className="flex pl-[280px] flex-col w-full">
         <AdminHeader />

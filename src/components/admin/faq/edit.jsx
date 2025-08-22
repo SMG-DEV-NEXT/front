@@ -154,9 +154,7 @@ const AdminFaqStatView = () => {
     });
     setBloks(newBloks);
   };
-  console.log(
-    isPending || (loadingStat && idStat !== "create") || isLoadingStats
-  );
+
   if (isPending || (loadingStat && idStat !== "create") || isLoadingStats)
     return <Loading />;
 
@@ -187,14 +185,18 @@ const AdminFaqStatView = () => {
           settingsRoute={data?.data[`title${locale}`]}
           faqStatRoute={dataStat[`title${locale}`] || "New Stat"}
         />
-        <div className="flex flex-col p-4 gap-4 bg-input rounded-2xl mt-6">
-          <Text T="admin" weight="bold" size="md" className="text-primary10">
+        <div className="flex flex-col p-4 gap-4 bg-input dark:bg-white dark:gap-2 rounded-2xl mt-6">
+          <Text
+            T="admin"
+            weight="bold"
+            size="md"
+            className="text-primary10 dark:text-linkColor"
+          >
             mainInformation
           </Text>
           <AdminBox
             isMultipleLanguage={true}
             isUpperCode={false}
-            style={{ padding: "0px" }}
             value={{ rus: dataStat.titleru, en: dataStat.titleen }}
             onChange={handleDataChange}
             name="title"
@@ -203,7 +205,6 @@ const AdminFaqStatView = () => {
           <AdminBox
             isMultipleLanguage={true}
             isUpperCode={false}
-            style={{ padding: "0px" }}
             value={{ rus: dataStat.textru, en: dataStat.texten }}
             onChange={handleDataChange}
             name="text"
@@ -230,7 +231,12 @@ const AdminFaqStatView = () => {
         </div>
         <div className="flex flex-col gap-6">
           <div className="flex justify-between w-full">
-            <Text T="admin" weight="semi" size="lg" className="text-primary10">
+            <Text
+              T="admin"
+              weight="semi"
+              size="lg"
+              className="text-primary10 dark:text-linkColor"
+            >
               bloks
             </Text>
             <Dropdown>
@@ -243,7 +249,7 @@ const AdminFaqStatView = () => {
                     T="admin"
                     size="sm"
                     weight="semi"
-                    className="text-[#141A21]"
+                    className="dark:text-primary10"
                   >
                     add
                   </Text>
@@ -251,14 +257,14 @@ const AdminFaqStatView = () => {
               </DropdownTrigger>
               <DropdownMenu
                 aria-label="Select Blok"
-                className="flex flex-col rounded-2xl overflow-hidden items-center"
+                className="flex flex-col dark-box rounded-2xl overflow-hidden items-center"
               >
                 {blocksTypes.map((e) => {
                   return (
                     <DropdownItem
                       key={e.label}
                       onClick={() => handleAddBlock(e.label)}
-                      className="language-item justify-center"
+                      className="language-item dark:bg-white justify-center"
                     >
                       <div className="flex items-center gap-2">
                         <Icon size={20} name={e.icon} folder="admin" />
@@ -327,6 +333,14 @@ const AdminFaqStatView = () => {
             }
             return <div>{e.type}</div>;
           })}
+          <div className="flex w-full justify-center mb-4">
+            <AdminButton
+              onClick={handleSave}
+              disabled={createStat.isPending || updateStat.isPending}
+            >
+              save
+            </AdminButton>
+          </div>
         </div>
       </div>
     </AdminContainer>

@@ -9,9 +9,11 @@ import FunctionItem from "./function";
 import Tab from "./Tab";
 import FunctionsCheatPreview from "@/components/Cheat/Functional";
 import Modal from "@/components/Modal";
+import { useTheme } from "next-themes";
 
 const FunctionsCheat = ({ functions, onChange }) => {
   const [isPreview, setIsPreview] = useState(false);
+  const { theme } = useTheme();
   const [newTabValue, setNewTabValue] = useState("");
   const [selectedFunction, setSelectedFunction] = useState({});
   const [selectedBlock, setSelectedBlock] = useState({});
@@ -116,14 +118,19 @@ const FunctionsCheat = ({ functions, onChange }) => {
     });
   };
   return (
-    <div className="flex flex-col p-4 justify-between gap-4 bg-input rounded-[16px] w-full">
+    <div className="flex flex-col p-4 justify-between gap-4 bg-input dark-box rounded-[16px] w-full">
       <Modal isOpen={isPreview} onClose={() => setIsPreview(false)}>
         <div className="w-[600px] mt-[-40px]">
           <FunctionsCheatPreview cheat={{ functions }} />
         </div>
       </Modal>
       <div className="flex w-full justify-between items-center">
-        <Text T="admin" weight="semi" size="md" className="text-primary10">
+        <Text
+          T="admin"
+          weight="semi"
+          size="md"
+          className="text-primary10 dark:text-linkColor"
+        >
           cheatFunctions
         </Text>
         <AdminButton onClick={() => setIsPreview(true)}>preview</AdminButton>
@@ -151,7 +158,11 @@ const FunctionsCheat = ({ functions, onChange }) => {
           <Input
             value={newTabValue}
             onChange={(e) => setNewTabValue(e.target.value)}
-            styleDiv={{ backgroundColor: "#272c33", height: "38px" }}
+            styleDiv={
+              theme !== "dark"
+                ? { backgroundColor: "#272c33", height: "38px" }
+                : {}
+            }
           />
         </div>
         <div className="flex items-center">
@@ -164,6 +175,7 @@ const FunctionsCheat = ({ functions, onChange }) => {
           selectedBlock={selectedBlock}
           setSelectedBlock={setSelectedBlock}
           selectedTab={selectedTab}
+          theme={theme}
           setSelectedTab={setSelectedTab}
           onDeleteItem={onDeleteItem}
           handleChangeIcon={handleChangeIcon}

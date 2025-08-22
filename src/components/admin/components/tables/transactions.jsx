@@ -28,9 +28,9 @@ export const TransactionTable = ({ data }) => {
   };
 
   return (
-    <div className="flex w-full bg-input rounded-[16px] text-white  overflow-hidden">
+    <div className="flex w-full bg-input dark:bg-white dark:border dark:border-input rounded-[16px] text-white  overflow-hidden">
       <table className="w-full">
-        <thead className="bg-[#1E2026]">
+        <thead className="bg-[#1E2026] dark:bg-white dark:border-b dark:border-input">
           <tr className="w-full">
             <th>
               <div className="h-[56px] px-[18px] flex items-start justify-start flex items-center gap-[6px]">
@@ -38,7 +38,7 @@ export const TransactionTable = ({ data }) => {
                   T="admin"
                   weight="semi"
                   size="sm"
-                  className="text-linkColor "
+                  className="text-linkColor dark:text-linkColor"
                 >
                   date
                 </Text>
@@ -65,7 +65,7 @@ export const TransactionTable = ({ data }) => {
                   T="admin"
                   weight="semi"
                   size="sm"
-                  className="text-linkColor text-center"
+                  className="text-linkColor text-center dark:text-linkColor"
                 >
                   profit
                 </Text>
@@ -77,7 +77,7 @@ export const TransactionTable = ({ data }) => {
                   T="account"
                   weight="semi"
                   size="sm"
-                  className="text-linkColor text-center"
+                  className="text-linkColor text-center dark:text-linkColor"
                 >
                   historyM
                 </Text>

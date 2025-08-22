@@ -9,6 +9,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import AdminButton from "../../components/button";
 
 const CatalogCreate = () => {
   const t = useTranslations("admin");
@@ -127,6 +128,14 @@ const CatalogCreate = () => {
           value={inputs.imageUrl}
           onChange={(e) => handleChangeInput("imageUrl", e)}
         />
+        <div className="flex w-full justify-center">
+          <AdminButton
+            onClick={onClickSaveButton}
+            disabled={mutation.isPending}
+          >
+            save
+          </AdminButton>
+        </div>
       </div>
     </AdminContainer>
   );

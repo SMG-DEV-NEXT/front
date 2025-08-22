@@ -69,7 +69,7 @@ const RequestAdmimnView = () => {
                 <div
                   key={e}
                   onClick={() => setLimit(e)}
-                  className="py-[6px] text-primary10 cursor-pointer border-[#919EAB3D] px-3 border  text-sm font-medium  flex items-center justify-center rounded-[8px]"
+                  className="py-[6px] text-primary10 dark:text-linkColor dark:border-linkColor cursor-pointer border-[#919EAB3D] px-3 border  text-sm font-medium  flex items-center justify-center rounded-[8px]"
                 >
                   {e}
                 </div>

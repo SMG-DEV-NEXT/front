@@ -15,7 +15,11 @@ const FilterComments = ({
     <div className="flex flex-col gap-4 mt-5 w-full">
       <div className="flex items-center w-full justify-between">
         <div className="flex items-center gap-2">
-          <Text weight="medium" size="md" className="text-primary10">
+          <Text
+            weight="medium"
+            size="md"
+            className="text-primary10 dark:text-linkColor"
+          >
             {label}
           </Text>
           <Input
@@ -36,7 +40,7 @@ const FilterComments = ({
             T="admin"
             weight="medium"
             size="md"
-            className="text-primary10 whitespace-nowrap"
+            className="text-primary10 whitespace-nowrap dark:text-linkColor"
           >
             fromDate
           </Text>
@@ -51,7 +55,12 @@ const FilterComments = ({
             type="date"
             setValue={(e) => setInputs("startDate", e)}
           />
-          <Text T="admin" weight="medium" size="md" className="text-primary10">
+          <Text
+            T="admin"
+            weight="medium"
+            size="md"
+            className="text-primary10 dark:text-linkColor"
+          >
             toDate
           </Text>
           <Input

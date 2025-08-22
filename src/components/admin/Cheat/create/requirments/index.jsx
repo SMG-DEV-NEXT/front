@@ -33,7 +33,12 @@ const Options = ({ options, selectedOption, onSelect }) => {
               setIsChecked={() => {}}
               isChecked={selectedOption?.includes(e.value)}
             />
-            <Text T="none" weight="semi" size="md" className="text-primary10">
+            <Text
+              T="none"
+              weight="semi"
+              size="md"
+              className="text-primary10 dark:text-linkColor"
+            >
               {e.label}
             </Text>
           </div>
@@ -51,15 +56,25 @@ const Requirments = ({ value, onChange }) => {
     });
   };
   return (
-    <div className="flex flex-col p-4 justify-between gap-4 bg-input rounded-[16px] w-full">
-      <Text T="admin" weight="semi" size="md" className="text-primary10">
+    <div className="flex flex-col p-4 justify-between gap-4 bg-input dark-box rounded-[16px] w-full">
+      <Text
+        T="admin"
+        weight="semi"
+        size="md"
+        className="text-primary10 dark:text-linkColor"
+      >
         techRequirements
       </Text>
       <div className="flex flex-wrap gap-10">
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-2">
             <Icon name="oc" folder="admin" />
-            <Text T="admin" className="text-primary10" weight="semi" size="md">
+            <Text
+              T="admin"
+              className="text-primary10 dark:text-linkColor"
+              weight="semi"
+              size="md"
+            >
               oc
             </Text>
           </div>
@@ -72,7 +87,12 @@ const Requirments = ({ value, onChange }) => {
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-2">
             <Icon name="processor" folder="admin" />
-            <Text T="admin" className="text-primary10" weight="semi" size="md">
+            <Text
+              T="admin"
+              className="text-primary10 dark:text-linkColor"
+              weight="semi"
+              size="md"
+            >
               processor
             </Text>
           </div>
@@ -85,7 +105,12 @@ const Requirments = ({ value, onChange }) => {
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-2">
             <Icon name="spoofer" folder="admin" />
-            <Text T="admin" className="text-primary10" weight="semi" size="md">
+            <Text
+              T="admin"
+              className="text-primary10 dark:text-linkColor"
+              weight="semi"
+              size="md"
+            >
               spoofer
             </Text>
           </div>
@@ -98,7 +123,12 @@ const Requirments = ({ value, onChange }) => {
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-2">
             <Icon name="usb" folder="admin" />
-            <Text T="admin" className="text-primary10" weight="semi" size="md">
+            <Text
+              T="admin"
+              className="text-primary10 dark:text-linkColor"
+              weight="semi"
+              size="md"
+            >
               fl
             </Text>
           </div>
@@ -111,7 +141,12 @@ const Requirments = ({ value, onChange }) => {
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-2">
             <Icon name="window" folder="admin" />
-            <Text T="admin" className="text-primary10" weight="semi" size="md">
+            <Text
+              T="admin"
+              className="text-primary10 dark:text-linkColor"
+              weight="semi"
+              size="md"
+            >
               windowType
             </Text>
           </div>

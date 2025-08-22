@@ -19,9 +19,14 @@ const Blok = ({ order, data, handleChange, handleDelete }) => {
     handleChange(order, "data", debouncedInputs);
   }, [debouncedInputs]);
   return (
-    <div className="flex flex-col bg-input gap-4 rounded-2xl p-4">
+    <div className="flex flex-col bg-input dark-box gap-4 rounded-2xl p-4">
       <div className="flex items-center justify-between w-full">
-        <Text T="admin" weight="bold" size="lg" className="text-primary10">
+        <Text
+          T="admin"
+          weight="bold"
+          size="lg"
+          className="text-primary10 dark:text-linkColor"
+        >
           blok
         </Text>
         <div
@@ -38,7 +43,6 @@ const Blok = ({ order, data, handleChange, handleDelete }) => {
         label="title"
         name="title"
         isUpperCode={false}
-        style={{ padding: "0px" }}
       />
       <AdminBox
         isMultipleLanguage={true}
@@ -47,7 +51,6 @@ const Blok = ({ order, data, handleChange, handleDelete }) => {
         label="about"
         name="about"
         isUpperCode={false}
-        style={{ padding: "0px" }}
       />
     </div>
   );

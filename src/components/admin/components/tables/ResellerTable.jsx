@@ -42,7 +42,7 @@ const ResellerTable = ({ items = { data: [] }, isPending, deleteItem }) => {
   };
   const data = isReversed ? [...items.data].reverse() : items.data;
   return (
-    <div className="flex w-full bg-input rounded-[16px] text-white mt-6 overflow-hidden">
+    <div className="flex w-full bg-input dark-box rounded-[16px] text-white mt-6 overflow-hidden">
       {deleteInformation.isOpenModal && (
         <Modal
           onClose={onCloseDeleteModal}
@@ -60,7 +60,7 @@ const ResellerTable = ({ items = { data: [] }, isPending, deleteItem }) => {
         </Modal>
       )}
       <table className="w-full">
-        <thead className="bg-[#1E2026]">
+        <thead className="bg-[#1E2026] dark-head">
           <tr className="w-full">
             <th>
               <div className="h-[56px] px-[18px] flex items-center justify-start">
@@ -153,7 +153,10 @@ const ResellerTable = ({ items = { data: [] }, isPending, deleteItem }) => {
         <tbody>
           {data.map((e, i) => {
             return (
-              <tr key={crypto.randomUUID()} className="w-full">
+              <tr
+                key={crypto.randomUUID()}
+                className="w-full dark:border-b dark:border-input last:border-none"
+              >
                 <td>
                   <div className="h-[56px] px-[18px] flex items-center justify-start flex items-start gap-[6px]">
                     <Text

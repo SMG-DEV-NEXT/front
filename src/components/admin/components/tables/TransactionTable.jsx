@@ -36,10 +36,10 @@ const TransactionTable = ({ items = [] }) => {
   const t = useTranslations("preview");
 
   return (
-    <div className="flex  overflow-hidden  bg-input rounded-[16px] text-white mt-6 ">
+    <div className="flex  overflow-auto  bg-input dark-box dark:bg-white rounded-[16px] text-white mt-6 ">
       <Modal isOpen={modalInfo.open} onClose={handleCloseModal}>
         <div
-          className={`flex  rounded-2xl bg-input mt-4  p-4 border-linkColor border flex-col gap-2 w-${"full"}`}
+          className={`flex  rounded-2xl dark-box bg-input mt-4  p-4 border-linkColor border flex-col gap-2 w-${"full"}`}
         >
           <Text
             T="preview"
@@ -56,7 +56,7 @@ const TransactionTable = ({ items = [] }) => {
                   T="none"
                   weight="semi"
                   size="md"
-                  className="text-primary10"
+                  className="text-primary10 dark:text-linkColor"
                 >
                   {t("code")}
                   {i + 1}:
@@ -65,7 +65,7 @@ const TransactionTable = ({ items = [] }) => {
                   T="none"
                   weight="semi"
                   size="md"
-                  className="text-linkColor"
+                  className="text-linkColor dark:text-linkColor"
                 >
                   {e}
                 </Text>
@@ -74,8 +74,8 @@ const TransactionTable = ({ items = [] }) => {
           })}
         </div>
       </Modal>
-      <table className="bg-input ">
-        <thead className="bg-[#1E2026]">
+      <table className="bg-input dark-box border-none">
+        <thead className="bg-[#1E2026] dark-head">
           <tr className="w-full">
             {/* <th>
               <div className="h-[56px] px-[18px] flex items-center justify-center">
@@ -222,7 +222,7 @@ const TransactionTable = ({ items = [] }) => {
             return (
               <tr
                 key={e.id}
-                className="w-full cursor-pointer transition duration-300 hover:bg-gray-300 hover:bg-opacity-30 "
+                className="w-full dark:border-b dark:border-input last:border-none cursor-pointer transition duration-300 hover:bg-gray-300 hover:bg-opacity-30 "
                 onClick={() => {
                   handleOpenModal(e.codes);
                 }}

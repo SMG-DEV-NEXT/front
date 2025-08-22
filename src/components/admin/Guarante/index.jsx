@@ -6,6 +6,7 @@ import AdminContainer from "../components/container";
 import AdminPageHeader from "../components/header";
 import AdminUploadImage from "../components/ImageUpload";
 import AdminBox from "../components/Box";
+import AdminButton from "../components/button";
 
 const GuaranteAdminView = () => {
   const { updateSetting, settings, isLoading, isLoadingSaveQuery } =
@@ -93,7 +94,7 @@ const GuaranteAdminView = () => {
             onChange={(e) => handleChange("logo3", e)}
           />
         </div>
-        <div className="bg-input flex flex-col  rounded-[16px]">
+        <div className="bg-input dark:bg-white dark:gap-2 flex flex-col  rounded-[16px]">
           <AdminBox
             isMultipleLanguage={true}
             isUpperCode={false}
@@ -119,7 +120,7 @@ const GuaranteAdminView = () => {
             onChange={(e, value) => handleChange(e, value, "block")}
           />
         </div>
-        <div className="bg-input flex flex-col  rounded-[16px]">
+        <div className="bg-input dark:bg-white dark:gap-2 flex flex-col  rounded-[16px]">
           <AdminBox
             isMultipleLanguage={true}
             isUpperCode={false}
@@ -145,7 +146,7 @@ const GuaranteAdminView = () => {
             onChange={(e, value) => handleChange(e, value, "block1")}
           />
         </div>
-        <div className="bg-input flex flex-col  rounded-[16px]">
+        <div className="bg-input dark:bg-white dark:gap-2 flex flex-col  rounded-[16px]">
           <AdminBox
             isMultipleLanguage={true}
             isUpperCode={false}
@@ -171,7 +172,7 @@ const GuaranteAdminView = () => {
             onChange={(e, value) => handleChange(e, value, "block2")}
           />
         </div>
-        <div className="bg-input flex flex-col  rounded-[16px] mb-6">
+        <div className="bg-input dark:bg-white dark:gap-2 flex flex-col  rounded-[16px] mb-6">
           <AdminBox
             isMultipleLanguage={true}
             isUpperCode={false}
@@ -196,6 +197,14 @@ const GuaranteAdminView = () => {
             }}
             onChange={(e, value) => handleChange(e, value, "block3")}
           />
+          <div className="flex w-full justify-center mt-4">
+            <AdminButton
+              onClick={() => updateSetting("guarante", inputs)}
+              disabled={isLoadingSaveQuery}
+            >
+              save
+            </AdminButton>
+          </div>
         </div>
       </div>
     </AdminContainer>

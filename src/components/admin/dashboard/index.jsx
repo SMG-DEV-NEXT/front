@@ -19,17 +19,32 @@ const colors = {
 
 const WeekBlock = ({ title, percent, txt }) => {
   return (
-    <div className="flex items-center rounded-2xl bg-input p-6">
+    <div className="flex items-center rounded-2xl bg-input dark:bg-white dark:border dark:border-input p-6">
       <div className="flex flex-col gap-3">
-        <Text T="admin" weight="semi" size="sm" className="text-primary10">
+        <Text
+          T="admin"
+          weight="semi"
+          size="sm"
+          className="text-primary10 dark:text-linkColor"
+        >
           {title}
         </Text>
-        <Text T="none" weight="bold" size="t32" className="text-primary10">
+        <Text
+          T="none"
+          weight="bold"
+          size="t32"
+          className="text-primary10 dark:text-linkColor"
+        >
           {txt}
         </Text>
         <div className="flex gap-1 items-center">
           <Stack backgroundColor={colors[title]} color={colors[title]} />
-          <Text T="none" weight="semi" size="sm" className="text-primary10">
+          <Text
+            T="none"
+            weight="semi"
+            size="sm"
+            className="text-primary10 dark:text-linkColor"
+          >
             {percent}%
           </Text>
           <Text
@@ -64,7 +79,7 @@ const DashboardAdminView = () => {
             T="admin"
             weight="bold"
             size="2xl"
-            className="text-primary10 leading-[34px] "
+            className="text-primary10 leading-[34px] dark:text-linkColor "
             style={{ fontSize: "24px" }}
           >
             hello

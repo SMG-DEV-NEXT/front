@@ -16,10 +16,12 @@ import Button from "@/components/Button";
 import { useMutation } from "@tanstack/react-query";
 import ReselllerService from "@/services/Reseller";
 import { toast } from "react-toastify";
+import { useTheme } from "next-themes";
 
 const RequestTable = ({ items = { data: [] }, isPending, deleteItem }) => {
   const [list, setList] = useState([items.data]);
   const [isReversed, setIsReversed] = useState(false);
+  const theme = useTheme();
   const [deleteInformation, setDeleteInformation] = useState({
     isOpenModal: false,
     title: "",
@@ -87,10 +89,10 @@ const RequestTable = ({ items = { data: [] }, isPending, deleteItem }) => {
 
   const data = isReversed ? [...list].reverse() : list;
   return (
-    <div className="flex w-full bg-input rounded-[16px] text-white mt-6 overflow-hidden">
+    <div className="flex w-full bg-input dark-box rounded-[16px] text-white mt-6 overflow-hidden">
       <Modal isOpen={modalInfo.open} onClose={handleCloseModal}>
         <div
-          className={`flex  rounded-2xl bg-input w-[400px]   flex-col gap-2 w-${"full"}`}
+          className={`flex  rounded-2xl bg-input dark-box border-none min-w-[400px]   flex-col gap-2 w-${"full"}`}
         >
           <Text
             weight="semi"
@@ -102,7 +104,9 @@ const RequestTable = ({ items = { data: [] }, isPending, deleteItem }) => {
           </Text>
           <Input
             value={modalInfo.not}
-            styleDiv={{ backgroundColor: "#272c33" }}
+            styleDiv={{
+              backgroundColor: theme !== "dark" ? "white" : "#272c33",
+            }}
             setValue={(s) =>
               setModalInfo({
                 ...modalInfo,
@@ -148,7 +152,7 @@ const RequestTable = ({ items = { data: [] }, isPending, deleteItem }) => {
         </Modal>
       )}
       <table className="w-full">
-        <thead className="bg-[#1E2026]">
+        <thead className="bg-[#1E2026] dark-head">
           <tr className="w-full">
             <th>
               <div className="h-[56px] px-[18px] flex items-center justify-start">
@@ -269,7 +273,7 @@ const RequestTable = ({ items = { data: [] }, isPending, deleteItem }) => {
                   });
                 }}
                 key={crypto.randomUUID()}
-                className="w-full cursor-pointer"
+                className="w-full cursor-pointer dark:border-b dark:border-input last:border-none"
               >
                 <td>
                   <div className="h-[56px] px-[18px] flex items-center justify-start flex items-start gap-[6px]">

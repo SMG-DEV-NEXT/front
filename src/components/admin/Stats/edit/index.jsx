@@ -12,6 +12,7 @@ import { useLocale } from "next-intl";
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import AdminButton from "../../components/button";
 
 const queryInputs = (e) => {
   const { catalog, id, popular, ...data } = e;
@@ -206,6 +207,14 @@ const StatEdit = () => {
           onChange={onChange}
           label={"textStat"}
         />
+        <div className="flex w-full justify-center">
+          <AdminButton
+            onClick={handleSave}
+            disabled={mutation.isPending || update.isPending}
+          >
+            save
+          </AdminButton>
+        </div>
       </div>
     </AdminContainer>
   );

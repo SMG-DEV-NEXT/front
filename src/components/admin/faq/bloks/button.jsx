@@ -21,9 +21,14 @@ const ButtonEditor = ({
     };
   });
   return (
-    <div className="flex bg-input p-4 gap-4 flex-col rounded-2xl">
+    <div className="flex bg-input dark-box p-4 gap-4 flex-col rounded-2xl">
       <div className="flex items-center justify-between w-full">
-        <Text T="admin" weight="bold" size="lg" className="text-primary10">
+        <Text
+          T="admin"
+          weight="bold"
+          size="lg"
+          className="text-primary10 dark:text-linkColor"
+        >
           addlink
         </Text>
         <div

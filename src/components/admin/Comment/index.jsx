@@ -66,7 +66,7 @@ const CommentPage = () => {
               <div
                 key={e}
                 onClick={() => handleChangeFilter("limit", e)}
-                className="py-[6px] text-primary10 cursor-pointer border-[#919EAB3D] px-3 border  text-sm font-medium  flex items-center justify-center rounded-[8px]"
+                className="py-[6px] text-primary10 cursor-pointer dark:text-linkColor dark:border-linkColor border-[#919EAB3D] px-3 border  text-sm font-medium  flex items-center justify-center rounded-[8px]"
               >
                 {e}
               </div>

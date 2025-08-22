@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Text from "../Text";
 import Select, { components } from "react-select";
 import Icon from "../Icons";
+import { useTheme } from "next-themes";
 
 const DropdownIndicator = (props) => {
   return (
@@ -34,6 +35,7 @@ const CustomSingleValue = (props) => {
 
 const CustomOption = (props) => {
   const { data, innerRef, innerProps, isSelected } = props;
+  const { theme } = useTheme();
   return (
     <div
       ref={innerRef}
@@ -49,12 +51,11 @@ const CustomOption = (props) => {
       <span
         style={{
           marginLeft: "10px",
-          color: "#E9E3F6",
+          color: theme === "dark" ? "#181A1F" : "#E9E3F6",
           fontWeight: "500",
           fontSize: "14px",
           lineHeight: "140%",
           cursor: "pointer",
-          color: "#E9E3F6",
         }}
       >
         {data.label}
@@ -143,11 +144,35 @@ const CustomSelect = ({
   valueStyles = {},
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const { theme } = useTheme();
+  const darkSelectStyles =
+    theme === "dark"
+      ? {
+          backgroundColor: "white",
+          border: "1px solid #181A1F",
+        }
+      : {};
+  const darkSelectStylesSelector =
+    theme === "dark"
+      ? {
+          backgroundColor: "white",
+          border: "1px solid #181A1F",
+        }
+      : {};
+  const darkSelectStylesValue =
+    theme === "dark"
+      ? {
+          color: "#181A1F",
+        }
+      : {};
   return (
     <div className="flex flex-col gap-3 w-full">
       {label && (
-        <Text className="text-primary10" weight="medium" size="sm">
+        <Text
+          className="text-primary10 dark:text-linkColor"
+          weight="medium"
+          size="sm"
+        >
           {label}
         </Text>
       )}
@@ -168,10 +193,12 @@ const CustomSelect = ({
           control: (provided) => ({
             ...customStyles.control(provided),
             ...inputStyles,
+            ...darkSelectStyles,
             borderRadius: isOpen ? "12px 12px 0px 0px" : "12px",
           }),
           menu: (provided) => ({
             ...customStyles.menu(provided),
+            ...darkSelectStylesSelector,
             ...menuStyles,
           }),
           placeholder: (defaultStyles) => ({
@@ -179,9 +206,10 @@ const CustomSelect = ({
             color: placeholderColor, // Change this to any color you want
           }),
           singleValue: (defaultStyles) => ({
-            ...defaultStyles,
             color: placeholderColor, // Change this to any color you want
+            ...defaultStyles,
             ...valueStyles,
+            ...darkSelectStylesValue,
           }),
         }}
         onMenuOpen={() => setIsOpen(true)}

@@ -34,9 +34,9 @@ const PlanTable = ({ items, time }) => {
 
   const data = isReversed ? [...items].reverse() : items;
   return (
-    <div className="flex w-full bg-input rounded-[16px] text-white mt-6 overflow-hidden">
+    <div className="flex w-full bg-input dark-box rounded-[16px] text-white mt-6 overflow-hidden">
       <table className="w-full">
-        <thead className="bg-[#1E2026]">
+        <thead className="bg-[#1E2026] dark-head">
           <tr className="w-full">
             {/* <th>
               <div className="h-[56px] px-[18px] flex items-center justify-center">
@@ -140,7 +140,10 @@ const PlanTable = ({ items, time }) => {
           {data.map((e, i) => {
             const count = getCount(e.plan);
             return (
-              <tr key={e.id} className="w-full">
+              <tr
+                key={e.id}
+                className="w-full dark:border-b dark:border-linkColor last:border-none"
+              >
                 {/* <td>
                   <div className="h-[56px] px-[18px] flex items-center justify-center">
                     <Checkbox

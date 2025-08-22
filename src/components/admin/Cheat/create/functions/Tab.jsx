@@ -10,7 +10,7 @@ const Tab = ({ title, onDelete, isActive, onSelect }) => {
         key={crypto.randomUUID()}
         className="bg-primary80 cursor-pointer gap-2 py-[6px] px-3 rounded-[8px] border border-[#919EAB3D] flex items-center"
       >
-        <Text T="none" weight="semi" className="text-[#141A21]">
+        <Text T="none" weight="semi" className="text-[#141A21] dark:text-white">
           {title}
         </Text>
         <div

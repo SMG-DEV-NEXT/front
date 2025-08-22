@@ -16,9 +16,14 @@ const Screenshot = ({ screens = [], handleChange, order, handleDelete }) => {
     );
   };
   return (
-    <div className="flex flex-col gap-4 bg-input p-4 rounded-2xl">
+    <div className="flex flex-col gap-4 bg-input dark-box p-4 rounded-2xl">
       <div className="flex items-center justify-between w-full">
-        <Text T="admin" weight="bold" size="lg" className="text-primary10">
+        <Text
+          T="admin"
+          weight="bold"
+          size="lg"
+          className="text-primary10 dark:text-linkColor"
+        >
           screenshot
         </Text>
         <div
@@ -33,7 +38,12 @@ const Screenshot = ({ screens = [], handleChange, order, handleDelete }) => {
         {screens.map((e, i) => {
           return (
             <div className="flex flex-col gap-1 w-full">
-              <Text T="none" weight="semi" size="md" className="text-primary10">
+              <Text
+                T="none"
+                weight="semi"
+                size="md"
+                className="text-primary10 dark:text-linkColor"
+              >
                 Screen {i + 1}
               </Text>
               <AdminUploadImage
@@ -45,7 +55,12 @@ const Screenshot = ({ screens = [], handleChange, order, handleDelete }) => {
         })}
         {screens.length < 4 && (
           <div className="flex flex-col gap-1 w-full">
-            <Text T="none" weight="semi" size="md" className="text-primary10">
+            <Text
+              T="none"
+              weight="semi"
+              size="md"
+              className="text-primary10 dark:text-linkColor"
+            >
               Screen {screens.length + 1}
             </Text>
             <AdminUploadImage

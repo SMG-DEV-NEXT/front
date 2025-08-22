@@ -69,7 +69,12 @@ const MainAdminView = () => {
 
       <div className="flex flex-col mt-6 gap-6 pb-4">
         <div className="flex flex-col">
-          <Text T="admin" className="text-primary10" weight="semi" size="md">
+          <Text
+            T="admin"
+            className="text-primary10 dark:text-linkColor"
+            weight="semi"
+            size="md"
+          >
             header
           </Text>
           <div className="flex gap-4 w-full mt-4">
@@ -113,7 +118,12 @@ const MainAdminView = () => {
           </div>
         </div>
         <div className="flex flex-col">
-          <Text T="admin" className="text-primary10" weight="semi" size="md">
+          <Text
+            T="admin"
+            className="text-primary10 dark:text-linkColor"
+            weight="semi"
+            size="md"
+          >
             footer
           </Text>
           <div className="flex gap-4 w-full mt-4 flex-col">
@@ -130,7 +140,7 @@ const MainAdminView = () => {
                   T="admin"
                   weight="semi"
                   size="lg"
-                  className="text-primary10"
+                  className="text-primary10 dark:text-linkColor"
                 >
                   logoPay
                 </Text>
@@ -154,7 +164,7 @@ const MainAdminView = () => {
                         T="none"
                         weight="semi"
                         size="md"
-                        className="text-primary10"
+                        className="text-primary10 dark:text-linkColor"
                       >
                         Logo {i + 1}
                       </Text>
@@ -175,6 +185,14 @@ const MainAdminView = () => {
               setValue={(e) => handleChange("link", e)}
             />
           </div>
+        </div>
+        <div className="flex w-full justify-center">
+          <AdminButton
+            onClick={() => updateSetting("main", inputs)}
+            disabled={isLoadingSaveQuery}
+          >
+            save
+          </AdminButton>
         </div>
       </div>
     </AdminContainer>

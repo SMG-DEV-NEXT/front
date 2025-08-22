@@ -8,6 +8,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useLocale } from "next-intl";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
+import ThemeToggle from "@/components/modeChanger";
 import React, { useMemo, useState } from "react";
 import { useDispatch } from "react-redux";
 
@@ -77,6 +78,7 @@ const AdminHeader = () => {
             className="w-9 h-9 rounded-full"
           />
         </div>
+        <ThemeToggle />
         <div className="cursor-pointer" onClick={logout}>
           <Icon name="logout" folder="admin" />
         </div>

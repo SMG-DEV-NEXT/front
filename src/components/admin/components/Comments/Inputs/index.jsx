@@ -7,12 +7,22 @@ import { Star } from "@/components/Cheat/Comment";
 
 const CommentDisabledInput = ({ label, value }) => {
   return (
-    <div className="flex bg-input gap-4 w-full flex-col p-4 rounded-[16px]">
-      <Text T="admin" weight="semi" size="md" className="text-primary10">
+    <div className="flex bg-input dark-box gap-4 w-full flex-col p-4 rounded-[16px]">
+      <Text
+        T="admin"
+        weight="semi"
+        size="md"
+        className="text-primary10 dark:text-linkColor"
+      >
         {label}
       </Text>
       <div className="flex rounded-[8px] pr-2 pl-3 py-[6px] border border-[#919EAB3D]">
-        <Text T="none" weight="semi" size="md" className="text-primary10">
+        <Text
+          T="none"
+          weight="semi"
+          size="md"
+          className="text-primary10 dark:text-linkColor"
+        >
           {value}
         </Text>
       </div>
@@ -22,18 +32,24 @@ const CommentDisabledInput = ({ label, value }) => {
 
 export const CommentEditor = ({ inputs, setInputs }) => {
   return (
-    <div className="flex bg-input gap-4 w-full flex-col rounded-[16px]">
+    <div className="flex bg-input dark-box gap-4 w-full flex-col rounded-[16px]">
       <div className="flex flex-col">
         <AdminBox
           label="review"
           value={inputs.text || ""}
           viewLength={true}
           name={"text"}
+          style={{ border: "none" }}
           onChange={(e, v) => setInputs({ ...inputs, text: v })}
           maxLength={300}
         />
         <div className="flex w-full justify-between px-4 pb-4">
-          <Text T="admin" weight="semi" size="md" className="text-primary10">
+          <Text
+            T="admin"
+            weight="semi"
+            size="md"
+            className="text-primary10 dark:text-linkColor"
+          >
             review
           </Text>
           <div className="flex gap-3">
@@ -47,7 +63,12 @@ export const CommentEditor = ({ inputs, setInputs }) => {
                 </div>
               );
             })}
-            <Text T="none" weight="semi" size="md" className="text-primary10">
+            <Text
+              T="none"
+              weight="semi"
+              size="md"
+              className="text-primary10 dark:text-linkColor"
+            >
               {inputs.stars}
             </Text>
           </div>

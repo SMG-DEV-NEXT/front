@@ -11,6 +11,7 @@ import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import AdminButton from "../../components/button";
 
 const UpdateCatalog = () => {
   const t = useTranslations("admin");
@@ -141,6 +142,14 @@ const UpdateCatalog = () => {
           value={inputs.imageUrl}
           onChange={(e) => handleChangeInput("imageUrl", e)}
         />
+        <div className="flex w-full justify-center">
+          <AdminButton
+            onClick={onClickSaveButton}
+            disabled={mutation.isPending}
+          >
+            save
+          </AdminButton>
+        </div>
       </div>
     </AdminContainer>
   );

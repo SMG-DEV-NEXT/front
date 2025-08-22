@@ -15,6 +15,7 @@ import DeleteModal from "../components/Modals/deleteModal";
 import PlanTable from "../components/tables/PlanTable";
 import Text from "@/components/Text";
 import CustomSelect from "@/components/Select";
+import { useTheme } from "next-themes";
 
 const DateFilterTabs = [
   { label: "all2", value: "all" },
@@ -31,6 +32,7 @@ const PlansView = () => {
   const [selectedCatalog, setSelectedCatalog] = useState({});
   const [plans, setPlans] = useState(null);
   const [items, setItems] = useState([]);
+  const { theme } = useTheme();
 
   const { data, isPending } = useQuery({
     queryFn: AdminCatalog.getAllCatalogs,
@@ -58,6 +60,21 @@ const PlansView = () => {
   }, [selectedCatalog]);
 
   const locale = useLocale();
+
+  const darkSelectStyles =
+    theme === "dark"
+      ? {
+          backgroundColor: "white",
+          border: "1px solid #181A1F",
+        }
+      : {};
+  const darkSelectStylesSelector =
+    theme === "dark"
+      ? {
+          backgroundColor: "white",
+          border: "1px solid #181A1F",
+        }
+      : {};
   return (
     <AdminContainer>
       <div className="flex flex-col w-full">
@@ -75,8 +92,13 @@ const PlansView = () => {
               <CustomSelect
                 options={items.map((e) => ({ label: e.title, value: e.id }))}
                 value={selectedCatalog}
-                menuStyles={{ width: "200px" }}
-                inputStyles={{ paddingTop: "0px", height: "20px" }}
+                placeholder="Select"
+                menuStyles={{ width: "200px", ...darkSelectStylesSelector }}
+                inputStyles={{
+                  paddingTop: "0px",
+                  height: "20px",
+                  ...darkSelectStyles,
+                }}
                 setValue={setSelectedCatalog}
               />
             </div>
@@ -103,7 +125,7 @@ const PlansView = () => {
                         weight="semi"
                         className={
                           e.value === selectedTime.value
-                            ? "text-[#141A21]"
+                            ? "text-[#141A21] dark:text-white"
                             : "text-linkColor"
                         }
                       >

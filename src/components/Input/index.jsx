@@ -38,12 +38,16 @@ const Input = ({
   return (
     <div className="flex flex-col w-full gap-3">
       {label && (
-        <Text className="text-primary10" weight="medium" size="sm">
+        <Text
+          className="text-primary10 dark:text-linkColor"
+          weight="medium"
+          size="sm"
+        >
           {label}
         </Text>
       )}
       <div
-        className="relative  px-[14px] py-3 bg-input flex items-center  rounded-xl"
+        className="relative  px-[14px] py-3 bg-input !dark-box flex items-center  rounded-xl"
         style={styleDiv}
       >
         {iconLeft && (
