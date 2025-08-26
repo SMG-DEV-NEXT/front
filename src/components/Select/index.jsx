@@ -164,7 +164,9 @@ const CustomSelect = ({
       ? {
           color: "#181A1F",
         }
-      : {};
+      : {
+          color: "white",
+        };
   return (
     <div className="flex flex-col gap-3 w-full">
       {label && (

@@ -126,9 +126,10 @@ const MiddleComponent = ({ children }) => {
       dispatch(setAuth(data.data));
     }
   }, [data, dispatch]);
-  const currentTheme = window
-    ? window.localStorage.getItem("theme") || "light"
-    : "light";
+  const currentTheme =
+    typeof window !== "undefined"
+      ? window.localStorage.getItem("theme") || "light"
+      : "light";
 
   const mutation = useMutation({
     mutationFn: async ({ title, settings }) => {
