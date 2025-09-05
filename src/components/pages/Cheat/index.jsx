@@ -13,6 +13,7 @@ import CheatsService from "@/services/Cheats";
 import Loading from "@/app/loading";
 import Text from "@/components/Text";
 import { getLocale } from "@/utils/getlocale";
+import Effect from "@/components/Animations/Effect";
 
 function getQueryParam(key) {
   const urlParams = new URLSearchParams(window.location.search);
@@ -42,28 +43,46 @@ const View = () => {
     return (
       <div className="view relative h-full w-full flex items-center justify-center pt-[60px] pb-[60px]">
         <div className="container flex flex-col gap-10 z-[1]">
-          <CardAndPay mobile={isMobile} cheat={data.data} />
-          <Medias mobile={isMobile} cheat={data.data} />
-          {data.data.type !== "detected" && (
-            <PayCard ref={ref} mobile={isMobile} cheat={data.data} />
-          )}
-          <FunctionalCheat mobile={isMobile} cheat={data.data} />
-          <Programs mobile={isMobile} cheat={data.data} />
-          <div className="flex flex-col gap-4">
-            <Text
-              className="text-primary10 leading-[140%]"
-              T="product"
-              weight="bold"
-              size="xl"
-            >
-              about
-            </Text>
-            <Text T="none" className="text-primary10" size="sm" weight="medium">
-              {data.data[`about${getLocale() == "en" ? "En" : "Ru"}`]}
-            </Text>
-          </div>
-
-          <Comments mobile={isMobile} cheat={data.data} />
+          <Effect type="to-bottom" onceEffect={true}>
+            <CardAndPay mobile={isMobile} cheat={data.data} />
+          </Effect>
+          <Effect type="to-top" onceEffect={true}>
+            <Medias mobile={isMobile} cheat={data.data} />
+          </Effect>
+          <Effect type="to-top" onceEffect={true}>
+            {data.data.type !== "detected" && (
+              <PayCard ref={ref} mobile={isMobile} cheat={data.data} />
+            )}
+          </Effect>
+          <Effect type="to-top" onceEffect={true}>
+            <FunctionalCheat mobile={isMobile} cheat={data.data} />
+          </Effect>
+          <Effect type="to-top" onceEffect={true}>
+            <Programs mobile={isMobile} cheat={data.data} />
+          </Effect>
+          <Effect type="to-top" onceEffect={true}>
+            <div className="flex flex-col gap-4">
+              <Text
+                className="text-primary10 leading-[140%]"
+                T="product"
+                weight="bold"
+                size="xl"
+              >
+                about
+              </Text>
+              <Text
+                T="none"
+                className="text-primary10"
+                size="sm"
+                weight="medium"
+              >
+                {data.data[`about${getLocale() == "en" ? "En" : "Ru"}`]}
+              </Text>
+            </div>
+          </Effect>
+          <Effect type="to-top" onceEffect={true}>
+            <Comments mobile={isMobile} cheat={data.data} />
+          </Effect>
         </div>
       </div>
     );
@@ -72,8 +91,12 @@ const View = () => {
     <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[158px]">
       <div className="container z-[1]">
         <CardAndPay ref={ref} mobile={isMobile} cheat={data.data} />
-        <FunctionalCheat mobile={isMobile} cheat={data.data} />
-        <Comments mobile={isMobile} cheat={data.data} />
+        <Effect type="to-top" onceEffect={true} className="w-full">
+          <FunctionalCheat mobile={isMobile} cheat={data.data} />
+        </Effect>
+        <Effect type="to-top" onceEffect={true} className="w-full">
+          <Comments mobile={isMobile} cheat={data.data} />
+        </Effect>
       </div>
     </div>
   );

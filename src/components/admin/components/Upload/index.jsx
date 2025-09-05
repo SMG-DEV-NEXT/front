@@ -121,6 +121,9 @@ const AdminUpload = ({
       console.error("Upload failed:", error);
     } finally {
       setUploading(false);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = ""; // 👈 сброс значения
+      }
     }
   };
 

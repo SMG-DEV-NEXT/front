@@ -44,6 +44,7 @@ const CheatCreate = () => {
     metaEn: "",
     tags: [],
     images: [],
+    thumbnailVideo: [],
     videos: [],
     imageUrl: "",
     functions: [],
@@ -205,15 +206,24 @@ const CheatCreate = () => {
             onChange={handleChangeInput}
             name="images"
           />
-          <AdminUpload
-            links={inputs.videos}
-            countOfFiles={1}
-            width={300}
-            label={"video"}
-            onChange={handleChangeInput}
-            name="videos"
-            type="video"
-          />
+          <div className="flex flex-col gap-2 w-full">
+            <AdminUpload
+              links={inputs.videos}
+              countOfFiles={1}
+              width={300}
+              label={"video"}
+              onChange={handleChangeInput}
+              name="videos"
+              type="video"
+            />
+            <AdminUpload
+              links={inputs.thumbnailVideo}
+              countOfFiles={1}
+              label={"cheatVideoImage"}
+              onChange={handleChangeInput}
+              name="thumbnailVideo"
+            />
+          </div>
         </div>
         <FunctionsCheat
           functions={inputs.functions}

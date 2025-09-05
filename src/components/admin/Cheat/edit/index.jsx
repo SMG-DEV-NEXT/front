@@ -50,6 +50,7 @@ const UpdateCheat = () => {
     image2: "",
     catalog: null,
     type: cheatTypes[0],
+    thumbnailVideo: [],
     link: "",
     metaTitleRu: "",
     metaTitleEn: "",
@@ -228,21 +229,31 @@ const UpdateCheat = () => {
           </Text>
           <div className="flex gap-6">
             <AdminUpload
-              links={inputs.images}
+              links={inputs.thumbnailVideos}
               countOfFiles={10}
-              label={"cheatImages"}
+              label={"cheatVideoImage"}
               onChange={handleChangeInput}
-              name="images"
+              name="thumbnailVideos"
             />
-            <AdminUpload
-              links={inputs.videos}
-              countOfFiles={1}
-              width={300}
-              label={"video"}
-              onChange={handleChangeInput}
-              name="videos"
-              type="video"
-            />
+
+            <div className="flex flex-col gap-2 w-full">
+              <AdminUpload
+                links={inputs.videos}
+                countOfFiles={1}
+                width={300}
+                label={"video"}
+                onChange={handleChangeInput}
+                name="videos"
+                type="video"
+              />
+              <AdminUpload
+                links={inputs.thumbnailVideo}
+                countOfFiles={1}
+                label={"cheatVideoImage"}
+                onChange={handleChangeInput}
+                name="thumbnailVideo"
+              />
+            </div>
           </div>
           <FunctionsCheat
             functions={inputs.functions}

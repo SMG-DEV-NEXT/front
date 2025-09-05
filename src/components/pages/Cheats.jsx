@@ -14,6 +14,7 @@ import { useParams } from "next/navigation";
 import CheatsMobile from "../Cheat/CheatsMobile";
 import Freecurrencyapi from "@everapi/freecurrencyapi-js";
 import getLanguage from "@/utils/get-language";
+import Effect from "../Animations/Effect";
 
 const typesFilter = ["high_price", "low_price", "raiting"];
 export const dynamic = "force-dynamic";
@@ -164,14 +165,16 @@ const Cheats = () => {
   return (
     <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[112px]">
       <div className="flex flex-col gap-6 z-[1] container items-center">
-        <Text
-          T="none"
-          className="text-primary10 leading-[120%]"
-          weight="bold"
-          size="t48"
-        >
-          {cheatsT("title")} {api?.catalog?.[`title`]}
-        </Text>
+        <Effect type="to-bottom" onceEffect={true}>
+          <Text
+            T="none"
+            className="text-primary10 leading-[120%]"
+            weight="bold"
+            size="t48"
+          >
+            {cheatsT("title")} {api?.catalog?.[`title`]}
+          </Text>
+        </Effect>
         <Input
           iconLeft="searchNew"
           value={search}
@@ -180,7 +183,11 @@ const Cheats = () => {
           styleDiv={{ padding: "20px" }}
         />
         <div className="flex gap-6 w-full ">
-          <div className="flex flex-col bg-input rounded-2xl w-[32.5%]">
+          <Effect
+            type="to-right"
+            className="flex flex-col bg-input rounded-2xl w-[32.5%]"
+            onceEffect={true}
+          >
             <div className="p-6 flex flex-col gap-4">
               <Text
                 T="cheats"
@@ -324,44 +331,46 @@ const Cheats = () => {
                 )}
               </div>
             </div>
-          </div>
-          {api?.data ? (
-            <div className="flex gap-6 flex-col w-[67.5%]">
-              {getViewItems().length === 0 ? (
-                <Text
-                  weight="semi"
-                  size="md"
-                  className="text-linkColor mt-5 text-center"
-                >
-                  empty
-                </Text>
-              ) : (
-                getViewItems().map((e) => {
-                  return (
-                    <ListCheatItem
-                      usd={usd}
-                      key={crypto.randomUUID()}
-                      {...e}
-                      catalogId={id}
-                    />
-                  );
-                })
-              )}
-              {api?.total > 1 && (
-                <Pagination
-                  itemsPerPage={api?.total * 1}
-                  current={api?.page * 1}
-                  onPageChange={(e) =>
-                    handleInputChange("page", e.selected + 1)
-                  }
-                />
-              )}
-            </div>
-          ) : (
-            <div className="w-[67.5%] flex items-center">
-              <Loading noPage={true} />
-            </div>
-          )}
+          </Effect>
+          <Effect type="to-left" className="w-[67.5%]" onceEffect={true}>
+            {api?.data ? (
+              <div className="flex gap-6 flex-col w-full">
+                {getViewItems().length === 0 ? (
+                  <Text
+                    weight="semi"
+                    size="md"
+                    className="text-linkColor mt-5 text-center"
+                  >
+                    empty
+                  </Text>
+                ) : (
+                  getViewItems().map((e) => {
+                    return (
+                      <ListCheatItem
+                        usd={usd}
+                        key={crypto.randomUUID()}
+                        {...e}
+                        catalogId={id}
+                      />
+                    );
+                  })
+                )}
+                {api?.total > 1 && (
+                  <Pagination
+                    itemsPerPage={api?.total * 1}
+                    current={api?.page * 1}
+                    onPageChange={(e) =>
+                      handleInputChange("page", e.selected + 1)
+                    }
+                  />
+                )}
+              </div>
+            ) : (
+              <div className="w-[67.5%] flex items-center">
+                <Loading noPage={true} />
+              </div>
+            )}
+          </Effect>
         </div>
       </div>
     </div>

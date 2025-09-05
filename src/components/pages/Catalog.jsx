@@ -10,6 +10,7 @@ import CatalogCard from "@/components/Main/CatalogCard";
 import { useMobile } from "@/hooks/useMobile";
 import Freecurrencyapi from "@everapi/freecurrencyapi-js";
 import { useLocale, useTranslations } from "next-intl";
+import Effect from "../Animations/Effect";
 
 function View() {
   const [search, setSearch] = useState("");
@@ -98,24 +99,29 @@ function View() {
   return (
     <div className="view relative h-full w-full flex items-center  pt-[64px] pb-[112px]">
       <div className="container flex flex-col items-center gap-6 z-[1]">
-        <Text
-          T="catalog"
-          className="text-primary10 leading-[120%]"
-          weight="bold"
-          size="t48"
+        <Effect
+          type="to-bottom"
+          className="flex flex-col items-center w-full gap-6"
+          onceEffect={true}
         >
-          gameCatalog
-        </Text>
-        <Text
-          T="catalog"
-          className="text-linkColor  text-center"
-          weight="medium"
-          style={{ width: isMobile ? "70%" : "35%" }}
-          size="sm"
-        >
-          catalogText
-        </Text>
-
+          <Text
+            T="catalog"
+            className="text-primary10 leading-[120%]"
+            weight="bold"
+            size="t48"
+          >
+            gameCatalog
+          </Text>
+          <Text
+            T="catalog"
+            className="text-linkColor  text-center"
+            weight="medium"
+            style={{ width: isMobile ? "70%" : "35%" }}
+            size="sm"
+          >
+            catalogText
+          </Text>
+        </Effect>
         <Input
           value={search}
           onChange={handleSearchChange}
@@ -124,35 +130,37 @@ function View() {
           styleDiv={{ padding: "20px" }}
         />
 
-        {catalogData.data && !catalogMutation.isPending ? (
-          <>
-            <div className="flex flex-wrap justify-center gap-6">
-              {catalogData.data.length === 0 ? (
-                <Text weight="semi" size="md" className="text-linkColor mt-5">
-                  empty
-                </Text>
-              ) : (
-                catalogData.data.map((item) => (
-                  <CatalogCard
-                    key={item.id}
-                    {...item}
-                    usd={usd}
-                    imageWidth={isMobile ? 350 : 264}
-                  />
-                ))
+        <Effect type="to-top" className="w-full" onceEffect={true}>
+          {catalogData.data && !catalogMutation.isPending ? (
+            <>
+              <div className="flex flex-wrap justify-center gap-6">
+                {catalogData.data.length === 0 ? (
+                  <Text weight="semi" size="md" className="text-linkColor mt-5">
+                    empty
+                  </Text>
+                ) : (
+                  catalogData.data.map((item) => (
+                    <CatalogCard
+                      key={item.id}
+                      {...item}
+                      usd={usd}
+                      imageWidth={isMobile ? 350 : 264}
+                    />
+                  ))
+                )}
+              </div>
+              {catalogData.total > 1 && (
+                <Pagination
+                  itemsPerPage={catalogData.total}
+                  current={catalogData.page}
+                  onPageChange={(e) => handlePageChange(e.selected + 1)}
+                />
               )}
-            </div>
-            {catalogData.total > 1 && (
-              <Pagination
-                itemsPerPage={catalogData.total}
-                current={catalogData.page}
-                onPageChange={(e) => handlePageChange(e.selected + 1)}
-              />
-            )}
-          </>
-        ) : (
-          <Loading noPage={true} />
-        )}
+            </>
+          ) : (
+            <Loading noPage={true} />
+          )}
+        </Effect>
       </div>
     </div>
   );

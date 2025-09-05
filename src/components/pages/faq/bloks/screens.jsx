@@ -31,7 +31,7 @@ export default function ScreensGrid({ screens, mobile }) {
         createPortal(
           <MediaCarousel
             items={screens.map((e) => ({
-              src: e,
+              src: e.isHavePreview ? e.url : "",
               type: "image",
             }))}
             initialIndex={isOpenCarousel.index}
@@ -42,13 +42,8 @@ export default function ScreensGrid({ screens, mobile }) {
       {screens.map((src, i) => (
         <div key={i} className={`${widthClass} relative`}>
           <ImageWithPreview
-            src={src}
-            onClick={() =>
-              setIsOpenCarousel({
-                isOpen: true,
-                index: i,
-              })
-            }
+            src={src.url}
+            isHavePreview={src.isHaveZoom}
             alt={`screenshot-${i}`}
             className="rounded-lg object-cover"
             priority={i === 0}

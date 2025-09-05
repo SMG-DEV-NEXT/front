@@ -125,7 +125,7 @@ const ContactsView = () => {
               >
                 <div
                   onClick={() => handleClickUrl(e.url)}
-                  className={`flex cursor-pointer relative flex-col items-center overflow-hidden w-full h-full py-6 bg-input rounded-[16px] gap-3`}
+                  className={`flex cursor-pointer relative flex-col items-center overflow-hidden w-full h-full py-6 bg-input rounded-[16px] gap-3 hover:scale-110 transition-transform duration-300`}
                 >
                   {isMobile ? (
                     <div className="absolute top-[-100%] ">

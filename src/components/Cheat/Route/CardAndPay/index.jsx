@@ -15,6 +15,7 @@ import getLanguage from "@/utils/get-language";
 import { getStars } from "@/utils/getStarsCheat";
 import Medias from "../../Media";
 import cheatTypes from "@/utils/cheat-types";
+import Effect from "@/components/Animations/Effect";
 const CardAndPay = ({ mobile, cheat, ref }) => {
   const type = "Undetected";
   const locale = useLocale();
@@ -112,7 +113,11 @@ const CardAndPay = ({ mobile, cheat, ref }) => {
   const isHidedPayment = type === "detected";
   return (
     <div className="flex gap-6 items-start">
-      <div className="flex flex-col w-[68%] gap-8" style={{ width: "68%" }}>
+      <Effect
+        type="to-right"
+        className="flex flex-col w-[68%] min-w-[68%] gap-8"
+        onceEffect={true}
+      >
         <RouteCheat
           catalogName={cheat.catalog[`title`]}
           cheatName={cheat[`title${getLanguage(locale)}`]}
@@ -186,10 +191,11 @@ const CardAndPay = ({ mobile, cheat, ref }) => {
         </div>
         <Medias mobile={mobile} cheat={cheat} />
         <Programs cheat={cheat} />
-      </div>
-      <div
+      </Effect>
+      <Effect
+        type="to-left"
+        onceEffect={true}
         className="flex flex-col gap-6 min-w-[32%]"
-        style={{ width: mobile ? "100%" : "32%" }}
       >
         {!isHidedPayment && <PayCard cheat={cheat} ref={ref} />}
 
@@ -206,7 +212,7 @@ const CardAndPay = ({ mobile, cheat, ref }) => {
             {text}
           </Text>
         </div>
-      </div>
+      </Effect>
     </div>
   );
 };

@@ -84,7 +84,8 @@
     "send": "Send Request",
     "successRequest": "Your application has been successfully submitted",
     "selectPlaceholder": "Select payment method",
-    "fieldsError": "Please fill in all required fields."
+    "fieldsError": "Please fill in all required fields.",
+    "zoom": "Image zoom"
   },
   "reseller": {
     "title": "Become a Reseller",
@@ -313,6 +314,7 @@
     "tag": "Tags",
     "more": "More",
     "cheatImages": "Product Images",
+    "cheatVideoImage": "Product Video Image",
     "upload": "Upload",
     "uploaded": "Already Uploaded",
     "video": "Video",

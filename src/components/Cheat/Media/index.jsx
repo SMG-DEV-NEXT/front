@@ -48,27 +48,10 @@ const Medias = ({ mobile, cheat }) => {
       }); // 👈 Scroll right by 200px
     }
   };
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     const el = scrollRef.current;
-  //     if (!el) return;
 
-  //     const maxScrollLeft = el.scrollWidth - el.clientWidth;
-
-  //     // Only scroll right if we are not at the end yet
-  //     if (el.scrollLeft < maxScrollLeft - 10) {
-  //       el.scrollBy({
-  //         left: mobile ? 200 : 250,
-  //         behavior: "smooth",
-  //       });
-  //     } else {
-  //       // Optional: go back to the start when at the end
-  //       el.scrollTo({ left: 0, behavior: "smooth" });
-  //     }
-  //   }, 3500); // every 5 seconds
-
-  //   return () => clearInterval(interval); // cleanup on unmount
-  // }, [mobile]);
+  const isHaveThumbnailVideo = cheat.thumbnailVideo
+    ? cheat.thumbnailVideo[0]
+    : undefined;
   if (mobile) {
     return (
       <div className="flex flex-col gap-4 max-w-[100%]">
@@ -109,6 +92,14 @@ const Medias = ({ mobile, cheat }) => {
                 onClick={() => setIsOpenCarousel({ isOpen: true, index: 0 })}
                 className="h-[180px] relative min-w-[250px] rounded-[16px] bg-input flex items-center justify-center"
               >
+                {isHaveThumbnailVideo && (
+                  <ImageWithPreview
+                    src={isHaveThumbnailVideo}
+                    alt="ThumbnailVideo"
+                    isHavePreview={false}
+                    className="object-cover rounded-[16px]"
+                  />
+                )}
                 <div className="absolute cursor-pointer inset-0 flex items-center justify-center group">
                   <div className="w-16 border border-primary10 h-16 rounded-full bg-black/60 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-black/80">
                     <svg
@@ -206,6 +197,14 @@ const Medias = ({ mobile, cheat }) => {
               onClick={() => setIsOpenCarousel({ isOpen: true, index: 0 })}
               className="h-[180px] relative min-w-[250px] rounded-[16px] bg-input flex items-center justify-center"
             >
+              {isHaveThumbnailVideo && (
+                <ImageWithPreview
+                  src={isHaveThumbnailVideo}
+                  alt="ThumbnailVideo"
+                  isHavePreview={false}
+                  className="object-cover rounded-[16px]"
+                />
+              )}
               <div className="absolute cursor-pointer inset-0 flex items-center justify-center group">
                 <div className="w-16 border border-primary10 h-16 rounded-full bg-black/60 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-black/80">
                   <svg

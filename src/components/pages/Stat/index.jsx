@@ -11,6 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 import StatsService from "@/services/Stats";
 import Loading from "@/app/loading";
 import moment from "moment";
+import Effect from "@/components/Animations/Effect";
 
 // const stat = {
 //   id: 1,
@@ -45,13 +46,15 @@ function StatView() {
       }}
     >
       <div className="container flex flex-col gap-8 z-[1] ">
-        {!isMobile && (
-          <RouteStat
-            catalogId={stat.catalog.link}
-            statName={stat[`title${locale}`]}
-            catalogName={stat.catalog.title}
-          />
-        )}
+        <Effect type="to-bottom" onceEffect={true}>
+          {!isMobile && (
+            <RouteStat
+              catalogId={stat.catalog.link}
+              statName={stat[`title${locale}`]}
+              catalogName={stat.catalog.title}
+            />
+          )}
+        </Effect>
 
         <div
           className={
@@ -60,9 +63,11 @@ function StatView() {
               : "flex gap-6 items-start"
           }
         >
-          <div
-            className=" flex flex-col rounded-[16px] w-[75%] overflow-hidden bg-input"
+          <Effect
             style={{ width: isMobile ? "100%" : "75%" }}
+            onceEffect={true}
+            type="to-right"
+            className="flex flex-col rounded-[16px] w-[75%] overflow-hidden bg-input"
           >
             <Image
               src={stat.Image2}
@@ -158,10 +163,12 @@ function StatView() {
                 </Text>
               </div>
             </div>
-          </div>
-          <div
+          </Effect>
+          <Effect
+            type="to-left"
             className="flex flex-col gap-6 p-6 bg-input rounded-[16px] w-[23.5%]"
             style={{ width: isMobile ? "100%" : "23.5%" }}
+            onceEffect={true}
           >
             <Text
               weight="bold"
@@ -209,7 +216,7 @@ function StatView() {
                 </div>
               );
             })}
-          </div>
+          </Effect>
         </div>
       </div>
     </div>

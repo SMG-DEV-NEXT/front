@@ -15,6 +15,7 @@ const getBody = (inputs) => {
     metaTitleEn: inputs.metaTitleEn,
     metaRu: inputs.metaRu,
     metaEn: inputs.metaEn,
+    thumbnailVideo: inputs.thumbnailVideo,
     tags: inputs.tags,
     images: inputs.images,
     videos: inputs.videos,

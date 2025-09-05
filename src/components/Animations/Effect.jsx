@@ -15,6 +15,7 @@ const Effect = ({
   type = "to-right",
   className,
   onceEffect = true,
+  style = {},
 }) => {
   const { ref, inView, entry } = useInView({
     /* Optional options */
@@ -24,6 +25,7 @@ const Effect = ({
   const thisEffect = types[type];
   return (
     <div
+      style={style}
       ref={ref}
       className={`${className} ${thisEffect.class} ${
         inView ? thisEffect.active : ""

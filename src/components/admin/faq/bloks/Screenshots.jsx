@@ -4,16 +4,28 @@ import Icon from "@/components/Icons";
 import React, { useState } from "react";
 import AdminUploadImage from "../../components/ImageUpload";
 import Text from "@/components/Text";
+import Checkbox from "@/components/checkbox";
 
 const Screenshot = ({ screens = [], handleChange, order, handleDelete }) => {
   const handleAddScreen = (value, index) => {
     const newValues = [...screens];
-    newValues[index] = value;
+    newValues[index] = {
+      url: value,
+      isHaveZoom: false,
+    };
     handleChange(
       order,
       "screens",
       newValues.filter((e) => e !== "")
     );
+  };
+  const handleChangeZoom = (value, index) => {
+    const newValues = [...screens];
+    newValues[index] = {
+      ...(newValues[index] || {}),
+      isHaveZoom: !value,
+    };
+    handleChange(order, "screens", newValues);
   };
   return (
     <div className="flex flex-col gap-4 bg-input dark-box p-4 rounded-2xl">
@@ -47,8 +59,13 @@ const Screenshot = ({ screens = [], handleChange, order, handleDelete }) => {
                 Screen {i + 1}
               </Text>
               <AdminUploadImage
-                value={e}
+                value={e.url}
                 onChange={(x) => handleAddScreen(x, i)}
+              />
+              <Checkbox
+                checked={e.isHaveZoom}
+                onCheck={() => handleChangeZoom(e.isHaveZoom, i)}
+                text="zoom"
               />
             </div>
           );
