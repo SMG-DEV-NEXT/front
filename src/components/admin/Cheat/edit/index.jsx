@@ -105,6 +105,10 @@ const UpdateCheat = () => {
   };
 
   const onClickSaveButton = () => {
+    if (!inputs.catalog) {
+      toast.error("Select catalog");
+      return;
+    }
     mutation.mutate({ id, data: getBody(inputs) });
   };
 
@@ -229,11 +233,11 @@ const UpdateCheat = () => {
           </Text>
           <div className="flex gap-6">
             <AdminUpload
-              links={inputs.thumbnailVideos}
+              links={inputs.images}
               countOfFiles={10}
-              label={"cheatVideoImage"}
+              label={"cheatImages"}
               onChange={handleChangeInput}
-              name="thumbnailVideos"
+              name="images"
             />
 
             <div className="flex flex-col gap-2 w-full">

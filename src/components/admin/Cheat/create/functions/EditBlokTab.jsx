@@ -88,7 +88,7 @@ const EditBlokTab = ({ blok, onChange, theme }) => {
                 onDelete={() => handleeleteItem(e.title)}
                 key={crypto.randomUUID()}
                 title={e.title}
-                onSelect={() => setSelectedItem(e)}
+                onSelect={() => setSelectedItem({ ...e, i })}
               />
             );
           })}
@@ -116,6 +116,7 @@ const EditBlokTab = ({ blok, onChange, theme }) => {
         {selectedItem?.title && (
           <EditFunction
             theme={theme}
+            key={selectedItem.i}
             onChange={handleEditFunction}
             {...selectedItem}
           />

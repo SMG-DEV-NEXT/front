@@ -6,7 +6,25 @@ import { createPortal } from "react-dom";
 import MediaCarousel from "./MediaCarousel";
 
 import "../index.scss";
+const smoothScrollX = (element, distance, duration = 500) => {
+  if (!element) return;
 
+  const start = element.scrollLeft;
+  const startTime = performance.now();
+
+  const animate = (time) => {
+    const elapsed = time - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+
+    element.scrollLeft = start + distance * progress;
+
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    }
+  };
+
+  requestAnimationFrame(animate);
+};
 const Medias = ({ mobile, cheat }) => {
   const [isOpenCarousel, setIsOpenCarousel] = useState({
     isOpen: false,
@@ -32,21 +50,11 @@ const Medias = ({ mobile, cheat }) => {
   };
 
   const scrollRight = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({
-        left: mobile ? 200 : 250,
-        behavior: "smooth",
-      }); // 👈 Scroll right by 200px
-    }
+    smoothScrollX(scrollRef.current, mobile ? 200 : 250, 300); // 1000ms = 1s
   };
 
   const scrollLeft = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({
-        left: mobile ? -200 : -250,
-        behavior: "smooth",
-      }); // 👈 Scroll right by 200px
-    }
+    smoothScrollX(scrollRef.current, mobile ? -200 : -250, 300); // 1000ms = 1s
   };
 
   const isHaveThumbnailVideo = cheat.thumbnailVideo
@@ -54,7 +62,7 @@ const Medias = ({ mobile, cheat }) => {
     : undefined;
   if (mobile) {
     return (
-      <div className="flex flex-col gap-4 max-w-[100%]">
+      <div className="flex flex-col gap-4 max-w-[100%] select-none">
         {isOpenCarousel.isOpen &&
           createPortal(
             <MediaCarousel
@@ -159,7 +167,7 @@ const Medias = ({ mobile, cheat }) => {
     );
   }
   return (
-    <div className="flex flex-col gap-4 max-w-[100%] mt-[20px]">
+    <div className="flex flex-col gap-4 max-w-[100%] mt-[20px] select-none">
       {isOpenCarousel.isOpen &&
         createPortal(
           <MediaCarousel

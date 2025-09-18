@@ -79,6 +79,10 @@ const CheatCreate = () => {
   ];
 
   const onClickSaveButton = () => {
+    if (!inputs.catalog) {
+      toast.error("Select catalog");
+      return;
+    }
     mutation.mutate(getBody(inputs));
   };
 

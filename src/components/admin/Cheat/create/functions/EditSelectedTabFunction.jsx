@@ -1,7 +1,7 @@
 "use client";
 import AdminBox from "@/components/admin/components/Box";
 import Input from "@/components/Input";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const EditTabFunction = ({ title, tooltipru, tooltipen, onChange, theme }) => {
   return (
