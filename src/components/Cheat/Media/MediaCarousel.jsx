@@ -1,14 +1,12 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
 import Icon from "@/components/Icons";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function MediaCarousel({ items, initialIndex = 0, onClose }) {
   const [current, setCurrent] = useState(initialIndex);
   const [direction, setDirection] = useState(0); // 1 = next, -1 = prev
-  const [mediaSize, setMediaSize] = useState(null);
   const [firstLoad, setFirstLoad] = useState(true);
   useEffect(() => {
     setFirstLoad(true); // reset on carousel open
@@ -54,31 +52,6 @@ export default function MediaCarousel({ items, initialIndex = 0, onClose }) {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [handleKeyDown]);
-
-  const handleLoad = (e) => {
-    const { naturalWidth, naturalHeight } = e.currentTarget;
-
-    // Рассчитаем ширину и высоту с ограничениями
-    const maxWidth = window.innerHeight * 0.9; // 90vh
-    const maxHeight = window.innerHeight - 200; // 100% - 30px
-    let width = naturalWidth;
-    let height = naturalHeight;
-
-    // Масштабируем пропорционально, если превышает лимиты
-    if (width > maxWidth) {
-      const ratio = maxWidth / width;
-      width = maxWidth;
-      height = height * ratio;
-    }
-
-    if (height > maxHeight) {
-      const ratio = maxHeight / height;
-      height = maxHeight;
-      width = width * ratio;
-    }
-
-    setMediaSize({ width, height });
-  };
   return (
     <>
       <div className="fixed inset-0 z-50  flex flex-col">
@@ -121,65 +94,41 @@ export default function MediaCarousel({ items, initialIndex = 0, onClose }) {
           </button>
 
           {/* Slide container */}
-          <div
-            style={
-              mediaSize
-                ? {
-                    height:
-                      items[current].type === "video"
-                        ? "100vh"
-                        : `calc(${mediaSize.height}px)`,
-                    width:
-                      items[current].type === "video"
-                        ? "90vh"
-                        : `calc(${mediaSize.width}px)`,
-                  }
-                : {
-                    height: items[current].type === "video" ? "100%" : "auto",
-                    width: items[current].type === "video" ? "90%" : "auto",
-                  }
-            }
-            className="relative  flex items-center justify-center "
-          >
-            <AnimatePresence custom={direction}>
-              <motion.div
-                key={current}
-                custom={direction}
-                variants={slideVariants}
-                exit="exit"
-                initial={
-                  firstLoad
-                    ? { scale: 0, opacity: 0 }
-                    : { x: direction > 0 ? 300 : -300, opacity: 0 }
-                }
-                animate={{ scale: 1, opacity: 1, x: 0 }}
-                transition={{ duration: 0.2 }}
-                onAnimationComplete={() => setFirstLoad(false)}
-                className="absolute inset-0 w-full h-full flex items-center justify-center"
-              >
-                {items[current].type === "video" ? (
-                  <video
-                    controls
-                    src={items[current].src}
-                    className="w-full h-full object-contain z-[51] rounded-lg"
-                    autoPlay
-                    muted
-                    onLoad={handleLoad}
-                    playsInline
-                  />
-                ) : (
-                  <Image
-                    src={items[current].src}
-                    alt={`media-${current}`}
-                    fill
-                    onLoad={handleLoad}
-                    className="object-contain w-full h-full z-[51] rounded-lg"
-                    priority
-                  />
-                )}
-              </motion.div>
-            </AnimatePresence>
-          </div>
+
+          <AnimatePresence custom={direction}>
+            <motion.div
+              key={current}
+              custom={direction}
+              variants={slideVariants}
+              exit="exit"
+              initial={
+                firstLoad
+                  ? { scale: 0, opacity: 0 }
+                  : { x: direction > 0 ? 300 : -300, opacity: 0 }
+              }
+              animate={{ scale: 1, opacity: 1, x: 0 }}
+              transition={{ duration: 0.2 }}
+              onAnimationComplete={() => setFirstLoad(false)}
+              className="inset-0 w-full h-full flex items-center justify-center"
+            >
+              {items[current].type === "video" ? (
+                <video
+                  controls
+                  src={items[current].src}
+                  className=" object-contain z-[51] rounded-lg  max-w-[100%] max-h-[90vh]"
+                  autoPlay
+                  muted
+                  playsInline
+                />
+              ) : (
+                <img
+                  src={items[current].src}
+                  alt=""
+                  className="z-[51]  w-full max-w-[70%] max-h-[90vh] object-contain"
+                />
+              )}
+            </motion.div>
+          </AnimatePresence>
 
           {/* Next */}
           <button

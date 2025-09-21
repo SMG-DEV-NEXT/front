@@ -114,6 +114,7 @@ const AdminBox = ({
               <textarea
                 ref={textareaRef}
                 value={value.rus}
+                maxLength={maxLength}
                 name={!isUpperCode ? `${name}ru` : `${name}Ru`}
                 className="bg-black w-full dark:bg-white dark:border dark:border-input dark:text-linkColor resize-none outline-none rounded-[10px] px-4 py-2 min-h-[46px] text-base font-semibold text-linkColor"
                 onChange={handleChange}
@@ -133,6 +134,7 @@ const AdminBox = ({
               <textarea
                 ref={textareaRef2}
                 value={value.en}
+                maxLength={maxLength}
                 name={!isUpperCode ? `${name}en` : `${name}En`}
                 className="bg-black w-full dark:bg-white dark:border dark:border-input dark:text-linkColor resize-none outline-none rounded-[10px] px-4 py-2 min-h-[46px] text-base font-semibold text-linkColor"
                 onChange={handleChange}
@@ -197,6 +199,7 @@ const AdminBox = ({
               value={value}
               type={type}
               name={name}
+              maxLength={maxLength}
               className="bg-black resize-none w-full outline-none rounded-[10px] px-4 py-2 min-h-[46px] text-base font-semibold text-linkColor"
               onChange={handleChange}
             />
@@ -205,6 +208,7 @@ const AdminBox = ({
           <textarea
             ref={textareaRef}
             value={value}
+            maxLength={maxLength}
             name={name}
             className="bg-black dark:bg-white dark:border dark:border-input dark:text-linkColor resize-none outline-none rounded-[10px] px-4 py-2 min-h-[46px] text-base font-semibold text-linkColor"
             onChange={handleChange}

@@ -139,6 +139,7 @@ const PayCard = ({ mobile, cheat, ref }) => {
     window.open(`/${locale}/agreement`, "_blank");
     setConfirm(true);
   };
+
   return (
     <div className="flex flex-col min-w-[100%]">
       <div className="rounded-t-2xl bg-input p-6">
@@ -403,7 +404,13 @@ const PayCard = ({ mobile, cheat, ref }) => {
             </Text>
           </div>
           <Text T="none" weight="medium" size="sm" className="text-primary10">
-            {cheat[`instruction${locale === "ru" ? "Ru" : "En"}`]}
+            <div
+              dangerouslySetInnerHTML={{
+                __html: cheat[
+                  `instruction${locale === "ru" ? "Ru" : "En"}`
+                ].replace(/\n/g, "<br/>"),
+              }}
+            ></div>
           </Text>
         </div>
       </Modal>
