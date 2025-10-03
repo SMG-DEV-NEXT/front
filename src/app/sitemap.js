@@ -1,8 +1,15 @@
-import { getAllSlugs } from "@/lib/api"; // твой способ достать slug'и
+import CatalogService from "@/services/Catalog";
 
 export default async function sitemap() {
   const baseUrl = "https://smg-back.ru";
-  const slugs = await getAllSlugs(); // ["slug1", "slug2", ...]
+
+  let slugs = [];
+  try {
+    const data = await CatalogService.getCatalogs({ limit: 100, page: 1 });
+    slugs = data?.data?.data?.map((cat) => cat.link) || [];
+  } catch (e) {
+    console.error("Failed to load slugs for sitemap:", e);
+  }
 
   const urls = [
     {
