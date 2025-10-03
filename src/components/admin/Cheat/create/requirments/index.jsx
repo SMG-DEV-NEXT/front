@@ -12,6 +12,7 @@ import {
   USB,
 } from "./options";
 import Input from "@/components/Input";
+import { useTheme } from "next-themes";
 
 const Options = ({ options = [], selectedOption = [], onSelect }) => {
   const [isCustomSelected, setIsCustomSelected] = React.useState(
@@ -51,6 +52,7 @@ const Options = ({ options = [], selectedOption = [], onSelect }) => {
     onSelect(newSelected);
   };
 
+  const theme = useTheme();
   return (
     <div className="flex w-full flex-col gap-3 pl-[3px]">
       {/* Default options */}
@@ -96,7 +98,12 @@ const Options = ({ options = [], selectedOption = [], onSelect }) => {
         <Input
           value={customValue}
           placeholder="Enter custom value"
-          styleDiv={{ backgroundColor: "#272c33" }}
+          className="bg-input dark:bg-"
+          styleDiv={
+            theme !== "dark"
+              ? { backgroundColor: "#272c33", height: "38px" }
+              : {}
+          }
           onChange={handleCustomInput}
         />
       )}
@@ -111,7 +118,6 @@ const Requirments = ({ value, onChange }) => {
       [name]: v,
     });
   };
-  console.log(value);
   return (
     <div className="flex flex-col p-4 justify-between  bg-input dark-box rounded-[16px] w-full">
       <Text
