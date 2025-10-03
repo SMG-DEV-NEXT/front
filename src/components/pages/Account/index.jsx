@@ -94,7 +94,7 @@ const View = () => {
                 key={tab.value}
               >
                 <div className="w-full">
-                  <Component mobile={true} user={user} usd={usd} />
+                  {user && <Component mobile={true} user={user} usd={usd} />}
                 </div>
               </Effect>
             </div>
@@ -119,7 +119,7 @@ const View = () => {
               key={tab.value}
             >
               <div className="w-full">
-                <Component user={user} usd={usd} />
+                {user && <Component user={user} usd={usd} />}
               </div>
             </Effect>
           </div>

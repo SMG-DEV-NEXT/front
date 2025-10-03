@@ -12,8 +12,8 @@ const EditBlokTab = ({ blok, onChange, theme }) => {
   const [selectedItem, setSelectedItem] = useState({});
   const [t, setT] = useState(blok.title);
   const [newItemValue, setNewItemValue] = useState();
-  const handleeleteItem = (title) => {
-    const newItems = blok.items.filter((e) => e.title !== title);
+  const handleeleteItem = (title, index) => {
+    const newItems = blok.items.filter((e, i) => index !== i);
     if (title === selectedItem?.title) {
       setSelectedItem({});
     }
@@ -27,6 +27,10 @@ const EditBlokTab = ({ blok, onChange, theme }) => {
 
   const handleAddFunction = () => {
     const itemCheck = blok.items.find((e) => e.title === newItemValue);
+    if (!newItemValue) {
+      toast.error("Title is required.");
+      return;
+    }
     if (itemCheck) {
       toast.error("Already exist.");
       return;
@@ -36,8 +40,8 @@ const EditBlokTab = ({ blok, onChange, theme }) => {
     setNewItemValue("");
   };
   const handleEditFunction = (name, value) => {
-    const newItems = blok.items.map((e) => {
-      if (e.title === selectedItem.title) {
+    const newItems = blok.items.map((e, i) => {
+      if (i === selectedItem.i) {
         return {
           ...e,
           [name]: value,
@@ -45,6 +49,10 @@ const EditBlokTab = ({ blok, onChange, theme }) => {
       }
       return e;
     });
+    if (name === "title" && !value) {
+      toast.error("Title is required.");
+      return;
+    }
     setSelectedItem({
       ...selectedItem,
       [name]: value,
@@ -84,8 +92,8 @@ const EditBlokTab = ({ blok, onChange, theme }) => {
           {blok.items.map((e, i) => {
             return (
               <Tab
-                isActive={e.title === selectedItem?.title}
-                onDelete={() => handleeleteItem(e.title)}
+                isActive={i === selectedItem?.i}
+                onDelete={() => handleeleteItem(e.title, i)}
                 key={crypto.randomUUID()}
                 title={e.title}
                 onSelect={() => setSelectedItem({ ...e, i })}

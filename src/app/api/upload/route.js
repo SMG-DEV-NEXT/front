@@ -12,7 +12,6 @@ export async function POST(req) {
       const data = await axiosWithoutAuth.post("upload/image", {
         body: JSON.stringify({ image }),
       });
-      console.log(data);
       return NextResponse.json(data);
     } else {
       // For multipart/form-data (file upload)

@@ -16,7 +16,13 @@ const CustomLink = ({ url, children, className, isMobile }) => {
         {children}
       </div>
     );
-
+  if (locale === "en") {
+    return (
+      <Link href={`/${url}`} className={className}>
+        {children}
+      </Link>
+    );
+  }
   return (
     <Link href={`/${locale}${url}`} className={className}>
       {children}

@@ -12,7 +12,7 @@ export async function generateMetadata({ params }) {
     const title = data?.[`metaTitle${l}`] ?? "Cheat Info";
 
     return {
-      title: `SMG ${title}`,
+      title: `${title}`,
       description: meta,
     };
   } catch (error) {

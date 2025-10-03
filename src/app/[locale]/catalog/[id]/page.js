@@ -16,7 +16,7 @@ export async function generateMetadata({ params }) {
     const head = data?.[`head${l}`];
 
     return {
-      title: `SMG  Cheat for ${head}`,
+      title: head,
       description: meta,
     };
   } catch (e) {

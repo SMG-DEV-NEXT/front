@@ -17,6 +17,10 @@ const TabEditModal = ({
   const [inputs, setInputs] = useState({ ...tab, oldKey: tab.key });
   const [newFunctionValue, setNewFunctionValue] = useState("");
   const handleChangeInput = (name, value) => {
+    if (name === "key" && !value) {
+      toast.error("Key is required.");
+      return;
+    }
     setInputs((e) => ({
       ...e,
       [name]: value,
@@ -35,6 +39,10 @@ const TabEditModal = ({
 
   const handleAddFunction = () => {
     const itemCheck = inputs.blocks.find((e) => e.title === newFunctionValue);
+    if (!newFunctionValue) {
+      toast.error("Title is required.");
+      return;
+    }
     if (itemCheck) {
       toast.error("Already exist.");
       return;
@@ -68,10 +76,14 @@ const TabEditModal = ({
   // }, [tab]);
 
   const handleEditFunction = (name, value) => {
+    if (name === "title" && !value) {
+      toast.error("Title is required.");
+      return;
+    }
     setInputs({
       ...inputs,
-      blocks: inputs.blocks.map((e) => {
-        if (e.title === selectedBlock.title) {
+      blocks: inputs.blocks.map((e, i) => {
+        if (i === selectedBlock.index) {
           return {
             ...e,
             [name]: value,
@@ -107,11 +119,16 @@ const TabEditModal = ({
           {inputs.blocks.map((e, i) => {
             return (
               <Tab
-                isActive={e.title === selectedBlock?.title}
+                isActive={i === selectedBlock?.index}
                 onDelete={() => onDelete(e.title)}
                 key={crypto.randomUUID()}
                 title={e.title}
-                onSelect={() => setSelectedBlock(e)}
+                onSelect={() =>
+                  setSelectedBlock({
+                    ...e,
+                    index: i,
+                  })
+                }
               />
             );
           })}

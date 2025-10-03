@@ -266,7 +266,7 @@ export default function SettingsPanel({ mobile, cheat }) {
         <div
           className={`flex flex-col  w-[${
             mobile ? 8 : 20
-          }%]  max-w-[200px] border-r border-linkColor`}
+          }%]  max-w-[200px] border-r border-primary80`}
         >
           {cheat.functions.map((e, index) => {
             return (
@@ -279,7 +279,7 @@ export default function SettingsPanel({ mobile, cheat }) {
                 } gap-2 w-full justify-center items-start py-5  px-5 cursor-pointer ${
                   index === cheat.functions.length - 1
                     ? ""
-                    : "border-b border-linkColor"
+                    : "border-b border-primary80"
                 }`}
               >
                 {e.icon && (

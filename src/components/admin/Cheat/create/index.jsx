@@ -52,6 +52,8 @@ const CheatCreate = () => {
     instructionEn: "",
     requirments: {},
     minimumPrice: 1000,
+    h1En: "",
+    h1Ru: "",
   };
   const [inputs, setInputs] = useState(initialInputs);
 
@@ -180,6 +182,14 @@ const CheatCreate = () => {
           isMultipleLanguage={true}
           onChange={handleChangeInput}
           label={"head"}
+        />
+        <AdminBox
+          value={{ rus: inputs.h1Ru, en: inputs.h1En }}
+          name="h1"
+          maxLength={300}
+          isMultipleLanguage={true}
+          onChange={handleChangeInput}
+          label={"h1"}
         />
         <AdminBox
           value={{ rus: inputs.metaRu, en: inputs.metaEn }}

@@ -66,6 +66,8 @@ const UpdateCheat = () => {
     requirments: {},
     loading: true,
     minimumPrice: 1000,
+    h1En: "",
+    h1Ru: "",
   };
   const statusLabels = [
     { label: t("active"), value: "published", color: "#22C55E" },
@@ -209,6 +211,14 @@ const UpdateCheat = () => {
             isMultipleLanguage={true}
             onChange={handleChangeInput}
             label={"head"}
+          />
+          <AdminBox
+            value={{ rus: inputs.h1Ru, en: inputs.h1En }}
+            name="h1"
+            maxLength={300}
+            isMultipleLanguage={true}
+            onChange={handleChangeInput}
+            label={"h1"}
           />
           <AdminBox
             value={{ rus: inputs.metaRu, en: inputs.metaEn }}

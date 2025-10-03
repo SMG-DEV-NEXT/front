@@ -14,6 +14,7 @@ import Loading from "@/app/loading";
 import Text from "@/components/Text";
 import { getLocale } from "@/utils/getlocale";
 import Effect from "@/components/Animations/Effect";
+import CheatInvisibleH1 from "@/components/Cheat/H1";
 
 function getQueryParam(key) {
   const urlParams = new URLSearchParams(window.location.search);
@@ -38,10 +39,10 @@ const View = () => {
   if (isPending || !data) {
     return <Loading />;
   }
-
   if (isMobile) {
     return (
       <div className="view relative h-full w-full flex items-center justify-center pt-[60px] pb-[60px]">
+        <CheatInvisibleH1 data={data.data} />
         <div className="container flex flex-col gap-10 z-[1]">
           <Effect type="to-bottom" onceEffect={true}>
             <CardAndPay mobile={isMobile} cheat={data.data} />
@@ -89,6 +90,7 @@ const View = () => {
   }
   return (
     <div className="view relative h-full w-full flex items-center justify-center pt-[64px] pb-[158px]">
+      <CheatInvisibleH1 data={data.data} />
       <div className="container z-[1]">
         <CardAndPay ref={ref} mobile={isMobile} cheat={data.data} />
         <Effect type="to-top" onceEffect={true} className="w-full">

@@ -6,6 +6,7 @@ import { createPortal } from "react-dom";
 import MediaCarousel from "./MediaCarousel";
 
 import "../index.scss";
+
 const smoothScrollX = (element, distance, duration = 500) => {
   if (!element) return;
 
@@ -25,12 +26,35 @@ const smoothScrollX = (element, distance, duration = 500) => {
 
   requestAnimationFrame(animate);
 };
+
 const Medias = ({ mobile, cheat }) => {
   const [isOpenCarousel, setIsOpenCarousel] = useState({
     isOpen: false,
     index: 0,
   });
-  const scrollRef = useRef(null); // 👈 Create ref
+  const scrollRef = useRef(null);
+
+  // --- drag state ---
+  const [isDragging, setIsDragging] = useState(false);
+  const startX = useRef(0);
+  const scrollStart = useRef(0);
+
+  const handleMouseDown = (e) => {
+    setIsDragging(true);
+    startX.current = e.pageX - scrollRef.current.offsetLeft;
+    scrollStart.current = scrollRef.current.scrollLeft;
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX.current) * 1.5; // multiplier controls speed
+    scrollRef.current.scrollLeft = scrollStart.current - walk;
+  };
+
+  const handleMouseUp = () => setIsDragging(false);
+  const handleMouseLeave = () => setIsDragging(false);
 
   const getMediaItems = () => {
     const items = [];
@@ -50,16 +74,28 @@ const Medias = ({ mobile, cheat }) => {
   };
 
   const scrollRight = () => {
-    smoothScrollX(scrollRef.current, mobile ? 200 : 250, 300); // 1000ms = 1s
+    smoothScrollX(scrollRef.current, mobile ? 200 : 250, 300);
   };
 
   const scrollLeft = () => {
-    smoothScrollX(scrollRef.current, mobile ? -200 : -250, 300); // 1000ms = 1s
+    smoothScrollX(scrollRef.current, mobile ? -200 : -250, 300);
+  };
+
+  const isCanShowEmptyImages = () => {
+    let CountOfEmptyVideos = 0;
+    if (!cheat.videos[0]) {
+      CountOfEmptyVideos += 1;
+    }
+    if (cheat.images.length < 2) {
+      CountOfEmptyVideos += 2 - cheat.images.length;
+    }
+    return Array(CountOfEmptyVideos).fill(0);
   };
 
   const isHaveThumbnailVideo = cheat.thumbnailVideo
     ? cheat.thumbnailVideo[0]
     : undefined;
+
   if (mobile) {
     return (
       <div className="flex flex-col gap-4 max-w-[100%] select-none">
@@ -83,7 +119,7 @@ const Medias = ({ mobile, cheat }) => {
         <div className="flex gap-6 relative rounded-[16px] overflow-hidden items-center">
           <div
             onClick={scrollLeft}
-            className={`cursor-pointer absolute h-[101%] w-15 top-1/2 left-0 z-10 items-center flex -translate-y-1/2 bg-input/50 backdrop-blur-md p-2 shadow-md hover:bg-input/60 transition`}
+            className="cursor-pointer absolute h-[101%] w-15 top-1/2 left-0 z-10 items-center flex -translate-y-1/2 bg-input/50 backdrop-blur-md p-2 shadow-md hover:bg-input/60 transition"
           >
             <Icon
               name="arrowRightCricle"
@@ -93,7 +129,11 @@ const Medias = ({ mobile, cheat }) => {
           </div>
           <div
             ref={scrollRef}
-            className="flex items-center overflow-x-auto max-w-[100%] gap-3 scrollbar-hide"
+            className="flex items-center overflow-x-auto max-w-[100%] gap-3 scrollbar-hide cursor-grab select-none active:cursor-grabbing"
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseLeave}
           >
             {cheat.videos[0] && (
               <div
@@ -122,43 +162,42 @@ const Medias = ({ mobile, cheat }) => {
                 </div>
               </div>
             )}
-            {/* {cheat.videos[0] && (
-            <video
-              width={250}
-              height={250}
-              controls
-              style={{
-                width: `${250}px`,
-                height: `${250}px`,
-              }}
-              alt="Uploaded preview"
-              className={`rounded-2xl mt-1 z-[1]`}
-            >
-              <source src={cheat.videos[0]} type="video/mp4" />
-            </video>
-          )} */}
 
-            {cheat.images.map((e, i) => {
-              return (
-                <div className="relative min-w-[250px] flex items-center  rounded-[16px] overflow-hidden">
-                  <ImageWithPreview
-                    src={e}
-                    alt="MediaImage"
-                    onClick={() =>
-                      setIsOpenCarousel({
-                        isOpen: true,
-                        index: i + cheat.videos?.length,
-                      })
-                    }
-                    className="object-contain rounded-[16px] "
-                  />
-                </div>
-              );
-            })}
+            {cheat.images.map((e, i) => (
+              <div
+                key={i}
+                className="relative min-w-[250px] flex items-center rounded-[16px] overflow-hidden"
+              >
+                <ImageWithPreview
+                  src={e}
+                  alt="MediaImage"
+                  onClick={() =>
+                    setIsOpenCarousel({
+                      isOpen: true,
+                      index: i + cheat.videos?.length,
+                    })
+                  }
+                  className="object-contain rounded-[16px]"
+                />
+              </div>
+            ))}
+            {isCanShowEmptyImages().map((e, i) => (
+              <div
+                key={i}
+                className="relative min-w-[250px] flex items-center rounded-[16px] overflow-hidden"
+              >
+                <ImageWithPreview
+                  src={"/images/pic1.png"}
+                  alt="MediaImage"
+                  isHavePreview={false}
+                  className="object-contain rounded-[16px]"
+                />
+              </div>
+            ))}
           </div>
           <div
             onClick={scrollRight}
-            className={`absolute cursor-pointer h-[101%] w-15 top-1/2 right-0 items-center flex -translate-y-1/2 bg-input/50 backdrop-blur-md p-2 shadow-md hover:bg-input/60 transition`}
+            className="absolute cursor-pointer h-[101%] w-15 top-1/2 right-0 items-center flex -translate-y-1/2 bg-input/50 backdrop-blur-md p-2 shadow-md hover:bg-input/60 transition"
           >
             <Icon name="arrowRightCricle" className="cursor-pointer" />
           </div>
@@ -166,6 +205,7 @@ const Medias = ({ mobile, cheat }) => {
       </div>
     );
   }
+
   return (
     <div className="flex flex-col gap-4 max-w-[100%] mt-[20px] select-none">
       {isOpenCarousel.isOpen &&
@@ -185,10 +225,10 @@ const Medias = ({ mobile, cheat }) => {
       >
         media
       </Text>
-      <div className="flex gap-6   rounded-[16px] overflow-hidden items-center max-w-[100%] relative">
+      <div className="flex gap-6 rounded-[16px] overflow-hidden items-center max-w-[100%] relative">
         <div
           onClick={scrollLeft}
-          className={`absolute cursor-pointer h-[101%] w-15 top-1/2 left-0 z-10 items-center flex -translate-y-1/2 bg-input/50 backdrop-blur-md p-2 shadow-md hover:bg-input/60 transition`}
+          className="absolute cursor-pointer h-[101%] w-15 top-1/2 left-0 z-10 items-center flex -translate-y-1/2 bg-input/50 backdrop-blur-md p-2 shadow-md hover:bg-input/60 transition"
         >
           <Icon
             name="arrowRightCricle"
@@ -198,7 +238,11 @@ const Medias = ({ mobile, cheat }) => {
         </div>
         <div
           ref={scrollRef}
-          className="flex items-center overflow-x-auto max-w-[100%] gap-3 scrollbar-hide"
+          className="flex items-center overflow-x-auto max-w-[100%] gap-3 scrollbar-hide cursor-grab select-none active:cursor-grabbing"
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseLeave}
         >
           {cheat.videos[0] && (
             <div
@@ -227,43 +271,42 @@ const Medias = ({ mobile, cheat }) => {
               </div>
             </div>
           )}
-          {/* {cheat.videos[0] && (
-            <video
-              width={250}
-              height={250}
-              controls
-              style={{
-                width: `${250}px`,
-                height: `${250}px`,
-              }}
-              alt="Uploaded preview"
-              className={`rounded-2xl mt-1 z-[1]`}
-            >
-              <source src={cheat.videos[0]} type="video/mp4" />
-            </video>
-          )} */}
 
-          {cheat.images.map((e, i) => {
-            return (
-              <div className="relative min-w-[250px] flex items-center  rounded-[16px] overflow-hidden">
-                <ImageWithPreview
-                  src={e}
-                  alt="MediaImage"
-                  onClick={() =>
-                    setIsOpenCarousel({
-                      isOpen: true,
-                      index: i + cheat.videos?.length,
-                    })
-                  }
-                  className="object-contain rounded-[16px] border-2 border-linkColor"
-                />
-              </div>
-            );
-          })}
+          {cheat.images.map((e, i) => (
+            <div
+              key={i}
+              className="relative min-w-[250px] flex items-center rounded-[16px] overflow-hidden"
+            >
+              <ImageWithPreview
+                src={e}
+                alt="MediaImage"
+                onClick={() =>
+                  setIsOpenCarousel({
+                    isOpen: true,
+                    index: i + cheat.videos?.length,
+                  })
+                }
+                className="object-contain rounded-[16px] border-2 border-linkColor"
+              />
+            </div>
+          ))}
+          {isCanShowEmptyImages().map((e, i) => (
+            <div
+              key={i}
+              className="relative min-w-[250px] flex items-center rounded-[16px] overflow-hidden"
+            >
+              <ImageWithPreview
+                src={"/images/pic1.png"}
+                alt="MediaImage"
+                isHavePreview={false}
+                className="object-contain rounded-[16px] border-2 border-linkColor"
+              />
+            </div>
+          ))}
         </div>
         <div
           onClick={scrollRight}
-          className={`absolute cursor-pointer h-[101%] w-15 top-1/2 right-0 items-center flex -translate-y-1/2 bg-input/50 backdrop-blur-md p-2 shadow-md hover:bg-input/60 transition`}
+          className="absolute cursor-pointer h-[101%] w-15 top-1/2 right-0 items-center flex -translate-y-1/2 bg-input/50 backdrop-blur-md p-2 shadow-md hover:bg-input/60 transition"
         >
           <Icon name="arrowRightCricle" className="cursor-pointer" />
         </div>

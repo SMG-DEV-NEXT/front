@@ -7,23 +7,29 @@ import {
   Spoofer,
   SystemOptions,
   TypeWindow,
+  USB,
 } from "@/components/admin/Cheat/create/requirments/options";
 
 const items = [
   {
     title: "client",
-    value: "Внутриигровой",
+    value: "client",
     icon: "jostick",
   },
   {
     title: "anitCheat",
-    value: "Внутриигровой",
+    value: "anitCheat",
     icon: "safe",
   },
   {
     title: "oc",
     value: "oc",
     icon: "windows",
+  },
+  {
+    title: "fl",
+    value: "usb",
+    icon: "usb",
   },
   {
     title: "proccesor",
@@ -60,56 +66,56 @@ const display = [
   },
 ];
 const GetText = ({ value, req }) => {
-  if (value === "oc") {
-    const label = (
-      SystemOptions.filter((e) => req[value]?.includes(e.value)) || []
-    ).map((e) => e.label);
-    if (!label) return;
+  const getLabels = (options, key, prefix = "") => {
+    const selected = req[key] || [];
+
+    // map known values
+    const known = options
+      .filter((opt) => selected.includes(opt.value))
+      .map((opt) => opt.label);
+
+    // find unknown (custom) values
+    const custom = selected.filter(
+      (val) => !options.some((opt) => opt.value === val)
+    );
+
+    // combine known + custom
+    const labels = [...known, ...custom];
+
+    if (!labels.length) return null;
+
     return (
       <Text T="none" className="text-primary10" weight="semi" size="base">
-        Windows {label.join(" / ")}
+        {prefix} {labels.join(" / ")}
       </Text>
     );
+  };
+
+  switch (value) {
+    case "client":
+      return getLabels([], value);
+    case "anitCheat":
+      return getLabels([], value);
+    case "oc":
+      return getLabels(SystemOptions, value);
+    case "usb":
+      return getLabels(USB, value);
+    case "window":
+      return getLabels(TypeWindow, value);
+    case "processor":
+      return getLabels(ProcessorOptions, value);
+    case "spoofer":
+      return getLabels(Spoofer, value);
+    default:
+      // fallback: just show raw value
+      return (
+        <Text T="none" className="text-primary10" weight="semi" size="base">
+          {value}
+        </Text>
+      );
   }
-  if (value === "window") {
-    const label = (
-      TypeWindow.filter((e) => req[value]?.includes(e.value)) || []
-    ).map((e) => e.label);
-    if (!label) return;
-    return (
-      <Text T="none" className="text-primary10" weight="semi" size="base">
-        {label.join(",")}
-      </Text>
-    );
-  }
-  if (value === "processor") {
-    const label = (
-      ProcessorOptions.filter((e) => req[value]?.includes(e.value)) || []
-    ).map((e) => e.label);
-    if (!label) return;
-    return (
-      <Text T="none" className="text-primary10" weight="semi" size="base">
-        {label.join(" / ")}
-      </Text>
-    );
-  }
-  if (value === "spoofer") {
-    const label = (
-      Spoofer.filter((e) => req[value]?.includes(e.value)) || []
-    ).map((e) => e.label);
-    if (!label) return;
-    return (
-      <Text T="none" className="text-primary10" weight="semi" size="base">
-        {label.join(" / ")}
-      </Text>
-    );
-  }
-  return (
-    <Text T="none" className="text-primary10" weight="semi" size="base">
-      {value}
-    </Text>
-  );
 };
+
 const getWindowOptions = (req, value) => {
   const label = (
     TypeWindow.filter((e) => req[value]?.includes(e.value)) || []
@@ -240,7 +246,7 @@ const Programs = ({ mobile, cheat }) => {
                 className="flex  gap-3 items-center"
                 key={crypto.randomUUID()}
               >
-                <div className="p-3 bg-black rounded-[8px]">
+                <div className="p-3 min-w-[48px] min-h-[48px] bg-black rounded-[8px]">
                   <Icon name={e.icon} folder="products" />
                 </div>
                 <div className="flex flex-col justify-between">

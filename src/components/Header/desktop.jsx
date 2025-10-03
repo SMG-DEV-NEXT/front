@@ -20,15 +20,17 @@ import { useSelector } from "react-redux";
 import { MainSettings } from "@/script/main";
 import { useSettings } from "@/context/Middle";
 import { CheatSearch } from "./search";
+import Loading from "@/app/loading";
 
 const LANGUAGE_ITEMS = [
   { key: "ru", label: "russian" },
   { key: "en", label: "english" },
 ];
 
-export default function Header() {
+export default function Header({ catalogs, isLoading }) {
   const t = useTranslations("Index");
   const { settings } = useSettings();
+  const [isOpen, setIsOpen] = useState(false);
   const HeaderSettings =
     settings.data.find((e) => e.title === "main")?.settings || MainSettings;
   const pathname = usePathname();
@@ -50,7 +52,6 @@ export default function Header() {
     const newPath = `/${lang.key}${pathname.replace(/^\/(en|ru|zh)/, "")}`;
     window.location.href = newPath; // hly vor to mna senc
   };
-
   return (
     <div
       className="header-container z-[12]"
@@ -76,6 +77,46 @@ export default function Header() {
               {t(key)}
             </CustomLink>
           ))}
+          <Dropdown onOpenChange={(isOpen) => setIsOpen(isOpen)}>
+            <DropdownTrigger className="z-[0]">
+              <div className="flex cursor-pointer items-center gap-1">
+                <Text className="text-linkColor cursor-pointer text-sm leading-[140%] font-mediu">
+                  ourCheats
+                </Text>
+                <Icon
+                  name="arrowLeftP"
+                  size={20}
+                  className={` transform rotate-[${
+                    isOpen ? 90 : -90
+                  }deg] transition-transform`}
+                />
+              </div>
+            </DropdownTrigger>
+            <DropdownMenu
+              pl
+              aria-label="Select Languages"
+              className="flex w-[200px] max-h-[250px]  flex-col rounded-[5px] bg-black overflow-auto search-scroll items-center"
+            >
+              {catalogs?.data?.data.map((e) => (
+                <DropdownItem
+                  key={e.id + Math.floor(100 * Math.random())}
+                  className="py-3 group flex gap-1"
+                >
+                  <div className="flex items-center gap-1">
+                    <Text className="text-white text-md group-hover:opacity-[0.7] transition-opacity delay-100 leading-[140%] font-medium">
+                      cheatsFor
+                    </Text>
+                    <CustomLink
+                      url={`/catalog/${e.link}`}
+                      className="text-white text-md group-hover:opacity-[0.7] transition-opacity delay-100 leading-[140%] font-medium truncate max-w-[100px] block"
+                    >
+                      {e.title}
+                    </CustomLink>
+                  </div>
+                </DropdownItem>
+              ))}
+            </DropdownMenu>
+          </Dropdown>
         </div>
         <div className="flex items-center gap-6">
           {/* Language Switcher */}
@@ -89,7 +130,7 @@ export default function Header() {
               </div>
             </DropdownTrigger>
             <DropdownMenu
-              aria-label="Select Language"
+              aria-label="Catalogs"
               className="flex flex-col rounded-[16px] overflow-hidden items-center"
             >
               {LANGUAGE_ITEMS.map((item, i) => (

@@ -151,6 +151,8 @@ const MiddleComponent = ({ children }) => {
   if ((isPending && !!token) || isLoading || isLoadingContacts) {
     return null;
   }
+  const User = data?.data;
+  const UserIsAdmin = User?.isAdmin;
   if (path.includes("admin")) {
     return (
       <>
@@ -193,7 +195,19 @@ const MiddleComponent = ({ children }) => {
         <Header />
         <section className="content relative bg-mainBlack">
           <div className="fixed inset-0 bg-login bg-cover bg-top " />
-
+          {UserIsAdmin && (
+            <div
+              onClick={() => {
+                window.open(
+                  `${window.location.origin}/ru/admin/dashboard`,
+                  "_blank"
+                );
+              }}
+              className="fixed z-[99999] right-[80px] bg-primary80 bottom-[16px] p-2 rounded-full cursor-pointer flex items-center justify-center hover:scale-105 transition-transform"
+            >
+              <Icon name="admin" size={30} />
+            </div>
+          )}
           <div className="z-[1]">{children}</div>
         </section>
         <Footer />

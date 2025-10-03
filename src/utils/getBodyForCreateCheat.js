@@ -25,6 +25,8 @@ const getBody = (inputs) => {
     instructionEn: inputs.instructionEn,
     requirments: [inputs.requirments],
     minimumPrice: inputs.minimumPrice * 1,
+    h1En: inputs.h1En,
+    h1Ru: inputs.h1Ru,
   };
 };
 

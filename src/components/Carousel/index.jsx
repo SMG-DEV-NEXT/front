@@ -53,11 +53,11 @@ const Carousel = ({ items }) => {
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {Array.from({ length: totalPages }).map((_, i) => (
-          <div key={i} className="flex min-w-full gap-3">
+          <div key={i} className="flex min-w-full gap-3 ">
             {items
               .slice(i * itemsPerPage, i * itemsPerPage + itemsPerPage)
               .map((item, j) => (
-                <Card key={j} {...item} usd={usd} />
+                <Card key={j} {...item} usd={usd} imageWidth={260} />
               ))}
           </div>
         ))}

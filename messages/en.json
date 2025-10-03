@@ -85,7 +85,9 @@
     "successRequest": "Your application has been successfully submitted",
     "selectPlaceholder": "Select payment method",
     "fieldsError": "Please fill in all required fields.",
-    "zoom": "Image zoom"
+    "zoom": "Image zoom",
+    "ourCheats": "Our cheats",
+    "cheatsFor": "Cheats for"
   },
   "reseller": {
     "title": "Become a Reseller",
@@ -162,7 +164,8 @@
     "hide": "Hide",
     "functional": "Functionality",
     "about": "Description",
-    "more": "Read More"
+    "more": "Read More",
+    "fl": "USB Drive Required"
   },
   "comments": {
     "title": "Customer Reviews",
@@ -295,6 +298,7 @@
     "siteStatus": "Visible on Site",
     "inactive": "Inactive",
     "head": "Title",
+    "h1": "H1",
     "meta": "Meta Description",
     "size": "Size",
     "deleteText": "You are about to delete:",

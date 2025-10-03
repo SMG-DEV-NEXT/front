@@ -129,7 +129,7 @@ const CheatTable = ({
                 </Text>
               </div>
             </th> */}
-            <th className="w-[40%]">
+            <th className="w-[20%]">
               <div className="h-[56px] px-[18px] flex items-center justify-start flex items-center gap-[6px]">
                 <Text
                   T="admin"
@@ -138,6 +138,18 @@ const CheatTable = ({
                   className="text-linkColor"
                 >
                   name
+                </Text>
+              </div>
+            </th>
+            <th className="w-[20%]">
+              <div className="h-[56px] px-[18px] flex items-center justify-start flex items-center gap-[6px]">
+                <Text
+                  T="admin"
+                  weight="semi"
+                  size="sm"
+                  className="text-linkColor"
+                >
+                  catalog
                 </Text>
               </div>
             </th>
@@ -219,7 +231,7 @@ const CheatTable = ({
                 </Text>
               </div>
             </th> */}
-                <th className="w-[40%]">
+                <th className="w-[20%]">
                   <div className="h-[56px] px-[18px] flex items-center justify-start flex items-center gap-[6px]">
                     <Text
                       T="none"
@@ -228,6 +240,18 @@ const CheatTable = ({
                       className="text-linkColor"
                     >
                       {e[`title${locale === "ru" ? "Ru" : "En"}`]}
+                    </Text>
+                  </div>
+                </th>
+                <th className="w-[20%]">
+                  <div className="h-[56px] px-[18px] flex items-center justify-start flex items-center gap-[6px]">
+                    <Text
+                      T="none"
+                      weight="semi"
+                      size="sm"
+                      className="text-linkColor"
+                    >
+                      {e.catalog[`title`]}
                     </Text>
                   </div>
                 </th>
